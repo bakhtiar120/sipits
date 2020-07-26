@@ -60,23 +60,23 @@
 
         <p>Identitas Pembimbing Dosen ITS</p>
         <label for="email"><b>NIP/NIDN</b></label>
-        <input type="text" placeholder="Masukkan NIP/NIDN" name="nomor_pembimbing" required>
+        <input type="text" placeholder="Masukkan NIP/NIDN" name="nomor_pembimbing" id="nomor_pembimbing" required>
 
         <label for="email"><b>Nama</b></label>
-        <input type="text" placeholder="Masukkan Nama Pembimbing" name="nama_pembimbing" required>
+        <input type="text" placeholder="Masukkan Nama Pembimbing" name="nama_pembimbing" id="nama_pembimbing" required>
 
 
         <label for="email"><b>Departemen</b></label>
-        <input type="text" placeholder="Masukkan departemen" name="departemen_pembimbing" required>
+        <input type="text" placeholder="Masukkan departemen" name="departemen_pembimbing" id="departemen_pembimbing" required>
 
         <label for="email"><b>Fakultas</b></label>
-        <input type="text" placeholder="Masukkan fakultas" name="fakultas_pembimbing" required>
+        <input type="text" placeholder="Masukkan fakultas" name="fakultas_pembimbing" id="fakultas_pembimbing" required>
 
         <label for="email"><b>Email</b></label>
-        <input type="text" placeholder="Masukkan email (diperbolehkan email instansi)" name="email_pembimbing" required>
+        <input type="text" placeholder="Masukkan email (diperbolehkan email instansi)" name="email_pembimbing" id="email_pembimbing" required>
 
         <label for="email"><b>No HP</b></label>
-        <input type="text" placeholder="Masukkan No HP yang bisa dihubungi" name="hp_pembimbing" required>
+        <input type="text" placeholder="Masukkan No HP yang bisa dihubungi" name="hp_pembimbing" id="hp_pembimbing" required>
 
         <hr>
         <p>Identitas Publikasi</p>
@@ -132,45 +132,85 @@
             success: function(res) {
               var result;
               result = [{
-                label: 'There is no matching record found for ' + request.term,
+                label: 'Tidak ketemu ' + request.term,
                 value: ''
               }];
 
-              console.log("Before format", res);
+              // console.log("Before format", res);
 
 
               if (res.length) {
                 result = $.map(res, function(obj) {
                   return {
                     label: obj.nama,
-                    value: obj.nama,
+                    value: obj.NIDN,
                     data: obj
                   };
                 });
               }
 
-              console.log("formatted response", result);
               response(result);
             }
           });
         },
-        select: function(event, selectedData) {
-
-          if (selectedData && selectedData.item && selectedData.item.data) {
-            var data = selectedData.item.data;
-            $('#nomor_induk').val(data.item.label);
-            $('#nama').val(data.nama);
-            $('#dept').val(data.departemen);
-            $('#univ').val(data.universitas);
-            $('#email').val(data.email);
-            $('#no_hp').val(data.telepon);
-            $('#alamat_kantor').val(data.alamat);
-            $('#telepon_kantor').val(data.telepon);
-          }
+        select: function(event, ui) {
+          var resArr;
+          resArr = ui.item.data;
+          $('#nama').val(resArr.nama);
+          $('#dept').val(resArr.departemen);
+          $('#univ').val(resArr.universitas);
+          $('#email').val(resArr.email);
+          $('#no_hp').val(resArr.telepon);
+          $('#alamat_kantor').val(resArr.alamat);
+          $('#telepon_kantor').val(resArr.telepon);
 
         }
       });
 
+      $("#nomor_pembimbing").autocomplete({
+        source: function(request, response) {
+          // Fetch data
+          $.ajax({
+            url: "<?= base_url() ?>pendaftaran/cekDosen",
+            type: 'post',
+            dataType: "json",
+            data: {
+              nidn: request.term
+            },
+            success: function(res) {
+              var result;
+              result = [{
+                label: 'Tidak ketemu ' + request.term,
+                value: ''
+              }];
+
+              // console.log("Before format", res);
+
+
+              if (res.length) {
+                result = $.map(res, function(obj) {
+                  return {
+                    label: obj.nama,
+                    value: obj.NIDN,
+                    data: obj
+                  };
+                });
+              }
+
+              response(result);
+            }
+          });
+        },
+        select: function(event, ui) {
+          var resArr;
+          resArr = ui.item.data;
+          $('#nama_pembimbing').val(resArr.nama);
+          $('#departemen_pembimbing').val(resArr.departemen);
+          $('#fakultas_pembimbing').val(resArr.fakultas);
+          $('#email_pembimbing').val(resArr.email);
+          $('#hp_pembimbing').val(resArr.telepon);
+        }
+      });
     });
   </script>
 </body>

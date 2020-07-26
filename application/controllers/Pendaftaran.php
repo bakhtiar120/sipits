@@ -199,8 +199,8 @@ class Pendaftaran extends CI_Controller
 	public function cekDosen()
 	{
 		$nidn = $this->input->post("nidn");
-		$data["dosen"] = $this->kmpi_model->get_dosen($nidn);
-		$dosen = json_encode($data["dosen"], true);
-		print_r($dosen);
+		$data = $this->kmpi_model->get_dosen($nidn);
+		echo json_encode($data, true);
+		exit;
 	}
 }
