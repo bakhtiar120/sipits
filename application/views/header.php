@@ -17,5 +17,3 @@
 
     <script src="<?php echo base_url('assets/bahan/jquery.dataTables.min.js.download'); ?>"></script>
     <script src="<?php echo base_url('assets/bahan/dataTables.bootstrap.min.js.download'); ?>"></script>
-    <script src="<?php echo base_url('assets/js/jquery-ui.js'); ?>"></script>
-    <script src="<?php echo base_url('assets/js/jquery-3.5.1.min.js'); ?>"></script>

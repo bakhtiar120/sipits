@@ -22,17 +22,19 @@
             <div class="col-md-6 col-sm-6">
                 <address>
                     <strong>PABX</strong><br>
-                    LPPM ITS : 1404 / 1405 atau melalui https://servicedesk.its.ac.id/ dengan pilihan unit tujuan yaitu "Lembaga Penelitian dan Pengabdian Kepada Masyarakat"                    <strong>Website</strong><br>
+                    LPPM ITS : 1404 / 1405 atau melalui https://servicedesk.its.ac.id/ dengan pilihan unit tujuan yaitu "Lembaga Penelitian dan Pengabdian Kepada Masyarakat" <strong>Website</strong><br>
                     <a href="http://https//www.its.ac.id/lppm">https://www.its.ac.id/lppm</a><br>
                     <strong>Email</strong><br>
                     <a href="mailto:lppm@its.ac.id">lppm@its.ac.id</a>
-                    </address>
-                    <a href="mailto:lppm@its.ac.id"></a>
+                </address>
+                <a href="mailto:lppm@its.ac.id"></a>
+            </div><a href="mailto:lppm@its.ac.id">
+            </a>
         </div><a href="mailto:lppm@its.ac.id">
-        </a></div><a href="mailto:lppm@its.ac.id">
-        </a><div class="col-md-4 col-sm-4 text-center"><a href="mailto:lppm@its.ac.id">
-            </a><a href="http://www.lppm.its.ac.id/"><img src="<?php echo base_url('assets/bahan/lppm-logo.png');?>"></a>
-            <a href="http://www.its.ac.id/" style="padding-top: 5px;"><img src="<?php echo base_url('assets/bahan/its-logo.png');?>"></a>
+        </a>
+        <div class="col-md-4 col-sm-4 text-center"><a href="mailto:lppm@its.ac.id">
+            </a><a href="http://www.lppm.its.ac.id/"><img src="<?php echo base_url('assets/bahan/lppm-logo.png'); ?>"></a>
+            <a href="http://www.its.ac.id/" style="padding-top: 5px;"><img src="<?php echo base_url('assets/bahan/its-logo.png'); ?>"></a>
         </div>
         <div class="clearfix"></div>
         <div class="col-md-12 col-sm-12 text-center copy">
@@ -40,3 +42,6 @@
         </div>
     </div>
 </div>
+
+<script src="<?php echo base_url('assets/js/jquery-ui.js'); ?>"></script>
+<script src="<?php echo base_url('assets/js/jquery-3.5.1.min.js'); ?>"></script>
