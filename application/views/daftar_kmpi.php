@@ -32,7 +32,7 @@
 
         <p>Identitas Pengusul</p>
         <label for="email"><b>NIP/NIDN</b></label>
-        <input type="text" placeholder="Masukkan NIP/NIDN" name="nomor_induk" id="nomor_induk" required>
+        <input type="text" placeholder="Masukkan NIP/NIDN" name="nomor_induk" id="nomor_induk" onKeyUp="this.value=this.value.replace(/[^0-9]/g,'')" required>
 
         <label for="email"><b>Nama</b></label>
         <input type="text" placeholder="Masukkan Nama Lengkap dan gelar (jika ada)" id="nama" name="nama" required>
@@ -48,19 +48,19 @@
         <input type="text" placeholder="Masukkan email (diperbolehkan email instansi)" name="email" id="email" required>
 
         <label for="email"><b>No HP</b></label>
-        <input type="text" placeholder="Masukkan No HP yang bisa dihubungi" name="no_hp" id="no_hp" required>
+        <input type="text" placeholder="Masukkan No HP yang bisa dihubungi" name="no_hp" id="no_hp" onKeyUp="this.value=this.value.replace(/[^0-9]/g,'')" required>
 
         <label for="email"><b>Alamat Kantor</b></label>
         <input type="text" placeholder="Masukkan alamat lengkap kantor" name="alamat_kantor" id="alamat_kantor" required>
 
         <label for="email"><b>Telepon Kantor</b></label>
-        <input type="text" placeholder="Masukkan telepon kantor" name="telepon_kantor" id="telepon_kantor" required>
+        <input type="text" placeholder="Masukkan telepon kantor" name="telepon_kantor" id="telepon_kantor" onKeyUp="this.value=this.value.replace(/[^0-9]/g,'')" required>
 
         <hr>
 
         <p>Identitas Pembimbing Dosen ITS</p>
         <label for="email"><b>NIP/NIDN</b></label>
-        <input type="text" placeholder="Masukkan NIP/NIDN" name="nomor_pembimbing" id="nomor_pembimbing" required>
+        <input type="text" placeholder="Masukkan NIP/NIDN" name="nomor_pembimbing" id="nomor_pembimbing" onKeyUp="this.value=this.value.replace(/[^0-9]/g,'')" required>
 
         <label for="email"><b>Nama</b></label>
         <input type="text" placeholder="Masukkan Nama Pembimbing" name="nama_pembimbing" id="nama_pembimbing" required>
@@ -76,7 +76,7 @@
         <input type="text" placeholder="Masukkan email (diperbolehkan email instansi)" name="email_pembimbing" id="email_pembimbing" required>
 
         <label for="email"><b>No HP</b></label>
-        <input type="text" placeholder="Masukkan No HP yang bisa dihubungi" name="hp_pembimbing" id="hp_pembimbing" required>
+        <input type="text" placeholder="Masukkan No HP yang bisa dihubungi" name="hp_pembimbing" id="hp_pembimbing" onKeyUp="this.value=this.value.replace(/[^0-9]/g,'')" required>
 
         <hr>
         <p>Identitas Publikasi</p>

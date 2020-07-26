@@ -8,7 +8,7 @@ class Pendaftaran extends CI_Controller
 	{
 		parent::__construct();
 		$this->db = $this->load->database('default', true);
-		$this->load->model(array('kp_model', 'pap_model', 'kmpi_model'));
+		$this->load->model(array('kp_model', 'pap_model', 'kmpi_model', 'P3i_model'));
 	}
 
 
@@ -189,8 +189,55 @@ class Pendaftaran extends CI_Controller
 
 			$data = $this->input->post();
 			$data['status'] = 0;
-			$data['tanggal_submit'] = date("d-m-yy");
-			print_r($data);
+			$data['tanggal_submit'] = date("yy-m-d");
+
+			$folder = "uploads/p3i/";
+
+
+			$file = rand(1000, 100000) . "-" . $_FILES['pernyataan']['name'];
+			$file_loc = $_FILES['pernyataan']['tmp_name'];
+			$file_size = $_FILES['pernyataan']['size'];
+			$file_type = $_FILES['pernyataan']['type'];
+
+			$data['pernyataan'] = $file;
+
+			move_uploaded_file($file_loc, $folder . $file);
+
+			$file = rand(1000, 100000) . "-" . $_FILES['draf']['name'];
+			$file_loc = $_FILES['draf']['tmp_name'];
+			$file_size = $_FILES['draf']['size'];
+			$file_type = $_FILES['draf']['type'];
+
+			move_uploaded_file($file_loc, $folder . $file);
+
+			$data['draf'] = $file;
+
+
+			$file = rand(1000, 100000) . "-" . $_FILES['npwp']['name'];
+			$file_loc = $_FILES['npwp']['tmp_name'];
+			$file_size = $_FILES['npwp']['size'];
+			$file_type = $_FILES['npwp']['type'];
+
+			move_uploaded_file($file_loc, $folder . $file);
+
+			$data['npwp'] = $file;
+
+			$file = rand(1000, 100000) . "-" . $_FILES['tabungan']['name'];
+			$file_loc = $_FILES['tabungan']['tmp_name'];
+			$file_size = $_FILES['tabungan']['size'];
+			$file_type = $_FILES['tabungan']['type'];
+
+			move_uploaded_file($file_loc, $folder . $file);
+
+			$data['tabungan'] = $file;
+
+			$simpan = $this->P3i_model->tambah_p3i($data);
+			if ($simpan == 1) {
+				$this->session->set_flashdata('hasil', '<div class="alert alert-warning alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><h4><i class="icon fa fa-warning"></i> Alert!</h4>Warning alert preview. This alert is dismissable.</div>');
+			} else {
+				$this->session->set_flashdata('hasil', '<div class="alert alert-success alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><h4><i class="icon fa fa-check"></i> Alert!</h4>Success alert preview. This alert is dismissable.</div>');
+			}
+			redirect('pendaftaran/daftar_p3i');
 		} else {
 			$this->load->view('daftar_p3i');
 		}
