@@ -12,35 +12,35 @@ class Kmpi_model extends CI_Model
 
     function tambah_kmpi($data)
     {
-        $nomor_induk = $data["nomor_induk"];
-        $nidn_pengusul = $this->nidn($nomor_induk);
-        if ($nidn_pengusul == 0) {
-            $dosen = array(
-                'nama' => $data["nama"],
-                'nidn' => $data["nomor_induk"],
-                'nip' => $data["nomor_induk"],
-                'alamat' => $data["alamat_kantor"],
-                'email' => $data["email"],
-                'departemen' => $data["dept"],
-                'telepon' => $data["no_hp"],
-                'universitas' => $data["univ"]
-            );
-            $this->simpan_dosen($dosen);
-        }
-        $nomor_pembimbing = $data["nomor_pembimbing"];
-        $nidn_pembimbing = $this->nidn($nomor_pembimbing);
-        if ($nidn_pembimbing == 0) {
-            $dosen2 = array(
-                'nama' => $data["nama_pembimbing"],
-                'nidn' => $data["nomor_pembimbing"],
-                'nip' => $data["nomor_pembimbing"],
-                'telepon' => $data["hp_pembimbing"],
-                'email' => $data["email_pembimbing"],
-                'departemen' => $data["departemen_pembimbing"],
-                'fakultas' => $data["fakultas_pembimbing"]
-            );
-            $this->simpan_dosen($dosen2);
-        }
+        // $nomor_induk = $data["nomor_induk"];
+        // $nidn_pengusul = $this->nidn($nomor_induk);
+        // if ($nidn_pengusul == 0) {
+        //     $dosen = array(
+        //         'nama' => $data["nama"],
+        //         'nidn' => $data["nomor_induk"],
+        //         'nip' => $data["nomor_induk"],
+        //         'alamat' => $data["alamat_kantor"],
+        //         'email' => $data["email"],
+        //         'departemen' => $data["dept"],
+        //         'telepon' => $data["no_hp"],
+        //         'universitas' => $data["univ"]
+        //     );
+        //     $this->simpan_dosen($dosen);
+        // }
+        // $nomor_pembimbing = $data["nomor_pembimbing"];
+        // $nidn_pembimbing = $this->nidn($nomor_pembimbing);
+        // if ($nidn_pembimbing == 0) {
+        //     $dosen2 = array(
+        //         'nama' => $data["nama_pembimbing"],
+        //         'nidn' => $data["nomor_pembimbing"],
+        //         'nip' => $data["nomor_pembimbing"],
+        //         'telepon' => $data["hp_pembimbing"],
+        //         'email' => $data["email_pembimbing"],
+        //         'departemen' => $data["departemen_pembimbing"],
+        //         'fakultas' => $data["fakultas_pembimbing"]
+        //     );
+        //     $this->simpan_dosen($dosen2);
+        // }
 
         $this->db->trans_start();
         $this->db->insert('data_kmpi', $data);

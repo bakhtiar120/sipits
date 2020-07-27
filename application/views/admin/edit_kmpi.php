@@ -3,6 +3,7 @@
 
 <head>
     <?php include("header.php") ?>
+    <link href="<?php echo base_url('assets/css/jquery-ui.css'); ?>" rel="stylesheet">
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -211,6 +212,7 @@
         <?php include("footer.php") ?>
     </div>
     <!-- ./wrapper -->
+    <script src="<?php echo base_url('assets/js/jquery-ui.js'); ?>"></script>
     <script src="<?php echo base_url('assets/js/jquery-1.12.1.js'); ?>"></script>
     <script type='text/javascript'>
         $(document).ready(function() {
@@ -252,9 +254,9 @@
                 select: function(event, ui) {
                     var resArr;
                     resArr = ui.item.data;
-                    $('#nama_pembimbing').val(resArr.nama);
-                    $('#departemen_pembimbing').val(resArr.departemen);
-                    $('#fakultas_pembimbing').val(resArr.fakultas);
+                    $('#nama').val(resArr.nama);
+                    $('#departemen').val(resArr.departemen);
+                    $('#fakultas').val(resArr.fakultas);
                     $('#email_pembimbing').val(resArr.email);
                     $('#hp_pembimbing').val(resArr.telepon);
                 }

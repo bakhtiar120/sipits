@@ -74,9 +74,9 @@ class Pendaftaran extends CI_Controller
 
 				$this->email->send();
 
-				$this->session->set_flashdata('hasil', '<div class="alert alert-warning alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><h4><i class="icon fa fa-warning"></i> Alert!</h4>Warning alert preview. This alert is dismissable.</div>');
+				$this->session->set_flashdata('hasil', '<div class="alert alert-success alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><h4><i class="icon fa fa-check"></i> Alert!</h4>Berhasil Melakukan Pengajuan.</div>');
 			} else {
-				$this->session->set_flashdata('hasil', '<div class="alert alert-success alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><h4><i class="icon fa fa-check"></i> Alert!</h4>Success alert preview. This alert is dismissable.</div>');
+				$this->session->set_flashdata('hasil', '<div class="alert alert-warning alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><h4><i class="icon fa fa-warning"></i> Alert!</h4>Gagal Melakukan Pengajuan.</div>');
 			}
 			redirect('pendaftaran/daftar_pap');
 		} else {
@@ -128,7 +128,7 @@ class Pendaftaran extends CI_Controller
 
 			//print_r($data);
 
-			$simpan= $this->kp_model->tambah_kp($data);
+			$simpan = $this->kp_model->tambah_kp($data);
 			if ($simpan == 1) {
 				$this->load->library('email');
 
@@ -152,9 +152,9 @@ class Pendaftaran extends CI_Controller
 
 				$this->email->send();
 
-				$this->session->set_flashdata('hasil', '<div class="alert alert-warning alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><h4><i class="icon fa fa-warning"></i> Alert!</h4>Warning alert preview. This alert is dismissable.</div>');
+				$this->session->set_flashdata('hasil', '<div class="alert alert-success alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><h4><i class="icon fa fa-check"></i> Alert!</h4>Berhasil Melakukan Pengajuan.</div>');
 			} else {
-				$this->session->set_flashdata('hasil', '<div class="alert alert-success alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><h4><i class="icon fa fa-check"></i> Alert!</h4>Success alert preview. This alert is dismissable.</div>');
+				$this->session->set_flashdata('hasil', '<div class="alert alert-warning alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><h4><i class="icon fa fa-warning"></i> Alert!</h4>Gagal Melakukan Pengajuan.</div>');
 			}
 			redirect('pendaftaran/daftar_kp');
 			/*
@@ -228,6 +228,28 @@ class Pendaftaran extends CI_Controller
 
 			$simpan = $this->kmpi_model->tambah_kmpi($data);
 			if ($simpan == 1) {
+				$this->load->library('email');
+
+				$config['protocol']    = 'smtp';
+				$config['smtp_host']    = 'ssl://smtp.gmail.com';
+				$config['smtp_port']    = '465';
+				$config['smtp_timeout'] = '7';
+				$config['smtp_user']    = 'bakhtiarhanafi@gmail.com';
+				$config['smtp_pass']    = 'iuycsizxdrwbxmrk';
+				$config['charset']    = 'utf-8';
+				$config['newline']    = "\r\n";
+				$config['mailtype'] = 'text'; // or html
+				$config['validation'] = TRUE; // bool whether to validate email or not      
+
+				$this->email->initialize($config);
+
+				$this->email->from('bakhtiarhanafi@gmail.com', 'Bakhtiar');
+				$this->email->to('bakhtiarmochamad@gmail.com');
+				$this->email->subject('Email Test');
+				$this->email->message('Pendaftaran KMPI Anda berhasil.');
+
+				$this->email->send();
+
 				$this->session->set_flashdata('hasil', '<div class="alert alert-success alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><h4><i class="icon fa fa-check"></i> Alert!</h4>Berhasil Melakukan Pengajuan.</div>');
 			} else {
 				$this->session->set_flashdata('hasil', '<div class="alert alert-warning alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><h4><i class="icon fa fa-warning"></i> Alert!</h4>Gagal Melakukan Pengajuan.</div>');
@@ -289,6 +311,28 @@ class Pendaftaran extends CI_Controller
 
 			$simpan = $this->P3i_model->tambah_p3i($data);
 			if ($simpan == 1) {
+				$this->load->library('email');
+
+				$config['protocol']    = 'smtp';
+				$config['smtp_host']    = 'ssl://smtp.gmail.com';
+				$config['smtp_port']    = '465';
+				$config['smtp_timeout'] = '7';
+				$config['smtp_user']    = 'bakhtiarhanafi@gmail.com';
+				$config['smtp_pass']    = 'iuycsizxdrwbxmrk';
+				$config['charset']    = 'utf-8';
+				$config['newline']    = "\r\n";
+				$config['mailtype'] = 'text'; // or html
+				$config['validation'] = TRUE; // bool whether to validate email or not      
+
+				$this->email->initialize($config);
+
+				$this->email->from('bakhtiarhanafi@gmail.com', 'Bakhtiar');
+				$this->email->to('bakhtiarmochamad@gmail.com');
+				$this->email->subject('Email Test');
+				$this->email->message('Pendaftaran P3I Anda berhasil.');
+
+				$this->email->send();
+
 				$this->session->set_flashdata('hasil', '<div class="alert alert-success alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><h4><i class="icon fa fa-check"></i> Alert!</h4>Berhasil Melakukan Pengajuan.</div>');
 			} else {
 				$this->session->set_flashdata('hasil', '<div class="alert alert-warning alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><h4><i class="icon fa fa-warning"></i> Alert!</h4>Gagal Melakukan Pengajuan.</div>');
