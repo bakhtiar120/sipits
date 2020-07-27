@@ -65,7 +65,7 @@
 
         <hr>
         <p>Unggah Dokumen</p>
-        <label for="email"><b>Surat Pernytaan</b></label>
+        <label for="email"><b>Surat Pernyataan</b></label>
         <input type="file" placeholder="Unggah file dalam bentuk doc/pdf" name="pernyataan" required>
 
         <label for="email"><b>Draf Paper</b></label>

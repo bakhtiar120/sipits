@@ -21,12 +21,12 @@
                         <div class="col-sm-6">
 
 
-                            <h1>Data Pengusul Program Percepatan Publikasi International</h1>
+                            <h1>Data Pengusul KMPI</h1>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item active">Data Pengusul P3I</li>
+                                <li class="breadcrumb-item active">Data Pengusul KMPI</li>
                             </ol>
                         </div>
                     </div>
@@ -39,7 +39,7 @@
                 <div class="row">
                     <div class="col-12">
 
-                        <!-- data p3i -->
+                        <!-- data KP -->
                         <div class="card">
 
                             <div class="card-header">
@@ -71,7 +71,7 @@
                                             <tr>
 
                                                 <td><?php echo $value['nama']; ?></td>
-                                                <td><?php echo $value['universitas'];; ?></td>
+                                                <td><?php echo $value['univ'];; ?></td>
                                                 <td><?php echo $value['tanggal_submit']; ?></td>
                                                 <td>
                                                     <?php
@@ -85,14 +85,14 @@
                                                 </td>
 
                                                 <td>
-                                                    <a class="btn btn-primary btn-sm" href="<?php echo site_url('atur_p3i/detail/' . $value['id_p3i']); ?>">
+                                                    <a class="btn btn-primary btn-sm" href="<?php echo site_url('atur_kmpi/detail/' . $value['id_kmpi']); ?>">
                                                         <i class="fas fa-folder">
                                                         </i>
                                                         Detail
                                                     </a>
 
-                                                    <!-- <a class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modal-default" href="<?php echo site_url('atur_p3i/hapus/' . $value['id_p3i']); ?>"> -->
-                                                    <a class="btn btn-danger btn-sm" href="<?php echo site_url('atur_p3i/hapus/' . $value['id_p3i']); ?>">
+                                                    <!-- <a class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modal-default" href="<?php echo site_url('atur_kmpi/hapus/' . $value['id_kmpi']); ?>"> -->
+                                                    <a class="btn btn-danger btn-sm" href="<?php echo site_url('atur_kmpi/hapus/' . $value['id_kmpi']); ?>">
                                                         <i class="fas fa-trash">
                                                         </i>
                                                         Hapus

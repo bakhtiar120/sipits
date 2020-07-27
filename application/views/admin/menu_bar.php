@@ -176,11 +176,10 @@
           </a>
         </li>
         <li class="nav-item has-treeview">
-          <a href="<?php echo base_url('atur_pmpi'); ?>" class="nav-link">
-            <i class="nav-icon fas fa-tachometer-alt"></i>
+          <a href="<?php echo base_url('atur_kmpi'); ?>" class="nav-link">
+            <i class="nav-icon fas fa-book"></i>
             <p>
-              Program PMPI
-
+              Program KMPI
             </p>
           </a>
         </li>
@@ -189,7 +188,6 @@
             <i class="nav-icon fas fa-tachometer-alt"></i>
             <p>
               Program P3I
-
             </p>
           </a>
         </li>

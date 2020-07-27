@@ -17,19 +17,19 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1>Edit Data Usulan KP</h1>
+                            <h1>Edit Data Usulan P3I</h1>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item active">Edit Usulan KP</li>
+                                <li class="breadcrumb-item active">Edit Usulan P3I</li>
                             </ol>
                         </div>
                     </div>
                 </div><!-- /.container-fluid -->
             </section>
 
-            <form role="form" method="POST" action="<?php echo site_url('atur_kp/update_data/' . $id_kp); ?>" enctype="multipart/form-data">
+            <form role="form" method="POST" action="<?php echo site_url('atur_p3i/update_data/' . $id_p3i); ?>" enctype="multipart/form-data">
                 <!-- Main content -->
                 <section class="content" style="margin-left: 1%;margin-right: 1%">
                     <div class="row">
@@ -45,12 +45,12 @@
                                 </div>
                                 <div class="card-body">
                                     <div class="form-group">
-                                        <label for="inputName">Nama Pengusul</label>
-                                        <input type="text" id="inputName" class="form-control" name="nama" value="<?php echo $nama ?>">
+                                        <label for="inputName">Nomor Induk</label>
+                                        <input type="text" id="inputName" class="form-control" name="nomor_induk" value="<?php echo $nomor_induk ?>" readonly>
                                     </div>
                                     <div class="form-group">
-                                        <label for="inputName">Nomor Induk</label>
-                                        <input type="text" id="inputName" class="form-control" name="nomor_induk" value="<?php echo $nomor_induk ?>">
+                                        <label for="inputName">Nama Pengusul</label>
+                                        <input type="text" id="inputName" class="form-control" name="nama" value="<?php echo $nama ?>">
                                     </div>
                                     <div class="form-group">
                                         <label for="inputName">Departemen</label>
@@ -82,7 +82,7 @@
                         <div class="col-md-6">
                             <div class="card card-secondary">
                                 <div class="card-header">
-                                    <h3 class="card-title">Data Penelitian</h3>
+                                    <h3 class="card-title">Dokumen</h3>
 
                                     <div class="card-tools">
                                         <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
@@ -90,99 +90,88 @@
                                     </div>
                                 </div>
                                 <div class="card-body">
-                                    <div class="form-group">
-                                        <label for="inputName">Ketua Peneliti</label>
-                                        <input type="text" id="inputName" class="form-control" name="ketua" value="<?php echo $ketua ?>">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="inputName">Judul Penelitian</label>
-                                        <input type="text" id="inputName" class="form-control" name="judul" value="<?php echo $judul ?>">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="inputName">Skema Penelitian</label>
-                                        <input type="text" id="inputName" class="form-control" name="skema" value="<?php echo $skema ?>">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="inputName">Sumber Dana</label>
-                                        <input type="text" id="inputName" class="form-control" name="sumber" value="<?php echo $sumber ?>">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="inputName">Lama Penelitian</label>
-                                        <input type="text" id="inputName" class="form-control" name="lama_penelitian" value="<?php echo $lama_penelitian ?>">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="inputName">Anggota Peneliti</label>
-                                        <input type="text" id="inputName" class="form-control" name="anggota" value="<?php echo $anggota ?>">
-                                    </div>
-
-                                </div>
-                                <!-- /.card-body -->
-                            </div>
-                            <!-- /.card -->
-                            <div class="card card-info">
-                                <div class="card-header">
-                                    <h3 class="card-title">Berkas</h3>
-
-                                    <div class="card-tools">
-                                        <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
-                                            <i class="fas fa-minus"></i></button>
-                                    </div>
-                                </div>
-                                <div class="card-body p-0">
                                     <table class="table">
                                         <thead>
                                             <tr>
-                                                <th>Nama Berkas</th>
-                                                <th>Ubah Berkas</th>
-
+                                                <th>Surat Pernyataan <a href="<?php echo base_url('uploads/p3i/' . $pernyataan); ?>" target="_blank" class="btn btn-link">Lihat File</a></th>
+                                                <th>
+                                                    <div class="btn-group btn-group-sm">
+                                                        <input type="file" placeholder="Upload Ulang?" name="pernyataan">
+                                                    </div>
+                                                </th>
+                                            </tr>
+                                            <tr>
+                                                <th>Draft Paper <a href="<?php echo base_url('uploads/p3i/' . $draf); ?>" target="_blank" class="btn btn-link">Lihat File</a></th>
+                                                <th>
+                                                    <div class="btn-group btn-group-sm">
+                                                        <input type="file" placeholder="Upload Ulang?" name="draf">
+                                                    </div>
+                                                </th>
+                                            </tr>
+                                            <tr>
+                                                <th>NPWP <a href="<?php echo base_url('uploads/p3i/' . $npwp); ?>" target="_blank" class="btn btn-link">Lihat File</a></th>
+                                                <th>
+                                                    <div class="btn-group btn-group-sm">
+                                                        <input type="file" placeholder="Upload Ulang?" name="npwp">
+                                                    </div>
+                                                </th>
+                                            </tr>
+                                            <tr>
+                                                <th>Tabungan <a href="<?php echo base_url('uploads/p3i/' . $tabungan); ?>" target="_blank" class="btn btn-link">Lihat File</a></th>
+                                                <th>
+                                                    <div class="btn-group btn-group-sm">
+                                                        <input type="file" placeholder="Upload Ulang?" name="tabungan">
+                                                    </div>
+                                                </th>
                                             </tr>
                                         </thead>
-                                        <tbody>
-
-                                            <tr>
-                                                <td>
-                                                    <a href="<?php echo base_url('uploads/kp/' . $proposal); ?>" class="btn btn-link">Draft Proposal</a>
-                                                </td>
-
-                                                <td class="py-0 align-middle">
-                                                    <div class="btn-group btn-group-sm">
-                                                        <!--  <a href="#" class="btn btn-info"><i class="fas fa-eye"></i> </a>
-                        <a href="#" class="btn btn-danger"><i class="fas fa-trash"></i> </a> -->
-                                                        <!-- <a href="#" class="btn btn-primary"><i class="fas fa-upload"></i> </a> -->
-
-                                                        <input type="file" placeholder="Upload Ulang?" name="proposal">
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <a href="<?php echo base_url('uploads/kp/' . $mou); ?>" class="btn btn-link">MoU</a>
-                                                </td>
-
-                                                <td class="py-0 align-middle">
-                                                    <div class="btn-group btn-group-sm">
-                                                        <input type="file" placeholder="Upload Ulang?" name="mou">
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <a href="<?php echo base_url('uploads/kp/' . $moa); ?>" class="btn btn-link">MoA</a>
-                                                </td>
-
-                                                <td class="py-0 align-middle">
-                                                    <div class="btn-group btn-group-sm">
-                                                        <input type="file" placeholder="Upload Ulang?" name="moa">
-                                                    </div>
-                                                </td>
-                                            </tr>
-
-                                        </tbody>
                                     </table>
                                 </div>
                                 <!-- /.card-body -->
                             </div>
                             <!-- /.card -->
+                            <!-- /.card -->
+                        </div>
+                        <div class="col-md-12">
+                            <div class="card card-primary">
+                                <div class="card-header">
+                                    <h3 class="card-title">Rekam Jejak Penelitian</h3>
+                                </div>
+                                <!-- /.card-header -->
+                                <div class="card-body">
+                                    <table class="table ">
+                                        <thead>
+                                            <tr>
+                                                <th>No</th>
+                                                <th>Judul</th>
+                                                <th>Skema</th>
+                                                <th>Sumber Pendanaan</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>1. </td>
+                                                <td><input type="text" name="judul1" class="form-control" value="<?= $judul1 ?>" required></td>
+                                                <td><input type="text" name="skema1" class="form-control" value="<?= $skema1 ?>" required></td>
+                                                <td><input type="text" name="sumber1" class="form-control" value="<?= $sumber1 ?>" required></td>
+                                            </tr>
+                                            <tr>
+                                                <td>2. </td>
+                                                <td><input type="text" name="judul2" class="form-control" value="<?= $judul2 ?>" required></td>
+                                                <td><input type="text" name="skema2" class="form-control" value="<?= $skema2 ?>" required></td>
+                                                <td><input type="text" name="sumber2" class="form-control" value="<?= $sumber2 ?>" required></td>
+                                            </tr>
+                                            <tr>
+                                                <td>3. </td>
+                                                <td><input type="text" name="judul3" class="form-control" value="<?= $judul3 ?>" required></td>
+                                                <td><input type="text" name="skema3" class="form-control" value="<?= $skema3 ?>" required></td>
+                                                <td><input type="text" name="sumber3" class="form-control" value="<?= $sumber3 ?>" required></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                            </div>
                         </div>
                     </div>
                     <div class="row">

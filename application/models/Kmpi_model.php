@@ -78,4 +78,90 @@ class Kmpi_model extends CI_Model
         if ($this->db->trans_status() === FALSE) return 0;
         return true;
     }
+
+    function get_all()
+    {
+
+        $this->db->order_by("tanggal_submit", "desc");
+        $query = $this->db->get('data_kmpi');
+        return $query->result_array();
+    }
+
+    function get_by_id($id)
+    {
+        $this->db->where('id_kmpi', $id);
+        $query = $this->db->get('data_kmpi');
+        return $query->result_array();
+    }
+
+    function update_kmpi($id_kmpi, $data)
+    {
+        $this->update_dosen($data);
+        $this->db->trans_start();
+
+        $this->db->where('id_kmpi', $id_kmpi);
+        $this->db->update('data_kmpi', $data);
+
+        $this->db->trans_complete();
+
+        if ($this->db->trans_status() === FALSE) return 0;
+        return true;
+    }
+
+    function update_dosen($data)
+    {
+
+        $dosen1 = array(
+            'nama' => $data['nama'],
+            'nidn' => $data['nomor_induk'],
+            'nip' => $data['nomor_induk'],
+            'alamat' => $data['alamat_kantor'],
+            'telepon' => $data['no_hp']
+        );
+        $this->db->where('id', cekIdDosen($data['nomor_induk']));
+        $this->db->update('dosen', $dosen1);
+
+        $dosen2 = array(
+            'nama' => $data['nama_pembimbing'],
+            'nidn' => $data['nomor_pembimbing'],
+            'nip' => $data['nomor_pembimbing'],
+            'departemen' => $data['departemen_pembimbing'],
+            'fakultas' => $data['fakultas_pembimbing'],
+            'email' => $data['email_pembimbing'],
+            'telepon' => $data['no_hp']
+        );
+        $this->db->where('id', cekIdDosen($data['nomor_pembimbing']));
+        $this->db->update('dosen', $dosen2);
+    }
+
+    function hapus_kmpi($id)
+    {
+
+        $this->db->trans_start();
+        $this->db->where('id_kmpi', $id);
+        $this->db->delete('data_kmpi');
+        $this->db->trans_complete();
+
+        if ($this->db->trans_status() === FALSE) return 0;
+        return true;
+    }
+
+    function update_status_kmpi($id_kmpi, $status)
+    {
+
+        $this->db->trans_start();
+
+        $data = array(
+            'status' => $status
+
+        );
+
+        $this->db->where('id_kmpi', $id_kmpi);
+        $this->db->update('data_kmpi', $data);
+
+        $this->db->trans_complete();
+
+        if ($this->db->trans_status() === FALSE) return 0;
+        return true;
+    }
 }

@@ -161,7 +161,7 @@
           $('#univ').val(resArr.universitas);
           $('#email').val(resArr.email);
           $('#no_hp').val(resArr.telepon);
-          $('#alamat_kantor').val(resArr.alamat);
+          $('#alamat_kantor').val(resArr.Alamat);
           $('#telepon_kantor').val(resArr.telepon);
 
         }
