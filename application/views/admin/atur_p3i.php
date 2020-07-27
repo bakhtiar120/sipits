@@ -26,7 +26,7 @@
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item active">Data Pengusul KP</li>
+                                <li class="breadcrumb-item active">Data Pengusul P3I</li>
                             </ol>
                         </div>
                     </div>
@@ -39,7 +39,7 @@
                 <div class="row">
                     <div class="col-12">
 
-                        <!-- data KP -->
+                        <!-- data p3i -->
                         <div class="card">
 
                             <div class="card-header">
@@ -85,14 +85,14 @@
                                                 </td>
 
                                                 <td>
-                                                    <a class="btn btn-primary btn-sm" href="<?php echo site_url('atur_kp/detail/' . $value['id_kp']); ?>">
+                                                    <a class="btn btn-primary btn-sm" href="<?php echo site_url('atur_p3i/detail/' . $value['id_p3i']); ?>">
                                                         <i class="fas fa-folder">
                                                         </i>
                                                         Detail
                                                     </a>
 
-                                                    <!-- <a class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modal-default" href="<?php echo site_url('atur_kp/hapus/' . $value['id_kp']); ?>"> -->
-                                                    <a class="btn btn-danger btn-sm" href="<?php echo site_url('atur_kp/hapus/' . $value['id_kp']); ?>">
+                                                    <!-- <a class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modal-default" href="<?php echo site_url('atur_p3i/hapus/' . $value['id_p3i']); ?>"> -->
+                                                    <a class="btn btn-danger btn-sm" href="<?php echo site_url('atur_p3i/hapus/' . $value['id_p3i']); ?>">
                                                         <i class="fas fa-trash">
                                                         </i>
                                                         Hapus

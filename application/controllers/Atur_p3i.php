@@ -14,7 +14,7 @@ class Atur_p3i extends CI_Controller
     public function index($temp1 = "", $temp2 = "")
     {
 
-        $data['data'] = $this->p3i_model->get_kp_all();
+        $data['data'] = $this->p3i_model->get_all();
         $data['temp'] = $temp1 . " " . $temp2;
 
         $this->load->view('admin/atur_p3i', $data);
@@ -22,65 +22,71 @@ class Atur_p3i extends CI_Controller
 
     public function detail($id = 0)
     {
-        //print_r($id);
-        $data = $this->p3i_model->get_kp_by_id($id);
-
-        //print_r($data[0]);
+        $data = $this->p3i_model->get_by_id($id);
         $this->load->view('admin/detail_p3i', $data[0]);
     }
 
-    public function edit($id_kp = 0)
+    public function edit($id_p3i = 0)
     {
 
-        $data = $this->p3i_model->get_kp_by_id($id_kp);
+        $data = $this->p3i_model->get_by_id($id_p3i);
 
         $this->load->view('admin/edit_p3i', $data[0]);
     }
 
-    public function update_data($id_kp = 0)
+    public function update_data($id_p3i = 0)
     {
 
         $data = $this->input->post();
 
-        //print_r($data);
 
-        $folder = "uploads/kp/";
+        $folder = "uploads/p3i/";
 
-        //print_r($_FILES['proposal']);
 
-        if ($_FILES['proposal']['name']) {
-            $file = rand(1000, 100000) . "-" . $_FILES['proposal']['name'];
-            $file_loc = $_FILES['proposal']['tmp_name'];
-            $file_size = $_FILES['proposal']['size'];
-            $file_type = $_FILES['proposal']['type'];
+        if ($_FILES['pernyataan']['name']) {
+            $file = rand(1000, 100000) . "-" . $_FILES['pernyataan']['name'];
+            $file_loc = $_FILES['pernyataan']['tmp_name'];
+            $file_size = $_FILES['pernyataan']['size'];
+            $file_type = $_FILES['pernyataan']['type'];
 
             move_uploaded_file($file_loc, $folder . $file);
-            $data['proposal'] = $file;
+            $data['pernyataan'] = $file;
         }
 
-        if ($_FILES['mou']['name']) {
-            $file = rand(1000, 100000) . "-" . $_FILES['mou']['name'];
-            $file_loc = $_FILES['mou']['tmp_name'];
-            $file_size = $_FILES['mou']['size'];
-            $file_type = $_FILES['mou']['type'];
+        if ($_FILES['draf']['name']) {
+            $file = rand(1000, 100000) . "-" . $_FILES['draf']['name'];
+            $file_loc = $_FILES['draf']['tmp_name'];
+            $file_size = $_FILES['draf']['size'];
+            $file_type = $_FILES['draf']['type'];
 
             move_uploaded_file($file_loc, $folder . $file);
-            $data['mou'] = $file;
+            $data['draf'] = $file;
         }
 
-        if ($_FILES['mou']['name']) {
-            $file = rand(1000, 100000) . "-" . $_FILES['moa']['name'];
-            $file_loc = $_FILES['moa']['tmp_name'];
-            $file_size = $_FILES['moa']['size'];
-            $file_type = $_FILES['moa']['type'];
+        if ($_FILES['npwp']['name']) {
+            $file = rand(1000, 100000) . "-" . $_FILES['npwp']['name'];
+            $file_loc = $_FILES['npwp']['tmp_name'];
+            $file_size = $_FILES['npwp']['size'];
+            $file_type = $_FILES['npwp']['type'];
 
             move_uploaded_file($file_loc, $folder . $file);
 
-            $data['moa'] = $file;
+            $data['npwp'] = $file;
+        }
+
+        if ($_FILES['tabungan']['name']) {
+            $file = rand(1000, 100000) . "-" . $_FILES['tabungan']['name'];
+            $file_loc = $_FILES['tabungan']['tmp_name'];
+            $file_size = $_FILES['tabungan']['size'];
+            $file_type = $_FILES['tabungan']['type'];
+
+            move_uploaded_file($file_loc, $folder . $file);
+
+            $data['tabungan'] = $file;
         }
 
 
-        $hasil = $this->p3i_model->update_kp($id_kp, $data);
+        $hasil = $this->p3i_model->update_p3i($id_p3i, $data);
 
         if ($hasil == 0) {
             $temp1 = "Gagal";
@@ -89,12 +95,12 @@ class Atur_p3i extends CI_Controller
         }
         $temp2 = "Diperbarui";
 
-        redirect('atur_kp/index/' . $temp1 . '/' . $temp2);
+        redirect('atur_p3i/index/' . $temp1 . '/' . $temp2);
     }
 
-    public function update_status($id_kp = 0, $status = 0)
+    public function update_status($id_p3i = 0, $status = 0)
     {
-        $hasil = $this->p3i_model->update_status_kp($id_kp, $status);
+        $hasil = $this->p3i_model->update_status_p3i($id_p3i, $status);
 
         if ($hasil == 0) {
             $temp1 = "Gagal";
@@ -108,10 +114,10 @@ class Atur_p3i extends CI_Controller
 
     public function hapus($id = 0)
     {
-        $hasil = $this->p3i_model->hapus_kp($id);
+        $hasil = $this->p3i_model->hapus_p3i($id);
 
         //printf($data);
-        //redirect('atur_kp');
+        //redirect('atur_p3i');
         if ($hasil == 0) {
             $temp1 = "Gagal";
         } else {

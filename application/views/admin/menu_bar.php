@@ -184,15 +184,6 @@
           </a>
         </li>
         <li class="nav-item has-treeview">
-          <a href="<?php echo base_url('atur_pmpi'); ?>" class="nav-link">
-            <i class="nav-icon fas fa-tachometer-alt"></i>
-            <p>
-              Program PMPI
-
-            </p>
-          </a>
-        </li>
-        <li class="nav-item has-treeview">
           <a href="<?php echo base_url('atur_p3i'); ?>" class="nav-link">
             <i class="nav-icon fas fa-tachometer-alt"></i>
             <p>
