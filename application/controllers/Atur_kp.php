@@ -102,6 +102,7 @@ class Atur_kp extends CI_Controller {
 
 	public function update_status($id_kp = 0, $status = 0)
 	{
+		$data = $this->kp_model->get_kp_by_id($id_kp);
 		$hasil = $this->kp_model->update_status_kp($id_kp, $status);
 
 		if($hasil == 0)
@@ -111,10 +112,44 @@ class Atur_kp extends CI_Controller {
 		else
 		{
 			$temp1 = "Berhasil";
+			if ($status == 1) {
+				$this->send_email($data[0]['email'], "Usulan KP Anda sedang direview");
+			} else if ($status == 2) {
+				$this->send_email($data[0]['email'], "Usulan KP Anda harus Revisi");
+			} else if ($status == 3) {
+				$this->send_email($data[0]['email'], "Usulan KP Anda ditolak");
+			} else if ($status == 4) {
+				$this->send_email($data[0]['email'], "Usulan KP Anda berhasil diterima");
+			}
 		}
 		$temp2 = "Diperbarui";
 
-		redirect('atur_kp/index/'.$temp1.'/'.$temp2);
+		redirect('atur_kp/index/'.$temp1.'/'.$data['email']);
+	}
+
+	public function send_email($email, $pesan)
+	{
+		$this->load->library('email');
+
+		$config['protocol']    = 'smtp';
+		$config['smtp_host']    = 'ssl://smtp.gmail.com';
+		$config['smtp_port']    = '465';
+		$config['smtp_timeout'] = '7';
+		$config['smtp_user']    = 'bakhtiarhanafi@gmail.com';
+		$config['smtp_pass']    = '';
+		$config['charset']    = 'utf-8';
+		$config['newline']    = "\r\n";
+		$config['mailtype'] = 'text'; // or html
+		$config['validation'] = TRUE; // bool whether to validate email or not      
+
+		$this->email->initialize($config);
+
+		$this->email->from('bakhtiarhanafi@gmail.com', 'Bakhtiar');
+		$this->email->to('bakhtiarmochamad@gmail.com');
+		$this->email->subject('Email Test');
+		$this->email->message($pesan);
+
+		$this->email->send();
 	}
 
 	public function hapus($id = 0)
