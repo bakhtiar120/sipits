@@ -158,7 +158,7 @@
 
         <li class="nav-item has-treeview">
           <a href="<?php echo base_url('atur_kp'); ?>" class="nav-link">
-            <i class="nav-icon fas fa-tachometer-alt"></i>
+            <i class="nav-icon fas fa-archive"></i>
             <p>
               Program KP
 
@@ -168,7 +168,7 @@
 
         <li class="nav-item has-treeview">
           <a href="<?php echo base_url('atur_pap'); ?>" class="nav-link">
-            <i class="nav-icon fas fa-tachometer-alt"></i>
+            <i class="nav-icon far fa-clipboard"></i>
             <p>
               Program PAP
 
@@ -185,7 +185,7 @@
         </li>
         <li class="nav-item has-treeview">
           <a href="<?php echo base_url('atur_p3i'); ?>" class="nav-link">
-            <i class="nav-icon fas fa-tachometer-alt"></i>
+            <i class="nav-icon fas fa-file-alt"></i>
             <p>
               Program P3I
             </p>

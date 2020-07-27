@@ -101,15 +101,50 @@ class Atur_p3i extends CI_Controller
     public function update_status($id_p3i = 0, $status = 0)
     {
         $hasil = $this->p3i_model->update_status_p3i($id_p3i, $status);
+        $data = $this->p3i_model->get_by_id($id_p3i);
 
         if ($hasil == 0) {
             $temp1 = "Gagal";
         } else {
             $temp1 = "Berhasil";
+            if ($status == 1) {
+                $this->send_email($data[0]['email'], "Usulan KP Anda sedang direview");
+            } else if ($status == 2) {
+                $this->send_email($data[0]['email'], "Usulan KP Anda harus Revisi");
+            } else if ($status == 3) {
+                $this->send_email($data[0]['email'], "Usulan KP Anda ditolak");
+            } else if ($status == 4) {
+                $this->send_email($data[0]['email'], "Usulan KP Anda berhasil diterima");
+            }
         }
         $temp2 = "Diperbarui";
 
         redirect('atur_p3i/index/' . $temp1 . '/' . $temp2);
+    }
+
+    public function send_email($email, $pesan)
+    {
+        $this->load->library('email');
+
+        $config['protocol']    = 'smtp';
+        $config['smtp_host']    = 'ssl://smtp.gmail.com';
+        $config['smtp_port']    = '465';
+        $config['smtp_timeout'] = '7';
+        $config['smtp_user']    = 'bakhtiarhanafi@gmail.com';
+        $config['smtp_pass']    = '';
+        $config['charset']    = 'utf-8';
+        $config['newline']    = "\r\n";
+        $config['mailtype'] = 'text'; // or html
+        $config['validation'] = TRUE; // bool whether to validate email or not      
+
+        $this->email->initialize($config);
+
+        $this->email->from('bakhtiarhanafi@gmail.com', 'Bakhtiar');
+        $this->email->to('bakhtiarmochamad@gmail.com');
+        $this->email->subject('Email Test');
+        $this->email->message($pesan);
+
+        $this->email->send();
     }
 
     public function hapus($id = 0)
