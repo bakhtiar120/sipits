@@ -13,8 +13,51 @@ class Pap_model extends CI_Model  {
     {
 
         //print_r("expression");
+        $nomor_induk = $data["nomor_induk_ketua"];
+        $nidn_pengusul = $this->nidn($nomor_induk);
+        if ($nidn_pengusul == 0) {
+            $dosen = array(
+                'nama' => $data["nama_ketua"],
+                'nidn' => $data["nomor_induk_ketua"],
+                'nip' => $data["nomor_induk_ketua"],
+                'alamat' => $data["alamat_ketua"],
+                'email' => $data["email_ketua"],
+                'departemen' => $data["departemen_ketua"],
+                'telepon' => $data["no_hp_ketua"],
+                'universitas' => $data["universitas_ketua"]
+            );
+            $this->simpan_dosen($dosen);
+        }
         $this->db->trans_start();
         $this->db->insert('data_pap', $data);
+        $this->db->insert_id();
+        $this->db->trans_complete();
+
+
+        if ($this->db->trans_status() === FALSE) {
+            $this->db->trans_rollback();
+            return 0;
+        } else {
+            $this->db->trans_commit();
+            return 1;
+        }
+    }
+    function nidn($nomor)
+    {
+        $query = $this->db->query("select count(nidn) jml from dosen where nidn = '$nomor'");
+        return $query->row()->jml;
+    }
+
+    function get_dosen($nomor)
+    {
+        $query = $this->db->query("select * from dosen where nidn = '$nomor'");
+        return $query->result();
+    }
+
+    function simpan_dosen($data)
+    {
+        $this->db->trans_start();
+        $this->db->insert('dosen', $data);
         $this->db->insert_id();
         $this->db->trans_complete();
 
