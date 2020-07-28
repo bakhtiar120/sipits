@@ -68,7 +68,7 @@ class Pap_model extends CI_Model  {
     function get_pap_all()
     {
 
-        $this->db->order_by("nama", "asc");
+        $this->db->order_by("nama_ketua", "asc");
         $query = $this->db->get('data_pap');
         return $query->result_array();
     }
