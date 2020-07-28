@@ -59,7 +59,7 @@ class Pendaftaran extends CI_Controller
 				$config['smtp_port']    = '465';
 				$config['smtp_timeout'] = '7';
 				$config['smtp_user']    = 'bakhtiarhanafi@gmail.com';
-				$config['smtp_pass']    = 'iuycsizxdrwbxmrk';
+				$config['smtp_pass']    = '';
 				$config['charset']    = 'utf-8';
 				$config['newline']    = "\r\n";
 				$config['mailtype'] = 'text'; // or html
@@ -235,7 +235,7 @@ class Pendaftaran extends CI_Controller
 				$config['smtp_port']    = '465';
 				$config['smtp_timeout'] = '7';
 				$config['smtp_user']    = 'bakhtiarhanafi@gmail.com';
-				$config['smtp_pass']    = 'iuycsizxdrwbxmrk';
+				$config['smtp_pass']    = '';
 				$config['charset']    = 'utf-8';
 				$config['newline']    = "\r\n";
 				$config['mailtype'] = 'text'; // or html
@@ -318,7 +318,8 @@ class Pendaftaran extends CI_Controller
 				$config['smtp_port']    = '465';
 				$config['smtp_timeout'] = '7';
 				$config['smtp_user']    = 'bakhtiarhanafi@gmail.com';
-				$config['smtp_pass']    = 'iuycsizxdrwbxmrk';
+				$config['smtp_pass']    = '';
+				// iuycsizxdrwbxmrk
 				$config['charset']    = 'utf-8';
 				$config['newline']    = "\r\n";
 				$config['mailtype'] = 'text'; // or html
