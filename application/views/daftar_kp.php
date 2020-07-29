@@ -30,6 +30,7 @@
         <h1>Pendaftaran Kerjasama Penelitian (KP)</h1>
         <p>Masukkan data anda dengan sebenar-benarnya. (untuk dosen non-ITS</p>
         <hr>
+        <?php echo $this->session->flashdata("hasil"); ?>
         <p>Identitas Pengusul</p>
         <label for="email"><b>NIP/NIDN</b></label>
         <input type="text" placeholder="Masukkan NIP/NIDN" name="nomor_induk" id="nomor_induk" required>
@@ -51,7 +52,7 @@
         <input type="text" placeholder="Masukkan email (diperbolehkan email instansi)" name="email" id="email" required>
 
         <label for="email"><b>No HP</b></label>
-        <input type="text" placeholder="Masukkan No HP yang bisa dihubungi" name="no_hp" id="no_hp" required>
+        <input type="text" placeholder="Masukkan No HP yang bisa dihubungi" name="no_hp" id="no_hp" onKeyUp="this.value=this.value.replace(/[^0-9]/g,'')" required>
 
         <hr>
 

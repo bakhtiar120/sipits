@@ -24,6 +24,12 @@ class Pendaftaran extends CI_Controller
 		if ($this->input->post()) {
 
 			$data = $this->input->post();
+			$total_honor = $data['total_honor'];
+			$data['total_honor'] = preg_replace('/\D/', '', $total_honor);
+			$jumlah_hibah = $data['jumlah_hibah'];
+			$data['jumlah_hibah'] = preg_replace('/\D/', '', $jumlah_hibah);
+			$honor = $data['honor'];
+			$data['honor'] = preg_replace('/\D/', '', $honor);
 			$data['status'] = 0;
 			$data['tanggal_submit'] = date("yy-m-d");
 			//print_r($data);
@@ -54,25 +60,25 @@ class Pendaftaran extends CI_Controller
 			if ($simpan == 1) {
 				$this->load->library('email');
 
-				$config['protocol']    = 'smtp';
-				$config['smtp_host']    = 'ssl://smtp.gmail.com';
-				$config['smtp_port']    = '465';
-				$config['smtp_timeout'] = '7';
-				$config['smtp_user']    = 'bakhtiarhanafi@gmail.com';
-				$config['smtp_pass']    = '';
-				$config['charset']    = 'utf-8';
-				$config['newline']    = "\r\n";
-				$config['mailtype'] = 'text'; // or html
-				$config['validation'] = TRUE; // bool whether to validate email or not      
+				// $config['protocol']    = 'smtp';
+				// $config['smtp_host']    = 'ssl://smtp.gmail.com';
+				// $config['smtp_port']    = '465';
+				// $config['smtp_timeout'] = '7';
+				// $config['smtp_user']    = 'bakhtiarhanafi@gmail.com';
+				// $config['smtp_pass']    = '';
+				// $config['charset']    = 'utf-8';
+				// $config['newline']    = "\r\n";
+				// $config['mailtype'] = 'text'; // or html
+				// $config['validation'] = TRUE; // bool whether to validate email or not      
 
-				$this->email->initialize($config);
+				// $this->email->initialize($config);
 
-				$this->email->from('bakhtiarhanafi@gmail.com', 'Bakhtiar');
-				$this->email->to('bakhtiarmochamad@gmail.com');
-				$this->email->subject('Email Test');
-				$this->email->message('Pendaftaran PAP Anda berhasil.');
+				// $this->email->from('bakhtiarhanafi@gmail.com', 'Bakhtiar');
+				// $this->email->to('bakhtiarmochamad@gmail.com');
+				// $this->email->subject('Email Test');
+				// $this->email->message('Pendaftaran PAP Anda berhasil.');
 
-				$this->email->send();
+				// $this->email->send();
 
 				$this->session->set_flashdata('hasil', '<div class="alert alert-success alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><h4><i class="icon fa fa-check"></i> Alert!</h4>Berhasil Melakukan Pengajuan.</div>');
 			} else {
@@ -152,36 +158,11 @@ class Pendaftaran extends CI_Controller
 
 				$this->email->send();
 
-				$this->session->set_flashdata('hasil', '<div class="alert alert-success alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><h4><i class="icon fa fa-check"></i> Alert!</h4>Berhasil Melakukan Pengajuan.</div>');
+				$this->session->set_flashdata('hasil', '<div class="alert alert-success alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><h4><i class="icon fa fa-check"></i> Selamat!</h4>Anda Berhasil Melakukan Pengajuan,Silahkan cek email anda untuk info lebih lanjut.</div>');
 			} else {
-				$this->session->set_flashdata('hasil', '<div class="alert alert-warning alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><h4><i class="icon fa fa-warning"></i> Alert!</h4>Gagal Melakukan Pengajuan.</div>');
+				$this->session->set_flashdata('hasil', '<div class="alert alert-warning alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><h4><i class="icon fa fa-warning"></i> Maaf!</h4>Gagal Melakukan Pengajuan, Silahkan cek kembali data anda.</div>');
 			}
 			redirect('pendaftaran/daftar_kp');
-			/*
-			$this->load->library('email');
-
-		$config['protocol']    = 'smtp';
-		$config['smtp_host']    = 'ssl://smtp.gmail.com';
-		$config['smtp_port']    = '465';
-		$config['smtp_timeout'] = '7';
-		$config['smtp_user']    = 'email';
-		$config['smtp_pass']    = 'password';
-		$config['charset']    = 'utf-8';
-		$config['newline']    = "\r\n";
-		$config['mailtype'] = 'text'; // or html
-		$config['validation'] = TRUE; // bool whether to validate email or not      
-
-		$this->email->initialize($config);
-
-		$this->email->from('bakhtiarhanafi@gmail.com', 'Bakhtiar');
-		$this->email->to('bakhtiarmochamad@gmail.com');
-		$this->email->subject('Email Test');
-		$this->email->message('Testing the email class.');
-
-		$this->email->send();
-
-		echo $this->email->print_debugger();
-			*/
 		} else {
 			$this->load->view('daftar_kp');
 		}

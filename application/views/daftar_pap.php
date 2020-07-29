@@ -31,7 +31,7 @@
 
 
         <hr>
-
+        <?php echo $this->session->flashdata("hasil"); ?>
         <p>Identitas Ketua Peneliti</p>
         <label for="email"><b>NIP/NIDN</b></label>
         <input type="text" placeholder="Masukkan NIP/NIDN" name="nomor_induk_ketua" id="nomor_induk_ketua" required>
@@ -51,11 +51,12 @@
 
         <label for="email"><b>Email</b></label>
         <input type="text" placeholder="Masukkan email (diperbolehkan email instansi)" name="email_ketua" id="email_ketua" required>
-
+        <span class="error text-danger" id="invalid_email">Email yang anda masukkan invalid</span>
+       
         <label for="email"><b>No HP</b></label>
-        <input type="text" placeholder="Masukkan No HP yang bisa dihubungi" name="no_hp_ketua" id="no_hp_ketua" required>
-
-        <hr>
+        <input type="text" placeholder="Masukkan No HP yang bisa dihubungi" name="no_hp_ketua" id="no_hp_ketua" onKeyUp="this.value=this.value.replace(/[^0-9]/g,'')" required>
+        <span class="error text-danger" id="invalid_no_hp">Nomor HP maksimal 13 digit</span>
+        
 
         <p>Identitas Asisten Peneliti</p>
 
@@ -75,7 +76,7 @@
         <input type="text" placeholder="Masukkan email (diperbolehkan email instansi)" name="email_ap" required>
 
         <label for="email"><b>No HP</b></label>
-        <input type="text" placeholder="Masukkan No HP yang bisa dihubungi" name="no_hp_ap" required>
+        <input type="text" placeholder="Masukkan No HP yang bisa dihubungi" name="no_hp_ap" onKeyUp="this.value=this.value.replace(/[^0-9]/g,'')" required>
 
         <hr>
 
@@ -88,8 +89,10 @@
         <input type="text" placeholder="Masukkan Nomor Kontrak" name="nomor_kontrak" required>
 
         <label for="email"><b>Tanggal Kontrak Penelitian</b></label>
+        <br>
         <input type="date" placeholder="Masukkan Tanggal Kontrak Penelitian" name="tanggal_kontrak" required>
-
+        <br>
+        <br>
         <label for="email"><b>Skema</b></label>
         <input type="text" placeholder="Masukkan Skema Penelitian" name="skema" required>
 
@@ -97,7 +100,7 @@
         <input type="text" placeholder="Masukkan sumber pendanaan" name="pendanaan" required>
 
         <label for="email"><b>Jumlah Hibah</b></label>
-        <input type="text" placeholder="Masukkan jumlah hibah yang didapat" name="jumlah_hibah" required>
+        <input type="text" placeholder="Masukkan jumlah hibah yang didapat" name="jumlah_hibah" id="jumlah_hibah" onKeyUp="this.value=this.value.replace(/[^0-9]/g,'')" required>
 
         <label for="email"><b>Target Luaran</b></label>
         <input type="text" placeholder="Masukkan target luaran penelitian" name="target_luaran" required>
@@ -107,13 +110,13 @@
         <p>Reward Honor</p>
 
         <label for="email"><b>Jumlah Honor per Bulan</b></label>
-        <input type="text" placeholder="Masukkan honor yang akan didapatkan per bulan" name="honor" required>
+        <input type="text" placeholder="Masukkan honor yang akan didapatkan per bulan" name="honor" id="honor" required>
 
         <label for="email"><b>Total lama bulan</b></label>
-        <input type="text" placeholder="Masukkan lama bulan" name="lama_bulan" required>
+        <input type="text" placeholder="Masukkan lama bulan" name="lama_bulan" onKeyUp="this.value=this.value.replace(/[^0-9]/g,'')" required>
 
         <label for="email"><b>Total Honor</b></label>
-        <input type="text" placeholder="Masukkan total honor yang didapatkan" name="total_honor" required>
+        <input type="text" placeholder="Masukkan total honor yang didapatkan" name="total_honor" id="total_honor" onKeyUp="this.value=this.value.replace(/[^0-9]/g,'')" required>
 
         <hr>
 
@@ -144,8 +147,88 @@
   <?php include("footer.php") ?>
   <script src="<?php echo base_url('assets/js/jquery-1.12.1.js'); ?>"></script>
   <script type='text/javascript'>
-    $(document).ready(function() {
+    var rupiah = document.getElementById('total_honor');
+    //var rupiah2 = document.getElementById('total_honor');
+    rupiah.addEventListener('keyup', function(e) {
+      // tambahkan 'Rp.' pada saat form di ketik
+      //rupiah2.value = this.value;
+      // gunakan fungsi formatRupiah() untuk mengubah angka yang di ketik menjadi format angka
+      rupiah.value = formatRupiah(this.value, 'Rp. ');
 
+    });
+
+    var jumlahhibah = document.getElementById('jumlah_hibah');
+    jumlahhibah.addEventListener('keyup', function(e) {
+      // tambahkan 'Rp.' pada saat form di ketik
+      // gunakan fungsi formatRupiah() untuk mengubah angka yang di ketik menjadi format angka
+      jumlahhibah.value = formatRupiah(this.value, 'Rp. ');
+
+    });
+
+    var honor = document.getElementById('honor');
+    honor.addEventListener('keyup', function(e) {
+      // tambahkan 'Rp.' pada saat form di ketik
+      honor.value = this.value;
+      // gunakan fungsi formatRupiah() untuk mengubah angka yang di ketik menjadi format angka
+      honor.value = formatRupiah(this.value, 'Rp. ');
+
+    });
+
+    var email = document.getElementById('email_ketua');
+    email.onblur = function() {
+      console.log('hasil email ', email.value)
+      if (IsEmail(email.value) == false) { // not email
+        $('#invalid_email').show();
+      }
+    };
+    email.onfocus = function() {
+      // remove the "error" indication, because the user wants to re-enter something
+      $('#invalid_email').hide();
+    };
+
+    var no_hp = document.getElementById('no_hp_ketua');
+    no_hp.onblur = function() {
+      console.log('hasil email ', email.value)
+      if (no_hp.value.length >= 13) { // not email
+        $('#invalid_no_hp').show();
+      }
+    };
+    no_hp.onfocus = function() {
+      // remove the "error" indication, because the user wants to re-enter something
+      $('#invalid_no_hp').hide();
+    };
+
+    function IsEmail(email) {
+      console.log("email ", email)
+      var regex = /^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+      if (!regex.test(email)) {
+        return false;
+      } else {
+
+        return true;
+      }
+    }
+    /* Fungsi formatRupiah */
+    function formatRupiah(angka, prefix) {
+      var number_string = angka.replace(/[^,\d]/g, '').toString(),
+        split = number_string.split(','),
+        sisa = split[0].length % 3,
+        rupiah = split[0].substr(0, sisa),
+        ribuan = split[0].substr(sisa).match(/\d{3}/gi);
+
+      // tambahkan titik jika yang di input sudah menjadi angka ribuan
+      if (ribuan) {
+        separator = sisa ? '.' : '';
+        rupiah += separator + ribuan.join('.');
+      }
+
+      rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
+      return prefix == undefined ? rupiah : (rupiah ? 'Rp. ' + rupiah : '');
+    }
+
+
+    $(document).ready(function() {
+      $('.error').hide();
       // Initialize 
       $("#nomor_induk_ketua").autocomplete({
         source: function(request, response) {
@@ -193,6 +276,7 @@
 
         }
       });
+
     });
   </script>
 
