@@ -28,6 +28,23 @@ class Pap_model extends CI_Model  {
             );
             $this->simpan_dosen($dosen);
         }
+        $nrp = $data["nomor_induk_ap"];
+        $nrp_pengusul = $this->nrp($nrp);
+        if($nrp_pengusul==0) {
+            $mahasiswa = array(
+                'nama' => $data["nama_ap"],
+                'nrp' => $data["nomor_induk_ap"],
+                'nik' => $data["nomor_induk_ap"],
+                'alamat_KTP' => $data["alamat_ktp_ap"],
+                'alamat_domisili' => $data["alamat_ktp_domisili"],
+                'email' => $data["email_ap"],
+                'no_hp_ap' => $data["no_hp_ap"],
+                'departemen' => $data["departemen_ap"],
+                'fakultas' => $data["fakultas_ap"],
+                'universitas' => $data["universitas_ap"]
+            );
+            $this->simpan_mahasiswa($mahasiswa);
+        }
         $this->db->trans_start();
         $this->db->insert('data_pap', $data);
         $this->db->insert_id();
@@ -47,6 +64,11 @@ class Pap_model extends CI_Model  {
         $query = $this->db->query("select count(nidn) jml from dosen where nidn = '$nomor'");
         return $query->row()->jml;
     }
+    function nrp($nomor)
+    {
+        $query = $this->db->query("select count(nrp) jml from mahasiswa where nrp = '$nomor'");
+        return $query->row()->jml;
+    }
 
     function get_dosen($nomor)
     {
@@ -54,10 +76,27 @@ class Pap_model extends CI_Model  {
         return $query->result();
     }
 
+    function get_mahasiswa($nomor)
+    {
+        $query = $this->db->query("select * from mahasiswa where nrp = '$nomor'");
+        return $query->result();
+    }
+
     function simpan_dosen($data)
     {
         $this->db->trans_start();
         $this->db->insert('dosen', $data);
+        $this->db->insert_id();
+        $this->db->trans_complete();
+
+        if ($this->db->trans_status() === FALSE) return 0;
+        return true;
+    }
+
+    function simpan_mahasiswa($data)
+    {
+        $this->db->trans_start();
+        $this->db->insert('mahasiswa', $data);
         $this->db->insert_id();
         $this->db->trans_complete();
 

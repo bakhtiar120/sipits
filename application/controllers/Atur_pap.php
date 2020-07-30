@@ -41,6 +41,12 @@ class Atur_pap extends CI_Controller {
 	{
 
 		$data = $this->input->post();
+		$total_honor = $data['total_honor'];
+		$data['total_honor'] = preg_replace('/\D/', '', $total_honor);
+		$jumlah_hibah = $data['jumlah_hibah'];
+		$data['jumlah_hibah'] = preg_replace('/\D/', '', $jumlah_hibah);
+		$honor = $data['honor'];
+		$data['honor'] = preg_replace('/\D/', '', $honor);
 
 		//print_r($data);
 

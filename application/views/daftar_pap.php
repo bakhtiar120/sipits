@@ -52,31 +52,30 @@
         <label for="email"><b>Email</b></label>
         <input type="text" placeholder="Masukkan email (diperbolehkan email instansi)" name="email_ketua" id="email_ketua" required>
         <span class="error text-danger" id="invalid_email">Email yang anda masukkan invalid</span>
-       
+
         <label for="email"><b>No HP</b></label>
-        <input type="text" placeholder="Masukkan No HP yang bisa dihubungi" name="no_hp_ketua" id="no_hp_ketua" onKeyUp="this.value=this.value.replace(/[^0-9]/g,'')" required>
-        <span class="error text-danger" id="invalid_no_hp">Nomor HP maksimal 13 digit</span>
-        
+        <input type="text" placeholder="Masukkan No HP yang bisa dihubungi" name="no_hp_ketua" id="no_hp_ketua" maxlength="13" onKeyUp="this.value=this.value.replace(/[^0-9]/g,'')" required>
 
         <p>Identitas Asisten Peneliti</p>
 
+        <label for="email"><b>NRP</b></label>
+        <input type="text" placeholder="Masukkan NRP" name="nomor_induk_ap" id="nomor_induk_ap" required>
         <label for="email"><b>Nama Asisten Peneliti</b></label>
-        <input type="text" placeholder="Masukkan Nama Lengkap dan gelar (jika ada)" name="nama_ap" required>
+        <input type="text" placeholder="Masukkan Nama Lengkap dan gelar (jika ada)" name="nama_ap" id="nama_ap" required>
 
-        <label for="email"><b>NIK</b></label>
-        <input type="text" placeholder="Masukkan NIK" name="nomor_induk_ap" required>
+
 
         <label for="email"><b>Alamat KTP</b></label>
-        <input type="text" placeholder="Masukkan alamat lengkap sesuai ktp" name="alamat_ktp_ap" required>
+        <input type="text" placeholder="Masukkan alamat lengkap sesuai ktp" name="alamat_ktp_ap" id="alamat_ktp_ap" required>
 
         <label for="email"><b>Alamat Domisili</b></label>
-        <input type="text" placeholder="Masukkan alamat lengkap domisisl" name="alamat_domisili_ap" required>
+        <input type="text" placeholder="Masukkan alamat lengkap domisisl" name="alamat_domisili_ap" id="alamat_domisili_ap" required>
 
         <label for="email"><b>Email</b></label>
-        <input type="text" placeholder="Masukkan email (diperbolehkan email instansi)" name="email_ap" required>
+        <input type="text" placeholder="Masukkan email (diperbolehkan email instansi)" name="email_ap" id="email_ap" required>
 
         <label for="email"><b>No HP</b></label>
-        <input type="text" placeholder="Masukkan No HP yang bisa dihubungi" name="no_hp_ap" onKeyUp="this.value=this.value.replace(/[^0-9]/g,'')" required>
+        <input type="text" placeholder="Masukkan No HP yang bisa dihubungi" name="no_hp_ap" maxlength="13" onKeyUp="this.value=this.value.replace(/[^0-9]/g,'')" id="no_hp_ap" required>
 
         <hr>
 
@@ -186,17 +185,6 @@
       $('#invalid_email').hide();
     };
 
-    var no_hp = document.getElementById('no_hp_ketua');
-    no_hp.onblur = function() {
-      console.log('hasil email ', email.value)
-      if (no_hp.value.length >= 13) { // not email
-        $('#invalid_no_hp').show();
-      }
-    };
-    no_hp.onfocus = function() {
-      // remove the "error" indication, because the user wants to re-enter something
-      $('#invalid_no_hp').hide();
-    };
 
     function IsEmail(email) {
       console.log("email ", email)
@@ -274,6 +262,52 @@
           $('#no_hp_ketua').val(resArr.telepon);
           $('#alamat_ketua').val(resArr.alamat);
 
+        }
+      });
+      $("#nomor_induk_ap").autocomplete({
+        source: function(request, response) {
+          // Fetch data
+          $.ajax({
+            url: "<?= base_url() ?>pendaftaran/cariMahasiswa",
+            type: 'post',
+            dataType: "json",
+            data: {
+              nrp: request.term
+            },
+            success: function(res) {
+              var result;
+              result = [{
+                label: 'Tidak ketemu ' + request.term,
+                value: ''
+              }];
+
+              // console.log("Before format", res);
+
+
+              if (res.length) {
+                result = $.map(res, function(obj) {
+                  return {
+                    label: obj.nama,
+                    value: obj.nrp,
+                    data: obj
+                  };
+                });
+              }
+
+              response(result);
+            }
+          });
+        },
+        select: function(event, ui) {
+          var resArr;
+          resArr = ui.item.data;
+          $('#nama_ap').val(resArr.nama);
+          $('#departemen_ap').val(resArr.departemen);
+          $('#universitas_ap').val(resArr.universitas);
+          $('#email_ap').val(resArr.email);
+          $('#no_hp_ap').val(resArr.no_hp);
+          $('#alamat_ktp_ap').val(resArr.alamat_KTP);
+          $('#alamat_domisili_ap').val(resArr.alamat_domisili);
         }
       });
 

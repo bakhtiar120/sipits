@@ -332,4 +332,12 @@ class Pendaftaran extends CI_Controller
 		echo json_encode($data, true);
 		exit;
 	}
+
+	public function cariMahasiswa()
+	{
+		$nrp = $this->input->post("nrp");
+		$data = $this->pap_model->get_mahasiswa($nrp);
+		echo json_encode($data, true);
+		exit;
+	}
 }

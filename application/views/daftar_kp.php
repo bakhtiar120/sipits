@@ -50,9 +50,10 @@
 
         <label for="email"><b>Email</b></label>
         <input type="text" placeholder="Masukkan email (diperbolehkan email instansi)" name="email" id="email" required>
-
+        <span class="error text-danger" id="invalid_email">Email yang anda masukkan invalid</span>
+        <br>
         <label for="email"><b>No HP</b></label>
-        <input type="text" placeholder="Masukkan No HP yang bisa dihubungi" name="no_hp" id="no_hp" onKeyUp="this.value=this.value.replace(/[^0-9]/g,'')" required>
+        <input type="text" placeholder="Masukkan No HP yang bisa dihubungi" name="no_hp" id="no_hp" onKeyUp="this.value=this.value.replace(/[^0-9]/g,'')" maxlength="13" required>
 
         <hr>
 
@@ -103,9 +104,33 @@
   <?php include("footer.php") ?>
   <script src="<?php echo base_url('assets/js/jquery-1.12.1.js'); ?>"></script>
   <script type='text/javascript'>
+    var email = document.getElementById('email');
+    email.onblur = function() {
+      console.log('hasil email ', email.value)
+      if (IsEmail(email.value) == false) { // not email
+        $('#invalid_email').show();
+      }
+    };
+    email.onfocus = function() {
+      // remove the "error" indication, because the user wants to re-enter something
+      $('#invalid_email').hide();
+    };
+
+
+    function IsEmail(email) {
+      console.log("email ", email)
+      var regex = /^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+      if (!regex.test(email)) {
+        return false;
+      } else {
+
+        return true;
+      }
+    }
     $(document).ready(function() {
 
       // Initialize 
+      $('#invalid_email').hide();
       $("#nomor_induk").autocomplete({
         source: function(request, response) {
           // Fetch data
