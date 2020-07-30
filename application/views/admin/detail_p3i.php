@@ -167,6 +167,11 @@
 
                   <div class="row">
                     <div class="col-sm-3">
+                      <a class="btn btn-default btn-sm" href="<?php echo site_url('atur_p3i'); ?>">
+                        <i class="fas fa-reply">
+                        </i>
+                        Kembali
+                      </a>
                       <a class="btn btn-warning btn-sm" href="<?php echo site_url('atur_p3i/edit/' . $id_p3i); ?>">
                         <i class="fas fa-edit">
                         </i>
