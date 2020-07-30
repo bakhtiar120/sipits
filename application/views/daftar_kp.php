@@ -77,17 +77,19 @@
         <input type="text" placeholder="Masukkan anggota peneliti (dipisah dengan semicolon ;)" name="anggota" required>
 
         <label for="email"><b>Draft Proposal</b></label>
-        <input type="file" placeholder="Unggah file dalam bentuk doc/pdf" name="proposal" required>
+        <input type="file" placeholder="Unggah file dalam bentuk doc/pdf" name="proposal" id="proposal" required>
+        <span class="error text-danger" id="invalid_proposal"></span><br>
 
         <label for="email"><b>MoU (memorandum of understanding)</b></label>
-        <input type="file" placeholder="Unggah file dalam bentuk doc/pdf" name="mou" required>
+        <input type="file" placeholder="Unggah file dalam bentuk doc/pdf" name="mou" id="mou" required>
+        <span class="error text-danger" id="invalid_mou"></span><br>
 
         <label for="email"><b>MoA (Memorandum of Agreement)</b></label>
-        <input type="file" placeholder="Unggah file dalam bentuk doc/pdf" name="moa" required>
-
+        <input type="file" placeholder="Unggah file dalam bentuk doc/pdf" name="moa" id="moa" required>
+        <span class="error text-danger" id="invalid_moa"></span><br>
         <p>Dengan mendaftar skema KP ini, berarti anda telah menyetujui <a href="#">syarat dan ketentuan</a>.</p>
 
-        <button type="submit" class="registerbtn">Daftar</button>
+        <button type="submit" class="registerbtn" id="daftar">Daftar</button>
       </div>
 
       <div class="container signin">
@@ -103,82 +105,7 @@
 
   <?php include("footer.php") ?>
   <script src="<?php echo base_url('assets/js/jquery-1.12.1.js'); ?>"></script>
-  <script type='text/javascript'>
-    var email = document.getElementById('email');
-    email.onblur = function() {
-      console.log('hasil email ', email.value)
-      if (IsEmail(email.value) == false) { // not email
-        $('#invalid_email').show();
-      }
-    };
-    email.onfocus = function() {
-      // remove the "error" indication, because the user wants to re-enter something
-      $('#invalid_email').hide();
-    };
-
-
-    function IsEmail(email) {
-      console.log("email ", email)
-      var regex = /^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-      if (!regex.test(email)) {
-        return false;
-      } else {
-
-        return true;
-      }
-    }
-    $(document).ready(function() {
-
-      // Initialize 
-      $('#invalid_email').hide();
-      $("#nomor_induk").autocomplete({
-        source: function(request, response) {
-          // Fetch data
-          $.ajax({
-            url: "<?= base_url() ?>pendaftaran/cekDosen",
-            type: 'post',
-            dataType: "json",
-            data: {
-              nidn: request.term
-            },
-            success: function(res) {
-              var result;
-              result = [{
-                label: 'Tidak ketemu ' + request.term,
-                value: ''
-              }];
-
-              // console.log("Before format", res);
-
-
-              if (res.length) {
-                result = $.map(res, function(obj) {
-                  return {
-                    label: obj.nama,
-                    value: obj.NIDN,
-                    data: obj
-                  };
-                });
-              }
-
-              response(result);
-            }
-          });
-        },
-        select: function(event, ui) {
-          var resArr;
-          resArr = ui.item.data;
-          $('#nama').val(resArr.nama);
-          $('#departemen').val(resArr.departemen);
-          $('#universitas').val(resArr.universitas);
-          $('#email').val(resArr.email);
-          $('#no_hp').val(resArr.telepon);
-          $('#alamat_kantor').val(resArr.alamat);
-
-        }
-      });
-    });
-  </script>
+  <script src="<?php echo base_url('assets/js/kp.js'); ?>"></script>
 
 </body>
 

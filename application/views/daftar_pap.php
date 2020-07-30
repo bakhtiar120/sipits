@@ -51,7 +51,7 @@
 
         <label for="email"><b>Email</b></label>
         <input type="text" placeholder="Masukkan email (diperbolehkan email instansi)" name="email_ketua" id="email_ketua" required>
-        <span class="error text-danger" id="invalid_email">Email yang anda masukkan invalid</span>
+        <span class="error text-danger" id="invalid_email">Email yang anda masukkan invalid</span><br>
 
         <label for="email"><b>No HP</b></label>
         <input type="text" placeholder="Masukkan No HP yang bisa dihubungi" name="no_hp_ketua" id="no_hp_ketua" maxlength="13" onKeyUp="this.value=this.value.replace(/[^0-9]/g,'')" required>
@@ -73,7 +73,7 @@
 
         <label for="email"><b>Email</b></label>
         <input type="text" placeholder="Masukkan email (diperbolehkan email instansi)" name="email_ap" id="email_ap" required>
-
+        <span class="error text-danger" id="invalid_email_ap">Email yang anda masukkan invalid</span><br>
         <label for="email"><b>No HP</b></label>
         <input type="text" placeholder="Masukkan No HP yang bisa dihubungi" name="no_hp_ap" maxlength="13" onKeyUp="this.value=this.value.replace(/[^0-9]/g,'')" id="no_hp_ap" required>
 
@@ -120,16 +120,17 @@
         <hr>
 
         <label for="email"><b>Surat Pernyataan</b></label>
-        <input type="file" placeholder="Unggah file dalam bentuk doc/pdf" name="pernyataan" required>
-
+        <input type="file" placeholder="Unggah file dalam bentuk doc/pdf" name="pernyataan" id="pernyataan" required>
+        <span class="error text-danger" id="invalid_pernyataan"></span><br>
         <label for="email"><b>KTP</b></label>
-        <input type="file" placeholder="Unggah file dalam bentuk doc/pdf" name="ktp" required>
-
+        <input type="file" placeholder="Unggah file dalam bentuk doc/pdf" name="ktp" id="ktp" required>
+        
+        <span class="error text-danger" id="invalid_ktp"></span><br>
         <hr>
 
         <p>Dengan mendaftar skema PAP ini, berarti anda telah menyetujui <a href="#">syarat dan ketentuan</a>.</p>
 
-        <button type="submit" class="registerbtn">Daftar</button>
+        <button type="submit" class="registerbtn" id="daftar">Daftar</button>
       </div>
 
       <div class="container signin">
@@ -145,174 +146,7 @@
 
   <?php include("footer.php") ?>
   <script src="<?php echo base_url('assets/js/jquery-1.12.1.js'); ?>"></script>
-  <script type='text/javascript'>
-    var rupiah = document.getElementById('total_honor');
-    //var rupiah2 = document.getElementById('total_honor');
-    rupiah.addEventListener('keyup', function(e) {
-      // tambahkan 'Rp.' pada saat form di ketik
-      //rupiah2.value = this.value;
-      // gunakan fungsi formatRupiah() untuk mengubah angka yang di ketik menjadi format angka
-      rupiah.value = formatRupiah(this.value, 'Rp. ');
-
-    });
-
-    var jumlahhibah = document.getElementById('jumlah_hibah');
-    jumlahhibah.addEventListener('keyup', function(e) {
-      // tambahkan 'Rp.' pada saat form di ketik
-      // gunakan fungsi formatRupiah() untuk mengubah angka yang di ketik menjadi format angka
-      jumlahhibah.value = formatRupiah(this.value, 'Rp. ');
-
-    });
-
-    var honor = document.getElementById('honor');
-    honor.addEventListener('keyup', function(e) {
-      // tambahkan 'Rp.' pada saat form di ketik
-      honor.value = this.value;
-      // gunakan fungsi formatRupiah() untuk mengubah angka yang di ketik menjadi format angka
-      honor.value = formatRupiah(this.value, 'Rp. ');
-
-    });
-
-    var email = document.getElementById('email_ketua');
-    email.onblur = function() {
-      console.log('hasil email ', email.value)
-      if (IsEmail(email.value) == false) { // not email
-        $('#invalid_email').show();
-      }
-    };
-    email.onfocus = function() {
-      // remove the "error" indication, because the user wants to re-enter something
-      $('#invalid_email').hide();
-    };
-
-
-    function IsEmail(email) {
-      console.log("email ", email)
-      var regex = /^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-      if (!regex.test(email)) {
-        return false;
-      } else {
-
-        return true;
-      }
-    }
-    /* Fungsi formatRupiah */
-    function formatRupiah(angka, prefix) {
-      var number_string = angka.replace(/[^,\d]/g, '').toString(),
-        split = number_string.split(','),
-        sisa = split[0].length % 3,
-        rupiah = split[0].substr(0, sisa),
-        ribuan = split[0].substr(sisa).match(/\d{3}/gi);
-
-      // tambahkan titik jika yang di input sudah menjadi angka ribuan
-      if (ribuan) {
-        separator = sisa ? '.' : '';
-        rupiah += separator + ribuan.join('.');
-      }
-
-      rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
-      return prefix == undefined ? rupiah : (rupiah ? 'Rp. ' + rupiah : '');
-    }
-
-
-    $(document).ready(function() {
-      $('.error').hide();
-      // Initialize 
-      $("#nomor_induk_ketua").autocomplete({
-        source: function(request, response) {
-          // Fetch data
-          $.ajax({
-            url: "<?= base_url() ?>pendaftaran/cekDosen",
-            type: 'post',
-            dataType: "json",
-            data: {
-              nidn: request.term
-            },
-            success: function(res) {
-              var result;
-              result = [{
-                label: 'Tidak ketemu ' + request.term,
-                value: ''
-              }];
-
-              // console.log("Before format", res);
-
-
-              if (res.length) {
-                result = $.map(res, function(obj) {
-                  return {
-                    label: obj.nama,
-                    value: obj.NIDN,
-                    data: obj
-                  };
-                });
-              }
-
-              response(result);
-            }
-          });
-        },
-        select: function(event, ui) {
-          var resArr;
-          resArr = ui.item.data;
-          $('#nama_ketua').val(resArr.nama);
-          $('#departemen_ketua').val(resArr.departemen);
-          $('#universitas_ketua').val(resArr.universitas);
-          $('#email_ketua').val(resArr.email);
-          $('#no_hp_ketua').val(resArr.telepon);
-          $('#alamat_ketua').val(resArr.alamat);
-
-        }
-      });
-      $("#nomor_induk_ap").autocomplete({
-        source: function(request, response) {
-          // Fetch data
-          $.ajax({
-            url: "<?= base_url() ?>pendaftaran/cariMahasiswa",
-            type: 'post',
-            dataType: "json",
-            data: {
-              nrp: request.term
-            },
-            success: function(res) {
-              var result;
-              result = [{
-                label: 'Tidak ketemu ' + request.term,
-                value: ''
-              }];
-
-              // console.log("Before format", res);
-
-
-              if (res.length) {
-                result = $.map(res, function(obj) {
-                  return {
-                    label: obj.nama,
-                    value: obj.nrp,
-                    data: obj
-                  };
-                });
-              }
-
-              response(result);
-            }
-          });
-        },
-        select: function(event, ui) {
-          var resArr;
-          resArr = ui.item.data;
-          $('#nama_ap').val(resArr.nama);
-          $('#departemen_ap').val(resArr.departemen);
-          $('#universitas_ap').val(resArr.universitas);
-          $('#email_ap').val(resArr.email);
-          $('#no_hp_ap').val(resArr.no_hp);
-          $('#alamat_ktp_ap').val(resArr.alamat_KTP);
-          $('#alamat_domisili_ap').val(resArr.alamat_domisili);
-        }
-      });
-
-    });
-  </script>
+  <script src="<?php echo base_url('assets/js/pap.js');?>"></script>
 
 </body>
 
