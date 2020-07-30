@@ -7,7 +7,8 @@ class Atur_pap extends CI_Controller {
     {
         parent::__construct();
         $this->db = $this->load->database('default', true);
-        $this->load->model(array('admin_model','pap_model'));
+		$this->load->model(array('admin_model','pap_model','user_model'));
+		if ($this->user_model->isNotLogin()) redirect(site_url('login'));
     }
 
 	public function index($temp1 = "", $temp2 = "")

@@ -8,7 +8,8 @@ class Atur_kmpi extends CI_Controller
     {
         parent::__construct();
         $this->db = $this->load->database('default', true);
-        $this->load->model(array('admin_model', 'kmpi_model'));
+        $this->load->model(array('admin_model', 'kmpi_model','user_model'));
+        if ($this->user_model->isNotLogin()) redirect(site_url('login'));
     }
 
     public function index($temp1 = "", $temp2 = "")

@@ -112,7 +112,7 @@
 
                                     <strong><i class="fas fa-map-marker-alt mr-1"></i> Judul Penelitian</strong>
                                     <p class="text-muted">
-                                        <?php echo $judul ?>
+                                        <?php echo htmlentities($judul,ENT_QUOTES,'UTF-8') ?>
                                     </p>
                                     <hr>
 

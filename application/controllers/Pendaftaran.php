@@ -25,6 +25,7 @@ class Pendaftaran extends CI_Controller
 		if ($this->input->post()) {
 
 			$data = $this->input->post();
+			$data = $this->security->xss_clean($data);
 			$total_honor = $data['total_honor'];
 			$data['total_honor'] = preg_replace('/\D/', '', $total_honor);
 			$jumlah_hibah = $data['jumlah_hibah'];
@@ -99,6 +100,7 @@ class Pendaftaran extends CI_Controller
 		if ($this->input->post()) {
 
 			$data = $this->input->post();
+			$data = $this->security->xss_clean($data);
 			$data['status'] = 0;
 			$data['tanggal_submit'] = date("yy-m-d");
 

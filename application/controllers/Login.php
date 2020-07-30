@@ -1,58 +1,73 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
-class Login extends CI_Controller {
+class Login extends CI_Controller
+{
 
     public function __construct()
     {
         parent::__construct();
+        $this->load->model("user_model");
+        $this->load->library('form_validation');
+        $this->load->library('session');
+        // if ($this->user_model->isNotLogin()===FALSE) redirect(site_url('admin'));
 
-        // $this->load->model(array('petugas_model','log_model'));
 
-        // if($this->session->userdata('data_petugas')){
-        //     $data_petugas = $this->session->userdata('data_petugas');
-
-            
-
-            
-        //         if($data_petugas['role'] == '4')
-        //         {
-        //             redirect('admin');
-        //         }
-        //         else
-        //         {
-        //             redirect('petugas');
-        //         }
-            
-           
-        // }
-       
-
-        
     }
 
     public function index()
     {
-
-        $data = array();
-        if ($this->input->post()) {
-             $username = $this->input->post('username');
-             $password = $this->input->post('password');
-
-             //print_r($username);
-            // print_r($password);
-             if ($username == "admin@admin.com" && $password == "admin") {
-                 //$this->log_model->set_log("Login");
-
-                 //$data_petugas = $this->session->userdata('data_petugas');
-                
-                 //print_r("Anda masuk");
-             	redirect('admin');
-             } else {
-             	print_r("admin@admin.com admin");
-                //redirect('login');
-             }
+        if ($this->session->userdata('user_logged')) {
+            // do something when exist
+            redirect(site_url('admin'));
         } else {
-             $this->load->view('login');
+            // do something when doesn't exist
+            if ($this->input->post()) {
+                $username = $this->input->post('username');
+                $password = $this->input->post('password');
+                if ($username == '' && $password == '') {
+                    $this->session->set_flashdata(
+                        'login',
+                        ' <div class="alert alert-warning" role="alert">
+                        Email dan Password Harus Diisi
+                    </div>'
+                    );
+                } else if ($username = '') {
+                    $this->session->set_flashdata(
+                        'login',
+                        ' <div class="alert alert-warning" role="alert">
+                    Email Harus diisi
+                    </div>'
+                    );
+                } else if ($password == '') {
+                    $this->session->set_flashdata(
+                        'login',
+                        ' <div class="alert alert-warning" role="alert">
+                        Password Harus diisi
+                        </div>'
+                    );
+                } else {
+                    if ($this->user_model->doLogin())
+                        redirect(site_url('admin'));
+                    else
+                    $this->session->set_flashdata(
+                        'login',
+                        ' <div class="alert alert-warning" role="alert">
+                        Email atau Password Salah
+                        </div>'
+                    );
+                }
+            }
         }
+        
+
+
+        $this->load->view('login');
+    }
+
+    public function logout()
+    {
+        // hancurkan semua sesi
+        $this->session->sess_destroy();
+        redirect(site_url('login'));
     }
 }

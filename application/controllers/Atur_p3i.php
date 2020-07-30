@@ -8,7 +8,8 @@ class Atur_p3i extends CI_Controller
     {
         parent::__construct();
         $this->db = $this->load->database('default', true);
-        $this->load->model(array('admin_model', 'p3i_model'));
+        $this->load->model(array('admin_model', 'p3i_model','user_model'));
+        if ($this->user_model->isNotLogin()) redirect(site_url('login'));
         $this->load->library('form_validation');
     }
 

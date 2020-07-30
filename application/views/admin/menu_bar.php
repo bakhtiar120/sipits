@@ -192,13 +192,15 @@
             </p>
           </a>
         </li>
-
-        <li class="nav-item">
-          <a href="#" class="nav-link">
-            <i class="nav-icon far fa-circle text-info"></i>
-            <p>Informasi</p>
+        <li class="nav-item has-treeview">
+          <a href="<?php echo base_url('login/logout'); ?>" class="nav-link">
+            <i class="nav-icon fas fa-sign-out-alt"></i>
+            <p>
+              Logout
+            </p>
           </a>
         </li>
+
       </ul>
     </nav>
     <!-- /.sidebar-menu -->

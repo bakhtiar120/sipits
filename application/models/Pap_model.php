@@ -36,12 +36,12 @@ class Pap_model extends CI_Model  {
                 'nrp' => $data["nomor_induk_ap"],
                 'nik' => $data["nomor_induk_ap"],
                 'alamat_KTP' => $data["alamat_ktp_ap"],
-                'alamat_domisili' => $data["alamat_ktp_domisili"],
+                'alamat_domisili' => $data["alamat_domisili_ap"],
                 'email' => $data["email_ap"],
-                'no_hp_ap' => $data["no_hp_ap"],
-                'departemen' => $data["departemen_ap"],
-                'fakultas' => $data["fakultas_ap"],
-                'universitas' => $data["universitas_ap"]
+                'no_hp' => $data["no_hp_ap"],
+                'departemen' => "Oke",
+                'fakultas' => "Oke",
+                'universitas' => "Oke"
             );
             $this->simpan_mahasiswa($mahasiswa);
         }

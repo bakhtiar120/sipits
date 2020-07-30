@@ -71,7 +71,7 @@
 
                                             <tr>
 
-                                                <td><?php echo $value['nama_ketua']; ?></td>
+                                                <td><?php echo htmlentities($value['nama_ketua'],ENT_QUOTES,'UTF-8') ; ?></td>
                                                 <td><?php echo $value['universitas_ketua'];; ?></td>
                                                 <td><?php echo $value['tanggal_submit']; ?></td>
                                                 <td>
