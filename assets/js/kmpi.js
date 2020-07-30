@@ -5,7 +5,7 @@ $(document).ready(function () {
 		source: function (request, response) {
 			// Fetch data
 			$.ajax({
-				url: "<?= base_url() ?>pendaftaran/cekDosen",
+				url: base_url + "pendaftaran/cekDosen",
 				type: 'post',
 				dataType: "json",
 				data: {
@@ -53,7 +53,7 @@ $(document).ready(function () {
 		source: function (request, response) {
 			// Fetch data
 			$.ajax({
-				url: "<?= base_url() ?>pendaftaran/cekDosen",
+				url: base_url + "pendaftaran/cekDosen",
 				type: 'post',
 				dataType: "json",
 				data: {

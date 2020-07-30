@@ -91,12 +91,14 @@
                                                         Detail
                                                     </a>
 
-                                                    <!-- <a class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modal-default" href="<?php echo site_url('atur_p3i/hapus/' . $value['id_p3i']); ?>"> -->
-                                                    <a class="btn btn-danger btn-sm" href="<?php echo site_url('atur_p3i/hapus/' . $value['id_p3i']); ?>">
-                                                        <i class="fas fa-trash">
-                                                        </i>
-                                                        Hapus
-                                                    </a>
+                                                    <!-- <a class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modal-default" href="<?php // echo site_url('atur_p3i/hapus/' . $value['id_p3i']); 
+                                                                                                                                                    ?>"> -->
+                                                    <!-- <a class="btn btn-danger btn-sm" href="<?php // echo site_url('atur_p3i/hapus/' . $value['id_p3i']); 
+                                                                                                ?>"> -->
+                                                    <!-- <i class="fas fa-trash"> -->
+                                                    <!-- </i> -->
+                                                    <!-- Hapus -->
+                                                    <!-- </a> -->
                                                     <a class="btn btn-info btn-sm" href="<?php echo site_url('laporanpdf'); ?>">
                                                         <i class="fas fa-print">
                                                         </i>

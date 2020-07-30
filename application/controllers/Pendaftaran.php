@@ -9,6 +9,7 @@ class Pendaftaran extends CI_Controller
 		parent::__construct();
 		$this->db = $this->load->database('default', true);
 		$this->load->model(array('kp_model', 'pap_model', 'kmpi_model', 'P3i_model'));
+		$this->load->library('form_validation');
 	}
 
 
@@ -172,7 +173,19 @@ class Pendaftaran extends CI_Controller
 	{
 		if ($this->input->post()) {
 
-			$data = $this->input->post();
+
+
+			$this->form_validation->set_rules('nama', 'Nama', 'strip_tags');
+			$this->form_validation->set_rules('dept', 'Departement', 'strip_tags');
+			$this->form_validation->set_rules('univ', 'Universitas', 'strip_tags');
+			$this->form_validation->set_rules('alamat_kantor', 'Alamat Kantor', 'strip_tags');
+			$this->form_validation->set_rules('nama_pembimbing', 'Nama Pembimbing', 'strip_tags');
+			$this->form_validation->set_rules('departemen_pembimbing', 'Departemen Pembimbing', 'strip_tags');
+			$this->form_validation->set_rules('fakultas_pembimbing', 'Fakultas Pembimbing', 'strip_tags');
+			$this->form_validation->set_rules('judul_publikasi', 'Judul Publikasi', 'strip_tags');
+			$this->form_validation->set_rules('publisher', 'Publisher', 'strip_tags');
+
+			$data = $this->stripHTMLtags($this->input->post());
 			$data['status'] = 0;
 			$data['tanggal_submit'] = date("yy-m-d");
 
@@ -245,8 +258,23 @@ class Pendaftaran extends CI_Controller
 	{
 		//redirect('landing_page');
 		if ($this->input->post()) {
+			$this->form_validation->set_rules('nama', 'Nama', 'required|strip_tags');
+			$this->form_validation->set_rules('departement', 'Departement', 'required|strip_tags');
+			$this->form_validation->set_rules('universitas', 'Universitas', 'required|strip_tags');
+			$this->form_validation->set_rules('alamat_kantor', 'Alamat Kantor', 'required|strip_tags');
+			$this->form_validation->set_rules('email', 'Alamat Kantor', 'required|strip_tags');
+			$this->form_validation->set_rules('hindex', 'H-Index', 'strip_tags');
+			$this->form_validation->set_rules('judul1', 'Judul 1', 'required|strip_tags');
+			$this->form_validation->set_rules('skema1', 'Skema 1', 'required|strip_tags');
+			$this->form_validation->set_rules('sumber1', 'Sumber Pendanaan 1', 'required|strip_tags');
+			$this->form_validation->set_rules('judul2', 'Judul 2', 'required|strip_tags');
+			$this->form_validation->set_rules('skema2', 'Skema 2', 'required|strip_tags');
+			$this->form_validation->set_rules('sumber2', 'Sumber Pendanaan 2', 'required|strip_tags');
+			$this->form_validation->set_rules('judul3', 'Judul 3', 'required|strip_tags');
+			$this->form_validation->set_rules('skema3', 'Skema 3', 'required|strip_tags');
+			$this->form_validation->set_rules('sumber3', 'Sumber Pendanaan 3', 'required|strip_tags');
 
-			$data = $this->input->post();
+			$data = $this->stripHTMLtags($this->input->post());
 			$data['status'] = 0;
 			$data['tanggal_submit'] = date("yy-m-d");
 
@@ -339,5 +367,12 @@ class Pendaftaran extends CI_Controller
 		$data = $this->pap_model->get_mahasiswa($nrp);
 		echo json_encode($data, true);
 		exit;
+	}
+
+	private function stripHTMLtags($str)
+	{
+		$t = preg_replace('/<[^<|>]+?>/', '', htmlspecialchars_decode($str));
+		$t = htmlentities($t, ENT_QUOTES, "UTF-8");
+		return $t;
 	}
 }

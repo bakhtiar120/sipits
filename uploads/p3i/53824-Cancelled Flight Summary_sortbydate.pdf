@@ -1,0 +1,292 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	
+	<title>Tagihan</title>
+	
+	<link rel="stylesheet" type="text/css" href="https://produksi.aguna.co.id/assets/invoice/css/style.css"/>
+	<link rel="stylesheet" type="text/css" href="https://produksi.aguna.co.id/assets/invoice/css/print.css" media="print" />
+	<script type="text/javascript" src="https://produksi.aguna.co.id/assets/invoice/js/jquery-1.3.2.min.js"></script>
+	<script type="text/javascript" src="https://produksi.aguna.co.id/assets/invoice/js/example.js"></script>
+
+  <style type="text/css">
+    .page_break { 
+      page-break-before: always; 
+      position:static;
+    }
+  </style>
+</head>
+
+<body>
+
+	<div id="page-wrap">
+
+		<h2 style="height: 15px;width: 100%;margin: 20px 0;text-align: center;font: bold 15px Open Sans, Sans-Serif;letter-spacing: 20px;padding: 8px 0px;background-color: #F00;color: white;" align="center">TAGIHAN</h2>
+		<div style="clear:both"></div>
+		<div id="left">
+		  <img src="https://produksi.aguna.co.id/assets/invoice/images/logo-aguna-invoice.jpg" width="300" /></div>
+		
+		  <table width="50%" id="meta" align="right" style="border-collapse: collapse;position: relative;font-size: 9px;font-family: Open Sans, Sans-Serif;">
+        <tr>
+          <td class="meta-head">Nomor Registrasi</td>
+          <td>171123052926</td>
+        </tr>
+        <tr>
+          <td class="meta-head">Tanggal Pendaftaran</td>
+          <td>23 Nov 2017</td>
+        </tr>
+        <tr>
+          <td class="meta-head">PPTKIS</td>
+          <td>BINTANG MAKMUR SENTOSA (Denpasar)</td>
+        </tr>
+        <tr>
+          <td class="meta-head">Telpon</td>
+          <td>081219848688</td>
+        </tr>
+        <tr>
+          <td class="meta-head">Email</td>
+          <td>adam_mwkng@yahoo.co.id</td>
+        </tr>
+        <tr>
+          <td class="meta-head">Di daftarkan oleh</td>
+          <td>Achmad Mahmuri</td>
+        </tr>
+      </table>
+
+     <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+
+		<table width="80%" id="items" style="font-size: 9px;font-family: Open Sans, Sans-Serif;">
+      <thead>
+        <tr>
+  		    <th>NO</th>
+  	      <th>NEGARA</th>
+  	      <th>JENIS ASURANSI</th>
+  	      <th>PREMI</th>
+  	      <th>Jml</th>
+  	      <th>Total</th>
+  		  </tr>
+		  </thead>
+      <tbody>
+                <tr class="item-row">
+          <td style="width: 5%;" align="center">1</td>
+          <td style="width: 15%;">BAHRAIN</td>
+          <td style="width: 40%;">PERPANJANGAN 4 TAHUN REGULER</td>
+          <td style="width: 10%;">Rp. 360.000</td>
+          <td style="width: 5%;" align="center">1</td>
+          <td style="width: 15%;">Rp. 360.000</td>
+        </tr>
+                <tr class="item-row">
+          <td style="width: 5%;" align="center">2</td>
+          <td style="width: 15%;">BRUNEI DARUSSALAM</td>
+          <td style="width: 40%;">PERPANJANGAN 5 TAHUN REGULER</td>
+          <td style="width: 10%;">Rp. 450.000</td>
+          <td style="width: 5%;" align="center">1</td>
+          <td style="width: 15%;">Rp. 450.000</td>
+        </tr>
+                <tr class="item-row">
+          <td style="width: 5%;" align="center">3</td>
+          <td style="width: 15%;">HONGKONG</td>
+          <td style="width: 40%;">MASA 2 TAHUN REGULER</td>
+          <td style="width: 10%;">Rp. 180.000</td>
+          <td style="width: 5%;" align="center">1</td>
+          <td style="width: 15%;">Rp. 180.000</td>
+        </tr>
+                <tr class="item-row">
+          <td style="width: 5%;" align="center">4</td>
+          <td style="width: 15%;">HONGKONG</td>
+          <td style="width: 40%;">PERPANJANGAN 1 TAHUN REGULER</td>
+          <td style="width: 10%;">Rp. 90.000</td>
+          <td style="width: 5%;" align="center">0</td>
+          <td style="width: 15%;">Rp. 0</td>
+        </tr>
+                <tr class="item-row">
+          <td style="width: 5%;" align="center">5</td>
+          <td style="width: 15%;">MALAYSIA</td>
+          <td style="width: 40%;">MASA 5 TAHUN REGULER</td>
+          <td style="width: 10%;">Rp. 450.000</td>
+          <td style="width: 5%;" align="center">1</td>
+          <td style="width: 15%;">Rp. 450.000</td>
+        </tr>
+                <tr class="item-row">
+          <td style="width: 5%;" align="center">6</td>
+          <td style="width: 15%;">MALAYSIA</td>
+          <td style="width: 40%;">PERPANJANGAN 3 TAHUN REGULER</td>
+          <td style="width: 10%;">Rp. 270.000</td>
+          <td style="width: 5%;" align="center">1</td>
+          <td style="width: 15%;">Rp. 270.000</td>
+        </tr>
+                <tr class="item-row">
+          <td style="width: 5%;" align="center">7</td>
+          <td style="width: 15%;">TAIWAN</td>
+          <td style="width: 40%;">MASA 3 TAHUN REGULER</td>
+          <td style="width: 10%;">Rp. 270.000</td>
+          <td style="width: 5%;" align="center">1</td>
+          <td style="width: 15%;">Rp. 270.000</td>
+        </tr>
+                <tr class="item-row">
+          <td style="width: 5%;" align="center">8</td>
+          <td style="width: 15%;">TAIWAN</td>
+          <td style="width: 40%;">PERPANJANGAN 2 TAHUN REGULER</td>
+          <td style="width: 10%;">Rp. 180.000</td>
+          <td style="width: 5%;" align="center">0</td>
+          <td style="width: 15%;">Rp. 0</td>
+        </tr>
+              </tbody>
+      <tfoot>
+  		  <tr id="item-row">
+		      <td colspan="3" class="blank"> </td>
+		      <td colspan="2" class="total-line balance">Total Tagihan</td>
+		      <td>Rp. 1.980.000</td>
+  		  </tr>
+      </tfoot>
+		</table>
+        
+<table width="100%" id="id" height="124" style="font-size: 9px;font-family: Open Sans, Sans-Serif;">
+  <tr>
+    <td colspan="2" cl>Segera lakukan pembayaran sebesar Rp. 1.980.000 kesalah satu nomor rekening dibawah ini</td>
+    </tr>
+  <tr>
+    <td><div align="center">
+      <p><img src="https://produksi.aguna.co.id/assets/invoice/images/mandiri.png" width="163" height="49" /></p>
+      <p>Nomor Rekening : 103-001-898989-3</p>
+      <p>Atas Nama : PT Anugerah Bersama Berkah Abadi</p>
+    </div></td>
+    <td><div align="center">
+      <p><img src="https://produksi.aguna.co.id/assets/invoice/images/BNI.png" width="163" height="49"/></p>
+      <p>Nomor Rekening : 100-075-7575</p>
+      <p>Atas Nama : PT Anugerah Bersama Berkah Abadi</p>
+    </div></td>
+  </tr>
+</table>
+<table width="100%" border="1" id="id" style="font-size: 9px;font-family: Open Sans, Sans-Serif;">
+  <tr>
+    <th colspan="2">
+      <div id="item">
+        <h4 align="center"><strong>CARA PEMBAYARAN</strong></h4>
+      </div>
+    </th>
+  </tr>
+  <tr>
+    <td width="76%">
+      <div align="left" class="description">
+        <span style="color:#ea4732;margin-left: 12px;" >Jatuh tempo pembayaran setelah 7 hari kerja dari tanggal Tagihan atau sesuai waktu yang telah ditentukan.</span>
+        <br>
+        <span style="margin-left: 12px;">Cara Transfer :</span>
+        <ul  style="margin-left: 20px;">
+          <li>Pembayaran dapat dilakukan menggunakan Mobile Banking, Internet Banking, ATM non atau Setoran Tunai dengan cara mencantumkan <b>Nomor Registrasi</b> pada kolom berita acara.</li>
+          <li>Apabila pembayaran dilakukan melalui ATM Tunai atau Transfer dari Bank lain, harap melakukan konfirmasi di hari yang sama dengan cara sebagai berikut : <br />
+          - Konfirmasi via Telpon di nomor xxxx xxxx xxxx, anda akan dipandu oleh operator kami<br />
+          - Konfirmasi via Whatsapp di nomor xxxx xxxx xxxx dan Email di : konfirmasi@aguna.co.id dengan mengunggah bukti transfer atau bukti transaksi dan mencantumkan <b>Nomor Registrasi</b>.<br />
+          - Data peserta pada lembar tagihan ini, belum terdaftar sebagai peserta Aguna yang sah.<br />
+          - Data peserta yang sah akan dicantumkan pada Invoice Pembayaran setelah melakukan pelunasan pembayaran.
+          </li>
+        </ul>
+        </div>
+      </td>
+    <td width="24%"><div align="center" style="font-family: Open Sans, Sans-Serif;">
+      <p>Untuk validasi data, scan barcode berikut</p>
+      <p><img src="https://produksi.aguna.co.id/global/tmp/qr_codes/TKI171123052926.png" /></p>
+    </div></td>
+  </tr>
+</table>
+
+
+	</div>
+<br>
+<br>
+<br>
+<br>
+
+<div id="page-wrap"  class="page_break">
+
+    <h2 style="height: 15px;width: 100%;margin: 20px 0;text-align: center;font: bold 15px Open Sans, Sans-Serif;letter-spacing: 20px;padding: 8px 0px;background-color: #f00;color: white;" align="center">DATA PESERTA</h2>
+    <div style="clear:both"></div>
+    
+    <table width="100%" id="items" style="font-size: 9px;font-family: Open Sans, Sans-Serif;">
+      <thead>
+        <tr>
+          <th>NO</th>
+          <th>KODE PESERTA</th>
+          <th>NAMA PESERTA</th>
+          <th>PASSPORT</th>
+          <th>NEGARA</th>
+          <th>JENIS ASURANSI</th>
+          <th>PREMI</th>
+        </tr>
+      </thead>
+      <tbody>
+                <tr class="item-row">
+          <td align="center">1</td>
+          <td >BDP5R00001</td>
+          <td >DUADUA</td>
+          <td >QQQQQQQQ</td>
+          <td >BRUNEI DARUSSALAM</td>
+          <td >PERPANJANGAN 5 TAHUN REGULER</td>
+          <td >Rp. 450.000</td>
+        </tr>
+                <tr class="item-row">
+          <td align="center">2</td>
+          <td >BHP4R00001</td>
+          <td >TIGATIGA</td>
+          <td >EEEEEEEE</td>
+          <td >BAHRAIN</td>
+          <td >PERPANJANGAN 4 TAHUN REGULER</td>
+          <td >Rp. 360.000</td>
+        </tr>
+                <tr class="item-row">
+          <td align="center">3</td>
+          <td >HKM2R00001</td>
+          <td >GASKIN</td>
+          <td >PWPWPWPW</td>
+          <td >HONGKONG</td>
+          <td >MASA 2 TAHUN REGULER</td>
+          <td >Rp. 180.000</td>
+        </tr>
+                <tr class="item-row">
+          <td align="center">4</td>
+          <td >MYM5R00001</td>
+          <td >JUJU</td>
+          <td >UUUUUUUU</td>
+          <td >MALAYSIA</td>
+          <td >MASA 5 TAHUN REGULER</td>
+          <td >Rp. 450.000</td>
+        </tr>
+                <tr class="item-row">
+          <td align="center">5</td>
+          <td >MYP3R00001</td>
+          <td >EMPATEMPAT</td>
+          <td >RRRRRRRRR</td>
+          <td >MALAYSIA</td>
+          <td >PERPANJANGAN 3 TAHUN REGULER</td>
+          <td >Rp. 270.000</td>
+        </tr>
+                <tr class="item-row">
+          <td align="center">6</td>
+          <td >TWM3R00001</td>
+          <td >LILY</td>
+          <td >LLLLLLLLL</td>
+          <td >TAIWAN</td>
+          <td >MASA 3 TAHUN REGULER</td>
+          <td >Rp. 270.000</td>
+        </tr>
+              </tbody>
+    </table>
+  </div>
+<br>
+<br>
+
+</body>
+
+</html>

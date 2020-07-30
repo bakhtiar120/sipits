@@ -9,6 +9,7 @@ class Atur_p3i extends CI_Controller
         parent::__construct();
         $this->db = $this->load->database('default', true);
         $this->load->model(array('admin_model', 'p3i_model'));
+        $this->load->library('form_validation');
     }
 
     public function index($temp1 = "", $temp2 = "")
@@ -36,6 +37,22 @@ class Atur_p3i extends CI_Controller
 
     public function update_data($id_p3i = 0)
     {
+
+        $this->form_validation->set_rules('nama', 'Nama', 'required|strip_tags');
+        $this->form_validation->set_rules('departement', 'Departement', 'required|strip_tags');
+        $this->form_validation->set_rules('universitas', 'Universitas', 'required|strip_tags');
+        $this->form_validation->set_rules('alamat_kantor', 'Alamat Kantor', 'required|strip_tags');
+        $this->form_validation->set_rules('email', 'Alamat Kantor', 'required|strip_tags');
+        $this->form_validation->set_rules('hindex', 'H-Index', 'strip_tags');
+        $this->form_validation->set_rules('judul1', 'Judul 1', 'required|strip_tags');
+        $this->form_validation->set_rules('skema1', 'Skema 1', 'required|strip_tags');
+        $this->form_validation->set_rules('sumber1', 'Sumber Pendanaan 1', 'required|strip_tags');
+        $this->form_validation->set_rules('judul2', 'Judul 2', 'required|strip_tags');
+        $this->form_validation->set_rules('skema2', 'Skema 2', 'required|strip_tags');
+        $this->form_validation->set_rules('sumber2', 'Sumber Pendanaan 2', 'required|strip_tags');
+        $this->form_validation->set_rules('judul3', 'Judul 3', 'required|strip_tags');
+        $this->form_validation->set_rules('skema3', 'Skema 3', 'required|strip_tags');
+        $this->form_validation->set_rules('sumber3', 'Sumber Pendanaan 3', 'required|strip_tags');
 
         $data = $this->input->post();
 

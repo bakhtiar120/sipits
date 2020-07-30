@@ -30,6 +30,7 @@
                 </div><!-- /.container-fluid -->
             </section>
 
+            <?= form_open_multipart('atur_kmpi/update_data/' . $id_kmpi) ?>
             <form role="form" method="POST" action="<?php echo site_url('atur_kmpi/update_data/' . $id_kmpi); ?>" enctype="multipart/form-data">
                 <!-- Main content -->
                 <section class="content" style="margin-left: 1%;margin-right: 1%">
@@ -67,11 +68,13 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="inputName">Email</label>
-                                        <input type="text" id="inputName" class="form-control" name="email" value="<?php echo $email ?>">
+                                        <input type="text" id="email" class="form-control" name="email" value="<?php echo $email ?>">
+                                        <span class="error text-danger" id="invalid_email">Email yang anda masukkan invalid</span>
+                                        <br>
                                     </div>
                                     <div class="form-group">
                                         <label for="inputName">Nomor HP</label>
-                                        <input type="text" id="inputName" class="form-control" name="no_hp" onKeyUp="this.value=this.value.replace(/[^0-9]/g,'')" value="<?php echo $no_hp ?>">
+                                        <input type="text" id="inputName" class="form-control" name="no_hp" maxlength="13" onKeyUp="this.value=this.value.replace(/[^0-9]/g,'')" value="<?php echo $no_hp ?>">
                                     </div>
 
                                 </div>
@@ -97,23 +100,25 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="inputName">Nama Dosen</label>
-                                        <input type="text" id="nama" class="form-control" name="nama_pembimbing" value="<?php echo $nama_pembimbing ?>">
+                                        <input type="text" id="nama_pembimbing" class="form-control" name="nama_pembimbing" value="<?php echo $nama_pembimbing ?>">
                                     </div>
                                     <div class="form-group">
                                         <label for="inputName">Departemen</label>
-                                        <input type="text" id="departemen" class="form-control" name="departemen_pembimbing" value="<?php echo $departemen_pembimbing ?>">
+                                        <input type="text" id="departemen_pembimbing" class="form-control" name="departemen_pembimbing" value="<?php echo $departemen_pembimbing ?>">
                                     </div>
                                     <div class="form-group">
                                         <label for="inputName">Fakultas</label>
-                                        <input type="text" id="fakultas" class="form-control" name="fakultas_pembimbing" value="<?php echo $fakultas_pembimbing ?>">
+                                        <input type="text" id="fakultas_pembimbing" class="form-control" name="fakultas_pembimbing" value="<?php echo $fakultas_pembimbing ?>">
                                     </div>
                                     <div class="form-group">
                                         <label for="inputName">Email</label>
                                         <input type="text" id="email_pembimbing" class="form-control" name="email_pembimbing" value="<?php echo $email_pembimbing ?>">
+                                        <span class="error text-danger" id="invalid_email2">Email yang anda masukkan invalid</span>
+                                        <br>
                                     </div>
                                     <div class="form-group">
                                         <label for="inputName">Telepon</label>
-                                        <input type="text" id="telepon" class="form-control" name="hp_pembimbing" value="<?php echo $hp_pembimbing ?>">
+                                        <input type="text" id="telepon" class="form-control" name="hp_pembimbing" maxlength="13" value="<?php echo $hp_pembimbing ?>">
                                     </div>
 
                                 </div>
@@ -160,12 +165,10 @@
 
                                                 <td class="py-0 align-middle">
                                                     <div class="btn-group btn-group-sm">
-                                                        <!--  <a href="#" class="btn btn-info"><i class="fas fa-eye"></i> </a>
-                                                                <a href="#" class="btn btn-danger"><i class="fas fa-trash"></i> </a> -->
-                                                        <!-- <a href="#" class="btn btn-primary"><i class="fas fa-upload"></i> </a> -->
-
-                                                        <input type="file" placeholder="Upload Ulang?" name="draft_publikasi">
+                                                        <input type="file" placeholder="Upload Ulang?" name="draft_publikasi" id="draft_publikasi">
                                                     </div>
+                                                    <br>
+                                                    <span class="error text-danger" id="invalid_draft"></span>
                                                 </td>
                                             </tr>
                                             <tr>
@@ -175,8 +178,10 @@
 
                                                 <td class="py-0 align-middle">
                                                     <div class="btn-group btn-group-sm">
-                                                        <input type="file" placeholder="Upload Ulang?" name="luaran_publikasi">
+                                                        <input type="file" placeholder="Upload Ulang?" name="luaran_publikasi" id="luaran_publikasi">
                                                     </div>
+                                                    <br>
+                                                    <span class="error text-danger" id="invalid_luaran"></span>
                                                 </td>
                                             </tr>
                                             <tr>
@@ -186,8 +191,10 @@
 
                                                 <td class="py-0 align-middle">
                                                     <div class="btn-group btn-group-sm">
-                                                        <input type="file" placeholder="Upload Ulang?" name="mou_publikasi">
+                                                        <input type="file" placeholder="Upload Ulang?" name="mou_publikasi" id="mou_publikasi">
                                                     </div>
+                                                    <br>
+                                                    <span class="error text-danger" id="invalid_mou"></span>
                                                 </td>
                                             </tr>
 
@@ -201,7 +208,7 @@
                     <div class="row">
                         <div class="col-12">
                             <button class="btn btn-secondary" onclick="history.go(-1);">Batal </button>
-                            <input type="submit" value="Save Changes" class="btn btn-success float-right">
+                            <input type="submit" value="Save Changes" id="daftar" class="btn btn-success float-right">
                         </div>
                     </div>
                     <br>
@@ -214,55 +221,7 @@
     <!-- ./wrapper -->
     <script src="<?php echo base_url('assets/js/jquery-ui.js'); ?>"></script>
     <script src="<?php echo base_url('assets/js/jquery-1.12.1.js'); ?>"></script>
-    <script type='text/javascript'>
-        $(document).ready(function() {
-
-            $("#nomor_pembimbing").autocomplete({
-                source: function(request, response) {
-                    // Fetch data
-                    $.ajax({
-                        url: "<?= base_url() ?>pendaftaran/cekDosen",
-                        type: 'post',
-                        dataType: "json",
-                        data: {
-                            nidn: request.term
-                        },
-                        success: function(res) {
-                            var result;
-                            result = [{
-                                label: 'Tidak ketemu ' + request.term,
-                                value: ''
-                            }];
-
-                            // console.log("Before format", res);
-
-
-                            if (res.length) {
-                                result = $.map(res, function(obj) {
-                                    return {
-                                        label: obj.nama,
-                                        value: obj.NIDN,
-                                        data: obj
-                                    };
-                                });
-                            }
-
-                            response(result);
-                        }
-                    });
-                },
-                select: function(event, ui) {
-                    var resArr;
-                    resArr = ui.item.data;
-                    $('#nama').val(resArr.nama);
-                    $('#departemen').val(resArr.departemen);
-                    $('#fakultas').val(resArr.fakultas);
-                    $('#email_pembimbing').val(resArr.email);
-                    $('#hp_pembimbing').val(resArr.telepon);
-                }
-            });
-        });
-    </script>
+    <script src="<?php echo base_url('assets/js/kmpi.js'); ?>"></script>
 
 </body>
 
