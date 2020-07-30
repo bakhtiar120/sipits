@@ -29,6 +29,7 @@
                                 <li class="breadcrumb-item active">Data Pengusul PAP</li>
                             </ol>
                         </div>
+                        <?php echo $this->session->flashdata("hasil_pap"); ?>
                     </div>
                 </div><!-- /.container-fluid -->
             </section>
@@ -92,11 +93,7 @@
                                                     </a>
 
                                                     <!-- <a class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modal-default" href="<?php echo site_url('atur_kp/hapus/' . $value['id_pap']); ?>"> -->
-                                                    <a class="btn btn-danger btn-sm" href="<?php echo site_url('atur_pap/hapus/' . $value['id_pap']); ?>">
-                                                        <i class="fas fa-trash">
-                                                        </i>
-                                                        Hapus
-                                                    </a>
+                                                    
                                                     <a class="btn btn-info btn-sm" href="<?php echo site_url('laporanpdf'); ?>">
                                                         <i class="fas fa-print">
                                                         </i>
@@ -132,27 +129,6 @@
         </div>
         <!-- /.content-wrapper -->
 
-        <div class="modal fade" id="modal-default">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h4 class="modal-title">Pemberitahuan</h4>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <p>Untuk menghapus data ini, masuk ke detail kemudian klik tombol hapus</p>
-                    </div>
-                    <div class="modal-footer justify-content-between">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
-                        <button type="button" class="btn btn-primary" href="">OK</button>
-                    </div>
-                </div>
-                <!-- /.modal-content -->
-            </div>
-            <!-- /.modal-dialog -->
-        </div>
         <!-- /.modal -->
 
 

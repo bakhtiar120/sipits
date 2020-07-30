@@ -27,6 +27,7 @@
                         </div>
                     </div>
                 </div><!-- /.container-fluid -->
+                <?php echo $this->session->flashdata("hasil_pap"); ?>
             </section>
 
             <!-- Main content -->
@@ -184,7 +185,7 @@
                                                 </i>
                                                 Edit
                                             </a>
-                                            <a class="btn btn-danger btn-sm" href="<?php echo site_url('atur_pap/hapus/' . $id_pap); ?>">
+                                            <a class="btn btn-danger btn-sm" href="" data-toggle="modal" data-target="#deleteModal">
                                                 <i class="fas fa-trash">
                                                 </i>
                                                 Hapus
@@ -217,7 +218,30 @@
                                     </div>
 
 
+                                    <form action="<?php echo site_url('atur_pap/hapus/'); ?>" method="post">
+                                        <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalLabel">Hapus Data</h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
 
+                                                        <h4>Apakah kamu yakin menghapus data ini ?</h4>
+
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <input type="hidden" name="id_pap" class="id_pap" value="<?php echo $id_pap ?>">
+                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Tidak</button>
+                                                        <button type="submit" class="btn btn-primary">Ya</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
 
                                 </div>
 

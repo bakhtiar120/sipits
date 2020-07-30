@@ -81,15 +81,29 @@ class Atur_pap extends CI_Controller {
 
 		if($hasil == 0)
 		{
-			$temp1 = "Gagal";
+			$this->session->set_flashdata(
+				'hasil_pap',
+				'<div class="alert alert-warning alert-dismissible col-12">
+                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                  <h5><i class="icon fas fa-exclamation-triangle"></i> Gagal!</h5>
+                  Data Pengusul Penyelenggaraan Asisten Peneliti gagal update data.
+                </div>'
+			);
 		}
 		else
 		{
-			$temp1 = "Berhasil";
+			$this->session->set_flashdata(
+				'hasil_pap',
+				'<div class="alert alert-success col-12">
+		      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+		      <h5><i class="icon fa fa-check"></i> Berhasil!</h5>
+		       Data Pengusul Penyelenggaraan Asisten Peneliti berhasil update data.
+		    </div>'
+			);
 		}
 		$temp2 = "Diperbarui";
 
-		redirect('atur_pap/index/'.$temp1.'/'.$temp2);
+		redirect('atur_pap/index/');
 		
 	}
 
@@ -107,15 +121,47 @@ class Atur_pap extends CI_Controller {
 			$temp1 = "Berhasil";
 			if ($status == 1) {
 				$this->send_email($data[0]['email_ketua'], "Usulan PAP Anda sedang direview");
+				$this->session->set_flashdata(
+					'hasil_pap',
+					'<div class="alert alert-success col-12">
+		      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+		      <h5><i class="icon fa fa-check"></i> Berhasil!</h5>
+		      Proses Update Status (Review) Usulan PAP Berhasil.
+		    </div>'
+				);
 			}
 			else if ($status == 2) {
 				$this->send_email($data[0]['email_ketua'], "Usulan PAP Anda harus Revisi");
+				$this->session->set_flashdata(
+					'hasil_kp',
+					'<div class="alert alert-success col-12">
+		      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+		      <h5><i class="icon fa fa-check"></i> Berhasil!</h5>
+		      Proses Update Status (Revisi) Usulan PAP Berhasil.
+		    </div>'
+				);
 			}
 			else if ($status == 3) {
 				$this->send_email($data[0]['email_ketua'], "Usulan PAP Anda ditolak");
+				$this->session->set_flashdata(
+					'hasil_pap',
+					'<div class="alert alert-success col-12">
+		      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+		      <h5><i class="icon fa fa-check"></i> Berhasil!</h5>
+		      Proses Update Status(ditolak) Usulan PAP Berhasil.
+		    </div>'
+				);
 			}
 			else if($status==4) {
 				$this->send_email($data[0]['email_ketua'],"Usulan PAP Anda berhasil diterima");
+				$this->session->set_flashdata(
+					'hasil_pap',
+					'<div class="alert alert-success col-12">
+		      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+		      <h5><i class="icon fa fa-check"></i> Berhasil!</h5>
+		      Proses Update Status(diterina) Usulan PAP Berhasil.
+		    </div>'
+				);
 			}
 
 		}
@@ -149,22 +195,38 @@ class Atur_pap extends CI_Controller {
 		$this->email->send();
 	}
 
-	public function hapus($id = 0)
+	public function hapus()
 	{
+		$id=$this->input->post('id_pap');
 		$hasil = $this->pap_model->hapus_pap($id);
 
 		//printf($data);
 		//redirect('atur_pap');
 		if($hasil == 0)
 		{
-			$temp1 = "Gagal";
+			$this->session->set_flashdata(
+				'hasil_pap',
+				'<div class="alert alert-warning alert-dismissible col-12">
+                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                  <h5><i class="icon fas fa-exclamation-triangle"></i> Gagal!</h5>
+                  Data Pengusul Penyelenggaraan Asisten Peneliti gagal dihapus.
+                </div>'
+			);
+			redirect('atur_pap/detail/' . $id);
 		}
 		else
 		{
-			$temp1 = "Berhasil";
+			$this->session->set_flashdata(
+				'hasil_pap',
+				'<div class="alert alert-success col-12">
+		      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+		      <h5><i class="icon fa fa-check"></i> Berhasil!</h5>
+		       Data Pengusul Penyelenggaraan Asisten Peneliti berhasil dihapus
+		    </div>'
+			);
+			redirect('atur_pap/index/');
 		}
-		$temp2 = "Dihapus";
 
-		redirect('atur_pap/index/'.$temp1.'/'.$temp2);
+		
 	}
 }

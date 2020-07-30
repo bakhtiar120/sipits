@@ -29,11 +29,7 @@
                 <li class="breadcrumb-item active">Data Pengusul KP</li>
               </ol>
             </div>
-            <div class="alert alert-success col-12">
-              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-              <h5><i class="icon fa fa-check"></i> Berhasil!</h5>
-              Data Pengusul Kerjasama Penelitian berhasil diupdate
-            </div>
+            <?php echo $this->session->flashdata("hasil_kp"); ?>
           </div>
         </div><!-- /.container-fluid -->
       </section>
@@ -97,14 +93,7 @@
                           </a>
 
                           <!-- <a class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modal-default" href="<?php echo site_url('atur_kp/hapus/' . $value['id_kp']); ?>"> -->
-                          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#deleteModal">
-                            Launch Primary Modal
-                          </button>
-                          <a class="btn btn-danger btn-sm btn-delete" href="#" data-toggle="modal" data-target="#deleteModal">
-                            <i class="fas fa-trash">
-                            </i>
-                            Hapus
-                          </a>
+
                           <a class="btn btn-info btn-sm" href="<?php echo site_url('laporanpdf'); ?>">
                             <i class="fas fa-print">
                             </i>
@@ -115,31 +104,6 @@
 
                       </tr>
                     <?php endforeach; ?>
-                    <form action=<?php echo site_url('atur_kp/hapus/'); ?> method="post">
-                      <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                          <div class="modal-content">
-                            <div class="modal-header">
-                              <h4 class="modal-title">Pemberitahuan</h4>
-                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                              </button>
-                            </div>
-                            <div class="modal-body">
-                              <p>Untuk menghapus data ini, masuk ke detail kemudian klik tombol hapus</p>
-                            </div>
-                            <div class="modal-footer justify-content-between">
-                              <input type="hidden" name="id_kp" class="id_kp">
-                              <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
-                              <button type="submit" class="btn btn-primary" href="">OK</button>
-                            </div>
-                          </div>
-                          <!-- /.modal-content -->
-                          </>
-                          <!-- /.modal-dialog -->
-                        </div>
-                        <!-- /.modal -->
-                    </form>
 
                   </tbody>
 
