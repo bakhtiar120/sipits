@@ -8,7 +8,7 @@ class Atur_kmpi extends CI_Controller
     {
         parent::__construct();
         $this->db = $this->load->database('default', true);
-        $this->load->model(array('admin_model', 'kmpi_model','user_model'));
+        $this->load->model(array('admin_model', 'kmpi_model', 'user_model'));
         if ($this->user_model->isNotLogin()) redirect(site_url('login'));
     }
 
@@ -80,14 +80,29 @@ class Atur_kmpi extends CI_Controller
 
         $hasil = $this->kmpi_model->update_kmpi($id_kmpi, $data);
 
+
         if ($hasil == 0) {
-            $temp1 = "Gagal";
+            $this->session->set_flashdata(
+                'hasil',
+                '<div class="alert alert-warning alert-dismissible col-12">
+                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                  <h5><i class="icon fas fa-exclamation-triangle"></i> Gagal!</h5>
+                  Data Pengusul KMPI gagal update data.
+                </div>'
+            );
         } else {
-            $temp1 = "Berhasil";
+            $this->session->set_flashdata(
+                'hasil',
+                '<div class="alert alert-success col-12">
+		      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+		      <h5><i class="icon fa fa-check"></i> Berhasil!</h5>
+		       Data Pengusul KMPI berhasil update data.
+		    </div>'
+            );
         }
         $temp2 = "Diperbarui";
 
-        redirect('atur_kmpi/index/' . $temp1 . '/' . $temp2);
+        redirect('atur_kmpi/detail/' . $id_kmpi);
     }
 
     public function update_status($id_kmpi = 0, $status = 0)
@@ -96,22 +111,60 @@ class Atur_kmpi extends CI_Controller
         $data = $this->kmpi_model->get_by_id($id_kmpi);
 
         if ($hasil == 0) {
-            $temp1 = "Gagal";
+            $this->session->set_flashdata(
+                'hasil',
+                '<div class="alert alert-warning alert-dismissible col-12">
+                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                  <h5><i class="icon fas fa-exclamation-triangle"></i> Gagal!</h5>
+                  Data Pengusul KMPI gagal update status.
+                </div>'
+            );
         } else {
-            $temp1 = "Berhasil";
             if ($status == 1) {
-                $this->send_email($data[0]['email'], "Usulan KP Anda sedang direview");
+                $this->send_email($data[0]['email'], "Usulan KMPI Anda sedang direview");
+                $this->session->set_flashdata(
+                    'hasil',
+                    '<div class="alert alert-success col-12">
+		      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+		      <h5><i class="icon fa fa-check"></i> Berhasil!</h5>
+		      Proses Update Status (Review) Usulan KMPI Berhasil.
+		    </div>'
+                );
             } else if ($status == 2) {
-                $this->send_email($data[0]['email'], "Usulan KP Anda harus Revisi");
+                $this->send_email($data[0]['email'], "Usulan KMPI Anda harus Revisi");
+                $this->session->set_flashdata(
+                    'hasil',
+                    '<div class="alert alert-success col-12">
+		      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+		      <h5><i class="icon fa fa-check"></i> Berhasil!</h5>
+		      Proses Update Status (revisi) usulan KMPI berhasil.
+		    </div>'
+                );
             } else if ($status == 3) {
-                $this->send_email($data[0]['email'], "Usulan KP Anda ditolak");
+                $this->send_email($data[0]['email'], "Usulan KMPI Anda ditolak");
+                $this->session->set_flashdata(
+                    'hasil',
+                    '<div class="alert alert-success col-12">
+		      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+		      <h5><i class="icon fa fa-check"></i> Berhasil!</h5>
+		      Proses update status (ditolak) Usulan KMPI berhasil.
+		    </div>'
+                );
             } else if ($status == 4) {
-                $this->send_email($data[0]['email'], "Usulan KP Anda berhasil diterima");
+                $this->send_email($data[0]['email'], "Usulan KMPI Anda berhasil diterima");
+                $this->session->set_flashdata(
+                    'hasil',
+                    '<div class="alert alert-success col-12">
+		      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+		      <h5><i class="icon fa fa-check"></i> Berhasil!</h5>
+		     Proses update status(diterima) Usulan KMPI berhasil
+		    </div>'
+                );
             }
         }
         $temp2 = "Diperbarui";
 
-        redirect('atur_kmpi/index/' . $temp1 . '/' . $temp2);
+        redirect('atur_kmpi/detail/' . $id_kmpi);
     }
 
     public function send_email($email, $pesan)
@@ -139,19 +192,34 @@ class Atur_kmpi extends CI_Controller
         $this->email->send();
     }
 
-    public function hapus($id = 0)
+    public function hapus()
     {
+        $id = $this->input->post("id_kmpi");
         $hasil = $this->kmpi_model->hapus_kmpi($id);
 
-        //printf($data);
-        //redirect('atur_kmpi');
         if ($hasil == 0) {
-            $temp1 = "Gagal";
+            $this->session->set_flashdata(
+                'hasil',
+                '<div class="alert alert-warning alert-dismissible col-12">
+                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                  <h5><i class="icon fas fa-exclamation-triangle"></i> Gagal!</h5>
+                  Data Pengusul KMPI gagal dihapus.
+                </div>'
+            );
+            redirect('atur_kmpi/detail/' . $id);
         } else {
-            $temp1 = "Berhasil";
-        }
-        $temp2 = "Dihapus";
+            $this->session->set_flashdata(
+                'hasil',
+                '<div class="alert alert-success col-12">
+		      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+		      <h5><i class="icon fa fa-check"></i> Berhasil!</h5>
+		      Data Pengusul KMPI berhasil dihapus
+		    </div>'
+            );
 
-        redirect('atur_kmpi/index/' . $temp1 . '/' . $temp2);
+
+
+            redirect('atur_kmpi');
+        }
     }
 }

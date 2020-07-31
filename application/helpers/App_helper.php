@@ -98,3 +98,11 @@ if (!function_exists('status_p3i')) {
         return $id;
     }
 }
+
+if (!function_exists('cetak')) {
+    function cetak($str)
+    {
+        $cetak = htmlentities($str, ENT_QUOTES, 'UTF-8');
+        return $cetak;
+    }
+}

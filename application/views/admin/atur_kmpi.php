@@ -28,7 +28,7 @@
                                 <li class="breadcrumb-item"><a href="#">Home</a></li>
                                 <li class="breadcrumb-item active">Data Pengusul KMPI</li>
                             </ol>
-                        </div>
+                        </div> <?php echo $this->session->flashdata("hasil"); ?>
                     </div>
                 </div><!-- /.container-fluid -->
             </section>
@@ -44,8 +44,9 @@
 
                             <div class="card-header">
                                 <h3 class="card-title">
-                                    <?php if ($temp != " ")
-                                        echo "Data " . $temp;
+                                    <?php
+                                    //  if ($temp != " ")
+                                    //     echo "Data " . $temp;
 
                                     ?>
 
@@ -70,9 +71,9 @@
 
                                             <tr>
 
-                                                <td><?php echo $value['nama']; ?></td>
-                                                <td><?php echo $value['univ'];; ?></td>
-                                                <td><?php echo $value['tanggal_submit']; ?></td>
+                                                <td><?php echo cetak($value['nama']); ?></td>
+                                                <td><?php echo cetak($value['univ']); ?></td>
+                                                <td><?php echo cetak($value['tanggal_submit']); ?></td>
                                                 <td>
                                                     <?php
                                                     if ($value['status'] == 1) echo "Proses Review";

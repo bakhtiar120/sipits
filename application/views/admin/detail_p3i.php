@@ -27,6 +27,7 @@
             </div>
           </div>
         </div><!-- /.container-fluid -->
+        <?php echo $this->session->flashdata("hasil"); ?>
       </section>
 
       <!-- Main content -->
@@ -42,7 +43,7 @@
                     <img class="profile-user-img img-fluid img-circle" src="<?php echo base_url('assets/bahan/pp.png'); ?>" alt="User profile picture">
                   </div>
 
-                  <h3 class="profile-username text-center"><?php echo $nama ?></h3>
+                  <h3 class="profile-username text-center"><?php echo cetak($nama) ?></h3>
                   <p class="text-muted text-center">
                     <?php
                     if ($kategori == 0) echo "Dosen ITS";
@@ -59,37 +60,37 @@
 
                   <strong><i class="fas fa-book mr-1"></i> Nomor Induk</strong>
                   <p class="text-muted">
-                    <?php echo $nomor_induk ?>
+                    <?php echo cetak($nomor_induk) ?>
                   </p>
                   <hr>
 
                   <strong><i class="fas fa-book mr-1"></i> Departemen</strong>
                   <p class="text-muted">
-                    <?php echo $departemen ?>
+                    <?php echo cetak($departemen) ?>
                   </p>
                   <hr>
 
                   <strong><i class="fas fa-book mr-1"></i> Universitas</strong>
                   <p class="text-muted">
-                    <?php echo $universitas ?>
+                    <?php echo cetak($universitas) ?>
                   </p>
                   <hr>
 
                   <strong><i class="fas fa-book mr-1"></i> Alamat Kantor</strong>
                   <p class="text-muted">
-                    <?php echo $alamat_kantor ?>
+                    <?php echo cetak($alamat_kantor) ?>
                   </p>
                   <hr>
 
                   <strong><i class="fas fa-book mr-1"></i> Email</strong>
                   <p class="text-muted">
-                    <?php echo $email ?>
+                    <?php echo cetak($email) ?>
                   </p>
                   <hr>
 
                   <strong><i class="fas fa-book mr-1"></i> Nomor HP</strong>
                   <p class="text-muted">
-                    <?php echo $no_hp ?>
+                    <?php echo cetak($no_hp) ?>
                   </p>
                   <hr>
                 </div>
@@ -177,7 +178,7 @@
                         </i>
                         Edit
                       </a>
-                      <a class="btn btn-danger btn-sm" href="<?php echo site_url('atur_p3i/hapus/' . $id_p3i); ?>">
+                      <a class="btn btn-danger btn-sm" href="" data-toggle="modal" data-target="#deleteModal">
                         <i class="fas fa-trash">
                         </i>
                         Hapus
@@ -223,6 +224,30 @@
 
     </div>
 
+    <form action="<?php echo site_url('atur_p3i/hapus/'); ?>" method="post">
+      <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Hapus Data</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+
+              <h4>Apakah kamu yakin menghapus data ini ?</h4>
+
+            </div>
+            <div class="modal-footer">
+              <input type="hidden" name="id_p3i" class="id_p3i" value="<?php echo $id_p3i ?>">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Tidak</button>
+              <button type="submit" class="btn btn-primary">Ya</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
 
     <?php include("footer.php") ?>
 </body>
