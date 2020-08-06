@@ -8,7 +8,7 @@ class Pendaftaran extends CI_Controller
 	{
 		parent::__construct();
 		$this->db = $this->load->database('default', true);
-		$this->load->model(array('kp_model', 'pap_model', 'kmpi_model', 'P3i_model'));
+		$this->load->model(array('kp_model', 'pap_model', 'kmpi_model', 'P3i_model', 'helper_model'));
 		$this->load->library('form_validation');
 	}
 
@@ -355,10 +355,70 @@ class Pendaftaran extends CI_Controller
 		}
 	}
 
+	public function daftar_luaran()
+	{
+		if ($this->input->post()) {
+			$data = $this->input->post();
+			$data['status'] = 5;
+			$data['tanggal_submit'] = date("yy-m-d");
+
+			$folder = "uploads/luaran/";
+
+			$file = rand(1000, 100000) . "-" . $_FILES['upload']['name'];
+			$file_loc = $_FILES['upload']['tmp_name'];
+			$file_size = $_FILES['upload']['size'];
+			$file_type = $_FILES['upload']['type'];
+
+			move_uploaded_file($file_loc, $folder . $file);
+
+			$data['upload'] = $file;
+
+			$simpan = $this->helper_model->update_luaran($data);
+			if ($simpan == 1) {
+				$this->load->library('email');
+
+				$config['protocol']    = 'smtp';
+				$config['smtp_host']    = 'ssl://smtp.gmail.com';
+				$config['smtp_port']    = '465';
+				$config['smtp_timeout'] = '7';
+				$config['smtp_user']    = 'bakhtiarhanafi@gmail.com';
+				$config['smtp_pass']    = '';
+				$config['charset']    = 'utf-8';
+				$config['newline']    = "\r\n";
+				$config['mailtype'] = 'text'; // or html
+				$config['validation'] = TRUE; // bool whether to validate email or not      
+
+				$this->email->initialize($config);
+
+				$this->email->from('bakhtiarhanafi@gmail.com', 'Bakhtiar');
+				$this->email->to('bakhtiarmochamad@gmail.com');
+				$this->email->subject('Email Test');
+				$this->email->message('Upload Iuran Anda berhasil.');
+
+				$this->email->send();
+
+				$this->session->set_flashdata('hasil', '<div class="alert alert-success alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><h4><i class="icon fa fa-check"></i> Alert!</h4>Berhasil Mengumpulkan Luaran.</div>');
+			} else {
+				$this->session->set_flashdata('hasil', '<div class="alert alert-warning alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><h4><i class="icon fa fa-warning"></i> Alert!</h4>Gagal Mengumpulkan Luaran.</div>');
+			}
+			redirect('pendaftaran/daftar_luaran');
+		} else {
+			$this->load->view('daftar_luaran');
+		}
+	}
+
 	public function cekDosen()
 	{
 		$nidn = $this->input->post("nidn");
 		$data = $this->kmpi_model->get_dosen($nidn);
+		echo json_encode($data, true);
+		exit;
+	}
+
+	public function cekJudul($table)
+	{
+		$judul = $this->input->post("judul");
+		$data = $this->helper_model->get_judul($judul, $table);
 		echo json_encode($data, true);
 		exit;
 	}
