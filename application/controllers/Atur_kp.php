@@ -83,6 +83,16 @@ class Atur_kp extends CI_Controller {
 
 			$data['moa'] = $file;
 		}
+		if ($_FILES['luaran']['name']) {
+			$file = rand(1000, 100000) . "-" . $_FILES['luaran']['name'];
+			$file_loc = $_FILES['luaran']['tmp_name'];
+			$file_size = $_FILES['luaran']['size'];
+			$file_type = $_FILES['luaran']['type'];
+
+			move_uploaded_file($file_loc, $folder . $file);
+
+			$data['luaran'] = $file;
+		}
 		
 		
 		$hasil = $this->kp_model->update_kp($id_kp, $data);

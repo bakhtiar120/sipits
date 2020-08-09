@@ -112,7 +112,7 @@
 
                                     <strong><i class="fas fa-map-marker-alt mr-1"></i> Judul Penelitian</strong>
                                     <p class="text-muted">
-                                        <?php echo htmlentities($judul,ENT_QUOTES,'UTF-8') ?>
+                                        <?php echo htmlentities($judul, ENT_QUOTES, 'UTF-8') ?>
                                     </p>
                                     <hr>
 
@@ -161,6 +161,11 @@
                                     <hr>
 
                                     <strong><i class="far fa-file-alt mr-1"></i> KTP</strong>
+                                    <p class="text-muted">
+                                        <a href="<?php echo base_url('uploads/pap/' . $ktp); ?>" class="btn btn-link">Lihat File</a>
+                                    </p>
+                                    <hr>
+                                    <strong><i class="far fa-file-alt mr-1"></i> Luaran</strong>
                                     <p class="text-muted">
                                         <a href="<?php echo base_url('uploads/pap/' . $ktp); ?>" class="btn btn-link">Lihat File</a>
                                     </p>

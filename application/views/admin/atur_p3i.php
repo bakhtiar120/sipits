@@ -80,6 +80,7 @@
                                                     elseif ($value['status'] == 2) echo "Revisi Usulan";
                                                     elseif ($value['status'] == 3) echo "Usulan Ditolak";
                                                     elseif ($value['status'] == 4) echo "Usulan Diterima";
+                                                    elseif ($value['status'] == 5) echo "Luaran Terkumpul";
                                                     else echo "Usulan Baru";
                                                     ?>
 

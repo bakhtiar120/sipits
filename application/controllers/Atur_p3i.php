@@ -102,6 +102,16 @@ class Atur_p3i extends CI_Controller
 
             $data['tabungan'] = $file;
         }
+        if ($_FILES['luaran']['name']) {
+            $file = rand(1000, 100000) . "-" . $_FILES['luaran']['name'];
+            $file_loc = $_FILES['luaran']['tmp_name'];
+            $file_size = $_FILES['luaran']['size'];
+            $file_type = $_FILES['luaran']['type'];
+
+            move_uploaded_file($file_loc, $folder . $file);
+
+            $data['luaran'] = $file;
+        }
 
 
         $hasil = $this->p3i_model->update_p3i($id_p3i, $data);

@@ -168,6 +168,11 @@
                                         <a href="<?php echo base_url('uploads/kmpi/' . $mou_publikasi); ?>" target="_blank" class="btn btn-link">Lihat File</a>
                                     </p>
                                     <hr>
+                                    <strong><i class="far fa-file-alt mr-1"></i> Luaran</strong>
+                                    <p class="text-muted">
+                                        <a href="<?php echo base_url('uploads/kmpi/' . $mou_publikasi); ?>" target="_blank" class="btn btn-link">Lihat File</a>
+                                    </p>
+                                    <hr>
                                 </div>
 
                             </div>

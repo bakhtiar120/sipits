@@ -112,6 +112,7 @@
                         <th>Draft Paper <a href="<?php echo base_url('uploads/p3i/' . $draf); ?>" target="_blank" class="btn btn-link">Lihat File</a></th>
                         <th>NPWP <a href="<?php echo base_url('uploads/p3i/' . $npwp); ?>" target="_blank" class="btn btn-link">Lihat File</a></th>
                         <th>Tabungan <a href="<?php echo base_url('uploads/p3i/' . $tabungan); ?>" target="_blank" class="btn btn-link">Lihat File</a></th>
+                        <th>Luaran <a href="<?php echo base_url('uploads/p3i/' . $tabungan); ?>" target="_blank" class="btn btn-link">Lihat File</a></th>
                       </tr>
                     </thead>
                   </table>

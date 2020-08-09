@@ -216,6 +216,17 @@
                                                     </div>
                                                 </td>
                                             </tr>
+                                            <tr>
+                                                <td>
+                                                    <a href="<?php echo base_url('uploads/pap/' . $ktp); ?>" class="btn btn-link">File Luaran</a>
+                                                </td>
+
+                                                <td class="py-0 align-middle">
+                                                    <div class="btn-group btn-group-sm">
+                                                        <input type="file" placeholder="Upload Ulang?" name="luaran">
+                                                    </div>
+                                                </td>
+                                            </tr>
 
                                         </tbody>
                                     </table>

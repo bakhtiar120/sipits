@@ -136,6 +136,16 @@
                                                 <span class="error text-danger" id="invalid_tabungan"></span>
                                             </th>
                                         </tr>
+                                        <tr>
+                                            <th>Luaran <a href="<?php echo base_url('uploads/p3i/' . $tabungan); ?>" target="_blank" class="btn btn-link">Lihat File</a></th>
+                                            <th>
+                                                <div class="btn-group btn-group-sm">
+                                                    <input type="file" placeholder="Upload Ulang?" name="luaran" id="luaran">
+                                                </div>
+                                                <br>
+                                                <span class="error text-danger" id="invalid_luaran"></span>
+                                            </th>
+                                        </tr>
                                     </thead>
                                 </table>
                             </div>

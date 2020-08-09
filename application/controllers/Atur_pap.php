@@ -76,6 +76,16 @@ class Atur_pap extends CI_Controller {
 
 			move_uploaded_file($file_loc,$folder.$file);
 			$data['ktp'] = $file;
+		}
+		if ($_FILES['luaran']['name']) {
+			$file = rand(1000, 100000) . "-" . $_FILES['luaran']['name'];
+			$file_loc = $_FILES['luaran']['tmp_name'];
+			$file_size = $_FILES['luaran']['size'];
+			$file_type = $_FILES['luaran']['type'];
+
+			move_uploaded_file($file_loc, $folder . $file);
+
+			$data['luaran'] = $file;
 		}	
 		
 		$hasil = $this->pap_model->update_pap($id_pap, $data);
