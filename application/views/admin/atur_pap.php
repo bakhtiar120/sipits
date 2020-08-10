@@ -60,6 +60,7 @@
                                             <th>Nama Pengusul</th>
                                             <th>Asal</th>
                                             <th>Tanggal Usul</th>
+                                            <th>Luaran</th>
                                             <th>Status</th>
                                             <th>Aksi</th>
                                         </tr>
@@ -71,9 +72,15 @@
 
                                             <tr>
 
-                                                <td><?php echo htmlentities($value['nama_ketua'],ENT_QUOTES,'UTF-8') ; ?></td>
+                                                <td><?php echo htmlentities($value['nama_ketua'], ENT_QUOTES, 'UTF-8'); ?></td>
                                                 <td><?php echo $value['universitas_ketua'];; ?></td>
                                                 <td><?php echo $value['tanggal_submit']; ?></td>
+                                                <td>
+                                                    <?php
+                                                    if ($value['status_luaran'] == 1) echo "Luaran Terkumpul";
+                                                    else echo "Belum Upload";
+                                                    ?>
+                                                </td>
                                                 <td>
                                                     <?php
                                                     if ($value['status'] == 1) echo "Proses Review";
@@ -94,7 +101,7 @@
                                                     </a>
 
                                                     <!-- <a class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modal-default" href="<?php echo site_url('atur_kp/hapus/' . $value['id_pap']); ?>"> -->
-                                                    
+
                                                     <a class="btn btn-info btn-sm" href="<?php echo site_url('laporanpdf'); ?>">
                                                         <i class="fas fa-print">
                                                         </i>

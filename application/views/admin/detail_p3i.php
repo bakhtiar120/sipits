@@ -112,7 +112,6 @@
                         <th>Draft Paper <a href="<?php echo base_url('uploads/p3i/' . $draf); ?>" target="_blank" class="btn btn-link">Lihat File</a></th>
                         <th>NPWP <a href="<?php echo base_url('uploads/p3i/' . $npwp); ?>" target="_blank" class="btn btn-link">Lihat File</a></th>
                         <th>Tabungan <a href="<?php echo base_url('uploads/p3i/' . $tabungan); ?>" target="_blank" class="btn btn-link">Lihat File</a></th>
-                        <th>Luaran <a href="<?php echo base_url('uploads/p3i/' . $tabungan); ?>" target="_blank" class="btn btn-link">Lihat File</a></th>
                       </tr>
                     </thead>
                   </table>
@@ -133,6 +132,7 @@
                         <th>Judul</th>
                         <th>Skema</th>
                         <th>Sumber Pendanaan</th>
+                        <th>Luaran</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -141,18 +141,39 @@
                         <td><?= $judul1 ?></td>
                         <td><?= $skema1 ?></td>
                         <td><?= $sumber1 ?></td>
+                        <td>
+                          <?php if (empty($luaran1)) {
+                            echo 'Belum Upload';
+                          } else { ?>
+                            <a href="<?php echo base_url('uploads/luaran/' . $luaran1); ?>" target="_blank" class="btn btn-link">Lihat File</a>
+                          <?php } ?>
+                        </td>
                       </tr>
                       <tr>
                         <td>2. </td>
                         <td><?= $judul2 ?></td>
                         <td><?= $skema2 ?></td>
                         <td><?= $sumber2 ?></td>
+                        <td>
+                          <?php if (empty($luaran2)) {
+                            echo 'Belum Upload';
+                          } else { ?>
+                            <a href="<?php echo base_url('uploads/luaran/' . $luaran2); ?>" target="_blank" class="btn btn-link">Lihat File</a>
+                          <?php } ?>
+                        </td>
                       </tr>
                       <tr>
                         <td>3. </td>
                         <td><?= $judul3 ?></td>
                         <td><?= $skema3 ?></td>
                         <td><?= $sumber3 ?></td>
+                        <td>
+                          <?php if (empty($luaran3)) {
+                            echo 'Belum Upload';
+                          } else { ?>
+                            <a href="<?php echo base_url('uploads/luaran/' . $luaran3); ?>" target="_blank" class="btn btn-link">Lihat File</a>
+                          <?php } ?>
+                        </td>
                       </tr>
                     </tbody>
                   </table>

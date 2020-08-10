@@ -60,6 +60,7 @@
                                             <th>Nama Pengusul</th>
                                             <th>Asal</th>
                                             <th>Tanggal Usul</th>
+                                            <th>Luaran</th>
                                             <th>Status</th>
                                             <th>Aksi</th>
                                         </tr>
@@ -74,6 +75,18 @@
                                                 <td><?php echo cetak($value['nama']); ?></td>
                                                 <td><?php echo cetak($value['universitas']); ?></td>
                                                 <td><?php echo cetak($value['tanggal_submit']); ?></td>
+                                                <td><?php
+                                                    echo "Luaran Judul 1 ";
+                                                    if ($value['status_luaran1'] == 1) echo "Terkumpul</br>";
+                                                    else echo "Belum Upload</br>";
+                                                    echo "Luaran Judul 2 ";
+                                                    if ($value['status_luaran2'] == 1) echo "Terkumpul</br>";
+                                                    else echo "Belum Upload</br>";
+                                                    echo "Luaran Judul 3 ";
+                                                    if ($value['status_luaran2'] == 1) echo "Terkumpul</br>";
+                                                    else echo "Belum Upload</br>";
+                                                    ?>
+                                                </td>
                                                 <td>
                                                     <?php
                                                     if ($value['status'] == 1) echo "Proses Review";

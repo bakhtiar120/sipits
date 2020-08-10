@@ -276,7 +276,8 @@ class Pendaftaran extends CI_Controller
 			$this->form_validation->set_rules('skema3', 'Skema 3', 'required|strip_tags');
 			$this->form_validation->set_rules('sumber3', 'Sumber Pendanaan 3', 'required|strip_tags');
 
-			$data = $this->stripHTMLtags($this->input->post());
+			// $data = $this->stripHTMLtags($this->input->post());
+			$data = $this->input->post();
 			$data['status'] = 0;
 			$data['tanggal_submit'] = date("yy-m-d");
 
@@ -359,7 +360,7 @@ class Pendaftaran extends CI_Controller
 	{
 		if ($this->input->post()) {
 			$data = $this->input->post();
-			$data['status'] = 5;
+			$data['status_luaran'] = 1;
 			$data['tanggal_submit'] = date("yy-m-d");
 
 			$folder = "uploads/luaran/";

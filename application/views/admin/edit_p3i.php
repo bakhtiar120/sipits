@@ -136,16 +136,6 @@
                                                 <span class="error text-danger" id="invalid_tabungan"></span>
                                             </th>
                                         </tr>
-                                        <tr>
-                                            <th>Luaran <a href="<?php echo base_url('uploads/p3i/' . $tabungan); ?>" target="_blank" class="btn btn-link">Lihat File</a></th>
-                                            <th>
-                                                <div class="btn-group btn-group-sm">
-                                                    <input type="file" placeholder="Upload Ulang?" name="luaran" id="luaran">
-                                                </div>
-                                                <br>
-                                                <span class="error text-danger" id="invalid_luaran"></span>
-                                            </th>
-                                        </tr>
                                     </thead>
                                 </table>
                             </div>
@@ -168,6 +158,7 @@
                                             <th>Judul</th>
                                             <th>Skema</th>
                                             <th>Sumber Pendanaan</th>
+                                            <th>Luaran</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -176,18 +167,60 @@
                                             <td><input type="text" name="judul1" class="form-control" value="<?= $judul1 ?>" required></td>
                                             <td><input type="text" name="skema1" class="form-control" value="<?= $skema1 ?>" required></td>
                                             <td><input type="text" name="sumber1" class="form-control" value="<?= $sumber1 ?>" required></td>
+                                            <td>
+                                                <?php
+                                                if (empty($luaran1)) { ?>
+                                                    <div class="btn-group btn-group-sm">
+                                                        <input type="file" placeholder="Upload Ulang?" name="luaran1" id="luaran1">
+                                                    </div>
+                                                    <br>
+                                                    <span class="error text-danger" id="invalid_luaran"></span>
+                                                <?php
+                                                } else { ?>
+                                                    <a href="<?php echo base_url('uploads/luaran/' . $luaran1); ?>" target="_blank" class="btn btn-link">Lihat File</a>
+                                                <?php }
+                                                ?>
+                                            </td>
                                         </tr>
                                         <tr>
                                             <td>2. </td>
                                             <td><input type="text" name="judul2" class="form-control" value="<?= $judul2 ?>" required></td>
                                             <td><input type="text" name="skema2" class="form-control" value="<?= $skema2 ?>" required></td>
                                             <td><input type="text" name="sumber2" class="form-control" value="<?= $sumber2 ?>" required></td>
+                                            <td>
+                                                <?php
+                                                if (empty($luaran2)) { ?>
+                                                    <div class="btn-group btn-group-sm">
+                                                        <input type="file" placeholder="Upload Ulang?" name="luaran2" id="luaran2">
+                                                    </div>
+                                                    <br>
+                                                    <span class="error text-danger" id="invalid_luaran"></span>
+                                                <?php
+                                                } else { ?>
+                                                    <a href="<?php echo base_url('uploads/luaran/' . $luaran2); ?>" target="_blank" class="btn btn-link">Lihat File</a>
+                                                <?php }
+                                                ?>
+                                            </td>
                                         </tr>
                                         <tr>
                                             <td>3. </td>
                                             <td><input type="text" name="judul3" class="form-control" value="<?= $judul3 ?>" required></td>
                                             <td><input type="text" name="skema3" class="form-control" value="<?= $skema3 ?>" required></td>
                                             <td><input type="text" name="sumber3" class="form-control" value="<?= $sumber3 ?>" required></td>
+                                            <td>
+                                                <?php
+                                                if (empty($luaran3)) { ?>
+                                                    <div class="btn-group btn-group-sm">
+                                                        <input type="file" placeholder="Upload Ulang?" name="luaran3" id="luaran3">
+                                                    </div>
+                                                    <br>
+                                                    <span class="error text-danger" id="invalid_luaran"></span>
+                                                <?php
+                                                } else { ?>
+                                                    <a href="<?php echo base_url('uploads/luaran/' . $luaran3); ?>" target="_blank" class="btn btn-link">Lihat File</a>
+                                                <?php }
+                                                ?>
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>

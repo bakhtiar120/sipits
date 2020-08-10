@@ -167,7 +167,7 @@
                                     <hr>
                                     <strong><i class="far fa-file-alt mr-1"></i> Luaran</strong>
                                     <p class="text-muted">
-                                        <a href="<?php echo base_url('uploads/pap/' . $ktp); ?>" class="btn btn-link">Lihat File</a>
+                                        <a href="<?php echo base_url('uploads/luaran/' . $ktp); ?>" class="btn btn-link">Lihat File</a>
                                     </p>
                                     <hr>
 

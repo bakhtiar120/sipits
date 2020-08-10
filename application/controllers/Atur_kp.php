@@ -1,13 +1,14 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class Atur_kp extends CI_Controller {
+class Atur_kp extends CI_Controller
+{
 
 	function __construct()
-    {
-        parent::__construct();
-        $this->db = $this->load->database('default', true);
-        $this->load->model(array('admin_model','kp_model','user_model'));
+	{
+		parent::__construct();
+		$this->db = $this->load->database('default', true);
+		$this->load->model(array('admin_model', 'kp_model', 'user_model'));
 		if ($this->user_model->isNotLogin()) redirect(site_url('login'));
 	}
 
@@ -15,7 +16,7 @@ class Atur_kp extends CI_Controller {
 	{
 
 		$data['data'] = $this->kp_model->get_kp_all();
-		$data['temp'] = $temp1." ".$temp2;
+		$data['temp'] = $temp1 . " " . $temp2;
 
 		$this->load->view('admin/atur_kp', $data);
 	}
@@ -24,15 +25,14 @@ class Atur_kp extends CI_Controller {
 	{
 		//print_r($id);
 		$data = $this->kp_model->get_kp_by_id($id);
-		
+
 		//print_r($data[0]);
 		$this->load->view('admin/detail_kp', $data[0]);
-
 	}
 
 	public function edit($id_kp = 0)
 	{
-	
+
 		$data = $this->kp_model->get_kp_by_id($id_kp);
 
 		$this->load->view('admin/edit_kp', $data[0]);
@@ -45,41 +45,38 @@ class Atur_kp extends CI_Controller {
 
 		//print_r($data);
 
-		$folder="uploads/kp/";
+		$folder = "uploads/kp/";
+		$folder2 = "uploads/luaran/";
 
 		//print_r($_FILES['proposal']);
 
-		if($_FILES['proposal']['name'])
-		{
-			$file = rand(1000,100000)."-".$_FILES['proposal']['name'];
-		    $file_loc = $_FILES['proposal']['tmp_name'];
+		if ($_FILES['proposal']['name']) {
+			$file = rand(1000, 100000) . "-" . $_FILES['proposal']['name'];
+			$file_loc = $_FILES['proposal']['tmp_name'];
 			$file_size = $_FILES['proposal']['size'];
 			$file_type = $_FILES['proposal']['type'];
-			
-			move_uploaded_file($file_loc,$folder.$file);
-			$data['proposal'] = $file;
 
+			move_uploaded_file($file_loc, $folder . $file);
+			$data['proposal'] = $file;
 		}
-			
-		if($_FILES['mou']['name'])
-		{
-			$file = rand(1000,100000)."-".$_FILES['mou']['name'];
-		    $file_loc = $_FILES['mou']['tmp_name'];
+
+		if ($_FILES['mou']['name']) {
+			$file = rand(1000, 100000) . "-" . $_FILES['mou']['name'];
+			$file_loc = $_FILES['mou']['tmp_name'];
 			$file_size = $_FILES['mou']['size'];
 			$file_type = $_FILES['mou']['type'];
 
-			move_uploaded_file($file_loc,$folder.$file);
+			move_uploaded_file($file_loc, $folder . $file);
 			$data['mou'] = $file;
 		}
 
-		if($_FILES['mou']['name'])
-		{
-			$file = rand(1000,100000)."-".$_FILES['moa']['name'];
-		    $file_loc = $_FILES['moa']['tmp_name'];
+		if ($_FILES['mou']['name']) {
+			$file = rand(1000, 100000) . "-" . $_FILES['moa']['name'];
+			$file_loc = $_FILES['moa']['tmp_name'];
 			$file_size = $_FILES['moa']['size'];
 			$file_type = $_FILES['moa']['type'];
 
-			move_uploaded_file($file_loc,$folder.$file);
+			move_uploaded_file($file_loc, $folder . $file);
 
 			$data['moa'] = $file;
 		}
@@ -89,16 +86,16 @@ class Atur_kp extends CI_Controller {
 			$file_size = $_FILES['luaran']['size'];
 			$file_type = $_FILES['luaran']['type'];
 
-			move_uploaded_file($file_loc, $folder . $file);
+			move_uploaded_file($file_loc, $folder2 . $file);
 
 			$data['luaran'] = $file;
+			$data['status_luaran'] = 1;
 		}
-		
-		
+
+
 		$hasil = $this->kp_model->update_kp($id_kp, $data);
 
-		if($hasil == 0)
-		{
+		if ($hasil == 0) {
 			$this->session->set_flashdata(
 				'hasil_kp',
 				'<div class="alert alert-warning alert-dismissible col-12">
@@ -107,9 +104,7 @@ class Atur_kp extends CI_Controller {
                   Data Pengusul Kerjasama Penelitian gagal update data.
                 </div>'
 			);
-		}
-		else
-		{
+		} else {
 			$this->session->set_flashdata(
 				'hasil_kp',
 				'<div class="alert alert-success col-12">
@@ -122,7 +117,6 @@ class Atur_kp extends CI_Controller {
 		$temp2 = "Diperbarui";
 
 		redirect('atur_kp/index/');
-		
 	}
 
 	public function update_status($id_kp = 0, $status = 0)
@@ -130,8 +124,7 @@ class Atur_kp extends CI_Controller {
 		$data = $this->kp_model->get_kp_by_id($id_kp);
 		$hasil = $this->kp_model->update_status_kp($id_kp, $status);
 
-		if($hasil == 0)
-		{
+		if ($hasil == 0) {
 			$this->session->set_flashdata(
 				'hasil_kp',
 				'<div class="alert alert-warning alert-dismissible col-12">
@@ -140,9 +133,7 @@ class Atur_kp extends CI_Controller {
                   Data Pengusul Kerjasama Penelitian gagal update status.
                 </div>'
 			);
-		}
-		else
-		{
+		} else {
 			if ($status == 1) {
 				$this->send_email($data[0]['email'], "Usulan KP Anda sedang direview");
 				$this->session->set_flashdata(
@@ -184,7 +175,6 @@ class Atur_kp extends CI_Controller {
 		    </div>'
 				);
 			}
-			
 		}
 		$temp2 = "Diperbarui";
 
@@ -218,11 +208,10 @@ class Atur_kp extends CI_Controller {
 
 	public function hapus()
 	{
-		
+
 		$id = $this->input->post('id_kp');
 		$hasil = $this->kp_model->hapus_kp($id);
-		if($hasil == 0)
-		{
+		if ($hasil == 0) {
 			$this->session->set_flashdata(
 				'hasil_kp',
 				'<div class="alert alert-warning alert-dismissible col-12">
@@ -232,22 +221,22 @@ class Atur_kp extends CI_Controller {
                 </div>'
 			);
 			redirect('atur_kp/detail/' . $id);
-		}
-		else
-		{
-			$this->session->set_flashdata('hasil_kp',
-			'<div class="alert alert-success col-12">
+		} else {
+			$this->session->set_flashdata(
+				'hasil_kp',
+				'<div class="alert alert-success col-12">
 		      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
 		      <h5><i class="icon fa fa-check"></i> Berhasil!</h5>
 		      Data Pengusul Kerjasama Penelitian berhasil dihapus
-		    </div>');
-		
+		    </div>'
+			);
 
 
-		redirect('atur_kp/index/');
+
+			redirect('atur_kp/index/');
 		}
 		// $temp2 = "Dihapus";
-		
-		
+
+
 	}
 }

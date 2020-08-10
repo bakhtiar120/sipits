@@ -162,7 +162,7 @@
 
                   <strong><i class="far fa-file-alt mr-1"></i> Luaran</strong>
                   <p class="text-muted">
-                    <a href="<?php echo base_url('uploads/kp/' . $moa); ?>" class="btn btn-link">Lihat File</a>
+                    <a href="<?php echo base_url('uploads/luaran/' . $moa); ?>" class="btn btn-link">Lihat File</a>
                   </p>
                   <hr>
                 </div>

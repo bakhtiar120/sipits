@@ -43,6 +43,7 @@ class Atur_kmpi extends CI_Controller
         //print_r($data);
 
         $folder = "uploads/kmpi/";
+        $folder2 = "uploads/luaran/";
 
         //print_r($_FILES['proposal']);
 
@@ -82,9 +83,10 @@ class Atur_kmpi extends CI_Controller
             $file_size = $_FILES['luaran']['size'];
             $file_type = $_FILES['luaran']['type'];
 
-            move_uploaded_file($file_loc, $folder . $file);
+            move_uploaded_file($file_loc, $folder2 . $file);
 
             $data['luaran'] = $file;
+            $data['status_luaran'] = 1;
         }
 
         $hasil = $this->kmpi_model->update_kmpi($id_kmpi, $data);

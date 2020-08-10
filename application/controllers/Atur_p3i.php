@@ -59,6 +59,7 @@ class Atur_p3i extends CI_Controller
 
 
         $folder = "uploads/p3i/";
+        $folder2 = "uploads/luaran/";
 
 
         if ($_FILES['pernyataan']['name']) {
@@ -102,15 +103,40 @@ class Atur_p3i extends CI_Controller
 
             $data['tabungan'] = $file;
         }
-        if ($_FILES['luaran']['name']) {
+        if ($_FILES['luaran1']['name']) {
             $file = rand(1000, 100000) . "-" . $_FILES['luaran']['name'];
             $file_loc = $_FILES['luaran']['tmp_name'];
             $file_size = $_FILES['luaran']['size'];
             $file_type = $_FILES['luaran']['type'];
 
-            move_uploaded_file($file_loc, $folder . $file);
+            move_uploaded_file($file_loc, $folder2 . $file);
 
-            $data['luaran'] = $file;
+            $data['luaran1'] = $file;
+            $data['status_luaran1'] = 1;
+        }
+
+        if ($_FILES['luaran2']['name']) {
+            $file = rand(1000, 100000) . "-" . $_FILES['luaran']['name'];
+            $file_loc = $_FILES['luaran']['tmp_name'];
+            $file_size = $_FILES['luaran']['size'];
+            $file_type = $_FILES['luaran']['type'];
+
+            move_uploaded_file($file_loc, $folder2 . $file);
+
+            $data['luaran2'] = $file;
+            $data['status_luaran2'] = 1;
+        }
+
+        if ($_FILES['luaran3']['name']) {
+            $file = rand(1000, 100000) . "-" . $_FILES['luaran']['name'];
+            $file_loc = $_FILES['luaran']['tmp_name'];
+            $file_size = $_FILES['luaran']['size'];
+            $file_type = $_FILES['luaran']['type'];
+
+            move_uploaded_file($file_loc, $folder2 . $file);
+
+            $data['luaran3'] = $file;
+            $data['status_luaran3'] = 1;
         }
 
 
