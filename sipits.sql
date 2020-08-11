@@ -37,6 +37,8 @@ CREATE TABLE `data_kmpi` (
   `luaran_publikasi` varchar(100) NOT NULL,
   `mou_publikasi` varchar(100) NOT NULL,
   `status` int(10) NOT NULL,
+  `luaran` varchar(100) DEFAULT NULL,
+  `status_luaran` int(1) DEFAULT NULL,
   `tanggal_submit` date NOT NULL,
   PRIMARY KEY (`id_kmpi`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -66,6 +68,7 @@ CREATE TABLE `data_kp` (
   `mou` varchar(100) NOT NULL,
   `moa` varchar(100) NOT NULL,
   `luaran` varchar(100) DEFAULT NULL,
+  `status_luaran` int(1) DEFAULT NULL,
   `status` int(10) NOT NULL,
   `tanggal_submit` date NOT NULL,
   `kategori` int(100) NOT NULL,
@@ -74,18 +77,18 @@ CREATE TABLE `data_kp` (
 
 /*Data for the table `data_kp` */
 
-insert  into `data_kp`(`id_kp`,`nama`,`nomor_induk`,`departemen`,`universitas`,`alamat_kantor`,`email`,`no_hp`,`ketua`,`judul`,`skema`,`sumber`,`lama_penelitian`,`anggota`,`proposal`,`mou`,`moa`,`luaran`,`status`,`tanggal_submit`,`kategori`) values 
-(7,'anak mama','123123123','informatika','ITS','sukolilo','dasd@gmail.com','09345839453','Paijo','The Relationship between The Existence of Educational Games and Non-player Character based on Literature Review','PDUPT','Dana Dikti',10,'haha;hihi','81605-1.PNG','65620-2.PNG','44424-bukti submit.pdf',NULL,4,'2020-01-29',0),
-(8,'baba','qqq','qqqq','qqqq','qqqqq','qqqqq','qqqqq','qqqq','qqqq','qqq','qqq',2,'qqqq','80546-1.PNG','83846-2.PNG','42461-bukti submit.pdf',NULL,2,'2020-01-29',0),
-(9,'caca','qqq','qqqq','qqqq','qqqqq','qqqqq','qqqqq','qqqq','qqqq','qqq','qqq',2,'qqqq','28963-1.PNG','88204-2.PNG','50417-bukti submit.pdf',NULL,3,'2020-01-29',0),
-(10,'Dwi Oktafitria, S.Si., M.Sc.','-/0706108602','Biologi/Fakultas MIPA','Universitas PGRI Ronggolawe','Jl. Manunggal No. 61 Tuban, 62381','dwioktafitria86@gmail.com','085731133551','Dr. Dewi Hidayati, M.Si','APLIKASI IN SITU VERMIKOMPOS UNTUK REHABILITASI LAHAN MARGINAL BEKAS TAMBANG INDUSTRI SEMEN DI TUBAN BERBASIS AGRIKULTUR','PENELITIAN KERJASAMA ANTAR PERGURUAN TINGGI (PAKER','DANA ITS TAHUN 2020',9,'Nova Maulidina Ashuri, S.Si., M.Si','14137-PROPOSAL PAKERTI_Dewi Hidayati_Biologi ITS_2020.docx','75480-MoU ITS dan Unirow(1) (1).pdf','54703-MoA Biologi dan Unirow(1).pdf','',5,'2020-03-11',0),
-(11,'Dwi Oktafitria, S.Si., M.Sc.','-/0706108602','Biologi/Fakultas MIPA','Universitas PGRI Ronggolawe','Jl. Manunggal No. 61 Tuban, 62381','dwioktafitria86@gmail.com','085731133551','Dr. Dewi Hidayati, M.Si','APLIKASI IN SITU VERMIKOMPOS UNTUK REHABILITASI LAHAN MARGINAL BEKAS TAMBANG INDUSTRI SEMEN DI TUBAN BERBASIS AGRIKULTUR','PENELITIAN KERJASAMA ANTAR PERGURUAN TINGGI (PAKER','DANA ITS TAHUN 2020',9,'Nova Maulidina Ashuri, S.Si., M.Si','94604-PROPOSAL PAKERTI_Dewi Hidayati_Biologi ITS_2020.docx','90957-MoU ITS dan Unirow(1) (1).pdf','53042-MoA Biologi dan Unirow(1).pdf',NULL,2,'2020-03-11',0),
-(12,'Dwi Oktafitria, S.Si., M.Sc.','-/0706108602','Biologi/Fakultas MIPA','Universitas PGRI Ronggolawe','Jl. Manunggal No. 61 Tuban, 62381','dwioktafitria86@gmail.com','085731133551','Dr. Nurul Jadid, S.Si., M.Sc','Teknik Mikropropagasi Tunas Mikro Stevia rebaudiana (Bertoni) aksesi Mini secara in vitro sebagai Upaya Pemuliaan dan Perbanyakan Bibit Unggul Tanaman Pemanis Sehat Alternatif bagi Penderita Diabetes','PENELITIAN KERJASAMA ANTAR PERGURUAN TINGGI (PAKER','DANA ITS TAHUN 2020',9,'Wirdhatul Muslihatin, S.Si., M.Si; Dini Ermavitalini, S.Si., M.Si; Christin Risbandini, S.Si','80436-proposal_daftar_7003_PAKERTI_20200308030408.pdf','84019-MOU ITS.pdf','42300-MoA Biologi dan Unirow(1).pdf',NULL,0,'2020-03-11',0),
-(13,'Dwi Oktafitria, S.Si., M.Sc.','0706108602','Biologi/FMIPA','Universitas PGRI Ronggolawe','Jl. Manunggal No. 61 Tuban, 62381','dwioktafitria86@gmail.com','085731133551','Dr. Nurul Jadid, S.Si., M.Sc','Teknik Mikropropagasi Tunas Mikro Stevia rebaudiana (Bertoni) aksesi Mini secara in vitro sebagai Upaya Pemuliaan dan Perbanyakan Bibit Unggul Tanaman Pemanis Sehat Alternatif bagi Penderita Diabetes','PENELITIAN KERJASAMA ANTAR PERGURUAN TINGGI','DANA ITS TAHUN 2020',9,'Wirdhatul Muslihatin, S.Si., M.Si; Dini Ermavitalini, S.Si., M.Si; Christin Risbandini, S.Si','52161-proposal_daftar_7003_PAKERTI_20200308030408.pdf','84784-MOU ITS.pdf','63119-MoA Biologi dan Unirow(1).pdf',NULL,0,'2020-03-13',0),
-(14,'Dwi Oktafitria, S.Si., M.Sc.','0706108602','Biologi/FMIPA','Universitas PGRI Ronggolawe','Jl. Manunggal No. 61 Tuban, 62381','dwioktafitria86@gmail.com','085731133551','Dr. Nurul Jadid, S.Si., M.Sc','Teknik Mikropropagasi Tunas Mikro Stevia rebaudiana (Bertoni) aksesi Mini secara in vitro sebagai Upaya Pemuliaan dan Perbanyakan Bibit Unggul Tanaman Pemanis Sehat Alternatif bagi Penderita Diabetes','PENELITIAN KERJASAMA ANTAR PERGURUAN TINGGI','DANA ITS TAHUN 2020',9,'Wirdhatul Muslihatin, S.Si., M.Si; Dini Ermavitalini, S.Si., M.Si; Christin Risbandini, S.Si','12158-proposal_daftar_7003_PAKERTI_20200308030408.pdf','43004-MOU ITS.pdf','72106-MoA Biologi dan Unirow(1).pdf',NULL,0,'2020-03-13',0),
-(15,'Dwi Oktafitria, S.Si., M.Sc.','0706108602','Biologi/FMIPA','Universitas PGRI Ronggolawe','Jl. Manunggal No. 61 Tuban, 62381','dwioktafitria86@gmail.com','085731133551','Dr. Nurul Jadid, S.Si., M.Sc','Teknik Mikropropagasi Tunas Mikro Stevia rebaudiana (Bertoni) aksesi Mini secara in vitro sebagai Upaya Pemuliaan dan Perbanyakan Bibit Unggul Tanaman Pemanis Sehat Alternatif bagi Penderita Diabetes','PENELITIAN KERJASAMA ANTAR PERGURUAN TINGGI','DANA ITS TAHUN 2020',9,'Wirdhatul Muslihatin, S.Si., M.Si; Dini Ermavitalini, S.Si., M.Si; Christin Risbandini, S.Si','74220-proposal_daftar_7003_PAKERTI_20200308030408.pdf','72253-MOU ITS.pdf','1840-MoA Biologi dan Unirow(1).pdf',NULL,0,'2020-03-16',0),
-(16,'Dwi Oktafitria, S.Si., M.Sc.','0706108602','Biologi/FMIPA','Universitas PGRI Ronggolawe','Jl. Manunggal No. 61 Tuban, 62381','dwioktafitria86@gmail.com','085731133551','Dr. Nurul Jadid, S.Si., M.Sc','Teknik Mikropropagasi Tunas Mikro Stevia rebaudiana (Bertoni) aksesi Mini secara in vitro sebagai Upaya Pemuliaan dan Perbanyakan Bibit Unggul Tanaman Pemanis Sehat Alternatif bagi Penderita Diabetes','PENELITIAN KERJASAMA ANTAR PERGURUAN TINGGI','DANA ITS TAHUN 2020',9,'Wirdhatul Muslihatin, S.Si., M.Si; Dini Ermavitalini, S.Si., M.Si; Christin Risbandini, S.Si','52212-proposal_daftar_7003_PAKERTI_20200308030408.pdf','58320-MOU ITS.pdf','47854-MoA Biologi dan Unirow(1).pdf',NULL,4,'2020-03-16',0),
-(17,'Dwi Oktafitria, S.Si., M.Sc.','0706108602','Biologi/FMIPA','Universitas PGRI Ronggolawe','Jl. Manunggal No. 61 Tuban, 62381','dwioktafitria86@gmail','085731133551','Dr. Nurul Jadid, S.Si., M.Sc','Teknik Mikropropagasi Tunas Mikro Stevia rebaudiana (Bertoni) aksesi Mini secara in vitro sebagai Upaya Pemuliaan dan Perbanyakan Bibit Unggul Tanaman Pemanis Sehat Alternatif bagi Penderita Diabetes','PENELITIAN KERJASAMA ANTAR PERGURUAN TINGGI (PAKER','DANA LOKAL ITS TAHUN 2020',9,'Wirdhatul Muslihatin, S.Si., M.Si; Dini Ermavitalini, S.Si., M.Si; Christin Risbandini, S.Si','55394-proposal_daftar_7003_PAKERTI_20200308030408.pdf','70877-MOU ITS.pdf','60583-MoA Biologi dan Unirow(1).pdf',NULL,0,'2020-03-18',0);
+insert  into `data_kp`(`id_kp`,`nama`,`nomor_induk`,`departemen`,`universitas`,`alamat_kantor`,`email`,`no_hp`,`ketua`,`judul`,`skema`,`sumber`,`lama_penelitian`,`anggota`,`proposal`,`mou`,`moa`,`luaran`,`status_luaran`,`status`,`tanggal_submit`,`kategori`) values 
+(7,'anak mama','123123123','informatika','ITS','sukolilo','dasd@gmail.com','09345839453','Paijo','The Relationship between The Existence of Educational Games and Non-player Character based on Literature Review','PDUPT','Dana Dikti',10,'haha;hihi','81605-1.PNG','65620-2.PNG','44424-bukti submit.pdf',NULL,NULL,4,'2020-01-29',0),
+(8,'baba','qqq','qqqq','qqqq','qqqqq','qqqqq','qqqqq','qqqq','qqqq','qqq','qqq',2,'qqqq','80546-1.PNG','83846-2.PNG','42461-bukti submit.pdf',NULL,NULL,2,'2020-01-29',0),
+(9,'caca','qqq','qqqq','qqqq','qqqqq','qqqqq','qqqqq','qqqq','qqqq','qqq','qqq',2,'qqqq','28963-1.PNG','88204-2.PNG','50417-bukti submit.pdf',NULL,NULL,3,'2020-01-29',0),
+(10,'Dwi Oktafitria, S.Si., M.Sc.','-/0706108602','Biologi/Fakultas MIPA','Universitas PGRI Ronggolawe','Jl. Manunggal No. 61 Tuban, 62381','dwioktafitria86@gmail.com','085731133551','Dr. Dewi Hidayati, M.Si','APLIKASI IN SITU VERMIKOMPOS UNTUK REHABILITASI LAHAN MARGINAL BEKAS TAMBANG INDUSTRI SEMEN DI TUBAN BERBASIS AGRIKULTUR','PENELITIAN KERJASAMA ANTAR PERGURUAN TINGGI (PAKER','DANA ITS TAHUN 2020',9,'Nova Maulidina Ashuri, S.Si., M.Si','14137-PROPOSAL PAKERTI_Dewi Hidayati_Biologi ITS_2020.docx','75480-MoU ITS dan Unirow(1) (1).pdf','54703-MoA Biologi dan Unirow(1).pdf','',0,3,'2020-03-11',0),
+(11,'Dwi Oktafitria, S.Si., M.Sc.','-/0706108602','Biologi/Fakultas MIPA','Universitas PGRI Ronggolawe','Jl. Manunggal No. 61 Tuban, 62381','dwioktafitria86@gmail.com','085731133551','Dr. Dewi Hidayati, M.Si','APLIKASI IN SITU VERMIKOMPOS UNTUK REHABILITASI LAHAN MARGINAL BEKAS TAMBANG INDUSTRI SEMEN DI TUBAN BERBASIS AGRIKULTUR','PENELITIAN KERJASAMA ANTAR PERGURUAN TINGGI (PAKER','DANA ITS TAHUN 2020',9,'Nova Maulidina Ashuri, S.Si., M.Si','94604-PROPOSAL PAKERTI_Dewi Hidayati_Biologi ITS_2020.docx','90957-MoU ITS dan Unirow(1) (1).pdf','53042-MoA Biologi dan Unirow(1).pdf',NULL,NULL,2,'2020-03-11',0),
+(12,'Dwi Oktafitria, S.Si., M.Sc.','-/0706108602','Biologi/Fakultas MIPA','Universitas PGRI Ronggolawe','Jl. Manunggal No. 61 Tuban, 62381','dwioktafitria86@gmail.com','085731133551','Dr. Nurul Jadid, S.Si., M.Sc','Teknik Mikropropagasi Tunas Mikro Stevia rebaudiana (Bertoni) aksesi Mini secara in vitro sebagai Upaya Pemuliaan dan Perbanyakan Bibit Unggul Tanaman Pemanis Sehat Alternatif bagi Penderita Diabetes','PENELITIAN KERJASAMA ANTAR PERGURUAN TINGGI (PAKER','DANA ITS TAHUN 2020',9,'Wirdhatul Muslihatin, S.Si., M.Si; Dini Ermavitalini, S.Si., M.Si; Christin Risbandini, S.Si','80436-proposal_daftar_7003_PAKERTI_20200308030408.pdf','84019-MOU ITS.pdf','42300-MoA Biologi dan Unirow(1).pdf',NULL,NULL,0,'2020-03-11',0),
+(13,'Dwi Oktafitria, S.Si., M.Sc.','0706108602','Biologi/FMIPA','Universitas PGRI Ronggolawe','Jl. Manunggal No. 61 Tuban, 62381','dwioktafitria86@gmail.com','085731133551','Dr. Nurul Jadid, S.Si., M.Sc','Teknik Mikropropagasi Tunas Mikro Stevia rebaudiana (Bertoni) aksesi Mini secara in vitro sebagai Upaya Pemuliaan dan Perbanyakan Bibit Unggul Tanaman Pemanis Sehat Alternatif bagi Penderita Diabetes','PENELITIAN KERJASAMA ANTAR PERGURUAN TINGGI','DANA ITS TAHUN 2020',9,'Wirdhatul Muslihatin, S.Si., M.Si; Dini Ermavitalini, S.Si., M.Si; Christin Risbandini, S.Si','52161-proposal_daftar_7003_PAKERTI_20200308030408.pdf','84784-MOU ITS.pdf','63119-MoA Biologi dan Unirow(1).pdf',NULL,NULL,0,'2020-03-13',0),
+(14,'Dwi Oktafitria, S.Si., M.Sc.','0706108602','Biologi/FMIPA','Universitas PGRI Ronggolawe','Jl. Manunggal No. 61 Tuban, 62381','dwioktafitria86@gmail.com','085731133551','Dr. Nurul Jadid, S.Si., M.Sc','Teknik Mikropropagasi Tunas Mikro Stevia rebaudiana (Bertoni) aksesi Mini secara in vitro sebagai Upaya Pemuliaan dan Perbanyakan Bibit Unggul Tanaman Pemanis Sehat Alternatif bagi Penderita Diabetes','PENELITIAN KERJASAMA ANTAR PERGURUAN TINGGI','DANA ITS TAHUN 2020',9,'Wirdhatul Muslihatin, S.Si., M.Si; Dini Ermavitalini, S.Si., M.Si; Christin Risbandini, S.Si','12158-proposal_daftar_7003_PAKERTI_20200308030408.pdf','43004-MOU ITS.pdf','72106-MoA Biologi dan Unirow(1).pdf',NULL,NULL,0,'2020-03-13',0),
+(15,'Dwi Oktafitria, S.Si., M.Sc.','0706108602','Biologi/FMIPA','Universitas PGRI Ronggolawe','Jl. Manunggal No. 61 Tuban, 62381','dwioktafitria86@gmail.com','085731133551','Dr. Nurul Jadid, S.Si., M.Sc','Teknik Mikropropagasi Tunas Mikro Stevia rebaudiana (Bertoni) aksesi Mini secara in vitro sebagai Upaya Pemuliaan dan Perbanyakan Bibit Unggul Tanaman Pemanis Sehat Alternatif bagi Penderita Diabetes','PENELITIAN KERJASAMA ANTAR PERGURUAN TINGGI','DANA ITS TAHUN 2020',9,'Wirdhatul Muslihatin, S.Si., M.Si; Dini Ermavitalini, S.Si., M.Si; Christin Risbandini, S.Si','74220-proposal_daftar_7003_PAKERTI_20200308030408.pdf','72253-MOU ITS.pdf','1840-MoA Biologi dan Unirow(1).pdf',NULL,NULL,0,'2020-03-16',0),
+(16,'Dwi Oktafitria, S.Si., M.Sc.','0706108602','Biologi/FMIPA','Universitas PGRI Ronggolawe','Jl. Manunggal No. 61 Tuban, 62381','dwioktafitria86@gmail.com','085731133551','Dr. Nurul Jadid, S.Si., M.Sc','Teknik Mikropropagasi Tunas Mikro Stevia rebaudiana (Bertoni) aksesi Mini secara in vitro sebagai Upaya Pemuliaan dan Perbanyakan Bibit Unggul Tanaman Pemanis Sehat Alternatif bagi Penderita Diabetes','PENELITIAN KERJASAMA ANTAR PERGURUAN TINGGI','DANA ITS TAHUN 2020',9,'Wirdhatul Muslihatin, S.Si., M.Si; Dini Ermavitalini, S.Si., M.Si; Christin Risbandini, S.Si','52212-proposal_daftar_7003_PAKERTI_20200308030408.pdf','58320-MOU ITS.pdf','47854-MoA Biologi dan Unirow(1).pdf',NULL,NULL,4,'2020-03-16',0),
+(17,'Dwi Oktafitria, S.Si., M.Sc.','0706108602','Biologi/FMIPA','Universitas PGRI Ronggolawe','Jl. Manunggal No. 61 Tuban, 62381','dwioktafitria86@gmail','085731133551','Dr. Nurul Jadid, S.Si., M.Sc','Teknik Mikropropagasi Tunas Mikro Stevia rebaudiana (Bertoni) aksesi Mini secara in vitro sebagai Upaya Pemuliaan dan Perbanyakan Bibit Unggul Tanaman Pemanis Sehat Alternatif bagi Penderita Diabetes','PENELITIAN KERJASAMA ANTAR PERGURUAN TINGGI (PAKER','DANA LOKAL ITS TAHUN 2020',9,'Wirdhatul Muslihatin, S.Si., M.Si; Dini Ermavitalini, S.Si., M.Si; Christin Risbandini, S.Si','55394-proposal_daftar_7003_PAKERTI_20200308030408.pdf','70877-MOU ITS.pdf','60583-MoA Biologi dan Unirow(1).pdf',NULL,NULL,0,'2020-03-18',0);
 
 /*Table structure for table `data_p3i` */
 
@@ -109,21 +112,27 @@ CREATE TABLE `data_p3i` (
   `skema1` varchar(100) DEFAULT NULL,
   `sumber1` varchar(100) DEFAULT NULL,
   `luaran1` varchar(100) DEFAULT NULL,
+  `status_luaran1` int(1) DEFAULT NULL,
   `judul2` varchar(100) DEFAULT NULL,
   `skema2` varchar(100) DEFAULT NULL,
   `sumber2` varchar(100) DEFAULT NULL,
   `luaran2` varchar(100) DEFAULT NULL,
+  `status_luaran2` int(1) DEFAULT NULL,
   `judul3` varchar(100) DEFAULT NULL,
   `skema3` varchar(100) DEFAULT NULL,
   `sumber3` varchar(100) DEFAULT NULL,
   `luaran3` varchar(100) DEFAULT NULL,
+  `status_luaran3` int(1) DEFAULT NULL,
   `status` int(10) NOT NULL,
   `tanggal_submit` date NOT NULL,
   `kategori` int(20) NOT NULL,
   PRIMARY KEY (`id_p3i`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 /*Data for the table `data_p3i` */
+
+insert  into `data_p3i`(`id_p3i`,`nama`,`nomor_induk`,`departemen`,`universitas`,`alamat_kantor`,`email`,`no_hp`,`hindex`,`pernyataan`,`draf`,`npwp`,`tabungan`,`judul1`,`skema1`,`sumber1`,`luaran1`,`status_luaran1`,`judul2`,`skema2`,`sumber2`,`luaran2`,`status_luaran2`,`judul3`,`skema3`,`sumber3`,`luaran3`,`status_luaran3`,`status`,`tanggal_submit`,`kategori`) values 
+(1,'Via Vallen','12345678','IT','ITS','Surabaya','admin@gmail.com','234234','1','38864-tanah mjk.pdf','19810-tanah mjk.pdf','42226-tanah mjk.pdf','59304-tanah mjk.pdf','Materi office','Oke oke','Pusat','18709-12.pdf',1,'qwe','ewq','weq',NULL,NULL,'zxc','cxz','xcz',NULL,NULL,0,'2020-08-10',0);
 
 /*Table structure for table `data_pap` */
 
@@ -159,13 +168,14 @@ CREATE TABLE `data_pap` (
   `pernyataan` varchar(100) NOT NULL,
   `ktp` varchar(100) NOT NULL,
   `luaran` varchar(100) DEFAULT NULL,
+  `status_luaran` int(1) DEFAULT NULL,
   PRIMARY KEY (`id_pap`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 /*Data for the table `data_pap` */
 
-insert  into `data_pap`(`id_pap`,`nama_ketua`,`nomor_induk_ketua`,`departemen_ketua`,`universitas_ketua`,`alamat_ketua`,`email_ketua`,`no_hp_ketua`,`nama_ap`,`nomor_induk_ap`,`alamat_ktp_ap`,`alamat_domisili_ap`,`email_ap`,`no_hp_ap`,`judul`,`nomor_kontrak`,`tanggal_kontrak`,`skema`,`pendanaan`,`jumlah_hibah`,`target_luaran`,`honor`,`lama_bulan`,`total_honor`,`status`,`tanggal_submit`,`pernyataan`,`ktp`,`luaran`) values 
-(1,'Indri Meilani','1989201822301','DRPM ','ITS','Kampus ITS Sukolilo ','indri.its.05@gmail.com','087811162717','Restu Sri Rahayu ','1992201722457','Magelang','Keputih ','restu@its.ac.id','081578890402','Rancang Bangun Sistem Informasi dan Dokumen Sistem Manajemen Mutu Berbasis  ISO 9001:2015 Integrasi ','2200/PKS/ITS/2020','2020-06-03','Penelitian Tenaga Pendidikan ','ITS','20000000','Aplikasi Website ','300000','5','1500000',5,'2020-08-03','66934-Surat Pernyataan_RAH.pdf','17216-Lembar Pengesahan_RAH.pdf','');
+insert  into `data_pap`(`id_pap`,`nama_ketua`,`nomor_induk_ketua`,`departemen_ketua`,`universitas_ketua`,`alamat_ketua`,`email_ketua`,`no_hp_ketua`,`nama_ap`,`nomor_induk_ap`,`alamat_ktp_ap`,`alamat_domisili_ap`,`email_ap`,`no_hp_ap`,`judul`,`nomor_kontrak`,`tanggal_kontrak`,`skema`,`pendanaan`,`jumlah_hibah`,`target_luaran`,`honor`,`lama_bulan`,`total_honor`,`status`,`tanggal_submit`,`pernyataan`,`ktp`,`luaran`,`status_luaran`) values 
+(1,'Indri Meilani','1989201822301','DRPM ','ITS','Kampus ITS Sukolilo ','indri.its.05@gmail.com','087811162717','Restu Sri Rahayu ','1992201722457','Magelang','Keputih ','restu@its.ac.id','081578890402','Rancang Bangun Sistem Informasi dan Dokumen Sistem Manajemen Mutu Berbasis  ISO 9001:2015 Integrasi ','2200/PKS/ITS/2020','2020-06-03','Penelitian Tenaga Pendidikan ','ITS','20000000','Aplikasi Website ','300000','5','1500000',5,'2020-08-03','66934-Surat Pernyataan_RAH.pdf','17216-Lembar Pengesahan_RAH.pdf','',NULL);
 
 /*Table structure for table `dosen` */
 
