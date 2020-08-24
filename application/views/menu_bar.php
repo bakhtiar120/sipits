@@ -20,6 +20,7 @@
             <li><a href="<?php echo site_url('pendaftaran/daftar_kmpi'); ?>">KMPI</a></li>
             <li><a href="<?php echo site_url('pendaftaran/daftar_p3i'); ?>">P3I</a></li>
             <li><a href="<?php echo site_url('pendaftaran/daftar_luaran'); ?>">Luaran</a></li>
+            <li><a href="<?php echo site_url('pendaftaran/daftar_bpup'); ?>">BPUP</a></li>
           </ul>
         </li>
 

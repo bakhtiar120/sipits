@@ -66,7 +66,8 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="inputName">Email</label>
-                                        <input type="text" id="inputName" class="form-control" name="email_ketua" value="<?php echo $email_ketua ?>">
+                                        <input type="text" id="inputName" class="form-control" id="email_ketua" name="email_ketua" value="<?php echo $email_ketua ?>">
+                                        <span class="error text-danger" id="invalid_email">Email yang anda masukkan invalid</span>
                                     </div>
                                     <div class="form-group">
                                         <label for="inputName">Nomor HP</label>
@@ -201,8 +202,10 @@
                         <a href="#" class="btn btn-danger"><i class="fas fa-trash"></i> </a> -->
                                                         <!-- <a href="#" class="btn btn-primary"><i class="fas fa-upload"></i> </a> -->
 
-                                                        <input type="file" placeholder="Upload Ulang?" name="pernyataan">
+                                                        <input type="file" placeholder="Upload Ulang?" name="pernyataan" id="pernyataan">
                                                     </div>
+                                                    <br>
+                                                        <span class="error text-danger" id="invalid_pernyataan"></span>
                                                 </td>
                                             </tr>
                                             <tr>
@@ -212,19 +215,32 @@
 
                                                 <td class="py-0 align-middle">
                                                     <div class="btn-group btn-group-sm">
-                                                        <input type="file" placeholder="Upload Ulang?" name="ktp">
+                                                        <input type="file" placeholder="Upload Ulang?" name="ktp" id="ktp">
                                                     </div>
+                                                    <br>
+                                                        <span class="error text-danger" id="invalid_ktp"></span>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td>
-                                                    <a href="<?php echo base_url('uploads/pap/' . $ktp); ?>" class="btn btn-link">File Luaran</a>
+                                                    <?php
+                                                        if($luaran!=NULL) {
+                                                    ?>
+                                                    <a href="<?php echo base_url('uploads/luaran/' . $luaran); ?>" class="btn btn-link">File Luaran</a>
+                                                    <?php    
+                                                        }
+                                                        else {
+                                                    ?>
+                                                    <a href="#" class="btn">File Luaran</a>
+                                                    <?php } ?>
                                                 </td>
 
                                                 <td class="py-0 align-middle">
                                                     <div class="btn-group btn-group-sm">
-                                                        <input type="file" placeholder="Upload Ulang?" name="luaran">
+                                                        <input type="file" placeholder="Upload Ulang?" name="luaran" id="luaran">
                                                     </div>
+                                                    <br>
+                                                    <span class="error text-danger" id="invalid_luaran"></span>
                                                 </td>
                                             </tr>
 
@@ -250,7 +266,10 @@
         <!-- /.content-wrapper -->
         <?php include("footer.php") ?>
         <script src="<?php echo base_url('assets/js/jquery-1.12.1.js'); ?>"></script>
-        <script type='text/javascript'>
+        <script src="<?php echo base_url('assets/js/jquery-ui.js'); ?>"></script>
+    <script src="<?php echo base_url('assets/js/jquery-1.12.1.js'); ?>"></script>
+    <script src="<?php echo base_url('assets/js/pap.js'); ?>"></script>
+        <!-- <script type='text/javascript'>
             var rupiah = document.getElementById('total_honor');
             //var rupiah2 = document.getElementById('total_honor');
             rupiah.addEventListener('keyup', function(e) {
@@ -297,7 +316,7 @@
                 rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
                 return prefix == undefined ? rupiah : (rupiah ? 'Rp. ' + rupiah : '');
             }
-        </script>
+        </script> -->
     </div>
     <!-- ./wrapper -->
 

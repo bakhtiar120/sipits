@@ -408,6 +408,11 @@ class Pendaftaran extends CI_Controller
 		}
 	}
 
+	public function daftar_bpup()
+	{
+		$this->load->view('daftar_bpup');
+	}
+
 	public function cekDosen()
 	{
 		$nidn = $this->input->post("nidn");

@@ -66,7 +66,8 @@
                   </div>
                   <div class="form-group">
                     <label for="inputName">Email</label>
-                    <input type="text" id="inputName" class="form-control" name="email" value="<?php echo $email ?>">
+                    <input type="text" id="email" class="form-control" name="email" value="<?php echo $email ?>">
+                    <span class="error text-danger" id="invalid_email">Email yang anda masukkan invalid</span>
                   </div>
                   <div class="form-group">
                     <label for="inputName">Nomor HP</label>
@@ -161,8 +162,10 @@
 
                         <td class="py-0 align-middle">
                           <div class="btn-group btn-group-sm">
-                            <input type="file" placeholder="Upload Ulang?" name="mou">
+                            <input type="file" placeholder="Upload Ulang?" name="mou" id="mou">
                           </div>
+                          <br>
+                          <span class="error text-danger" id="invalid_mou"></span>
                         </td>
                       </tr>
                       <tr>
@@ -172,19 +175,35 @@
 
                         <td class="py-0 align-middle">
                           <div class="btn-group btn-group-sm">
-                            <input type="file" placeholder="Upload Ulang?" name="moa">
+                            <input type="file" placeholder="Upload Ulang?" name="moa" id="moa">
                           </div>
+                          <br>
+                          <span class="error text-danger" id="invalid_moa"></span>
                         </td>
                       </tr>
                       <tr>
                         <td>
-                          <a href="<?php echo base_url('uploads/kp/' . $moa); ?>" class="btn btn-link">File Luaran</a>
+                          <?php
+                            if($luaran!=NULL) {
+                          ?>
+                          <a href="<?php echo base_url('uploads/luaran/' . $luaran); ?>" class="btn btn-link">File Luaran</a>
+                          <?php    
+                            }
+                            else {
+
+                           
+                          ?>
+                          <a href="#" class="btn">File Luaran</a>
+                          <?php  } ?>
+                          
                         </td>
 
                         <td class="py-0 align-middle">
                           <div class="btn-group btn-group-sm">
-                            <input type="file" placeholder="Upload Ulang?" name="moa">
+                            <input type="file" placeholder="Upload Ulang?" name="luaran" id="luaran">
                           </div>
+                          <br>
+                          <span class="error text-danger" id="invalid_luaran"></span>
                         </td>
                       </tr>
 
@@ -210,6 +229,9 @@
     <?php include("footer.php") ?>
   </div>
   <!-- ./wrapper -->
+  <script src="<?php echo base_url('assets/js/jquery-ui.js'); ?>"></script>
+    <script src="<?php echo base_url('assets/js/jquery-1.12.1.js'); ?>"></script>
+    <script src="<?php echo base_url('assets/js/kp.js'); ?>"></script>
 
 
 </body>

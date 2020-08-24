@@ -186,24 +186,24 @@ class Atur_kp extends CI_Controller
 		$this->load->library('email');
 
 		$config['protocol']    = 'smtp';
-		$config['smtp_host']    = 'ssl://smtp.gmail.com';
-		$config['smtp_port']    = '465';
-		$config['smtp_timeout'] = '7';
-		$config['smtp_user']    = 'bakhtiarhanafi@gmail.com';
-		$config['smtp_pass']    = '';
-		$config['charset']    = 'utf-8';
-		$config['newline']    = "\r\n";
-		$config['mailtype'] = 'text'; // or html
-		$config['validation'] = TRUE; // bool whether to validate email or not      
+        $config['smtp_host']    = 'ssl://smtp.gmail.com';
+        $config['smtp_port']    = '465';
+        $config['smtp_timeout'] = '7';
+        $config['smtp_user']    = 'drpm.its@gmail.com';
+        $config['smtp_pass']    = 'drpmITS2020';
+        $config['charset']    = 'utf-8';
+        $config['newline']    = "\r\n";
+        $config['mailtype'] = 'text'; // or html
+        $config['validation'] = TRUE; // bool whether to validate email or not      
 
-		$this->email->initialize($config);
+        $this->email->initialize($config);
 
-		$this->email->from('bakhtiarhanafi@gmail.com', 'Bakhtiar');
-		$this->email->to('bakhtiarmochamad@gmail.com');
-		$this->email->subject('Email Test');
-		$this->email->message($pesan);
+        $this->email->from('drpm.its@gmail.com', 'SIPITS ITS');
+        $this->email->to($email);
+        $this->email->subject('Email Test');
+        $this->email->message($pesan);
 
-		$this->email->send();
+        $this->email->send();
 	}
 
 	public function hapus()

@@ -62,6 +62,15 @@
         <input type="text" placeholder="Masukkan NRP" name="nomor_induk_ap" id="nomor_induk_ap" required>
         <label for="email"><b>Nama Asisten Peneliti</b></label>
         <input type="text" placeholder="Masukkan Nama Lengkap dan gelar (jika ada)" name="nama_ap" id="nama_ap" required>
+        <label for="email"><b>Status</b></label>
+        <input type="text" placeholder="Masukkan status sebagai apa" name="status_ap" id="status_ap" required>
+        <label for="email"><b>Departemen/Unit</b></label>
+        <input type="text" placeholder="Masukkan Nama departemen" name="departemen_ap" id="departemen_ap" required>
+        <label for="email"><b>Instansi</b></label>
+        <input type="text" placeholder="Masukkan Nama Instansi" name="instansi_ap" id="instansi_ap" required>
+
+        <label for="email"><b>NIK</b></label>
+        <input type="text" placeholder="Masukkan NIK" name="nik_ap" id="nik_ap" required>
 
 
 
@@ -76,7 +85,10 @@
         <span class="error text-danger" id="invalid_email_ap">Email yang anda masukkan invalid</span><br>
         <label for="email"><b>No HP</b></label>
         <input type="text" placeholder="Masukkan No HP yang bisa dihubungi" name="no_hp_ap" maxlength="13" onKeyUp="this.value=this.value.replace(/[^0-9]/g,'')" id="no_hp_ap" required>
+        <label for="email"><b>KTP</b></label>
+        <input type="file" placeholder="Unggah file dalam bentuk doc/pdf" name="ktp" id="ktp" required>
 
+        <span class="error text-danger" id="invalid_ktp"></span><br>
         <hr>
 
         <p>Identitas Penelitian</p>
@@ -110,6 +122,8 @@
 
         <label for="email"><b>Jumlah Honor per Bulan</b></label>
         <input type="text" placeholder="Masukkan honor yang akan didapatkan per bulan" name="honor" id="honor" required>
+        <label for="email"><b>Jobdesk</b></label>
+        <input type="text" placeholder="Masukkan jobdesk" name="jobdesk" id="jobdesk" required>
 
         <label for="email"><b>Total lama bulan</b></label>
         <input type="text" placeholder="Masukkan lama bulan" name="lama_bulan" onKeyUp="this.value=this.value.replace(/[^0-9]/g,'')" required>
@@ -122,10 +136,7 @@
         <label for="email"><b>Surat Pernyataan</b></label>
         <input type="file" placeholder="Unggah file dalam bentuk doc/pdf" name="pernyataan" id="pernyataan" required>
         <span class="error text-danger" id="invalid_pernyataan"></span><br>
-        <label for="email"><b>KTP</b></label>
-        <input type="file" placeholder="Unggah file dalam bentuk doc/pdf" name="ktp" id="ktp" required>
-        
-        <span class="error text-danger" id="invalid_ktp"></span><br>
+
         <hr>
 
         <p>Dengan mendaftar skema PAP ini, berarti anda telah menyetujui <a href="#">syarat dan ketentuan</a>.</p>
@@ -146,7 +157,7 @@
 
   <?php include("footer.php") ?>
   <script src="<?php echo base_url('assets/js/jquery-1.12.1.js'); ?>"></script>
-  <script src="<?php echo base_url('assets/js/pap.js');?>"></script>
+  <script src="<?php echo base_url('assets/js/pap.js'); ?>"></script>
 
 </body>
 
