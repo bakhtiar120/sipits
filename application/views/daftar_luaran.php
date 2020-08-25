@@ -28,14 +28,43 @@
       <?php echo $this->session->flashdata("hasil"); ?>
 
       <label for="luaran"><b>Pilih Luaran Yang Ingin Di Upload</b></label>
-      <select class="form-control" style="width:20%" name="luaran" id="luaran">
-        <option value="">--- Pilih ---</option>
-        <option value="kp">KP</option>
-        <option value="pap">PAP</option>
-        <option value="kmpi">KMPI</option>
-        <option value="p3i">P3I</option>
-      </select>
+      <div class="row">
+        <div class="col-sm-4">
+          <select class="form-control" name="luaran" id="luaran">
+            <option value="">--- Pilih ---</option>
+            <option value="kp">KP</option>
+            <option value="pap">PAP</option>
+            <option value="kmpi">KMPI</option>
+            <option value="p3i">P3I</option>
+            <option value="bpup">BPUP</option>
+          </select>
+        </div>
+      </div>
       <br>
+
+      <div id="jenis">
+        <label for="luaran"><b>Pilih Isi Luaran</b></label>
+        <div class="row">
+          <div class="col-sm-4">
+            <select class="form-control" name="jenis_luaran" id="jenis_luaran">
+              <option value="">--- Pilih ---</option>
+              <option value="1">Jurnal Internasional</option>
+              <option value="2">Publikasi Seminar Internasional</option>
+              <option value="3">Produk</option>
+              <option value="4">Prototipe</option>
+              <option value="5">HKI</option>
+              <option value="6">Lainnya</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <br>
+
+      <div id="jenis_luaran_isi">
+        <label for="email"><b>Isi Luaran</b></label>
+        <input type="text" class="form-control" placeholder="Isi Luaran" name="isi_luaran" id="isi_luaran">
+      </div>
+
       <label for="email"><b>Upload</b></label>
       <input type="file" name="upload" id="upload" required>
 

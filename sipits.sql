@@ -12,6 +12,58 @@ MySQL - 10.4.11-MariaDB : Database - sipits
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+/*Table structure for table `data_bpup` */
+
+DROP TABLE IF EXISTS `data_bpup`;
+
+CREATE TABLE `data_bpup` (
+  `id_bpup` int(100) NOT NULL AUTO_INCREMENT,
+  `nama` varchar(100) NOT NULL,
+  `nomor_induk` varchar(100) NOT NULL,
+  `departemen` varchar(200) NOT NULL,
+  `universitas` varchar(200) NOT NULL,
+  `alamat_kampus` varchar(250) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `no_hp` varchar(50) NOT NULL,
+  `judul` varchar(100) NOT NULL,
+  `no_kontrak` varchar(200) NOT NULL,
+  `tanggal_kontrak` date NOT NULL,
+  `skema` varchar(200) NOT NULL,
+  `sumber` varchar(200) NOT NULL,
+  `tahun` int(5) NOT NULL,
+  `nrp` varchar(200) NOT NULL,
+  `nama_lengkap` varchar(200) NOT NULL,
+  `program_studi` varchar(200) DEFAULT NULL,
+  `pendidikan` varchar(10) DEFAULT NULL,
+  `alamat_ktp` varchar(200) NOT NULL,
+  `alamat_domisili` varchar(200) NOT NULL,
+  `email_bea` varchar(50) NOT NULL,
+  `no_hp_bea` varchar(50) DEFAULT NULL,
+  `ktm` varchar(200) DEFAULT NULL,
+  `ktp` varchar(200) DEFAULT NULL,
+  `jenis_reward` varbinary(50) DEFAULT 'Beasiswa Biaya Pendidikan',
+  `lama_pembiayaan` int(2) DEFAULT NULL,
+  `sejak` varchar(10) DEFAULT NULL,
+  `sejak_tahun` varchar(20) DEFAULT NULL,
+  `sampai` varchar(10) DEFAULT NULL,
+  `sampai_tahun` varchar(20) DEFAULT NULL,
+  `satuan_biaya` int(20) DEFAULT NULL,
+  `total_biaya` int(20) DEFAULT NULL,
+  `status` int(11) DEFAULT NULL,
+  `tanggal_submit` date DEFAULT NULL,
+  `luaran` varchar(100) DEFAULT NULL,
+  `jenis_luaran` varchar(100) DEFAULT NULL,
+  `isi_luaran` varchar(100) DEFAULT NULL,
+  `status_luaran` int(11) DEFAULT NULL,
+  `submit_luaran` date DEFAULT NULL,
+  PRIMARY KEY (`id_bpup`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+/*Data for the table `data_bpup` */
+
+insert  into `data_bpup`(`id_bpup`,`nama`,`nomor_induk`,`departemen`,`universitas`,`alamat_kampus`,`email`,`no_hp`,`judul`,`no_kontrak`,`tanggal_kontrak`,`skema`,`sumber`,`tahun`,`nrp`,`nama_lengkap`,`program_studi`,`pendidikan`,`alamat_ktp`,`alamat_domisili`,`email_bea`,`no_hp_bea`,`ktm`,`ktp`,`jenis_reward`,`lama_pembiayaan`,`sejak`,`sejak_tahun`,`sampai`,`sampai_tahun`,`satuan_biaya`,`total_biaya`,`status`,`tanggal_submit`,`luaran`,`jenis_luaran`,`isi_luaran`,`status_luaran`,`submit_luaran`) values 
+(1,'Suprapto, Ph.D','197209191998021002','-','ITS','-','admin@gmail.com','0123123123','Teknik Analisis Baru untuk Identifikasi Darah Sapi dan Babi untuk Pengendalian Produk Halal','47/PKS/ITS/2018','2018-02-01','Penelitian Unggulan','ITS',2018,'1403052803954595','Muhammad Yudha Syahputra','-','Magister','Jl. Hang Tuah Kecamatan Sungai Ampit, Riau','Keputih Gang Makam Blok D no 2, Surabaya','abc@gmail.com','085859012008','89676-jne.pdf','25644-jne.pdf','Beasiswa Biaya Pendidikan',1,'Ganjil','2018/2019','Ganjil','2017/2018',15000000,15000,0,'2020-08-25','70080-1110-2325-1-SM.pdf','Lainnya','a',1,NULL);
+
 /*Table structure for table `data_kmpi` */
 
 DROP TABLE IF EXISTS `data_kmpi`;
@@ -194,13 +246,14 @@ CREATE TABLE `dosen` (
   `universitas` text NOT NULL,
   `H_index_scopus` varchar(5) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 /*Data for the table `dosen` */
 
 insert  into `dosen`(`id`,`nama`,`NIDN`,`NIP`,`Alamat`,`email`,`telepon`,`departemen`,`fakultas`,`universitas`,`H_index_scopus`) values 
 (1,'Eden Hazard','32324234','32324234','Jl Semangka','edenhazard@gmail.com','082239239921','Teknik Kimia','Fakultas Teknologi Industri','Institut Teknologi Sepuluh Nopember',''),
-(2,'Indri Meilani','1989201822301','1989201822301','Kampus ITS Sukolilo ','indri.its.05@gmail.com','087811162717','DRPM ','','ITS','');
+(2,'Indri Meilani','1989201822301','1989201822301','Kampus ITS Sukolilo ','indri.its.05@gmail.com','087811162717','DRPM ','','ITS',''),
+(3,'Suprapto, Ph.D','197209191998021002','197209191998021002','-','admin@gmail.com','0123123123','-','','ITS','');
 
 /*Table structure for table `mahasiswa` */
 

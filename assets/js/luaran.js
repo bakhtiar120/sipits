@@ -1,4 +1,12 @@
 $(document).ready(function () {
+	$("#jenis").hide();
+	$("#jenis_luaran_isi").hide();
+	// x.style.display = "none";
+	// if (x.style.display === "none") {
+	// 	x.style.display = "block";
+	// } else {
+	// }
+
 	$("#daftar").prop("disabled", true);
 	var nilai = '';
 	$('#judul').prop("readonly", true);
@@ -9,8 +17,31 @@ $(document).ready(function () {
 		} else {
 			$('#judul').prop("readonly", false);
 			nilai = pilihan;
+			if ($('#luaran').val() == "bpup") {
+				$("#jenis").show();
+			} else {
+				$("#jenis").hide();
+			}
 		}
 	});
+
+	$('#jenis_luaran').change(function () {
+		var pilihan = $('#jenis_luaran').val();
+		if (pilihan == 6) {
+			$("#jenis_luaran_isi").show();
+		} else {
+			$("#jenis_luaran_isi").hide();
+		}
+	});
+
+	// $('#jenis_luaran').change(function () {
+	// 	var jenis_luaran = $('#jenis_luaran').val();
+	// 	if (jenis_luaran == 6) {
+	// 		$('#judul').prop("readonly", true);
+	// 	} else {
+	// 		$('#judul').prop("readonly", false);
+	// 	}
+	// });
 
 	// var judul = $('#judul').val();
 	$("#judul").autocomplete({

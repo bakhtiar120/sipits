@@ -8,7 +8,7 @@ class Pendaftaran extends CI_Controller
 	{
 		parent::__construct();
 		$this->db = $this->load->database('default', true);
-		$this->load->model(array('kp_model', 'pap_model', 'kmpi_model', 'P3i_model', 'helper_model'));
+		$this->load->model(array('kp_model', 'pap_model', 'kmpi_model', 'P3i_model', 'helper_model', 'bpup_model'));
 		$this->load->library('form_validation');
 	}
 
@@ -62,25 +62,23 @@ class Pendaftaran extends CI_Controller
 			if ($simpan == 1) {
 				$this->load->library('email');
 
-				// $config['protocol']    = 'smtp';
-				// $config['smtp_host']    = 'ssl://smtp.gmail.com';
-				// $config['smtp_port']    = '465';
-				// $config['smtp_timeout'] = '7';
-				// $config['smtp_user']    = 'bakhtiarhanafi@gmail.com';
-				// $config['smtp_pass']    = '';
-				// $config['charset']    = 'utf-8';
-				// $config['newline']    = "\r\n";
-				// $config['mailtype'] = 'text'; // or html
-				// $config['validation'] = TRUE; // bool whether to validate email or not      
+				$config['protocol']    = 'smtp';
+				$config['smtp_host']    = 'ssl://smtp.gmail.com';
+				$config['smtp_port']    = '465';
+				$config['smtp_timeout'] = '7';
+				$config['smtp_user']    = 'drpm.its@gmail.com';
+				$config['smtp_pass']    = 'drpmITS2020';
+				$config['charset']    = 'utf-8';
+				$config['newline']    = "\r\n";
+				$config['mailtype'] = 'text'; // or html
+				$config['validation'] = TRUE; // bool whether to validate email or not      
 
-				// $this->email->initialize($config);
+				$this->email->initialize($config);
 
-				// $this->email->from('bakhtiarhanafi@gmail.com', 'Bakhtiar');
-				// $this->email->to('bakhtiarmochamad@gmail.com');
-				// $this->email->subject('Email Test');
-				// $this->email->message('Pendaftaran PAP Anda berhasil.');
-
-				// $this->email->send();
+				$this->email->from('drpm.its@gmail.com', 'SIPITS ITS');
+				$this->email->to($this->input->post('email_ketua'));
+				$this->email->subject('Konfirmasi Pendaftaran PAP');
+				$this->email->message('Pendaftaran PAP Telah Berhasil');
 
 				$this->session->set_flashdata('hasil', '<div class="alert alert-success alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><h4><i class="icon fa fa-check"></i> Alert!</h4>Berhasil Melakukan Pengajuan.</div>');
 			} else {
@@ -145,8 +143,8 @@ class Pendaftaran extends CI_Controller
 				$config['smtp_host']    = 'ssl://smtp.gmail.com';
 				$config['smtp_port']    = '465';
 				$config['smtp_timeout'] = '7';
-				$config['smtp_user']    = 'bakhtiarhanafi@gmail.com';
-				$config['smtp_pass']    = '';
+				$config['smtp_user']    = 'drpm.its@gmail.com';
+				$config['smtp_pass']    = 'drpmITS2020';
 				$config['charset']    = 'utf-8';
 				$config['newline']    = "\r\n";
 				$config['mailtype'] = 'text'; // or html
@@ -154,10 +152,10 @@ class Pendaftaran extends CI_Controller
 
 				$this->email->initialize($config);
 
-				$this->email->from('bakhtiarhanafi@gmail.com', 'Bakhtiar');
-				$this->email->to('bakhtiarmochamad@gmail.com');
-				$this->email->subject('Email Test');
-				$this->email->message('Pendaftaran KP Anda berhasil.');
+				$this->email->from('drpm.its@gmail.com', 'SIPITS ITS');
+				$this->email->to($this->input->post('email'));
+				$this->email->subject('Konfirmasi Pendaftaran KP');
+				$this->email->message('Pendaftaran KP Telah Berhasil');
 
 				$this->email->send();
 
@@ -230,8 +228,8 @@ class Pendaftaran extends CI_Controller
 				$config['smtp_host']    = 'ssl://smtp.gmail.com';
 				$config['smtp_port']    = '465';
 				$config['smtp_timeout'] = '7';
-				$config['smtp_user']    = 'bakhtiarhanafi@gmail.com';
-				$config['smtp_pass']    = '';
+				$config['smtp_user']    = 'drpm.its@gmail.com';
+				$config['smtp_pass']    = 'drpmITS2020';
 				$config['charset']    = 'utf-8';
 				$config['newline']    = "\r\n";
 				$config['mailtype'] = 'text'; // or html
@@ -239,10 +237,10 @@ class Pendaftaran extends CI_Controller
 
 				$this->email->initialize($config);
 
-				$this->email->from('bakhtiarhanafi@gmail.com', 'Bakhtiar');
-				$this->email->to('bakhtiarmochamad@gmail.com');
-				$this->email->subject('Email Test');
-				$this->email->message('Pendaftaran KMPI Anda berhasil.');
+				$this->email->from('drpm.its@gmail.com', 'SIPITS ITS');
+				$this->email->to($this->input->post('email'));
+				$this->email->subject('Konfirmasi Pendaftaran KMPI');
+				$this->email->message('Pendaftaran KMPI Telah Berhasil');
 
 				$this->email->send();
 
@@ -329,9 +327,8 @@ class Pendaftaran extends CI_Controller
 				$config['smtp_host']    = 'ssl://smtp.gmail.com';
 				$config['smtp_port']    = '465';
 				$config['smtp_timeout'] = '7';
-				$config['smtp_user']    = 'bakhtiarhanafi@gmail.com';
-				$config['smtp_pass']    = '';
-				// iuycsizxdrwbxmrk
+				$config['smtp_user']    = 'drpm.its@gmail.com';
+				$config['smtp_pass']    = 'drpmITS2020';
 				$config['charset']    = 'utf-8';
 				$config['newline']    = "\r\n";
 				$config['mailtype'] = 'text'; // or html
@@ -339,10 +336,10 @@ class Pendaftaran extends CI_Controller
 
 				$this->email->initialize($config);
 
-				$this->email->from('bakhtiarhanafi@gmail.com', 'Bakhtiar');
-				$this->email->to('bakhtiarmochamad@gmail.com');
-				$this->email->subject('Email Test');
-				$this->email->message('Pendaftaran P3I Anda berhasil.');
+				$this->email->from('drpm.its@gmail.com', 'SIPITS ITS');
+				$this->email->to($this->input->post('email'));
+				$this->email->subject('Konfirmasi Pendaftaran P3I');
+				$this->email->message('Pendaftaran P3I Telah Berhasil');
 
 				$this->email->send();
 
@@ -378,25 +375,25 @@ class Pendaftaran extends CI_Controller
 			if ($simpan == 1) {
 				$this->load->library('email');
 
-				$config['protocol']    = 'smtp';
-				$config['smtp_host']    = 'ssl://smtp.gmail.com';
-				$config['smtp_port']    = '465';
-				$config['smtp_timeout'] = '7';
-				$config['smtp_user']    = 'bakhtiarhanafi@gmail.com';
-				$config['smtp_pass']    = '';
-				$config['charset']    = 'utf-8';
-				$config['newline']    = "\r\n";
-				$config['mailtype'] = 'text'; // or html
-				$config['validation'] = TRUE; // bool whether to validate email or not      
+				// $config['protocol']    = 'smtp';
+				// $config['smtp_host']    = 'ssl://smtp.gmail.com';
+				// $config['smtp_port']    = '465';
+				// $config['smtp_timeout'] = '7';
+				// $config['smtp_user']    = 'drpm.its@gmail.com';
+				// $config['smtp_pass']    = 'drpmITS2020';
+				// $config['charset']    = 'utf-8';
+				// $config['newline']    = "\r\n";
+				// $config['mailtype'] = 'text'; // or html
+				// $config['validation'] = TRUE; // bool whether to validate email or not      
 
-				$this->email->initialize($config);
+				// $this->email->initialize($config);
 
-				$this->email->from('bakhtiarhanafi@gmail.com', 'Bakhtiar');
-				$this->email->to('bakhtiarmochamad@gmail.com');
-				$this->email->subject('Email Test');
-				$this->email->message('Upload Iuran Anda berhasil.');
+				// $this->email->from('drpm.its@gmail.com', 'SIPITS ITS');
+				// $this->email->to($this->input->post('email'));
+				// $this->email->subject('Konfirmasi Pengumpulan Luaran');
+				// $this->email->message('Pengumpulan Luaran Telah Berhasil');
 
-				$this->email->send();
+				// $this->email->send();
 
 				$this->session->set_flashdata('hasil', '<div class="alert alert-success alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><h4><i class="icon fa fa-check"></i> Alert!</h4>Berhasil Mengumpulkan Luaran.</div>');
 			} else {
@@ -410,7 +407,68 @@ class Pendaftaran extends CI_Controller
 
 	public function daftar_bpup()
 	{
-		$this->load->view('daftar_bpup');
+		if ($this->input->post()) {
+			$data = $this->input->post();
+			$data = $this->security->xss_clean($data);
+			$total_biaya = $data['total_biaya'];
+			$data['total_biaya'] = preg_replace('/\D/', '', $total_biaya);
+			$satuan_biaya = $data['satuan_biaya'];
+			$data['satuan_biaya'] = preg_replace('/\D/', '', $satuan_biaya);
+			$data['status'] = 0;
+			$data['tanggal_submit'] = date("yy-m-d");
+
+			$folder = "uploads/bpup/";
+
+			$file = rand(1000, 100000) . "-" . $_FILES['ktp']['name'];
+			$file_loc = $_FILES['ktp']['tmp_name'];
+			$file_size = $_FILES['ktp']['size'];
+			$file_type = $_FILES['ktp']['type'];
+
+			move_uploaded_file($file_loc, $folder . $file);
+
+			$data['ktp'] = $file;
+
+			$file = rand(1000, 100000) . "-" . $_FILES['ktm']['name'];
+			$file_loc = $_FILES['ktm']['tmp_name'];
+			$file_size = $_FILES['ktm']['size'];
+			$file_type = $_FILES['ktm']['type'];
+
+			move_uploaded_file($file_loc, $folder . $file);
+
+			$data['ktm'] = $file;
+
+			$simpan = $this->bpup_model->tambah_bpup($data);
+			if ($simpan == 1) {
+				$this->load->library('email');
+
+				$config['protocol']    = 'smtp';
+				$config['smtp_host']    = 'ssl://smtp.gmail.com';
+				$config['smtp_port']    = '465';
+				$config['smtp_timeout'] = '7';
+				$config['smtp_user']    = 'drpm.its@gmail.com';
+				$config['smtp_pass']    = 'drpmITS2020';
+				$config['charset']    = 'utf-8';
+				$config['newline']    = "\r\n";
+				$config['mailtype'] = 'text'; // or html
+				$config['validation'] = TRUE; // bool whether to validate email or not      
+
+				$this->email->initialize($config);
+
+				$this->email->from('drpm.its@gmail.com', 'SIPITS ITS');
+				$this->email->to($this->input->post('email'));
+				$this->email->subject('Konfirmasi Pendaftaran BPUP');
+				$this->email->message('Pendaftaran BPUP Telah Berhasil');
+
+				$this->email->send();
+
+				$this->session->set_flashdata('hasil', '<div class="alert alert-success alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><h4><i class="icon fa fa-check"></i> Alert!</h4>Berhasil Melakukan Pendaftaran BPUP.</div>');
+			} else {
+				$this->session->set_flashdata('hasil', '<div class="alert alert-warning alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><h4><i class="icon fa fa-warning"></i> Alert!</h4>Gagal Melakukan Pendaftaran BPUP.</div>');
+			}
+			redirect('pendaftaran/daftar_bpup');
+		} else {
+			$this->load->view('daftar_bpup');
+		}
 	}
 
 	public function cekDosen()

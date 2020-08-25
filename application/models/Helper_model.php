@@ -84,6 +84,9 @@ class Helper_model extends CI_Model
             } else {
                 return $query->result();
             }
+        } else if ($table == "bpup") {
+            $query = $this->db->query("select *, id_bpup as id, nomor_induk as nidn from data_bpup where lower(judul) like '%" . $judul . "%'");
+            return $query->result();
         } else {
             $query = $this->db->query("select *, dept as departemen, univ as universitas, id_kp as id, judul_publikasi as judul from data_kmpi where lower(judul_publikasi) like '%" . $judul . "%'");
             return $query->result();
@@ -116,6 +119,24 @@ class Helper_model extends CI_Model
             } else {
                 $query = $this->db->query("update data_p3i set status_luaran1 = '1', luaran1 = '$upload' where id_p3i = '$id'");
             }
+        } else if ($table == "bpup") {
+            $jenis_luaran = $tata["jenis_luaran"];
+            $isi_luaran = $tata["isi_luaran"];
+            if ($jenis_luaran == 1) {
+                $jenis_luaran =
+                    'Jurnal Internasional';
+            } else if ($jenis_luaran == 2) {
+                $jenis_luaran = 'Publikasi Seminar Internasional';
+            } else if ($jenis_luaran == 3) {
+                $jenis_luaran = 'Produk';
+            } else if ($jenis_luaran == 4) {
+                $jenis_luaran = 'Prototipe';
+            } else if ($jenis_luaran == 5) {
+                $jenis_luaran = 'HKI';
+            } else {
+                $jenis_luaran = 'Lainnya';
+            }
+            $query = $this->db->query("update data_bpup set status_luaran = '$status', luaran = '$upload', jenis_luaran = '$jenis_luaran', isi_luaran = '$isi_luaran' where id_bpup = '$id'");
         } else {
             $query = $this->db->query("update data_kmpi set status_luaran = '$status', luaran = '$upload' where id_kmpi = '$id'");
         }
