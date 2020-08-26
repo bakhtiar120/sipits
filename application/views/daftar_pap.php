@@ -33,8 +33,8 @@
         <hr>
         <?php echo $this->session->flashdata("hasil"); ?>
         <p>Identitas Ketua Peneliti</p>
-        <label for="email"><b>NIP/NIDN</b></label>
-        <input type="text" placeholder="Masukkan NIP/NIDN" name="nomor_induk_ketua" id="nomor_induk_ketua" required>
+        <label for="email"><b>NIP</b></label>
+        <input type="text" placeholder="Masukkan NIP" name="nomor_induk_ketua" id="nomor_induk_ketua" required>
         <label for="email"><b>Nama Ketua Peneliti</b></label>
         <input type="text" placeholder="Masukkan Nama Lengkap dan gelar (jika ada)" name="nama_ketua" id="nama_ketua" required>
 

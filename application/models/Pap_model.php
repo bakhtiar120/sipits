@@ -61,7 +61,7 @@ class Pap_model extends CI_Model  {
     }
     function nidn($nomor)
     {
-        $query = $this->db->query("select count(nidn) jml from dosen where nidn = '$nomor'");
+        $query = $this->db->query("select count(nip) jml from dosen where nip = '$nomor'");
         return $query->row()->jml;
     }
     function nrp($nomor)
@@ -72,7 +72,7 @@ class Pap_model extends CI_Model  {
 
     function get_dosen($nomor)
     {
-        $query = $this->db->query("select * from dosen where nidn = '$nomor'");
+        $query = $this->db->query("select * from dosen where nip = '$nomor'");
         return $query->result();
     }
 

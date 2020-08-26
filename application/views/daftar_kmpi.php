@@ -30,8 +30,8 @@
 
 
       <p>Identitas Pengusul</p>
-      <label for="email"><b>NIP/NIDN</b></label>
-      <input type="text" class="form-control" placeholder="Masukkan NIP/NIDN" name="nomor_induk" id="nomor_induk" onKeyUp="this.value=this.value.replace(/[^0-9]/g,'')" required>
+      <label for="email"><b>NIP</b></label>
+      <input type="text" class="form-control" placeholder="Masukkan NIP" name="nomor_induk" id="nomor_induk" onKeyUp="this.value=this.value.replace(/[^0-9]/g,'')" required>
 
       <label for="email"><b>Nama</b></label>
       <input type="text" class="form-control" placeholder="Masukkan Nama Lengkap dan gelar (jika ada)" id="nama" name="nama" required>
@@ -62,8 +62,8 @@
       <hr>
 
       <p>Identitas Pembimbing Dosen ITS</p>
-      <label for="email"><b>NIP/NIDN</b></label>
-      <input type="text" class="form-control" placeholder="Masukkan NIP/NIDN" name="nomor_pembimbing" id="nomor_pembimbing" onKeyUp="this.value=this.value.replace(/[^0-9]/g,'')" required>
+      <label for="email"><b>NIP</b></label>
+      <input type="text" class="form-control" placeholder="Masukkan NIP" name="nomor_pembimbing" id="nomor_pembimbing" onKeyUp="this.value=this.value.replace(/[^0-9]/g,'')" required>
 
       <label for="email"><b>Nama</b></label>
       <input type="text" class="form-control" placeholder="Masukkan Nama Pembimbing" name="nama_pembimbing" id="nama_pembimbing" required>

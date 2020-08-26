@@ -127,16 +127,6 @@
                                         <?php echo $pendanaan ?>
                                     </p>
                                     <hr>
-                                    <strong><i class="fas fa-pencil-alt mr-1"></i> Jumlah Hibah</strong>
-                                    <p class="text-muted">
-                                        <?php echo "Rp. " .  number_format($jumlah_hibah, 0, ".", ".") ?>
-                                    </p>
-                                    <hr>
-                                    <strong><i class="fas fa-pencil-alt mr-1"></i> Target Luaran</strong>
-                                    <p class="text-muted">
-                                        <?php echo $target_luaran ?>
-                                    </p>
-                                    <hr>
                                     <strong><i class="fas fa-pencil-alt mr-1"></i> Honor</strong>
                                     <p class="text-muted">
                                         <?php echo "Rp. " .  number_format($honor, 0, ".", ".") ?>

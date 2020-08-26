@@ -32,8 +32,8 @@
         <hr>
         <?php echo $this->session->flashdata("hasil"); ?>
         <p>Identitas Pengusul</p>
-        <label for="email"><b>NIP/NIDN</b></label>
-        <input type="text" placeholder="Masukkan NIP/NIDN" name="nomor_induk" id="nomor_induk" required>
+        <label for="email"><b>NIP</b></label>
+        <input type="text" placeholder="Masukkan NIP" name="nomor_induk" id="nomor_induk" required>
         <label for="nama"><b>Nama</b></label>
         <input type="text" placeholder="Masukkan Nama Lengkap dan gelar (jika ada)" name="nama" id="nama" required>
 

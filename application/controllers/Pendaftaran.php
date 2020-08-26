@@ -185,7 +185,7 @@ class Pendaftaran extends CI_Controller
 			$this->form_validation->set_rules('judul_publikasi', 'Judul Publikasi', 'strip_tags');
 			$this->form_validation->set_rules('publisher', 'Publisher', 'strip_tags');
 
-			$data = $this->stripHTMLtags($this->input->post());
+			$data = $this->input->post();
 			$data['status'] = 0;
 			$data['tanggal_submit'] = date("yy-m-d");
 
