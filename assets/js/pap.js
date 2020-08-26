@@ -1,27 +1,34 @@
-var rupiah = document.getElementById('total_honor');
-//var rupiah2 = document.getElementById('total_honor');
-rupiah.addEventListener('keyup', function(e) {
-    // tambahkan 'Rp.' pada saat form di ketik
-    //rupiah2.value = this.value;
-    // gunakan fungsi formatRupiah() untuk mengubah angka yang di ketik menjadi format angka
-    rupiah.value = formatRupiah(this.value, 'Rp. ');
 
-});
 
-var jumlahhibah = document.getElementById('jumlah_hibah');
-jumlahhibah.addEventListener('keyup', function(e) {
-    // tambahkan 'Rp.' pada saat form di ketik
-    // gunakan fungsi formatRupiah() untuk mengubah angka yang di ketik menjadi format angka
-    jumlahhibah.value = formatRupiah(this.value, 'Rp. ');
 
-});
+// var rupiah = document.getElementById('total_honor');
+// //var rupiah2 = document.getElementById('total_honor');
+// rupiah.addEventListener('keyup', function(e) {
+//     // tambahkan 'Rp.' pada saat form di ketik
+//     //rupiah2.value = this.value;
+//     // gunakan fungsi formatRupiah() untuk mengubah angka yang di ketik menjadi format angka
+//     rupiah.value = formatRupiah(this.value, 'Rp. ');
+
+// });
+
 
 var honor = document.getElementById('honor');
+var lama_bulan = document.getElementById('lama_bulan');
+var total_honor = document.getElementById('total_honor');
 honor.addEventListener('keyup', function(e) {
     // tambahkan 'Rp.' pada saat form di ketik
-    honor.value = this.value;
-    // gunakan fungsi formatRupiah() untuk mengubah angka yang di ketik menjadi format angka
-    honor.value = formatRupiah(this.value, 'Rp. ');
+    // honor.value = this.value;
+    // // gunakan fungsi formatRupiah() untuk mengubah angka yang di ketik menjadi format angka
+    // honor.value = formatRupiah(this.value, 'Rp. ');
+    // var num = honor.value.replace(/[^0-9]/g,'');
+    // var total = num * lama_bulan.value;
+    // total_honor.value = total;
+    
+    // honor.value = formatRupiah(this.value, 'Rp. ');
+	// var hapus_rp = honor.value.replace(/[^0-9]/g,'');
+	total = honor.value * lama_bulan.value;
+	total_honor.value = total;
+
 
 });
 /* Fungsi formatRupiah */

@@ -145,7 +145,7 @@
 
                                     <strong><i class="far fa-file-alt mr-1"></i> Lama Penelitian</strong>
                                     <p class="text-muted">
-                                        <?php echo $lama_bulan ?> bulan
+                                        <?php echo $lama_bulan . " " . $jenis_lama ?> 
                                     </p>
                                     <hr>
                                     <strong><i class="fas fa-pencil-alt mr-1"></i>Total Honor</strong>

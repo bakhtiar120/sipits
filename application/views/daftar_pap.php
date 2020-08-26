@@ -63,7 +63,19 @@
         <label for="email"><b>Nama Asisten Peneliti</b></label>
         <input type="text" placeholder="Masukkan Nama Lengkap dan gelar (jika ada)" name="nama_ap" id="nama_ap" required>
         <label for="email"><b>Status</b></label>
-        <input type="text" placeholder="Masukkan status sebagai apa" name="status_ap" id="status_ap" required>
+        <br>
+        <div class="row">
+          <div class="col-sm-4">
+            <select class="form-control" name="status_ap" id="status_ap" required>
+              <option value="">--- Pilih ---</option>
+              <option value="Mahasiswa">Mahasiswa</option>
+              <option value="Karyawan">Karyawan</option>
+              <option value="Tenaga Ahli">Tenaga Ahli</option>
+              <option value="Umum">Umum</option>
+            </select>
+          </div>
+        </div>
+        <br />
         <label for="email"><b>Departemen/Unit</b></label>
         <input type="text" placeholder="Masukkan Nama departemen" name="departemen_ap" id="departemen_ap" required>
         <label for="email"><b>Instansi</b></label>
@@ -110,26 +122,37 @@
         <label for="email"><b>Sumber Pendanaan</b></label>
         <input type="text" placeholder="Masukkan sumber pendanaan" name="pendanaan" required>
 
-        <label for="email"><b>Jumlah Hibah</b></label>
-        <input type="text" placeholder="Masukkan jumlah hibah yang didapat" name="jumlah_hibah" id="jumlah_hibah" onKeyUp="this.value=this.value.replace(/[^0-9]/g,'')" required>
+        <label for="email"><b>Tahun</b></label>
+        <input type="text" placeholder="Masukkan tahun" name="tahun" id="tahun" maxlength="4" onKeyUp="this.value=this.value.replace(/[^0-9]/g,'')" required>
 
-        <label for="email"><b>Target Luaran</b></label>
-        <input type="text" placeholder="Masukkan target luaran penelitian" name="target_luaran" required>
-
+        <hr>
         <hr>
 
         <p>Reward Honor</p>
+        <label for="email"><b>Lama Pekerjaan</b></label>
+        <div class="row">
+          <div class="col-sm-4">
+            <input type="text" placeholder="Masukkan lama pekerjaan" name="lama_bulan" onKeyUp="this.value=this.value.replace(/[^0-9]/g,'')" id="lama_bulan" required>
 
-        <label for="email"><b>Jumlah Honor per Bulan</b></label>
-        <input type="text" placeholder="Masukkan honor yang akan didapatkan per bulan" name="honor" id="honor" required>
+          </div>
+          <div class="col-sm-4" style="margin:10px;">
+            <select class="form-control" name="jenis_lama" id="jenis_lama" required>
+              <option value="">--- Pilih ---</option>
+              <option value="Jam">Jam</option>
+              <option value="Hari">Hari</option>
+              <option value="Bulan">Bulan</option>
+              <option value="Kegiatan">Kegiatan</option>
+            </select>
+          </div>
+        </div>
+        <label for="email"><b>Satuan Biaya</b></label>
+        <input type="text" placeholder="Masukkan honor yang akan didapatkan" name="honor" id="honor" required>
         <label for="email"><b>Jobdesk</b></label>
         <input type="text" placeholder="Masukkan jobdesk" name="jobdesk" id="jobdesk" required>
 
-        <label for="email"><b>Total lama bulan</b></label>
-        <input type="text" placeholder="Masukkan lama bulan" name="lama_bulan" onKeyUp="this.value=this.value.replace(/[^0-9]/g,'')" required>
 
         <label for="email"><b>Total Honor</b></label>
-        <input type="text" placeholder="Masukkan total honor yang didapatkan" name="total_honor" id="total_honor" onKeyUp="this.value=this.value.replace(/[^0-9]/g,'')" required>
+        <input type="text" placeholder="Masukkan total honor yang didapatkan" name="total_honor" id="total_honor" readonly required>
 
         <hr>
 

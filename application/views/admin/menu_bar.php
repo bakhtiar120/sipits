@@ -193,6 +193,14 @@
           </a>
         </li>
         <li class="nav-item has-treeview">
+          <a href="<?php echo base_url('atur_bpup'); ?>" class="nav-link">
+            <i class="nav-icon fas fa-file-alt"></i>
+            <p>
+              Program BPUP
+            </p>
+          </a>
+        </li>
+        <li class="nav-item has-treeview">
           <a href="<?php echo base_url('login/logout'); ?>" class="nav-link">
             <i class="nav-icon fas fa-sign-out-alt"></i>
             <p>

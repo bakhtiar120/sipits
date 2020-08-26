@@ -64,6 +64,35 @@ class Bpup_model extends CI_Model
         return true;
     }
 
+    function get_bpup_all()
+    {
+
+        $this->db->order_by("nama", "asc");
+        $query = $this->db->get('data_bpup');
+        return $query->result_array();
+    }
+
+    function get_bpup_by_id($id)
+    {
+
+        $this->db->where('id_bpup', $id); // Produces: WHERE name = 'Joe'
+        $query = $this->db->get('data_bpup');
+        return $query->result_array();
+    }
+
+    function hapus_bpup($id)
+    {
+
+        $this->db->trans_start();
+        $this->db->where('id_bpup', $id);
+        $this->db->delete('data_bpup');
+        $this->db->trans_complete();
+
+        if ($this->db->trans_status() === FALSE) return 0;
+        return true;
+    }
+
+
     function get_all()
     {
 
