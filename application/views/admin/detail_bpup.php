@@ -103,6 +103,59 @@
                                 </div>
                                 <!-- /.card-header -->
                                 <div class="card-body">
+                                    <strong><i class="fas fa-book mr-1"></i> Judul</strong>
+
+                                    <p class="text-muted">
+                                        <?php echo $judul ?>
+                                    </p>
+                                    <hr>
+                                    <strong><i class="fas fa-book mr-1"></i> Nomor Kontrak</strong>
+
+                                    <p class="text-muted">
+                                        <?php echo $no_kontrak ?>
+                                    </p>
+                                    <hr>
+                                    <strong><i class="fas fa-book mr-1"></i> Tanggal Kontrak</strong>
+
+                                    <p class="text-muted">
+                                        <?php echo $tanggal_kontrak ?>
+                                    </p>
+                                    <hr>
+                                    <strong><i class="fas fa-book mr-1"></i> Skema</strong>
+
+                                    <p class="text-muted">
+                                        <?php echo $skema ?>
+                                    </p>
+                                    <hr>
+                                    <strong><i class="fas fa-book mr-1"></i> Sumber Pendanaan</strong>
+
+                                    <p class="text-muted">
+                                        <?php echo $sumber ?>
+                                    </p>
+                                    <hr>
+                                    <strong><i class="fas fa-book mr-1"></i> Tahun</strong>
+
+                                    <p class="text-muted">
+                                        <?php echo $tahun ?>
+                                    </p>
+                                    <hr>
+
+                                </div>
+
+                            </div>
+
+                            <div class="card card-primary">
+                                <div class="card-header">
+                                    <h3 class="card-title">Detail Penerima Beasiswa</h3>
+                                </div>
+                                <!-- /.card-header -->
+                                <div class="card-body">
+                                    <strong><i class="fas fa-book mr-1"></i> NRP</strong>
+
+                                    <p class="text-muted">
+                                        <?php echo $nrp ?>
+                                    </p>
+                                    <hr>
                                     <strong><i class="fas fa-book mr-1"></i> Nama Penerima Beasiswa</strong>
 
                                     <p class="text-muted">
@@ -117,21 +170,40 @@
                                     </p>
                                     <hr>
 
-                                    <strong><i class="fas fa-map-marker-alt mr-1"></i> Judul Penelitian</strong>
+                                    <strong><i class="fas fa-book mr-1"></i> Program Studi</strong>
+
                                     <p class="text-muted">
-                                        <?php echo htmlentities($judul, ENT_QUOTES, 'UTF-8') ?>
+                                        <?php echo $program_studi ?>
                                     </p>
                                     <hr>
 
-                                    <strong><i class="fas fa-map-marker-alt mr-1"></i> Skema Penelitian</strong>
+                                    <strong><i class="fas fa-book mr-1"></i> Alamat KTP</strong>
+
                                     <p class="text-muted">
-                                        <?php echo $skema ?>
+                                        <?php echo $alamat_ktp ?>
                                     </p>
                                     <hr>
 
-                                    <strong><i class="fas fa-pencil-alt mr-1"></i> Sumber Dana</strong>
+                                    <strong><i class="fas fa-book mr-1"></i> Alamat Domisili</strong>
+
                                     <p class="text-muted">
-                                        <?php echo $sumber ?>
+                                        <?php echo $alamat_domisili ?>
+                                    </p>
+                                    <hr>
+
+                                    <strong><i class="fas fa-book mr-1"></i> Email</strong>
+                                    <p class="text-muted">
+                                        <?php echo $email_bea ?>
+                                    </p>
+                                    <hr>
+                                    <strong><i class="fas fa-book mr-1"></i> No HP</strong>
+                                    <p class="text-muted">
+                                        <?php echo $no_hp_bea ?>
+                                    </p>
+                                    <hr>
+                                    <strong><i class="fas fa-book mr-1"></i> Jenis Reward</strong>
+                                    <p class="text-muted">
+                                        <?php echo $jenis_reward ?>
                                     </p>
                                     <hr>
                                     <strong><i class="fas fa-pencil-alt mr-1"></i> Satuan Biaya</strong>
@@ -139,10 +211,9 @@
                                         <?php echo "Rp. " .  number_format($satuan_biaya, 0, ".", ".") ?>
                                     </p>
                                     <hr>
-
                                     <strong><i class="far fa-file-alt mr-1"></i> Lama Pembiayaan</strong>
                                     <p class="text-muted">
-                                        <?php echo $lama_pembiayaan ?> Semester
+                                        <?php echo $lama_pembiayaan ?> Semester, <?php echo $sejak . ' ' . $sejak_tahun ?> sampai <?php echo $sampai . ' ' . $sampai_tahun ?>
                                     </p>
                                     <hr>
                                     <strong><i class="fas fa-pencil-alt mr-1"></i>Total Biaya</strong>
@@ -150,21 +221,17 @@
                                         <?php echo "Rp. " .  number_format($total_biaya, 0, ".", ".") ?>
                                     </p>
                                     <hr>
-
                                     <strong><i class="far fa-file-alt mr-1"></i> KTM</strong>
                                     <p class="text-muted">
-                                        <a href="<?php echo base_url('uploads/bpup/' . $ktm); ?>" class="btn btn-link">Lihat File</a>
+                                        <a href="<?php echo base_url('uploads/bpup/' . $ktm); ?>" class="btn btn-link" target="_blank">Lihat File</a>
                                     </p>
                                     <hr>
-
                                     <strong><i class="far fa-file-alt mr-1"></i> KTP</strong>
                                     <p class="text-muted">
-                                        <a href="<?php echo base_url('uploads/bpup/' . $ktp); ?>" class="btn btn-link">Lihat File</a>
+                                        <a href="<?php echo base_url('uploads/bpup/' . $ktp); ?>" class="btn btn-link" target="_blank">Lihat File</a>
                                     </p>
                                     <hr>
-
                                 </div>
-
                             </div>
 
                             <!-- Detail Penelitian -->
@@ -172,11 +239,15 @@
                                 <div class="card-header">
                                     <h3 class="card-title">Aksi</h3>
                                 </div>
-
                                 <div class="card-body">
 
                                     <div class="row">
                                         <div class="col-sm-3">
+                                            <a class="btn btn-default btn-sm" href="<?php echo site_url('atur_bpup'); ?>">
+                                                <i class="fas fa-reply">
+                                                </i>
+                                                Kembali
+                                            </a>
                                             <a class="btn btn-warning btn-sm" href="<?php echo site_url('atur_bpup/edit/' . $id_bpup); ?>">
                                                 <i class="fas fa-edit">
                                                 </i>

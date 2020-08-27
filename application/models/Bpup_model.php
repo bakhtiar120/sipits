@@ -97,24 +97,24 @@ class Bpup_model extends CI_Model
     {
 
         $this->db->order_by("tanggal_submit", "desc");
-        $query = $this->db->get('data_kmpi');
+        $query = $this->db->get('data_bpup');
         return $query->result_array();
     }
 
     function get_by_id($id)
     {
-        $this->db->where('id_kmpi', $id);
-        $query = $this->db->get('data_kmpi');
+        $this->db->where('id_bpup', $id);
+        $query = $this->db->get('data_bpup');
         return $query->result_array();
     }
 
-    function update_kmpi($id_kmpi, $data)
+    function update_bpup($id_bpup, $data)
     {
         $this->update_dosen($data);
         $this->db->trans_start();
 
-        $this->db->where('id_kmpi', $id_kmpi);
-        $this->db->update('data_kmpi', $data);
+        $this->db->where('id_bpup', $id_bpup);
+        $this->db->update('data_bpup', $data);
 
         $this->db->trans_complete();
 
@@ -125,39 +125,16 @@ class Bpup_model extends CI_Model
     function update_dosen($data)
     {
 
-        $dosen1 = array(
+        $dosen2 = array(
             'nama' => $data['nama'],
             'nidn' => $data['nomor_induk'],
             'nip' => $data['nomor_induk'],
-            'alamat' => $data['alamat_kantor'],
+            'departemen' => $data['departemen'],
+            'email' => $data['email'],
             'telepon' => $data['no_hp']
         );
         $this->db->where('id', cekIdDosen($data['nomor_induk']));
-        $this->db->update('dosen', $dosen1);
-
-        $dosen2 = array(
-            'nama' => $data['nama_pembimbing'],
-            'nidn' => $data['nomor_pembimbing'],
-            'nip' => $data['nomor_pembimbing'],
-            'departemen' => $data['departemen_pembimbing'],
-            'fakultas' => $data['fakultas_pembimbing'],
-            'email' => $data['email_pembimbing'],
-            'telepon' => $data['no_hp']
-        );
-        $this->db->where('id', cekIdDosen($data['nomor_pembimbing']));
         $this->db->update('dosen', $dosen2);
-    }
-
-    function hapus_kmpi($id)
-    {
-
-        $this->db->trans_start();
-        $this->db->where('id_kmpi', $id);
-        $this->db->delete('data_kmpi');
-        $this->db->trans_complete();
-
-        if ($this->db->trans_status() === FALSE) return 0;
-        return true;
     }
 
     function update_status_bpup($id_bpup, $status)

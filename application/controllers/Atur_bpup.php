@@ -195,7 +195,7 @@ class Atur_bpup extends CI_Controller
             $data['status_luaran'] = 1;
         }
 
-        $hasil = $this->bpup_model->update_pap($id_bpup, $data);
+        $hasil = $this->bpup_model->update_bpup($id_bpup, $data);
 
         if ($hasil == 0) {
             $this->session->set_flashdata(
