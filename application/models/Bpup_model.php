@@ -160,7 +160,7 @@ class Bpup_model extends CI_Model
         return true;
     }
 
-    function update_status_kmpi($id_kmpi, $status)
+    function update_status_bpup($id_bpup, $status)
     {
 
         $this->db->trans_start();
@@ -170,8 +170,8 @@ class Bpup_model extends CI_Model
 
         );
 
-        $this->db->where('id_kmpi', $id_kmpi);
-        $this->db->update('data_kmpi', $data);
+        $this->db->where('id_bpup', $id_bpup);
+        $this->db->update('data_bpup', $data);
 
         $this->db->trans_complete();
 

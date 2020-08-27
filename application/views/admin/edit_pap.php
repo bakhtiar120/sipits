@@ -267,6 +267,19 @@
                                                     <span class="error text-danger" id="invalid_luaran"></span>
                                                 </td>
                                             </tr>
+                                            <tr>
+                                                <td>
+                                                    <a href="<?php echo base_url('uploads/luaran/' . $luaran); ?>" target="_black" class="btn btn-link">File Luaran</a>
+                                                </td>
+
+                                                <td class="py-0 align-middle">
+                                                    <div class="btn-group btn-group-sm">
+                                                        <input type="file" placeholder="Upload Ulang?" name="luaran" id="luaran">
+                                                    </div>
+                                                    <br>
+                                                    <span class="error text-danger" id="invalid_luaran"></span>
+                                                </td>
+                                            </tr>
 
                                         </tbody>
                                     </table>

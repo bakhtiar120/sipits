@@ -19,15 +19,15 @@ honor.addEventListener('keyup', function(e) {
     // tambahkan 'Rp.' pada saat form di ketik
     // honor.value = this.value;
     // // gunakan fungsi formatRupiah() untuk mengubah angka yang di ketik menjadi format angka
-    // honor.value = formatRupiah(this.value, 'Rp. ');
-    // var num = honor.value.replace(/[^0-9]/g,'');
-    // var total = num * lama_bulan.value;
-    // total_honor.value = total;
-    
+    honor.value = formatRupiah(this.value, 'Rp. ');
+    var num = honor.value.replace(/[^0-9]/g,'');
+    var total = num * lama_bulan.value;
+    total_honor.value = total;
+    total_honor.value = formatRupiah(total_honor.value,'Rp. ');
     // honor.value = formatRupiah(this.value, 'Rp. ');
 	// var hapus_rp = honor.value.replace(/[^0-9]/g,'');
-	total = honor.value * lama_bulan.value;
-	total_honor.value = total;
+	// total = honor.value * lama_bulan.value;
+	// total_honor.value = total;
 
 
 });

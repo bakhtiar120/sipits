@@ -8,9 +8,10 @@ rupiah.addEventListener('keyup', function (e) {
 	//rupiah2.value = this.value;
 	// gunakan fungsi formatRupiah() untuk mengubah angka yang di ketik menjadi format angka
 	rupiah.value = formatRupiah(this.value, 'Rp. ');
-	var hapus_rp = rupiah.value.replace("Rp. ", "");
-	total = hapus_rp.replace(".", "") * lama_pembiayaan.value;
+	var hapus_rp = rupiah.value.replace(/[^0-9]/g,'');
+	total = hapus_rp * lama_pembiayaan.value;
 	total_biaya.value = total;
+	total_biaya.value = formatRupiah(total_biaya.value,'Rp. ');
 });
 
 
