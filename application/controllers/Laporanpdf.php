@@ -4,24 +4,17 @@ Class Laporanpdf extends CI_Controller{
     function __construct() {
         parent::__construct();
         $this->load->library('Pdf');
+        // $this->load->library('cetak_pdf');
+   
     }
     
     public function index(){
 
-        $data = array(
-            "dataku" => array(
-                "nama" => "Petani Kode",
-                "url" => "http://petanikode.com"
-            )
-        );
+        
+            $this->load->view('admin/cetak_kontrak');
+        
 
-        $this->load->library('pdf');
-
-        $this->pdf->setPaper('A4', 'potrait');
-        $this->pdf->filename = "kontrak.pdf";
-        //$this->pdf->load_view('admin/cetak_kontrak', $data);
-
-        $this->load->view('admin/cetak_kontrak');
+        // $this->load->view('admin/cetak_kontrak');
 
     }
 
