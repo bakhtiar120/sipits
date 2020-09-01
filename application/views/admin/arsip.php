@@ -52,7 +52,7 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-sm-12">
-                                        <form>
+                                        <form id="filter">
                                             <div class="row">
                                                 <div class="col-sm-4">
                                                     <div class="form-group">
@@ -177,30 +177,63 @@
 
                 $("#cari").click(function() {
                     var cari = "Cari";
-                    var tahun = $("#tahun").val();
+                    var thn = $("#tahun").val();
                     var skema = $("#skema").val();
                     var dep = $("#departemen").val();
                     var fak = $("#fakultas").val();
                     $('#table').DataTable({
-                        "scrollX": true,
                         "responsive": true,
+                        "scrollX": true,
+                        "pageLength": 10,
+                        "destroy": true,
                         "processing": true,
                         "serverSide": true,
                         "order": [],
-
                         "ajax": {
-                            "url": "<?php echo site_url('arsip/get_data2') ?>",
+                            "url": "http://localhost:81/sipits/arsip/get_data2",
                             "type": "POST",
-                            "data": "cari=" + cari + "&tahun=" + tahun + "&skema=" + skema + "&dep=" + dep + "&fak=" + fak
-                        },
-
-
-                        "columnDefs": [{
-                            "targets": [0],
-                            "orderable": false,
-                        }, ],
-
+                            "dataType": "json",
+                            "data": function(d) {
+                                var frm_data = $('#filter').serializeArray();
+                                $.each(frm_data, function(key, val) {
+                                    d[val.name] = val.value;
+                                });
+                            }
+                        }
                     });
+                    // // table.destroy();
+                    // $('#table').DataTable({
+                    //     "scrollX": true,
+                    //     "responsive": true,
+                    //     "processing": true,
+                    //     "serverSide": true,
+                    //     "order": [],
+
+                    //     "ajax": {
+                    //         "url": "<?php // echo site_url('arsip/get_data2') 
+                                        ?>",
+                    //         "type": "POST",
+                    //         "dataType": "json",
+                    //         "data": function(d) {
+                    //             var frm_data = $('#filter').serializeArray();
+                    //             $.each(frm_data, function(key, val) {
+                    //                 d[val.name] = val.value;
+                    //             });
+                    //         },
+                    //     },
+                    //     "drawCallback": function(settings) {
+                    //         // Here the response
+                    //         var response = settings;
+                    //         console.log(response);
+                    //     },
+
+
+                    //     "columnDefs": [{
+                    //         "targets": [0],
+                    //         "orderable": false,
+                    //     }, ],
+
+                    // });
                 });
 
                 //datatables

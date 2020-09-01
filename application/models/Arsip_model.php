@@ -65,12 +65,12 @@ class Arsip_model extends CI_Model
         return $this->db->count_all_results();
     }
 
-    private function _get_datatables_query2($post)
+    private function _get_datatables_query2()
     {
-        $tahun = $post->tahun;
-        $skema = $post->skema;
-        $dep = $post->dep;
-        $fak = $post->fak;
+        $tahun = str_replace('.', '', $this->input->post("tahun"));
+        $skema = str_replace('.', '', $this->input->post("skema"));
+        $dep = str_replace('.', '', $this->input->post("departemen"));
+        $fak = str_replace('.', '', $this->input->post("fakultas"));
         if (!empty($tahun)) {
             $this->db->where("tahun", $tahun);
         }
@@ -113,25 +113,8 @@ class Arsip_model extends CI_Model
 
     function get_datatables2($post)
     {
-        $tahun = $post->tahun;
-        $skema = $post->skema;
-        $dep = $post->dep;
-        $fak = $post->fak;
-        if (!empty($tahun)) {
-            $this->db->where("tahun", $tahun);
-        }
-        if (!empty($skema)) {
-            $this->db->where("skema", $skema);
-        }
-        if (!empty($dep)) {
-            $this->db->where("departemen", $dep);
-        }
-        if (!empty($fak)) {
-            $this->db->where("fakultas", $fak);
-        }
 
-
-        $this->_get_datatables_query2($post);
+        $this->_get_datatables_query2();
         if ($_POST['length'] != -1)
             $this->db->limit($_POST['length'], $_POST['start']);
 
@@ -148,10 +131,10 @@ class Arsip_model extends CI_Model
 
     public function count_all2($post)
     {
-        $tahun = $post->tahun;
-        $skema = $post->skema;
-        $dep = $post->dep;
-        $fak = $post->fak;
+        $tahun = $this->input->post("tahun");
+        $skema = $this->input->post("skema");
+        $dep = $this->input->post("departemen");
+        $fak = $this->input->post("fakultas");
         if (!empty($tahun)) {
             $this->db->where("tahun", $tahun);
         }
