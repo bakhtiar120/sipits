@@ -102,7 +102,7 @@
 
                                                     <!-- <a class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modal-default" href="<?php echo site_url('atur_bpup/hapus/' . $value['id_bpup']); ?>"> -->
 
-                                                    <a class="btn btn-info btn-sm" href="<?php echo site_url('laporanpdf'); ?>">
+                                                    <a class="btn btn-info btn-sm" href="<?php echo site_url('atur_bpup/cetak_data/1'); ?>">
                                                         <i class="fas fa-print">
                                                         </i>
                                                         Cetak Kontrak

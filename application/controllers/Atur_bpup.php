@@ -220,4 +220,11 @@ class Atur_bpup extends CI_Controller
 
         redirect('atur_bpup/index/');
     }
+    public function cetak_data($id)
+    {
+        $this->load->library('f_pdf');
+        $data = $this->bpup_model->get_bpup_by_id($id);
+        $this->load->view('admin/cetak_kontrak_bpup',$data[0]);
+
+    }
 }
