@@ -7,4 +7,5 @@ class f_pdf
     {
         include_once APPPATH . '/third_party/fpdf182/fpdf.php';
     }
+    
 }
