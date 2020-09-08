@@ -14,6 +14,11 @@
  </div>
  <!-- ./wrapper -->
 
+
+ <script type='text/javascript'>
+   var base_url = '<?= base_url() ?>';
+ </script>
+
  <!-- jQuery -->
  <script src="<?php echo base_url(); ?>assets/AdminLTE/plugins/jquery/jquery.min.js"></script>
  <!-- Bootstrap 4 -->

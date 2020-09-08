@@ -106,3 +106,11 @@ if (!function_exists('cetak')) {
         return $cetak;
     }
 }
+
+if (!function_exists('nominal')) {
+
+    function nominal($val)
+    {
+        return number_format($val, 0, "", ".");
+    }
+}
