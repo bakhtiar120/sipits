@@ -43,7 +43,7 @@ $pdf->Cell(30, -6, '  No  :  37', 1, 0);
 $pdf->Ln(5);
 
 $header = array(
-            array("label"=>"No", "length"=>10, "align"=>"C"),
+    array("label" => "No", "length" => 10, "align" => "C"),
     array("label" => "Uraian", "length" => 50, "align" => "C"),
 
     array("label" => "Banyak", "length" => 30, "align" => "C"),
@@ -53,21 +53,21 @@ $header = array(
     array("label" => "Status Unggahan", "length" => 30, "align" => "C"),
 
     array("label" => "Keterangan", "length" => 40, "align" => "C"),
-     );
+);
 #buat header tabel
 
 foreach ($header as $kolom) {
     $pdf->Cell($kolom['length'], 5, $kolom['label'], 1, 0, $kolom['align'], true);
 }
 $pdf->Ln();
-$pdf->Cell(10, 6, '1', 1, 0,'C');
+$pdf->Cell(10, 6, '1', 1, 0, 'C');
 
 $pdf->Cell(50, 6, ' Proposal Revisi', 1, 0);
 
-$pdf->Cell(30, 6, '1 Asli', 1, 0,'C');
-$pdf->Cell(30, 6, '', 1, 0,'C');
-$pdf->Cell(30, 6, '', 1, 0,'C');
-$pdf->Cell(40, 6, '', 1, 0,'C');
+$pdf->Cell(30, 6, '1 Asli', 1, 0, 'C');
+$pdf->Cell(30, 6, '', 1, 0, 'C');
+$pdf->Cell(30, 6, '', 1, 0, 'C');
+$pdf->Cell(40, 6, '', 1, 0, 'C');
 $pdf->Ln();
 $pdf->Cell(10, 6, '2', 1, 0, 'C');
 
@@ -78,14 +78,14 @@ $pdf->Cell(30, 6, '', 1, 0, 'C');
 $pdf->Cell(30, 6, '', 1, 0, 'C');
 $pdf->Cell(40, 6, '', 1, 0, 'C');
 $pdf->Ln();
-$pdf->Cell(10, 6, '3', 1, 0,'C');
+$pdf->Cell(10, 6, '3', 1, 0, 'C');
 
 $pdf->Cell(50, 6, ' Logbook Tahap 1', 1, 0);
 
-$pdf->Cell(30, 6, '1 Asli', 1, 0,'C');
-$pdf->Cell(30, 6, '', 1, 0,'C');
-$pdf->Cell(30, 6, '', 1, 0,'C');
-$pdf->Cell(40, 6, '', 1, 0,'C');
+$pdf->Cell(30, 6, '1 Asli', 1, 0, 'C');
+$pdf->Cell(30, 6, '', 1, 0, 'C');
+$pdf->Cell(30, 6, '', 1, 0, 'C');
+$pdf->Cell(40, 6, '', 1, 0, 'C');
 $pdf->Ln();
 $pdf->Cell(10, 6, '4', 1, 0, 'C');
 
@@ -159,23 +159,23 @@ $pdf->Cell(30, 6, '', 1, 0, 'C');
 $pdf->Cell(30, 6, '', 1, 0, 'C');
 $pdf->Cell(40, 6, '', 1, 0, 'C');
 $pdf->Ln();
-$pdf->Cell(10, 6, '12', 1, 0,'C');
+$pdf->Cell(10, 6, '12', 1, 0, 'C');
 
 $pdf->Cell(50, 6, ' Poster', 1, 0);
 
-$pdf->Cell(30, 6, '1 Asli', 1, 0,'C');
-$pdf->Cell(30, 6, '', 1, 0,'C');
-$pdf->Cell(30, 6, '', 1, 0,'C');
-$pdf->Cell(40, 6, '', 1, 0,'C');
+$pdf->Cell(30, 6, '1 Asli', 1, 0, 'C');
+$pdf->Cell(30, 6, '', 1, 0, 'C');
+$pdf->Cell(30, 6, '', 1, 0, 'C');
+$pdf->Cell(40, 6, '', 1, 0, 'C');
 $pdf->Ln();
-$pdf->Cell(10, 6, '13', 1, 0,'C');
+$pdf->Cell(10, 6, '13', 1, 0, 'C');
 
 $pdf->Cell(50, 6, ' Laporan Keuangan (SPJ)', 1, 0);
 
-$pdf->Cell(30, 6, '1 Asli', 1, 0,'C');
-$pdf->Cell(30, 6, '', 1, 0,'C');
-$pdf->Cell(30, 6, '', 1, 0,'C');
-$pdf->Cell(40, 6, '', 1, 0,'C');
+$pdf->Cell(30, 6, '1 Asli', 1, 0, 'C');
+$pdf->Cell(30, 6, '', 1, 0, 'C');
+$pdf->Cell(30, 6, '', 1, 0, 'C');
+$pdf->Cell(40, 6, '', 1, 0, 'C');
 $pdf->Ln();
 $pdf->Cell(10, 6, '14', 1, 0, 'C');
 
@@ -186,14 +186,14 @@ $pdf->Cell(30, 6, '', 1, 0, 'C');
 $pdf->Cell(30, 6, '', 1, 0, 'C');
 $pdf->Cell(40, 6, '', 1, 0, 'C');
 $pdf->Ln();
-$pdf->Cell(10, 6, '15', 1, 0,'C');
+$pdf->Cell(10, 6, '15', 1, 0, 'C');
 
 $pdf->Cell(50, 6, ' Buku Pembantu Pajak', 1, 0);
 
-$pdf->Cell(30, 6, '1 Asli', 1, 0,'C');
-$pdf->Cell(30, 6, '', 1, 0,'C');
-$pdf->Cell(30, 6, '', 1, 0,'C');
-$pdf->Cell(40, 6, '', 1, 0,'C');
+$pdf->Cell(30, 6, '1 Asli', 1, 0, 'C');
+$pdf->Cell(30, 6, '', 1, 0, 'C');
+$pdf->Cell(30, 6, '', 1, 0, 'C');
+$pdf->Cell(40, 6, '', 1, 0, 'C');
 $pdf->Ln();
 $pdf->Cell(10, 6, '16', 1, 0, 'C');
 
@@ -206,32 +206,32 @@ $pdf->Cell(40, 6, '', 1, 0, 'C');
 $pdf->Ln(10);
 $pdf->Cell(40, 6, ' Nama Ketua', 1, 0);
 
-$pdf->Cell(5, 6, ':', 1, 0,'C');
+$pdf->Cell(5, 6, ':', 1, 0, 'C');
 
-$pdf->Cell(145, 6, ' Prof. Dr. Basuki Widodo, MSc.', 1, 0);
+$pdf->Cell(145, 6, $arsip->nama_ketua, 1, 0);
 $pdf->Ln();
 $pdf->Cell(40, 6, ' Departemen', 1, 0);
 
 $pdf->Cell(5, 6, ':', 1, 0, 'C');
 
-$pdf->Cell(145, 6, ' Matematika', 1, 0);
+$pdf->Cell(145, 6, $arsip->departemen, 1, 0);
 $pdf->Ln();
 $pdf->Cell(40, 6, ' Skema Kegiatan', 1, 0);
 
 $pdf->Cell(5, 6, ':', 1, 0, 'C');
 
-$pdf->Cell(145, 6, ' Penelitian Tesis Magister', 1, 0);
+$pdf->Cell(145, 6, $arsip->skema, 1, 0);
 $pdf->Ln();
-$pdf->MultiCell(40, 12, ' Judul Kegiatan', 1,'L');
+$pdf->MultiCell(40, 12, ' Judul Kegiatan', 1, 'L');
 $pdf->setX(50);
 $pdf->MultiCell(5, -12, ':', 1, 'C');
 $pdf->setX(55);
 // $pdf->MultiCell(145, 12, ':', 1, 'C');
 $cellWidth = 145; //lebar sel
 $cellHeight = 12; //tinggi sel satu baris normal
-$judul = 'PEMODELAN MATEMATIKA ALIRAN FLUIDA MAGNETOHIDRODINAMIK VISKOS DAN MIKROKUTUB MELALUI BENDA DIBAWAH PENGARUH KONVEKSI CAMPURAN DAN MEDAN MAGNET';
+$judul = $arsip->judul;
 //periksa apakah teksnya melibihi kolom?
-$line=0;
+$line = 0;
 if ($pdf->GetStringWidth($judul) < $cellWidth) {
     //jika tidak, maka tidak melakukan apa-apa
     $line = 1;
@@ -267,10 +267,9 @@ if ($pdf->GetStringWidth($judul) < $cellWidth) {
     //dapatkan jumlah baris
     $line = count($textArray);
 }
-$height=12;
-if($line>1)
-{
-    $height=$height/$line;
+$height = 12;
+if ($line > 1) {
+    $height = $height / $line;
 }
 $pdf->MultiCell(145, $height, $judul, 1, 'L');
 // $pdf->Ln();
@@ -279,25 +278,25 @@ $pdf->Cell(40, 6, ' Sumber Dana', 1, 0);
 
 $pdf->Cell(5, 6, ':', 1, 0, 'C');
 
-$pdf->Cell(145, 6, ' Kemenristekdikti', 1, 0);
+$pdf->Cell(145, 6, $arsip->sumber, 1, 0);
 $pdf->Ln();
 $pdf->Cell(40, 6, ' Tahun Pelaksanaan', 1, 0);
 
 $pdf->Cell(5, 6, ':', 1, 0, 'C');
 
-$pdf->Cell(145, 6, ' 2019', 1, 0);
+$pdf->Cell(145, 6, $arsip->tahun, 1, 0);
 $pdf->Ln();
 $pdf->Cell(40, 6, ' Nomor Kontrak', 1, 0);
 
 $pdf->Cell(5, 6, ':', 1, 0, 'C');
 
-$pdf->Cell(145, 6, ' 757/PKS/ITS/2019', 1, 0);
+$pdf->Cell(145, 6, $arsip->nomor_kontrak . $arsip->kode_kontrak, 1, 0);
 $pdf->Ln();
 $pdf->Cell(40, 6, ' Nomor SK', 1, 0);
 
 $pdf->Cell(5, 6, ':', 1, 0, 'C');
 
-$pdf->Cell(145, 6, ' 6/E/KPT/2019', 1, 0);
+$pdf->Cell(145, 6, $arsip->nomor_sk . $arsip->kode_sk, 1, 0);
 $pdf->Ln();
 $pdf->Cell(40, 6, ' Nama Pengirim', 1, 0);
 

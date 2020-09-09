@@ -31,6 +31,8 @@ class Arsip extends CI_Controller
             if (!empty($field->id_detail)) {
                 $lihat = '<a class="btn btn-block btn-success btn-xs" onclick="lihatRak(\'' . $field->id_arsip . '\')" data-toggle="modal" style="cursor:pointer;color:#ffffff">Lihat</a>';
             }
+
+            $cetak = '<a class="btn btn-info btn-sm" href="' . site_url() . 'arsip/cetak_tanda_terima/' . $field->id_arsip . '" target="_blank"><i class="fas fa-print"></i>Tanda Terima</a>';
             $no++;
             $row = array();
             $row[] = $field->id_arsip;
@@ -50,7 +52,7 @@ class Arsip extends CI_Controller
             $row[] = $field->tgl_sk;
             $row[] = $field->kode_unik;
             $row[] = '<a class="btn btn-block btn-info btn-xs" onclick="editRak(\'' . $field->id_arsip . '\')" data-toggle="modal" style="cursor:pointer;color:#ffffff">Rak</a>&nbsp' . $lihat;
-            $row[] = '';
+            $row[] = $cetak;
 
             $data[] = $row;
         }
@@ -77,6 +79,7 @@ class Arsip extends CI_Controller
             if (!empty($field->id_detail)) {
                 $lihat = '<a class="btn btn-block btn-success btn-xs" onclick="lihatRak(\'' . $field->id_arsip . '\')" data-toggle="modal" style="cursor:pointer;color:#ffffff">Lihat</a>';
             }
+            $cetak = '<a class="btn btn-info btn-sm" href="' . site_url() . 'arsip/cetak_tanda_terima/' . $field->id_arsip . '" target="_blank"><i class="fas fa-print"></i>Tanda Terima</a>';
             $no++;
             $row = array();
             $row[] = $field->id_arsip;
@@ -96,7 +99,7 @@ class Arsip extends CI_Controller
             $row[] = $field->tgl_sk;
             $row[] = $field->kode_unik;
             $row[] = '<a class="btn btn-block btn-info btn-xs" onclick="editRak(\'' . $field->id_arsip . '\')" data-toggle="modal" style="cursor:pointer;color:#ffffff">Rak</a>&nbsp' . $lihat;
-            $row[] = '';
+            $row[] = $cetak;
 
             $data[] = $row;
         }
@@ -192,5 +195,12 @@ class Arsip extends CI_Controller
             );
         }
         redirect('arsip');
+    }
+
+    public function cetak_tanda_terima($id)
+    {
+        $this->load->library('f_pdf');
+        $data["arsip"] = $this->Arsip_model->data_arsip($id);
+        $this->load->view('admin/cetak_tanda_terima', $data);
     }
 }

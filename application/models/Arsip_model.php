@@ -216,4 +216,10 @@ class Arsip_model extends CI_Model
             return 0;
         }
     }
+
+    public function data_arsip($id)
+    {
+        $query = $this->db->query("select * from data_arsip where id_arsip = '$id'");
+        return $query->row();
+    }
 }
