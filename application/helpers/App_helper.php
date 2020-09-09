@@ -114,3 +114,19 @@ if (!function_exists('nominal')) {
         return number_format($val, 0, "", ".");
     }
 }
+
+if (!function_exists('tgl')) {
+
+    function tgl($val)
+    {
+        return date_format(date_create($val), 'd-M-Y');
+    }
+}
+
+if (!function_exists('tgl2')) {
+
+    function tgl2($val)
+    {
+        return date_format(date_create($val), 'd/m/Y');
+    }
+}

@@ -185,8 +185,31 @@ class Arsip_model extends CI_Model
     public function updateSisa()
     {
         $id_arsip = $this->input->post("id_arsip");
-        $sisa = str_replace(".", "", $this->input->post("sisa"));
-        $query = $this->db->query("update data_arsip set dana_sisa = '$sisa' where id_arsip = '$id_arsip' ");
+        $terpakai = str_replace(".", "", $this->input->post("terpakai"));
+        $query = $this->db->query("update data_arsip set sptb = '$terpakai', dana_sisa = dana_disetujui-'$terpakai' where id_arsip = '$id_arsip' ");
+        if ($query) {
+            return 1;
+        } else {
+            return 0;
+        }
+    }
+
+    public function updateRak()
+    {
+        $id_arsip = $this->input->post("id_arsip");
+        $id_rak = $this->input->post("id_rak");
+        $kolom = $this->input->post("kolom");
+        $baris = $this->input->post("baris");
+        $keterangan = $this->input->post("keterangan");
+        $cekIdDetail = $this->db->query("select id_detail from data_arsip where id_arsip = '$id_arsip'");
+        if (!empty($cekIdDetail->row()->id_detail)) {
+            $id_detail = $cekIdDetail->row()->id_detail;
+            $query = $this->db->query("update detail_rak set nomor_kolom = '$kolom', nomor_baris = '$baris', keterangan = '$keterangan' where id_detail = '$id_detail'");
+        } else {
+            $query = $this->db->query("insert into detail_rak values (null,'$id_rak','$baris','$kolom','$keterangan')");
+            $idDetail = $this->db->query("select max(id_detail) detail from detail_rak")->row()->detail;
+            $update = $this->db->query("update data_arsip set id_detail = '$idDetail' where id_arsip = '$id_arsip'");
+        }
         if ($query) {
             return 1;
         } else {

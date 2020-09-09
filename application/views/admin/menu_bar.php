@@ -209,6 +209,14 @@
           </a>
         </li>
         <li class="nav-item has-treeview">
+          <a href="<?php echo base_url('rak'); ?>" class="nav-link">
+            <i class="nav-icon fas fa-file-alt"></i>
+            <p>
+              Master Rak
+            </p>
+          </a>
+        </li>
+        <li class="nav-item has-treeview">
           <a href="<?php echo base_url('login/logout'); ?>" class="nav-link">
             <i class="nav-icon fas fa-sign-out-alt"></i>
             <p>

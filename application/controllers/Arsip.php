@@ -8,10 +8,12 @@ class Arsip extends CI_Controller
     {
         parent::__construct();
         $this->load->model('Arsip_model');
+        $this->load->model('Rak_model');
     }
 
     function index()
     {
+        $data["rak"] = $this->Rak_model->rak();
         $data["tahun"] = $this->Arsip_model->tahun();
         $data["skema"] = $this->Arsip_model->skema();
         $data["departemen"] = $this->Arsip_model->departemen();
@@ -25,6 +27,10 @@ class Arsip extends CI_Controller
         $data = array();
         $no = $_POST['start'];
         foreach ($list as $field) {
+            $lihat = '';
+            if (!empty($field->id_detail)) {
+                $lihat = '<a class="btn btn-block btn-success btn-xs" onclick="lihatRak(\'' . $field->id_arsip . '\')" data-toggle="modal" style="cursor:pointer;color:#ffffff">Lihat</a>';
+            }
             $no++;
             $row = array();
             $row[] = $field->id_arsip;
@@ -36,12 +42,15 @@ class Arsip extends CI_Controller
             $row[] = $field->departemen;
             $row[] = $field->fakultas;
             $row[] = nominal($field->dana_disetujui);
-            $row[] = nominal($field->dana_sisa) . '<br><a class="btn btn-block btn-warning btn-xs" onclick="editDana(\'' . $field->id_arsip . '\')" data-toggle="modal" style="cursor:pointer;color:#ffffff">Edit</a>';
+            $row[] = nominal($field->sptb) . '<br><a class="btn btn-block btn-warning btn-xs" onclick="editDana(\'' . $field->id_arsip . '\')" data-toggle="modal" style="cursor:pointer;color:#ffffff">Edit</a>';
+            $row[] = nominal($field->dana_sisa);
             $row[] = $field->nomor_kontrak . $field->kode_kontrak;
             $row[] = $field->tgl_kontrak;
             $row[] = $field->nomor_sk . $field->kode_sk;
             $row[] = $field->tgl_sk;
             $row[] = $field->kode_unik;
+            $row[] = '<a class="btn btn-block btn-info btn-xs" onclick="editRak(\'' . $field->id_arsip . '\')" data-toggle="modal" style="cursor:pointer;color:#ffffff">Rak</a>&nbsp' . $lihat;
+            $row[] = '';
 
             $data[] = $row;
         }
@@ -64,6 +73,10 @@ class Arsip extends CI_Controller
         $data = array();
         $no = $_POST['start'];
         foreach ($list as $field) {
+            $lihat = '';
+            if (!empty($field->id_detail)) {
+                $lihat = '<a class="btn btn-block btn-success btn-xs" onclick="lihatRak(\'' . $field->id_arsip . '\')" data-toggle="modal" style="cursor:pointer;color:#ffffff">Lihat</a>';
+            }
             $no++;
             $row = array();
             $row[] = $field->id_arsip;
@@ -75,12 +88,15 @@ class Arsip extends CI_Controller
             $row[] = $field->departemen;
             $row[] = $field->fakultas;
             $row[] = nominal($field->dana_disetujui);
-            $row[] = nominal($field->dana_sisa) . "<br><a class='btn btn-block btn-warning btn-xs' data-toggle='modal' data-target='#editDana' data-id_arsip='" . $field->id_arsip . "' style='cursor:pointer;color:#ffffff'>Edit</a>";
+            $row[] = nominal($field->sptb) . '<br><a class="btn btn-block btn-warning btn-xs" onclick="editDana(\'' . $field->id_arsip . '\')" data-toggle="modal" style="cursor:pointer;color:#ffffff">Edit</a>';
+            $row[] = nominal($field->dana_sisa);
             $row[] = $field->nomor_kontrak . $field->kode_kontrak;
             $row[] = $field->tgl_kontrak;
             $row[] = $field->nomor_sk . $field->kode_sk;
             $row[] = $field->tgl_sk;
             $row[] = $field->kode_unik;
+            $row[] = '<a class="btn btn-block btn-info btn-xs" onclick="editRak(\'' . $field->id_arsip . '\')" data-toggle="modal" style="cursor:pointer;color:#ffffff">Rak</a>&nbsp' . $lihat;
+            $row[] = '';
 
             $data[] = $row;
         }
@@ -103,6 +119,31 @@ class Arsip extends CI_Controller
         echo json_encode($hasil);
     }
 
+    public function lihatRak()
+    {
+        $hasil = $this->Rak_model->lihatRak();
+        echo json_encode($hasil);
+    }
+
+    public function cekRak()
+    {
+        $jumlah = $this->Rak_model->cekRak();
+        $hasil["kolom"] = "";
+        $hasil["kolom"] .= '<select class="form-control select2" name="kolom" id="kolom"><option value="">--- Pilih ---</option>';
+        for ($i = 1; $i <= $jumlah->jumlah_kolom; $i++) {
+            $hasil["kolom"] .= '<option value="' . $i . '">' . $i . '</option>';
+        }
+        $hasil["kolom"] .= '</select>';
+
+        $hasil["baris"] = "";
+        $hasil["baris"] .= '<select class="form-control select2" name="baris" id="baris"><option value="">--- Pilih ---</option>';
+        for ($i = 1; $i <= $jumlah->jumlah_baris; $i++) {
+            $hasil["baris"] .= '<option value="' . $i . '">' . $i . '</option>';
+        }
+        $hasil["baris"] .= '</select>';
+        echo json_encode($hasil);
+    }
+
     public function simpanDanaSisa()
     {
         $hasil = $this->Arsip_model->updateSisa();
@@ -112,7 +153,7 @@ class Arsip extends CI_Controller
                 '<div class="alert alert-success col-12">
               <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
               <h5><i class="icon fa fa-check"></i> Berhasil!</h5>
-               Dana Sisa berhasil update data.
+               Dana Terpakai berhasil update data.
             </div>'
             );
         } else {
@@ -121,7 +162,32 @@ class Arsip extends CI_Controller
                 '<div class="alert alert-warning alert-dismissible col-12">
                       <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                       <h5><i class="icon fas fa-exclamation-triangle"></i> Gagal!</h5>
-                      Dana Sisa gagal update data.
+                      Dana Terpakai gagal update data.
+                    </div>'
+            );
+        }
+        redirect('arsip');
+    }
+
+    public function simpanRak()
+    {
+        $hasil = $this->Arsip_model->updateRak();
+        if ($hasil == 1) {
+            $this->session->set_flashdata(
+                'hasil',
+                '<div class="alert alert-success col-12">
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+              <h5><i class="icon fa fa-check"></i> Berhasil!</h5>
+               Rak berhasil update data.
+            </div>'
+            );
+        } else {
+            $this->session->set_flashdata(
+                'hasil',
+                '<div class="alert alert-warning alert-dismissible col-12">
+                      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                      <h5><i class="icon fas fa-exclamation-triangle"></i> Gagal!</h5>
+                      Rak gagal update data.
                     </div>'
             );
         }

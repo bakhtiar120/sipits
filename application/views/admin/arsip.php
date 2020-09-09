@@ -129,12 +129,15 @@
                                             <th>Departemen</th>
                                             <th>Fakultas</th>
                                             <th>Dana Disetujui</th>
+                                            <th>Dana Terpakai</th>
                                             <th>Dana Sisa</th>
                                             <th>Nomor Kontrak</th>
                                             <th>Tanggal Kontrak</th>
                                             <th>Nomor SK</th>
                                             <th>Tanggal SK</th>
                                             <th>Kode Unik</th>
+                                            <th>Rak</th>
+                                            <th>Aksi</th>
                                         </tr>
                                     </thead>
 
@@ -213,8 +216,8 @@
                                         <input type="text" class="form-control" id="setuju" readonly>
                                     </div>
                                     <div class="col-md-6">
-                                        <label for="sisa" class="col-form-label">Dana Sisa:</label>
-                                        <input type="text" class="form-control" id="sisa" name="sisa">
+                                        <label for="terpakai" class="col-form-label">Dana Terpakai:</label>
+                                        <input type="text" class="form-control" id="terpakai" name="terpakai">
                                     </div>
                                 </div>
                             </div>
@@ -223,6 +226,110 @@
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                         <input type="submit" class="btn btn-primary" value="Update">
                     </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="editRak" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Rak</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form method="post" action="<?php echo base_url() ?>/arsip/simpanRak">
+                        <div class="modal-body">
+                            <input type="hidden" name="id_arsip" id="id_arsip2">
+                            <div class="row">
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        <label for="nama_rak" class="col-form-label">Nama Rak:</label>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <select class="form-control select2" name="id_rak" id="id_rak">
+                                            <option value="">--- Pilih ---</option>
+                                            <?php
+                                            foreach ($rak as $key) {
+                                                echo "<option value='$key->id_rak'>" . $key->nama_rak . "</option>";
+                                            }
+                                            ?>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        <label for="judul_kegiatan" class="col-form-label">Baris:</label>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <select class="form-control select2" name="baris" id="baris">
+                                            <option value="">--- Pilih ---</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        <label for="judul_kegiatan" class="col-form-label">Kolom:</label>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <select class="form-control select2" name="kolom" id="kolom">
+                                            <option value="">--- Pilih ---</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="judul_kegiatan" class="col-form-label">Keterangan:</label>
+                                <textarea class="form-control" id="keterangan" name="keterangan"></textarea>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <input type="submit" class="btn btn-primary" value="Simpan">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="lihatRak" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Lihat Rak</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form method="post" action="#">
+                        <div class="modal-body">
+                            <input type="hidden" name="id_arsip" id="id_arsip2">
+                            <div class="form-group">
+                                <label for="nama_rak" class="col-form-label">Nama Rak:</label>
+                                <input type="text" class="form-control" id="nama_rak" name="nama_rak" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label for="judul_kegiatan" class="col-form-label">Baris:</label>
+                                <input type="text" class="form-control" id="jumlah_baris" name="jumlah_baris" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label for="judul_kegiatan" class="col-form-label">Kolom:</label>
+                                <input type="text" class="form-control" id="jumlah_kolom" name="jumlah_kolom" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label for="judul_kegiatan" class="col-form-label">Keterangan:</label>
+                                <textarea class="form-control" id="_keterangan" name="keterangan" disabled></textarea>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
                     </form>
                 </div>
             </div>
@@ -287,6 +394,20 @@
                 });
             });
 
+            $("#id_rak").change(function() {
+                var rak = $("#id_rak").val();
+                $.ajax({
+                    url: base_url + "arsip/cekRak",
+                    type: "post",
+                    dataType: 'json',
+                    data: 'id_rak=' + rak,
+                    success: function(res) {
+                        $("#baris").html(res.baris);
+                        $("#kolom").html(res.kolom);
+                    }
+                });
+            });
+
             function editDana(id) {
                 $.ajax({
                     url: base_url + "arsip/cekEdit",
@@ -300,10 +421,47 @@
                         $("#departemen_modal").val(res.departemen);
                         $("#fakultas_modal").val(res.fakultas);
                         $("#setuju").val(res.setujui);
-                        $("#sisa").val(res.sisa);
+                        $("#terpakai").val(res.sptb);
                         $("#sumber").val(res.sumber);
                         $("#tahun_modal").val(res.tahun);
                         $("#editDanaSisa").modal();
+                    }
+                });
+            }
+
+            function editRak(id) {
+                // $.ajax({
+                //     url: base_url + "arsip/cekEdit",
+                //     type: 'post',
+                //     dataType: "json",
+                //     data: 'id_arsip=' + id,
+                //     success: function(res) {
+                $("#id_arsip2").val(id);
+                //         $("#nama_ketua").val(res.nama_ketua);
+                //         $("#judul_kegiatan").text(res.judul);
+                //         $("#departemen_modal").val(res.departemen);
+                //         $("#fakultas_modal").val(res.fakultas);
+                //         $("#setuju").val(res.setujui);
+                //         $("#sisa").val(res.sisa);
+                //         $("#sumber").val(res.sumber);
+                //         $("#tahun_modal").val(res.tahun);
+                $("#editRak").modal();
+                //     }
+                // });
+            }
+
+            function lihatRak(id) {
+                $.ajax({
+                    url: base_url + "arsip/lihatRak",
+                    type: 'post',
+                    dataType: "json",
+                    data: 'id_arsip=' + id,
+                    success: function(res) {
+                        $("#nama_rak").val(res.nama_rak);
+                        $("#jumlah_baris").val(res.nomor_baris);
+                        $("#jumlah_kolom").val(res.nomor_kolom);
+                        $("#_keterangan").val(res.keterangan);
+                        $("#lihatRak").modal();
                     }
                 });
             }
