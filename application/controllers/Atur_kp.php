@@ -239,4 +239,13 @@ class Atur_kp extends CI_Controller
 
 
 	}
+
+	public function cetak_tanda_terima() {
+		// $data = $this->pap_model->get_pap_by_id($id);
+		//print_r($data[0]);
+		$this->load->library('f_pdf');
+		// $this->load->library('pdf_dll');
+		$this->load->view('admin/cetak_tanda_terima');
+		
+	}
 }
