@@ -101,7 +101,7 @@
 
                           <!-- <a class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modal-default" href="<?php echo site_url('atur_kp/hapus/' . $value['id_kp']); ?>"> -->
 
-                          <a class="btn btn-info btn-sm" href="<?php echo site_url('laporanpdf'); ?>">
+                          <a class="btn btn-info btn-sm" href="<?php echo site_url('atur_kp/cetak_tanda_terima'); ?>">
                             <i class="fas fa-print">
                             </i>
                             Cetak Kontrak
