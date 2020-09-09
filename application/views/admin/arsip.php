@@ -32,6 +32,7 @@
                         </div>
                     </div>
                 </div><!-- /.container-fluid -->
+                <?php echo $this->session->flashdata("hasil"); ?>
             </section>
 
 
@@ -110,7 +111,7 @@
                                                 </div>
                                             </div>
                                             <div class="col-sm-4">
-                                                <a class="btn btn-sm btn-info" id="cari" style="cursor:pointer">Cari</a>
+                                                <a class="btn btn-sm btn-info" id="cari" style="cursor:pointer;color:#ffffff">Cari</a>
                                             </div>
                                         </form>
                                     </div>
@@ -119,7 +120,6 @@
                                 <table id="table" class="table table-bordered table-striped">
                                     <thead>
                                         <tr>
-                                            <th></th>
                                             <th>No.</th>
                                             <th>Tahun</th>
                                             <th>Skema</th>
@@ -129,6 +129,7 @@
                                             <th>Departemen</th>
                                             <th>Fakultas</th>
                                             <th>Dana Disetujui</th>
+                                            <th>Dana Sisa</th>
                                             <th>Nomor Kontrak</th>
                                             <th>Tanggal Kontrak</th>
                                             <th>Nomor SK</th>
@@ -165,6 +166,67 @@
 
         <!-- /.modal -->
 
+        <div class="modal fade" id="editDanaSisa" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Edit Dana Sisa</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form method="post" action="<?php echo base_url() ?>/arsip/simpanDanaSisa">
+                            <input type="hidden" name="id_arsip" id="id_arsip">
+                            <div class="form-group">
+                                <label for="nama_ketua" class="col-form-label">Nama Ketua:</label>
+                                <input type="text" class="form-control" id="nama_ketua" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label for="judul_kegiatan" class="col-form-label">Judul Kegiatan:</label>
+                                <textarea class="form-control" id="judul_kegiatan" disabled></textarea>
+                            </div>
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <label for="tahun" class="col-form-label">Tahun:</label>
+                                        <input type="text" class="form-control" id="tahun_modal" readonly>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="departemen" class="col-form-label">Departemen:</label>
+                                        <input type="text" class="form-control" id="departemen_modal" readonly>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="fakultas" class="col-form-label">Fakultas:</label>
+                                        <input type="text" class="form-control" id="fakultas_modal" readonly>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="sumber" class="col-form-label">Sumber Dana:</label>
+                                <input type="text" class="form-control" id="sumber" readonly>
+                            </div>
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label for="setuju" class="col-form-label">Dana Disetujui:</label>
+                                        <input type="text" class="form-control" id="setuju" readonly>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="sisa" class="col-form-label">Dana Sisa:</label>
+                                        <input type="text" class="form-control" id="sisa" name="sisa">
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <input type="submit" class="btn btn-primary" value="Update">
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
 
         <?php include("footer.php") ?>
         <script src="<?php echo base_url() ?>/assets/AdminLTE/plugins/select2/js/select2.full.min.js"></script>
@@ -201,45 +263,12 @@
                             }
                         }
                     });
-                    // // table.destroy();
-                    // $('#table').DataTable({
-                    //     "scrollX": true,
-                    //     "responsive": true,
-                    //     "processing": true,
-                    //     "serverSide": true,
-                    //     "order": [],
-
-                    //     "ajax": {
-                    //         "url": "<?php // echo site_url('arsip/get_data2') 
-                                        ?>",
-                    //         "type": "POST",
-                    //         "dataType": "json",
-                    //         "data": function(d) {
-                    //             var frm_data = $('#filter').serializeArray();
-                    //             $.each(frm_data, function(key, val) {
-                    //                 d[val.name] = val.value;
-                    //             });
-                    //         },
-                    //     },
-                    //     "drawCallback": function(settings) {
-                    //         // Here the response
-                    //         var response = settings;
-                    //         console.log(response);
-                    //     },
-
-
-                    //     "columnDefs": [{
-                    //         "targets": [0],
-                    //         "orderable": false,
-                    //     }, ],
-
-                    // });
                 });
 
                 //datatables
                 table = $('#table').DataTable({
                     "scrollX": true,
-                    "responsive": true,
+                    // "responsive": true,
                     "processing": true,
                     "serverSide": true,
                     "order": [],
@@ -249,15 +278,57 @@
                         "type": "POST"
                     },
 
-
                     "columnDefs": [{
                         "targets": [0],
                         "orderable": false,
                     }, ],
 
-                });
 
+                });
             });
+
+            function editDana(id) {
+                $.ajax({
+                    url: base_url + "arsip/cekEdit",
+                    type: 'post',
+                    dataType: "json",
+                    data: 'id_arsip=' + id,
+                    success: function(res) {
+                        $("#id_arsip").val(res.id_arsip);
+                        $("#nama_ketua").val(res.nama_ketua);
+                        $("#judul_kegiatan").text(res.judul);
+                        $("#departemen_modal").val(res.departemen);
+                        $("#fakultas_modal").val(res.fakultas);
+                        $("#setuju").val(res.setujui);
+                        $("#sisa").val(res.sisa);
+                        $("#sumber").val(res.sumber);
+                        $("#tahun_modal").val(res.tahun);
+                        $("#editDanaSisa").modal();
+                    }
+                });
+            }
+
+            var sisa = document.getElementById('sisa');
+            sisa.addEventListener('keyup', function(e) {
+                sisa.value = formatRupiah(this.value, 'Rp. ');
+            });
+            /* Fungsi formatRupiah */
+            function formatRupiah(angka, prefix) {
+                var number_string = angka.replace(/[^,\d]/g, '').toString(),
+                    split = number_string.split(','),
+                    sisa = split[0].length % 3,
+                    rupiah = split[0].substr(0, sisa),
+                    ribuan = split[0].substr(sisa).match(/\d{3}/gi);
+
+                // tambahkan titik jika yang di input sudah menjadi angka ribuan
+                if (ribuan) {
+                    separator = sisa ? '.' : '';
+                    rupiah += separator + ribuan.join('.');
+                }
+
+                rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
+                return prefix == undefined ? rupiah : (rupiah ? rupiah : '');
+            }
         </script>
 </body>
 

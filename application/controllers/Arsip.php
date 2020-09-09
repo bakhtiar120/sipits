@@ -28,7 +28,6 @@ class Arsip extends CI_Controller
             $no++;
             $row = array();
             $row[] = $field->id_arsip;
-            $row[] = $field->no;
             $row[] = $field->tahun;
             $row[] = $field->skema;
             $row[] = $field->sumber;
@@ -36,7 +35,8 @@ class Arsip extends CI_Controller
             $row[] = $field->nama_ketua;
             $row[] = $field->departemen;
             $row[] = $field->fakultas;
-            $row[] = $field->dana_disetujui;
+            $row[] = nominal($field->dana_disetujui);
+            $row[] = nominal($field->dana_sisa) . '<br><a class="btn btn-block btn-warning btn-xs" onclick="editDana(\'' . $field->id_arsip . '\')" data-toggle="modal" style="cursor:pointer;color:#ffffff">Edit</a>';
             $row[] = $field->nomor_kontrak . $field->kode_kontrak;
             $row[] = $field->tgl_kontrak;
             $row[] = $field->nomor_sk . $field->kode_sk;
@@ -67,7 +67,6 @@ class Arsip extends CI_Controller
             $no++;
             $row = array();
             $row[] = $field->id_arsip;
-            $row[] = $field->no;
             $row[] = $field->tahun;
             $row[] = $field->skema;
             $row[] = $field->sumber;
@@ -75,7 +74,8 @@ class Arsip extends CI_Controller
             $row[] = $field->nama_ketua;
             $row[] = $field->departemen;
             $row[] = $field->fakultas;
-            $row[] = $field->dana_disetujui;
+            $row[] = nominal($field->dana_disetujui);
+            $row[] = nominal($field->dana_sisa) . "<br><a class='btn btn-block btn-warning btn-xs' data-toggle='modal' data-target='#editDana' data-id_arsip='" . $field->id_arsip . "' style='cursor:pointer;color:#ffffff'>Edit</a>";
             $row[] = $field->nomor_kontrak . $field->kode_kontrak;
             $row[] = $field->tgl_kontrak;
             $row[] = $field->nomor_sk . $field->kode_sk;
@@ -95,5 +95,36 @@ class Arsip extends CI_Controller
         //output dalam format JSON
         echo json_encode($output);
         exit();
+    }
+
+    public function cekEdit()
+    {
+        $hasil = $this->Arsip_model->cekEdit();
+        echo json_encode($hasil);
+    }
+
+    public function simpanDanaSisa()
+    {
+        $hasil = $this->Arsip_model->updateSisa();
+        if ($hasil == 1) {
+            $this->session->set_flashdata(
+                'hasil',
+                '<div class="alert alert-success col-12">
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+              <h5><i class="icon fa fa-check"></i> Berhasil!</h5>
+               Dana Sisa berhasil update data.
+            </div>'
+            );
+        } else {
+            $this->session->set_flashdata(
+                'hasil',
+                '<div class="alert alert-warning alert-dismissible col-12">
+                      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                      <h5><i class="icon fas fa-exclamation-triangle"></i> Gagal!</h5>
+                      Dana Sisa gagal update data.
+                    </div>'
+            );
+        }
+        redirect('arsip');
     }
 }

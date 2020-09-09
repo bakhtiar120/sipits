@@ -3,8 +3,8 @@
 class Arsip_model extends CI_Model
 {
     protected $table = 'data_arsip';
-    protected $column_order = array('id_arsip', 'no', 'tahun', 'skema', 'sumber', 'judul', 'departemen', 'fakultas', 'dana_disetujui', 'nomor_kontrak', 'kode_kontrak', 'tgl_kontrak', 'nomor_sk', 'kode_sk', 'tgl_sk', 'kode_unik');
-    protected $column_search = array('id_arsip', 'no', 'tahun', 'skema', 'sumber', 'judul', 'departemen', 'fakultas', 'dana_disetujui', 'nomor_kontrak', 'kode_kontrak', 'tgl_kontrak', 'nomor_sk', 'kode_sk', 'tgl_sk', 'kode_unik', 'tgl_submit');
+    protected $column_order = array('id_arsip', 'no', 'tahun', 'skema', 'sumber', 'judul', 'departemen', 'fakultas', 'dana_disetujui', 'nomor_kontrak', 'kode_kontrak', 'tgl_kontrak', 'nomor_sk', 'kode_sk', 'tgl_sk', 'kode_unik', 'dana_sisa');
+    protected $column_search = array('id_arsip', 'no', 'tahun', 'skema', 'sumber', 'judul', 'departemen', 'fakultas', 'dana_disetujui', 'dana_sisa', 'nomor_kontrak', 'kode_kontrak', 'tgl_kontrak', 'nomor_sk', 'kode_sk', 'tgl_sk', 'kode_unik', 'tgl_submit');
     protected $order = array('id_arsip' => 'asc');
     function __construct()
     {
@@ -173,5 +173,24 @@ class Arsip_model extends CI_Model
     {
         $query = $this->db->query("select distinct fakultas from data_arsip where fakultas != ''");
         return $query->result();
+    }
+
+    public function cekEdit()
+    {
+        $id_arsip = $this->input->post("id_arsip");
+        $query = $this->db->query("select *, replace(FORMAT(dana_disetujui, 0),',','.') setujui, replace(FORMAT(dana_sisa, 0),',','.') sisa from data_arsip where id_arsip = '$id_arsip'");
+        return $query->row();
+    }
+
+    public function updateSisa()
+    {
+        $id_arsip = $this->input->post("id_arsip");
+        $sisa = str_replace(".", "", $this->input->post("sisa"));
+        $query = $this->db->query("update data_arsip set dana_sisa = '$sisa' where id_arsip = '$id_arsip' ");
+        if ($query) {
+            return 1;
+        } else {
+            return 0;
+        }
     }
 }
