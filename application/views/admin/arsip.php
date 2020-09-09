@@ -190,15 +190,15 @@
                                 <div class="row">
                                     <div class="col-md-4">
                                         <label for="tahun" class="col-form-label">Tahun:</label>
-                                        <input type="text" class="form-control" id="tahun" readonly>
+                                        <input type="text" class="form-control" id="tahun_modal" readonly>
                                     </div>
                                     <div class="col-md-4">
                                         <label for="departemen" class="col-form-label">Departemen:</label>
-                                        <input type="text" class="form-control" id="departemen" readonly>
+                                        <input type="text" class="form-control" id="departemen_modal" readonly>
                                     </div>
                                     <div class="col-md-4">
                                         <label for="fakultas" class="col-form-label">Fakultas:</label>
-                                        <input type="text" class="form-control" id="fakultas" readonly>
+                                        <input type="text" class="form-control" id="fakultas_modal" readonly>
                                     </div>
                                 </div>
                             </div>
@@ -297,14 +297,37 @@
                         $("#id_arsip").val(res.id_arsip);
                         $("#nama_ketua").val(res.nama_ketua);
                         $("#judul_kegiatan").text(res.judul);
-                        $("#departemen").val(res.departemen);
-                        $("#fakultas").val(res.fakultas);
-                        $("#setuju").val(res.data_disetujui);
+                        $("#departemen_modal").val(res.departemen);
+                        $("#fakultas_modal").val(res.fakultas);
+                        $("#setuju").val(res.setujui);
+                        $("#sisa").val(res.sisa);
                         $("#sumber").val(res.sumber);
-                        $("#tahun").val(res.tahun);
+                        $("#tahun_modal").val(res.tahun);
                         $("#editDanaSisa").modal();
                     }
                 });
+            }
+
+            var sisa = document.getElementById('sisa');
+            sisa.addEventListener('keyup', function(e) {
+                sisa.value = formatRupiah(this.value, 'Rp. ');
+            });
+            /* Fungsi formatRupiah */
+            function formatRupiah(angka, prefix) {
+                var number_string = angka.replace(/[^,\d]/g, '').toString(),
+                    split = number_string.split(','),
+                    sisa = split[0].length % 3,
+                    rupiah = split[0].substr(0, sisa),
+                    ribuan = split[0].substr(sisa).match(/\d{3}/gi);
+
+                // tambahkan titik jika yang di input sudah menjadi angka ribuan
+                if (ribuan) {
+                    separator = sisa ? '.' : '';
+                    rupiah += separator + ribuan.join('.');
+                }
+
+                rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
+                return prefix == undefined ? rupiah : (rupiah ? rupiah : '');
             }
         </script>
 </body>

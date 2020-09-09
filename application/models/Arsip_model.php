@@ -178,14 +178,14 @@ class Arsip_model extends CI_Model
     public function cekEdit()
     {
         $id_arsip = $this->input->post("id_arsip");
-        $query = $this->db->query("select * from data_arsip where id_arsip = '$id_arsip'");
+        $query = $this->db->query("select *, replace(FORMAT(dana_disetujui, 0),',','.') setujui, replace(FORMAT(dana_sisa, 0),',','.') sisa from data_arsip where id_arsip = '$id_arsip'");
         return $query->row();
     }
 
     public function updateSisa()
     {
         $id_arsip = $this->input->post("id_arsip");
-        $sisa = $this->input->post("sisa");
+        $sisa = str_replace(".", "", $this->input->post("sisa"));
         $query = $this->db->query("update data_arsip set dana_sisa = '$sisa' where id_arsip = '$id_arsip' ");
         if ($query) {
             return 1;
