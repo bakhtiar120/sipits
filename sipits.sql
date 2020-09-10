@@ -9877,27 +9877,6 @@ insert  into `data_arsip`(`id_arsip`,`no`,`tahun`,`skema`,`sumber`,`judul`,`nama
 (9825,'','2019','DKPU','PT Pupuk Kalimantan Timur','Penyelidikan Tanah Rencana Area Industri Utara PT Pupuk Kaltim','Ir. Fuddoly, M.Sc','Teknik Sipil','','508200000',NULL,'0','','5300020489','','','','',NULL,'2020-09-02 23:45:28',NULL),
 (9826,'','2019','DKPU','PT PLN (Persro) Unit Induk Pembangunan Nusa Tenggara','Jasa Konsultansi Survey, Soil Investigation Lahan Tapak Tower SUTT 150 kV GI Kupang/Maulafa Baru  GI Naibonat','Prof. Ir. Indrasurya B. Mochtar,M.Sc.,Ph.D','Teknik Sipil','','436000000',NULL,'0','','0058.PJ/DAN.02.06/UIP NUSRA /2018','','','','',NULL,'2020-09-02 23:45:28',NULL);
 
-/*Table structure for table `detail_rak` */
-
-DROP TABLE IF EXISTS `detail_rak`;
-
-CREATE TABLE `detail_rak` (
-  `id_detail` int(11) NOT NULL AUTO_INCREMENT,
-  `id_rak` int(11) DEFAULT NULL,
-  `nomor_baris` varchar(10) DEFAULT NULL,
-  `nomor_kolom` varchar(10) DEFAULT NULL,
-  `keterangan` varchar(200) DEFAULT NULL,
-  PRIMARY KEY (`id_detail`),
-  KEY `id_rak` (`id_rak`),
-  CONSTRAINT `detail_rak_ibfk_1` FOREIGN KEY (`id_rak`) REFERENCES `rak` (`id_rak`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
-
-/*Data for the table `detail_rak` */
-
-insert  into `detail_rak`(`id_detail`,`id_rak`,`nomor_baris`,`nomor_kolom`,`keterangan`) values 
-(4,1,'1','5','hyhyhy'),
-(5,1,'3','3','hhhh');
-
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
 /*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;

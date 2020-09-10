@@ -32,7 +32,7 @@ class Arsip extends CI_Controller
                 $lihat = '<a class="btn btn-block btn-success btn-xs" onclick="lihatRak(\'' . $field->id_arsip . '\')" data-toggle="modal" style="cursor:pointer;color:#ffffff">Lihat</a>';
             }
 
-            $cetak = '<a class="btn btn-info btn-sm" href="' . site_url() . 'arsip/cetak_tanda_terima/' . $field->id_arsip . '" target="_blank"><i class="fas fa-print"></i>Tanda Terima</a>';
+            $cetak = '<a class="btn btn-info btn-sm" onclick="cetakData(\'' . $field->id_arsip . '\')" data-toggle="modal" style="cursor:pointer;color:#ffffff"><i class="fas fa-print"></i>Tanda Terima</a>';
             $no++;
             $row = array();
             $row[] = $field->id_arsip;
@@ -197,9 +197,13 @@ class Arsip extends CI_Controller
         redirect('arsip');
     }
 
-    public function cetak_tanda_terima($id)
+    public function cetak_tanda_terima()
     {
         $this->load->library('f_pdf');
+        $id=$this->input->post('id_arsip3');
+        $data['nama_pengirim'] = $this->input->post('nama_pengirim');
+        $data['no_hp_pengirim'] = $this->input->post('no_hp_pengirim');
+        $data['nama_penerima'] = $this->input->post('nama_penerima');
         $data["arsip"] = $this->Arsip_model->data_arsip($id);
         $this->load->view('admin/cetak_tanda_terima', $data);
     }

@@ -334,6 +334,43 @@
                 </div>
             </div>
         </div>
+        <div class="modal fade" id="cetak" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Form Tanda Terima</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form method="post" action="<?php echo base_url() ?>/arsip/cetak_tanda_terima">
+                        <div class="modal-body">
+                            <input type="hidden" name="id_arsip3" id="id_arsip3">
+
+                            <div class="form-group">
+                                <label for="nama_pengirim" class="col-form-label">Nama Pengirim :</label>
+                                <input type="text" id="nama_pengirim" class="form-control" name="nama_pengirim">
+
+                            </div>
+                            <div class="form-group">
+                                <label for="nama_pengirim" class="col-form-label">Nomor HP Pengirim :</label>
+                                <input type="text" id="no_hp_pengirim" class="form-control" onKeyUp="this.value=this.value.replace(/[^0-9]/g,'')" name="no_hp_pengirim">
+
+                            </div>
+                            <div class="form-group">
+                                <label for="nama_pengirim" class="col-form-label">Nama Penerima :</label>
+                                <input type="text" id="nama_penerima" class="form-control" name="nama_penerima">
+
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <input type="submit" class="btn btn-primary" value="Simpan">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
 
         <?php include("footer.php") ?>
         <script src="<?php echo base_url() ?>/assets/AdminLTE/plugins/select2/js/select2.full.min.js"></script>
@@ -448,6 +485,12 @@
                 $("#editRak").modal();
                 //     }
                 // });
+            }
+
+            function cetakData(id) {
+                $("#id_arsip3").val(id);
+                $("#cetak").modal();
+
             }
 
             function lihatRak(id) {
