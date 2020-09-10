@@ -205,6 +205,52 @@
                 </div>
             </div>
         </div>
+        <div class="modal fade" id="editRak" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Edit Master Rak</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form method="post" action="<?php echo base_url() ?>/Rak/update_rak">
+                        <div class="modal-body">
+                            <input type="hidden" name="id_rak3" id="id_rak3">
+
+                            <div class="form-group">
+                                <label for="nama_pengirim" class="col-form-label">Nama Rak :</label>
+                                <input type="text" id="nama_rak2" class="form-control" name="nama_rak">
+
+                            </div>
+                            <div class="form-group">
+                                <label for="nama_pengirim" class="col-form-label">Posisi :</label>
+                                <input type="text" id="posisi2" class="form-control" name="posisi">
+
+                            </div>
+                            <div class="form-group">
+                                <label for="nama_pengirim" class="col-form-label">Jumlah Kolom :</label>
+                                <input type="text" id="jumlah_kolom2" class="form-control" name="jumlah_kolom">
+
+                            </div>
+                            <div class="form-group">
+                                <label for="nama_pengirim" class="col-form-label">Jumlah Baris :</label>
+                                <input type="text" id="jumlah_baris2" class="form-control" name="jumlah_baris">
+
+                            </div>
+                            <di>
+                                <label for="nama_pengirim" class="col-form-label">Tanggal Beli :</label>
+                                <input type="date" name="tgl_beli" id="tgl_beli2" class="form-control">
+                            </di>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <input type="submit" class="btn btn-primary" value="Simpan">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
 
         <?php include("footer.php") ?>
         <script src="<?php echo base_url() ?>/assets/AdminLTE/plugins/select2/js/select2.full.min.js"></script>
@@ -218,30 +264,18 @@
                 $('#table').DataTable();
             });
 
-            function rakEdit(id) {
-
-                alert(id); // var pecah = id.split("|");
-                // $("#id_rak").val(pecah[0]);
-                // $("#nama_rak").val(pecah[1]);
-
-                // $.ajax({
-                //     url: base_url + "rak/rakEdit",
-                //     type: 'post',
-                //     dataType: "json",
-                //     data: 'id_arsip=' + id,
-                //     success: function(res) {
-                //         $("#id_arsip").val(res.id_arsip);
-                //         $("#nama_ketua").val(res.nama_ketua);
-                //         $("#judul_kegiatan").text(res.judul);
-                //         $("#departemen_modal").val(res.departemen);
-                //         $("#fakultas_modal").val(res.fakultas);
-                //         $("#setuju").val(res.setujui);
-                //         $("#sisa").val(res.sisa);
-                //         $("#sumber").val(res.sumber);
-                //         $("#tahun_modal").val(res.tahun);
-                //         $("#editDanaSisa").modal();
-                //     }
-                // });
+            function rakEdit(data) {
+                // alert(data);
+                var res = data.split("|");
+                
+                // alert(res[5]);
+                $("#id_rak3").val(res[0]);
+                $("#nama_rak2").val(res[1]);
+                $("#posisi2").val(res[2]);
+                $("#jumlah_kolom2").val(res[3]);
+                $("#jumlah_baris2").val(res[4]);
+                $("#tgl_beli2").val(res[5]);
+                $("#editRak").modal();
             }
 
             var sisa = document.getElementById('sisa');

@@ -40,4 +40,34 @@ class Rak extends CI_Controller
         }
         redirect('rak');
     }
+
+    public function update_rak() 
+    {
+        $data=$this->input->post();
+        $id_rak = $this->input->post('id_rak3');
+        $hasil = $this->rak->update_rak($id_rak, $data);
+
+
+        if ($hasil == 0) {
+            $this->session->set_flashdata(
+                'hasil',
+                '<div class="alert alert-warning alert-dismissible col-12">
+                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                  <h5><i class="icon fas fa-exclamation-triangle"></i> Gagal!</h5>
+                  Data Master Rak gagal update.
+                </div>'
+            );
+        } else {
+            $this->session->set_flashdata(
+                'hasil',
+                '<div class="alert alert-success col-12">
+		      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+		      <h5><i class="icon fa fa-check"></i> Berhasil!</h5>
+		       Data Master Rak berhasil update.
+		    </div>'
+            );
+        }
+
+        redirect('Rak/index/');
+    }
 }

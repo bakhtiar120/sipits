@@ -48,4 +48,19 @@ class Rak_model extends CI_Model
         $query = $this->db->query("select jumlah_kolom, jumlah_baris from rak where id_rak = '$id_rak'");
         return $query->row();
     }
+
+
+    function update_rak($id_rak, $data)
+    {
+
+        $this->db->trans_start();
+
+        $this->db->where('id_rak', $id_rak);
+        $this->db->update('rak', $data);
+
+        $this->db->trans_complete();
+
+        if ($this->db->trans_status() === FALSE) return 0;
+        return true;
+    }
 }
