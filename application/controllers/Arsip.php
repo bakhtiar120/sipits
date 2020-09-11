@@ -18,6 +18,7 @@ class Arsip extends CI_Controller
         $data["skema"] = $this->Arsip_model->skema();
         $data["departemen"] = $this->Arsip_model->departemen();
         $data["fakultas"] = $this->Arsip_model->fakultas();
+        $data["kategori"] = $this->Arsip_model->kategori();
         $this->load->view('admin/arsip', $data);
     }
 
@@ -199,12 +200,15 @@ class Arsip extends CI_Controller
 
     public function cetak_tanda_terima()
     {
+
         $this->load->library('f_pdf');
-        $id=$this->input->post('id_arsip3');
+        $id = $this->input->post('id_arsip3');
         $data['nama_pengirim'] = $this->input->post('nama_pengirim');
         $data['no_hp_pengirim'] = $this->input->post('no_hp_pengirim');
         $data['nama_penerima'] = $this->input->post('nama_penerima');
+        $simpan = $this->Arsip_model->simpanPenerima();
         $data["arsip"] = $this->Arsip_model->data_arsip($id);
+        $data["detail"] = $this->Arsip_model->detail_data_arsip($id);
         $this->load->view('admin/cetak_tanda_terima', $data);
     }
 }

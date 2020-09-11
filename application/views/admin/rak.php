@@ -119,7 +119,7 @@
                                                 <td><?= $key->jumlah_baris; ?></td>
                                                 <td><?= tgl($key->tgl_beli); ?></td>
                                                 <?php
-                                                $kirim = $key->id_rak . "|" . $key->nama_rak . "|" . $key->posisi . "|" . $key->jumlah_kolom . "|" . $key->jumlah_baris . "|" . tgl2($key->tgl_beli);
+                                                $kirim = $key->id_rak . "|" . $key->nama_rak . "|" . $key->posisi . "|" . $key->jumlah_kolom . "|" . $key->jumlah_baris . "|" . $key->tgl_beli;
                                                 ?>
                                                 <td><a class="btn btn-xs btn-success" onclick="rakEdit('<?= $kirim ?>')" style="cursor:pointer;color:#ffffff"> Edit</a> &nbsp; </td>
                                             </tr>
@@ -144,68 +144,7 @@
 
         <!-- /.modal -->
 
-        <div class="modal fade" id="editDanaSisa" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Edit Dana Sisa</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <form method="post" action="<?php echo base_url() ?>/arsip/simpanDanaSisa">
-                            <input type="hidden" name="id_arsip" id="id_arsip">
-                            <div class="form-group">
-                                <label for="nama_ketua" class="col-form-label">Nama Ketua:</label>
-                                <input type="text" class="form-control" id="nama_ketua" readonly>
-                            </div>
-                            <div class="form-group">
-                                <label for="judul_kegiatan" class="col-form-label">Judul Kegiatan:</label>
-                                <textarea class="form-control" id="judul_kegiatan" disabled></textarea>
-                            </div>
-                            <div class="form-group">
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <label for="tahun" class="col-form-label">Tahun:</label>
-                                        <input type="text" class="form-control" id="tahun_modal" readonly>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <label for="departemen" class="col-form-label">Departemen:</label>
-                                        <input type="text" class="form-control" id="departemen_modal" readonly>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <label for="fakultas" class="col-form-label">Fakultas:</label>
-                                        <input type="text" class="form-control" id="fakultas_modal" readonly>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="sumber" class="col-form-label">Sumber Dana:</label>
-                                <input type="text" class="form-control" id="sumber" readonly>
-                            </div>
-                            <div class="form-group">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <label for="setuju" class="col-form-label">Dana Disetujui:</label>
-                                        <input type="text" class="form-control" id="setuju" readonly>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label for="sisa" class="col-form-label">Dana Sisa:</label>
-                                        <input type="text" class="form-control" id="sisa" name="sisa">
-                                    </div>
-                                </div>
-                            </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <input type="submit" class="btn btn-primary" value="Update">
-                    </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-        <div class="modal fade" id="editRak" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <!-- <div class="modal fade" id="editRak" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -214,7 +153,8 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <form method="post" action="<?php echo base_url() ?>/Rak/update_rak">
+                    <form method="post" action="<?php // echo base_url() 
+                                                ?>/Rak/update_rak">
                         <div class="modal-body">
                             <input type="hidden" name="id_rak3" id="id_rak3">
 
@@ -250,7 +190,7 @@
                     </form>
                 </div>
             </div>
-        </div>
+        </div> -->
 
         <?php include("footer.php") ?>
         <script src="<?php echo base_url() ?>/assets/AdminLTE/plugins/select2/js/select2.full.min.js"></script>
@@ -267,14 +207,14 @@
             function rakEdit(data) {
                 // alert(data);
                 var res = data.split("|");
-                
+
                 // alert(res[5]);
-                $("#id_rak3").val(res[0]);
-                $("#nama_rak2").val(res[1]);
-                $("#posisi2").val(res[2]);
-                $("#jumlah_kolom2").val(res[3]);
-                $("#jumlah_baris2").val(res[4]);
-                $("#tgl_beli2").val(res[5]);
+                $("#id_rak").val(res[0]);
+                $("#nama_rak").val(res[1]);
+                $("#posisi").val(res[2]);
+                $("#jumlah_kolom").val(res[3]);
+                $("#jumlah_baris").val(res[4]);
+                $("#tgl_beli").val(res[5]);
                 $("#editRak").modal();
             }
 

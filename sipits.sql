@@ -9877,6 +9877,134 @@ insert  into `data_arsip`(`id_arsip`,`no`,`tahun`,`skema`,`sumber`,`judul`,`nama
 (9825,'','2019','DKPU','PT Pupuk Kalimantan Timur','Penyelidikan Tanah Rencana Area Industri Utara PT Pupuk Kaltim','Ir. Fuddoly, M.Sc','Teknik Sipil','','508200000',NULL,'0','','5300020489','','','','',NULL,'2020-09-02 23:45:28',NULL),
 (9826,'','2019','DKPU','PT PLN (Persro) Unit Induk Pembangunan Nusa Tenggara','Jasa Konsultansi Survey, Soil Investigation Lahan Tapak Tower SUTT 150 kV GI Kupang/Maulafa Baru  GI Naibonat','Prof. Ir. Indrasurya B. Mochtar,M.Sc.,Ph.D','Teknik Sipil','','436000000',NULL,'0','','0058.PJ/DAN.02.06/UIP NUSRA /2018','','','','',NULL,'2020-09-02 23:45:28',NULL);
 
+/*Table structure for table `detail_arsip` */
+
+DROP TABLE IF EXISTS `detail_arsip`;
+
+CREATE TABLE `detail_arsip` (
+  `id_detail_arsip` int(11) NOT NULL AUTO_INCREMENT,
+  `id_arsip` int(11) DEFAULT NULL,
+  `id_kategori` int(11) DEFAULT NULL,
+  `status` tinyint(1) DEFAULT NULL COMMENT '1 terima 0 belum',
+  PRIMARY KEY (`id_detail_arsip`),
+  KEY `id_arsip` (`id_arsip`),
+  KEY `id_kategori` (`id_kategori`),
+  CONSTRAINT `detail_arsip_ibfk_1` FOREIGN KEY (`id_arsip`) REFERENCES `data_arsip` (`id_arsip`),
+  CONSTRAINT `detail_arsip_ibfk_2` FOREIGN KEY (`id_kategori`) REFERENCES `kategori` (`id_kategori`)
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4;
+
+/*Data for the table `detail_arsip` */
+
+insert  into `detail_arsip`(`id_detail_arsip`,`id_arsip`,`id_kategori`,`status`) values 
+(1,1,1,1),
+(2,1,2,0),
+(3,1,3,1),
+(4,1,4,0),
+(5,1,5,0),
+(6,1,6,0),
+(7,1,7,1),
+(8,1,8,0),
+(9,1,9,0),
+(10,1,10,0),
+(11,1,11,0),
+(12,1,12,0),
+(13,1,13,0),
+(14,1,14,0),
+(15,1,15,0),
+(16,1,16,0);
+
+/*Table structure for table `detail_rak` */
+
+DROP TABLE IF EXISTS `detail_rak`;
+
+CREATE TABLE `detail_rak` (
+  `id_detail` int(11) NOT NULL AUTO_INCREMENT,
+  `id_rak` int(11) DEFAULT NULL,
+  `nomor_baris` varchar(10) DEFAULT NULL,
+  `nomor_kolom` varchar(10) DEFAULT NULL,
+  `keterangan` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`id_detail`),
+  KEY `id_rak` (`id_rak`),
+  CONSTRAINT `detail_rak_ibfk_1` FOREIGN KEY (`id_rak`) REFERENCES `rak` (`id_rak`) ON DELETE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
+
+/*Data for the table `detail_rak` */
+
+insert  into `detail_rak`(`id_detail`,`id_rak`,`nomor_baris`,`nomor_kolom`,`keterangan`) values 
+(4,1,'1','5','hyhyhy'),
+(5,1,'3','3','hhhh');
+
+/*Table structure for table `kategori` */
+
+DROP TABLE IF EXISTS `kategori`;
+
+CREATE TABLE `kategori` (
+  `id_kategori` int(11) NOT NULL AUTO_INCREMENT,
+  `kategori` varchar(30) DEFAULT NULL,
+  `satuan` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`id_kategori`)
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4;
+
+/*Data for the table `kategori` */
+
+insert  into `kategori`(`id_kategori`,`kategori`,`satuan`) values 
+(1,'Proposal Revisi','1 Asli'),
+(2,'Laporan Kemajuan','1 Asli'),
+(3,'Log Book Tahap 1','1 Asli'),
+(4,'Luaran Tahap 1','1 Asli'),
+(5,'SPTJB Tahap 1 Bermaterai','1 Asli'),
+(6,'Laporan Akhir','1 Asli'),
+(7,'Log Book Tahap 2','1 Asli'),
+(8,'Luaran Tahap 2','1 Asli'),
+(9,'SPTJB Tahan 2 Bermaterai','1 Asli'),
+(10,'Dokumentasi Video','Softfile'),
+(11,'Profil Kegiatan (word)','Softfile'),
+(12,'Poster','Softfile'),
+(13,'Laporan Keuangan (SPJ)','1 Asli'),
+(14,'Rekapitulasi Keuangan','1 Asli'),
+(15,'Buku Pembantu Pajak','1 Asli'),
+(16,'Berita Acara Aset / BMN','1 Asli');
+
+/*Table structure for table `rak` */
+
+DROP TABLE IF EXISTS `rak`;
+
+CREATE TABLE `rak` (
+  `id_rak` int(11) NOT NULL AUTO_INCREMENT,
+  `nama_rak` varchar(30) DEFAULT NULL,
+  `posisi` varchar(50) DEFAULT NULL,
+  `jumlah_kolom` varchar(10) DEFAULT NULL,
+  `jumlah_baris` varchar(10) DEFAULT NULL,
+  `tgl_beli` date DEFAULT NULL,
+  PRIMARY KEY (`id_rak`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+
+/*Data for the table `rak` */
+
+insert  into `rak`(`id_rak`,`nama_rak`,`posisi`,`jumlah_kolom`,`jumlah_baris`,`tgl_beli`) values 
+(1,'ABC','Ujung','5','3','2020-09-09');
+
+/*Table structure for table `tanda_terima` */
+
+DROP TABLE IF EXISTS `tanda_terima`;
+
+CREATE TABLE `tanda_terima` (
+  `id_penerima` int(11) NOT NULL AUTO_INCREMENT,
+  `id_arsip` int(11) DEFAULT NULL,
+  `nama_pengirim` varchar(50) DEFAULT NULL,
+  `hp` varchar(13) DEFAULT NULL,
+  `nama_penerima` varchar(50) DEFAULT NULL,
+  `tgl_terima` date DEFAULT NULL,
+  PRIMARY KEY (`id_penerima`),
+  KEY `id_arsip` (`id_arsip`),
+  CONSTRAINT `tanda_terima_ibfk_1` FOREIGN KEY (`id_arsip`) REFERENCES `data_arsip` (`id_arsip`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+
+/*Data for the table `tanda_terima` */
+
+insert  into `tanda_terima`(`id_penerima`,`id_arsip`,`nama_pengirim`,`hp`,`nama_penerima`,`tgl_terima`) values 
+(1,1,'Hanafi','9087878655','Cah','2020-09-11');
+
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
 /*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;

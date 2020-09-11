@@ -346,11 +346,31 @@
                     <form method="post" action="<?php echo base_url() ?>/arsip/cetak_tanda_terima">
                         <div class="modal-body">
                             <input type="hidden" name="id_arsip3" id="id_arsip3">
-
+                            <div class="table-responsive">
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>Kategori</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php foreach ($kategori as $key) { ?>
+                                            <tr>
+                                                <td><?= $key->kategori ?></td>
+                                                <td>
+                                                    <div class="form-check">
+                                                        <input type="checkbox" name="status[]" value="<?= $key->id_kategori; ?>" class="form-check-input">
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        <?php } ?>
+                                    </tbody>
+                                </table>
+                            </div>
                             <div class="form-group">
                                 <label for="nama_pengirim" class="col-form-label">Nama Pengirim :</label>
                                 <input type="text" id="nama_pengirim" class="form-control" name="nama_pengirim">
-
                             </div>
                             <div class="form-group">
                                 <label for="nama_pengirim" class="col-form-label">Nomor HP Pengirim :</label>

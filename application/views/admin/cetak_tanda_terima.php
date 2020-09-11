@@ -59,150 +59,22 @@ $header = array(
 foreach ($header as $kolom) {
     $pdf->Cell($kolom['length'], 5, $kolom['label'], 1, 0, $kolom['align'], true);
 }
-$pdf->Ln();
-$pdf->Cell(10, 6, '1', 1, 0, 'C');
 
-$pdf->Cell(50, 6, ' Proposal Revisi', 1, 0);
-
-$pdf->Cell(30, 6, '1 Asli', 1, 0, 'C');
-$pdf->Cell(30, 6, '', 1, 0, 'C');
-$pdf->Cell(30, 6, '', 1, 0, 'C');
-$pdf->Cell(40, 6, '', 1, 0, 'C');
-$pdf->Ln();
-$pdf->Cell(10, 6, '2', 1, 0, 'C');
-
-$pdf->Cell(50, 6, ' Laporan Kemajuan', 1, 0);
-
-$pdf->Cell(30, 6, '1 Asli', 1, 0, 'C');
-$pdf->Cell(30, 6, '', 1, 0, 'C');
-$pdf->Cell(30, 6, '', 1, 0, 'C');
-$pdf->Cell(40, 6, '', 1, 0, 'C');
-$pdf->Ln();
-$pdf->Cell(10, 6, '3', 1, 0, 'C');
-
-$pdf->Cell(50, 6, ' Logbook Tahap 1', 1, 0);
-
-$pdf->Cell(30, 6, '1 Asli', 1, 0, 'C');
-$pdf->Cell(30, 6, '', 1, 0, 'C');
-$pdf->Cell(30, 6, '', 1, 0, 'C');
-$pdf->Cell(40, 6, '', 1, 0, 'C');
-$pdf->Ln();
-$pdf->Cell(10, 6, '4', 1, 0, 'C');
-
-$pdf->Cell(50, 6, ' Luaran Tahap 1', 1, 0);
-
-$pdf->Cell(30, 6, '1 Asli', 1, 0, 'C');
-$pdf->Cell(30, 6, '', 1, 0, 'C');
-$pdf->Cell(30, 6, '', 1, 0, 'C');
-$pdf->Cell(40, 6, '', 1, 0, 'C');
-$pdf->Ln();
-$pdf->Cell(10, 6, '5', 1, 0, 'C');
-
-$pdf->Cell(50, 6, ' SPTJB Tahap 1 Bermaterai', 1, 0);
-
-$pdf->Cell(30, 6, '1 Asli', 1, 0, 'C');
-$pdf->Cell(30, 6, '', 1, 0, 'C');
-$pdf->Cell(30, 6, '', 1, 0, 'C');
-$pdf->Cell(40, 6, '', 1, 0, 'C');
-$pdf->Ln();
-$pdf->Cell(10, 6, '6', 1, 0, 'C');
-
-$pdf->Cell(50, 6, ' Laporan Akhir', 1, 0);
-
-$pdf->Cell(30, 6, '1 Asli', 1, 0, 'C');
-$pdf->Cell(30, 6, '', 1, 0, 'C');
-$pdf->Cell(30, 6, '', 1, 0, 'C');
-$pdf->Cell(40, 6, '', 1, 0, 'C');
-$pdf->Ln();
-$pdf->Cell(10, 6, '7', 1, 0, 'C');
-
-$pdf->Cell(50, 6, ' Logbook Tahap 2', 1, 0);
-
-$pdf->Cell(30, 6, '1 Asli', 1, 0, 'C');
-$pdf->Cell(30, 6, '', 1, 0, 'C');
-$pdf->Cell(30, 6, '', 1, 0, 'C');
-$pdf->Cell(40, 6, '', 1, 0, 'C');
-$pdf->Ln();
-$pdf->Cell(10, 6, '8', 1, 0, 'C');
-
-$pdf->Cell(50, 6, ' Luaran Tahap 2', 1, 0);
-
-$pdf->Cell(30, 6, '1 Asli', 1, 0, 'C');
-$pdf->Cell(30, 6, '', 1, 0, 'C');
-$pdf->Cell(30, 6, '', 1, 0, 'C');
-$pdf->Cell(40, 6, '', 1, 0, 'C');
-$pdf->Ln();
-$pdf->Cell(10, 6, '9', 1, 0, 'C');
-
-$pdf->Cell(50, 6, ' SPTJB Tahap 2 Bermatera', 1, 0);
-
-$pdf->Cell(30, 6, '1 Asli', 1, 0, 'C');
-$pdf->Cell(30, 6, '', 1, 0, 'C');
-$pdf->Cell(30, 6, '', 1, 0, 'C');
-$pdf->Cell(40, 6, '', 1, 0, 'C');
-$pdf->Ln();
-$pdf->Cell(10, 6, '10', 1, 0, 'C');
-
-$pdf->Cell(50, 6, ' Dokumentasi Video', 1, 0);
-
-$pdf->Cell(30, 6, '1 Asli', 1, 0, 'C');
-$pdf->Cell(30, 6, '', 1, 0, 'C');
-$pdf->Cell(30, 6, '', 1, 0, 'C');
-$pdf->Cell(40, 6, '', 1, 0, 'C');
-$pdf->Ln();
-$pdf->Cell(10, 6, '11', 1, 0, 'C');
-
-$pdf->Cell(50, 6, ' Profil Kegiatan (word)', 1, 0);
-
-$pdf->Cell(30, 6, '1 Asli', 1, 0, 'C');
-$pdf->Cell(30, 6, '', 1, 0, 'C');
-$pdf->Cell(30, 6, '', 1, 0, 'C');
-$pdf->Cell(40, 6, '', 1, 0, 'C');
-$pdf->Ln();
-$pdf->Cell(10, 6, '12', 1, 0, 'C');
-
-$pdf->Cell(50, 6, ' Poster', 1, 0);
-
-$pdf->Cell(30, 6, '1 Asli', 1, 0, 'C');
-$pdf->Cell(30, 6, '', 1, 0, 'C');
-$pdf->Cell(30, 6, '', 1, 0, 'C');
-$pdf->Cell(40, 6, '', 1, 0, 'C');
-$pdf->Ln();
-$pdf->Cell(10, 6, '13', 1, 0, 'C');
-
-$pdf->Cell(50, 6, ' Laporan Keuangan (SPJ)', 1, 0);
-
-$pdf->Cell(30, 6, '1 Asli', 1, 0, 'C');
-$pdf->Cell(30, 6, '', 1, 0, 'C');
-$pdf->Cell(30, 6, '', 1, 0, 'C');
-$pdf->Cell(40, 6, '', 1, 0, 'C');
-$pdf->Ln();
-$pdf->Cell(10, 6, '14', 1, 0, 'C');
-
-$pdf->Cell(50, 6, ' Rekapitulasi Keuangan', 1, 0);
-
-$pdf->Cell(30, 6, '1 Asli', 1, 0, 'C');
-$pdf->Cell(30, 6, '', 1, 0, 'C');
-$pdf->Cell(30, 6, '', 1, 0, 'C');
-$pdf->Cell(40, 6, '', 1, 0, 'C');
-$pdf->Ln();
-$pdf->Cell(10, 6, '15', 1, 0, 'C');
-
-$pdf->Cell(50, 6, ' Buku Pembantu Pajak', 1, 0);
-
-$pdf->Cell(30, 6, '1 Asli', 1, 0, 'C');
-$pdf->Cell(30, 6, '', 1, 0, 'C');
-$pdf->Cell(30, 6, '', 1, 0, 'C');
-$pdf->Cell(40, 6, '', 1, 0, 'C');
-$pdf->Ln();
-$pdf->Cell(10, 6, '16', 1, 0, 'C');
-
-$pdf->Cell(50, 6, ' Berita Acara Aset / BMN', 1, 0);
-
-$pdf->Cell(30, 6, '1 Asli', 1, 0, 'C');
-$pdf->Cell(30, 6, '', 1, 0, 'C');
-$pdf->Cell(30, 6, '', 1, 0, 'C');
-$pdf->Cell(40, 6, '', 1, 0, 'C');
+$nomor = 1;
+foreach ($detail as $dt) {
+    $pdf->Ln();
+    $pdf->Cell(10, 6, $nomor, 1, 0, 'C');
+    $pdf->Cell(50, 6, $dt->kategori, 1, 0);
+    $pdf->Cell(30, 6, $dt->satuan, 1, 0, 'C');
+    $centang = "";
+    if ($dt->status == 1) {
+        $centang = "v";
+    }
+    $pdf->Cell(30, 6, $centang, 1, 0, 'C');
+    $pdf->Cell(30, 6, '', 1, 0, 'C');
+    $pdf->Cell(40, 6, '', 1, 0, 'C');
+    $nomor++;
+}
 $pdf->Ln(10);
 $pdf->Cell(40, 6, ' Nama Ketua', 1, 0);
 
@@ -302,19 +174,19 @@ $pdf->Cell(40, 6, ' Nama Pengirim', 1, 0);
 
 $pdf->Cell(5, 6, ':', 1, 0, 'C');
 
-$pdf->Cell(145, 6, ' '.$nama_pengirim, 1, 0);
+$pdf->Cell(145, 6, ' ' . $nama_pengirim, 1, 0);
 $pdf->Ln();
 $pdf->Cell(40, 6, ' Nomor HP Pengirim', 1, 0);
 
 $pdf->Cell(5, 6, ':', 1, 0, 'C');
 
-$pdf->Cell(145, 6, ' '.$no_hp_pengirim, 1, 0);
+$pdf->Cell(145, 6, ' ' . $no_hp_pengirim, 1, 0);
 $pdf->Ln(15);
 $pdf->setX(150);
 $pdf->Cell(0, 2, 'Surabaya, 09 September 2020', 0, 1, '');
 $pdf->Ln(15);
 $pdf->setX(150);
-$pdf->Cell(0, 2, ' '.$nama_penerima, 0, 1, '');
+$pdf->Cell(0, 2, ' ' . $nama_penerima, 0, 1, '');
 $pdf->Ln();
 $pdf->Cell(0, 2, 'NB :Harap Disimpan Jangan Sampai Hilang. Terima Kasih', 0, 1, '');
 $pdf->Output();

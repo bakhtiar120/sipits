@@ -25,7 +25,7 @@ class Rak_model extends CI_Model
         if (empty($id_rak)) {
             $query = $this->db->query("insert into rak values (null,'$nama_rak','$posisi','$jumlah_kolom','$jumlah_baris','$tgl_beli')");
         } else {
-            $query = $this->db->query("update rak set nama_rak = '$nama_rak', posisi = '$posisi', jumlah_kolom = '$jumlah_kolom', jumlah_baris = '$jumlah_baris' tgl_beli = '$tgl_beli' where id_rak = '$id_rak'");
+            $query = $this->db->query("update rak set nama_rak = '$nama_rak', posisi = '$posisi', jumlah_kolom = '$jumlah_kolom', jumlah_baris = '$jumlah_baris', tgl_beli = '$tgl_beli' where id_rak = '$id_rak'");
         }
 
         if ($query) {
