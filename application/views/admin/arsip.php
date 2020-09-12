@@ -309,7 +309,7 @@
                     </div>
                     <form method="post" action="#">
                         <div class="modal-body">
-                            <input type="hidden" name="id_arsip" id="id_arsip2">
+                            <!-- <input type="hidden" name="id_arsip" id="id_arsip2"> -->
                             <div class="form-group">
                                 <label for="nama_rak" class="col-form-label">Nama Rak:</label>
                                 <input type="text" class="form-control" id="nama_rak" name="nama_rak" readonly>
@@ -344,44 +344,8 @@
                         </button>
                     </div>
                     <form method="post" action="<?php echo base_url() ?>/arsip/cetak_tanda_terima">
-                        <div class="modal-body">
-                            <input type="hidden" name="id_arsip3" id="id_arsip3">
-                            <div class="table-responsive">
-                                <table class="table table-bordered">
-                                    <thead>
-                                        <tr>
-                                            <th>Kategori</th>
-                                            <th>Status</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php foreach ($kategori as $key) { ?>
-                                            <tr>
-                                                <td><?= $key->kategori ?></td>
-                                                <td>
-                                                    <div class="form-check">
-                                                        <input type="checkbox" name="status[]" value="<?= $key->id_kategori; ?>" class="form-check-input">
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        <?php } ?>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <div class="form-group">
-                                <label for="nama_pengirim" class="col-form-label">Nama Pengirim :</label>
-                                <input type="text" id="nama_pengirim" class="form-control" name="nama_pengirim">
-                            </div>
-                            <div class="form-group">
-                                <label for="nama_pengirim" class="col-form-label">Nomor HP Pengirim :</label>
-                                <input type="text" id="no_hp_pengirim" class="form-control" onKeyUp="this.value=this.value.replace(/[^0-9]/g,'')" name="no_hp_pengirim">
-
-                            </div>
-                            <div class="form-group">
-                                <label for="nama_pengirim" class="col-form-label">Nama Penerima :</label>
-                                <input type="text" id="nama_penerima" class="form-control" name="nama_penerima">
-
-                            </div>
+                        <input type="hidden" name="id_arsip3" id="id_arsip3">
+                        <div class="modal-body" id="body">
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -508,9 +472,16 @@
             }
 
             function cetakData(id) {
-                $("#id_arsip3").val(id);
-                $("#cetak").modal();
-
+                $.ajax({
+                    url: base_url + "arsip/modal",
+                    type: 'post',
+                    data: 'id_arsip=' + id,
+                    success: function(res) {
+                        $("#id_arsip3").val(id);
+                        $("#body").html(res);
+                        $("#cetak").modal();
+                    }
+                });
             }
 
             function lihatRak(id) {

@@ -18,7 +18,6 @@ class Arsip extends CI_Controller
         $data["skema"] = $this->Arsip_model->skema();
         $data["departemen"] = $this->Arsip_model->departemen();
         $data["fakultas"] = $this->Arsip_model->fakultas();
-        $data["kategori"] = $this->Arsip_model->kategori();
         $this->load->view('admin/arsip', $data);
     }
 
@@ -209,6 +208,61 @@ class Arsip extends CI_Controller
         $simpan = $this->Arsip_model->simpanPenerima();
         $data["arsip"] = $this->Arsip_model->data_arsip($id);
         $data["detail"] = $this->Arsip_model->detail_data_arsip($id);
+        $data["tanda"] = $this->Arsip_model->tanda_terima($id);
         $this->load->view('admin/cetak_tanda_terima', $data);
+    }
+
+    public function modal()
+    {
+        $id_arsip = $this->input->post("id_arsip");
+        $kategori = $this->Arsip_model->kategori();
+        $tanda = $this->Arsip_model->tanda_terima($id_arsip);
+        $nama_pengirim = "";
+        $hp = "";
+        $nama_penerima = "";
+        if (!empty($tanda->nama_pengirim)) {
+            $nama_pengirim = $tanda->nama_pengirim;
+        }
+        if (!empty($tanda->hp)) {
+            $hp = $tanda->hp;
+        }
+        if (!empty($tanda->nama_penerima)) {
+            $nama_penerima = $tanda->nama_penerima;
+        }
+        if (!empty($tanda)) {
+            $edit = '<input type="hidden" name="editStatus" value="1">';
+        } else {
+            $edit = '<input type="hidden" name="editStatus" value="0">';
+        }
+        $form = $edit . '<div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead><tr><th>Kategori</th><th>Status</th></tr></thead>
+                        <tbody>';
+        foreach ($kategori as $key) {
+            $status = "";
+            if (cekStatusKategori($id_arsip, $key->id_kategori) == 1) {
+                $status = "checked";
+            }
+            $form .= '<tr>
+                                        <td>' . $key->kategori . '</td>
+                                        <td>
+                                            <div class="form-check"><input type="checkbox" name="status[]" value="' . $key->id_kategori . '" class="form-check-input" ' . $status . '></div>
+                                        </td>
+                                        </tr>';
+        }
+        $form .= '</tbody></table></div>
+                            <div class="form-group">
+                                <label for="nama_pengirim" class="col-form-label">Nama Pengirim :</label>
+                                <input type="text" id="nama_pengirim" class="form-control" name="nama_pengirim" value="' . $nama_pengirim . '">
+                            </div>';
+        $form .= '<div class="form-group">
+                                <label for="nama_pengirim" class="col-form-label">Nomor HP Pengirim :</label>
+                                <input type="text" id="no_hp_pengirim" class="form-control" onKeyUp="this.value=this.value.replace(/[^0-9]/g,\'' . '\')" name="no_hp_pengirim" value="' . $hp . '">
+                            </div>
+                            <div class="form-group">
+                                <label for="nama_pengirim" class="col-form-label">Nama Penerima :</label>
+                                <input type="text" id="nama_penerima" class="form-control" name="nama_penerima" value="' . $nama_penerima . '">
+                            </div>';
+        echo $form;
     }
 }

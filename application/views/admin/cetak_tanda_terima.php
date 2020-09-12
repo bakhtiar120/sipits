@@ -174,19 +174,19 @@ $pdf->Cell(40, 6, ' Nama Pengirim', 1, 0);
 
 $pdf->Cell(5, 6, ':', 1, 0, 'C');
 
-$pdf->Cell(145, 6, ' ' . $nama_pengirim, 1, 0);
+$pdf->Cell(145, 6, ' ' . $tanda->nama_pengirim, 1, 0);
 $pdf->Ln();
 $pdf->Cell(40, 6, ' Nomor HP Pengirim', 1, 0);
 
 $pdf->Cell(5, 6, ':', 1, 0, 'C');
 
-$pdf->Cell(145, 6, ' ' . $no_hp_pengirim, 1, 0);
+$pdf->Cell(145, 6, ' ' . $tanda->hp, 1, 0);
 $pdf->Ln(15);
 $pdf->setX(150);
-$pdf->Cell(0, 2, 'Surabaya, 09 September 2020', 0, 1, '');
+$pdf->Cell(0, 2, 'Surabaya, '.date("d M Y"), 0, 1, '');
 $pdf->Ln(15);
 $pdf->setX(150);
-$pdf->Cell(0, 2, ' ' . $nama_penerima, 0, 1, '');
+$pdf->Cell(0, 2, ' ' . $tanda->nama_penerima, 0, 1, '');
 $pdf->Ln();
 $pdf->Cell(0, 2, 'NB :Harap Disimpan Jangan Sampai Hilang. Terima Kasih', 0, 1, '');
 $pdf->Output();

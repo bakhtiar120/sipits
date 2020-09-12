@@ -130,3 +130,14 @@ if (!function_exists('tgl2')) {
         return date_format(date_create($val), 'd/m/Y');
     }
 }
+
+if (!function_exists('cekStatusKategori')) {
+
+    function cekStatusKategori($id_arsip, $id_kategori)
+    {
+        $CI = get_instance();
+        $CI->load->model('Arsip_model', 'arsip');
+        $status = $CI->arsip->kategori_edit($id_arsip, $id_kategori);
+        return $status;
+    }
+}

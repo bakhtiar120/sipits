@@ -220,25 +220,39 @@ class Arsip_model extends CI_Model
     public function simpanPenerima()
     {
         $id = $this->input->post('id_arsip3');
+        $editStatus = $this->input->post('editStatus');
         $nama_pengirim = $this->input->post('nama_pengirim');
         $hp = $this->input->post('no_hp_pengirim');
         $nama_penerima = $this->input->post('nama_penerima');
         $cekKategori = $this->db->query("select id_kategori from kategori");
-        foreach ($cekKategori->result() as $value) {
-            $inputStatus = $this->db->query("insert into detail_arsip values (null,'$id','$value->id_kategori','0')");
+        if ($editStatus == 1) {
             foreach ($this->input->post('status') as $check) {
-                if ($value->id_kategori == $check) {
-                    $update = $this->db->query("update detail_arsip set status = '1' where id_arsip = '$id' and id_kategori = '$check'");
+                $update = $this->db->query("update detail_arsip set status = '1' where id_arsip = '$id' and id_kategori = '$check'");
+            }
+            $query = $this->db->query("update tanda_terima set nama_pengirim='$nama_pengirim',hp='$hp',nama_penerima='$nama_penerima' where id_arsip = '$id'");
+        } else {
+            foreach ($cekKategori->result() as $value) {
+                $inputStatus = $this->db->query("insert into detail_arsip values (null,'$id','$value->id_kategori','0')");
+                foreach ($this->input->post('status') as $check) {
+                    if ($value->id_kategori == $check) {
+                        $update = $this->db->query("update detail_arsip set status = '1' where id_arsip = '$id' and id_kategori = '$check'");
+                    }
                 }
             }
+            $tgl = date("Y-m-d");
+            $query = $this->db->query("insert into tanda_terima values (null,'$id','$nama_pengirim','$hp','$nama_penerima','$tgl')");
         }
-        $tgl = date("Y-m-d");
-        $query = $this->db->query("insert into tanda_terima values (null,'$id','$nama_pengirim','$hp','$nama_penerima','$tgl')");
     }
 
     public function data_arsip($id)
     {
         $query = $this->db->query("select * from data_arsip where id_arsip = '$id'");
+        return $query->row();
+    }
+
+    public function tanda_terima($id)
+    {
+        $query = $this->db->query("select * from tanda_terima where id_arsip = '$id'");
         return $query->row();
     }
 
@@ -252,5 +266,15 @@ class Arsip_model extends CI_Model
     {
         $query = $this->db->query("select * from kategori");
         return $query->result();
+    }
+
+    public function kategori_edit($id, $id_kategori)
+    {
+        $query = $this->db->query("select status from detail_arsip  where id_arsip = '$id' and id_kategori = '$id_kategori'");
+        if (!empty($query->row())) {
+            return $query->row()->status;
+        } else {
+            return 0;
+        }
     }
 }
