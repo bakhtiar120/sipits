@@ -229,6 +229,9 @@ class Arsip_model extends CI_Model
             foreach ($this->input->post('status') as $check) {
                 $update = $this->db->query("update detail_arsip set status = '1' where id_arsip = '$id' and id_kategori = '$check'");
             }
+            foreach ($this->input->post('status_unggahan') as $check2) {
+                $update_status = $this->db->query("update detail_arsip set status_upload = '1' where id_arsip = '$id' and id_kategori = '$check2'");
+            }
             $query = $this->db->query("update tanda_terima set nama_pengirim='$nama_pengirim',hp='$hp',nama_penerima='$nama_penerima' where id_arsip = '$id'");
         } else {
             foreach ($cekKategori->result() as $value) {
@@ -236,6 +239,11 @@ class Arsip_model extends CI_Model
                 foreach ($this->input->post('status') as $check) {
                     if ($value->id_kategori == $check) {
                         $update = $this->db->query("update detail_arsip set status = '1' where id_arsip = '$id' and id_kategori = '$check'");
+                    }
+                }
+                foreach ($this->input->post('status_unggahan') as $check2) {
+                    if ($value->id_kategori == $check2) {
+                        $update = $this->db->query("update detail_arsip set status_upload = '1' where id_arsip = '$id' and id_kategori = '$check2'");
                     }
                 }
             }
@@ -273,6 +281,16 @@ class Arsip_model extends CI_Model
         $query = $this->db->query("select status from detail_arsip  where id_arsip = '$id' and id_kategori = '$id_kategori'");
         if (!empty($query->row())) {
             return $query->row()->status;
+        } else {
+            return 0;
+        }
+    }
+
+    public function kategori_status_unggahan($id, $id_kategori)
+    {
+        $query = $this->db->query("select status_upload from detail_arsip  where id_arsip = '$id' and id_kategori = '$id_kategori'");
+        if (!empty($query->row())) {
+            return $query->row()->status_upload;
         } else {
             return 0;
         }

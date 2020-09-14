@@ -71,7 +71,11 @@ foreach ($detail as $dt) {
         $centang = "v";
     }
     $pdf->Cell(30, 6, $centang, 1, 0, 'C');
-    $pdf->Cell(30, 6, '', 1, 0, 'C');
+    $centang2 = "";
+    if ($dt->status_upload == 1) {
+        $centang2 = "v";
+    }
+    $pdf->Cell(30, 6, $centang2, 1, 0, 'C');
     $pdf->Cell(40, 6, '', 1, 0, 'C');
     $nomor++;
 }
@@ -183,7 +187,7 @@ $pdf->Cell(5, 6, ':', 1, 0, 'C');
 $pdf->Cell(145, 6, ' ' . $tanda->hp, 1, 0);
 $pdf->Ln(15);
 $pdf->setX(150);
-$pdf->Cell(0, 2, 'Surabaya, '.date("d M Y"), 0, 1, '');
+$pdf->Cell(0, 2, 'Surabaya, '.date("d F Y"), 0, 1, '');
 $pdf->Ln(15);
 $pdf->setX(150);
 $pdf->Cell(0, 2, ' ' . $tanda->nama_penerima, 0, 1, '');

@@ -236,17 +236,25 @@ class Arsip extends CI_Controller
         }
         $form = $edit . '<div class="table-responsive">
                     <table class="table table-bordered">
-                        <thead><tr><th>Kategori</th><th>Status</th></tr></thead>
+                        <thead><tr><th>Kategori</th><th>Status</th><th>Status Unggahan</th></tr></thead>
                         <tbody>';
         foreach ($kategori as $key) {
             $status = "";
             if (cekStatusKategori($id_arsip, $key->id_kategori) == 1) {
                 $status = "checked";
             }
+            $status_upload = "";
+            if(cekStatusUnggahan($id_arsip, $key->id_kategori) == 1)
+            {
+                $status_upload="checked";
+            }
             $form .= '<tr>
                                         <td>' . $key->kategori . '</td>
                                         <td>
                                             <div class="form-check"><input type="checkbox" name="status[]" value="' . $key->id_kategori . '" class="form-check-input" ' . $status . '></div>
+                                        </td>
+                                        <td>
+                                            <div class="form-check"><input type="checkbox" name="status_unggahan[]" value="' . $key->id_kategori . '" class="form-check-input" ' . $status_upload . '></div>
                                         </td>
                                         </tr>';
         }

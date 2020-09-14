@@ -141,3 +141,14 @@ if (!function_exists('cekStatusKategori')) {
         return $status;
     }
 }
+
+if (!function_exists('cekStatusUnggahan')) {
+
+    function cekStatusUnggahan($id_arsip, $id_kategori)
+    {
+        $CI = get_instance();
+        $CI->load->model('Arsip_model', 'arsip');
+        $status = $CI->arsip->kategori_status_unggahan($id_arsip, $id_kategori);
+        return $status;
+    }
+}
