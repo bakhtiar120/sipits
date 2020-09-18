@@ -235,7 +235,7 @@ class Arsip_model extends CI_Model
             $query = $this->db->query("update tanda_terima set nama_pengirim='$nama_pengirim',hp='$hp',nama_penerima='$nama_penerima' where id_arsip = '$id'");
         } else {
             foreach ($cekKategori->result() as $value) {
-                $inputStatus = $this->db->query("insert into detail_arsip values (null,'$id','$value->id_kategori','0')");
+                $inputStatus = $this->db->query("insert into detail_arsip values (null,'$id','$value->id_kategori','0','0')");
                 foreach ($this->input->post('status') as $check) {
                     if ($value->id_kategori == $check) {
                         $update = $this->db->query("update detail_arsip set status = '1' where id_arsip = '$id' and id_kategori = '$check'");

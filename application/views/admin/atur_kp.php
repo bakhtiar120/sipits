@@ -52,7 +52,13 @@
 
                 </h3>
               </div>
-
+              <div class="col-10">
+                <a class="btn btn-info btn-sm" href="<?php echo site_url('atur_kp/cetak_excel'); ?>">
+                  <i class="fas fa-print">
+                  </i>
+                  Cetak Excel
+                </a>
+              </div>
               <div class="card-body">
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>

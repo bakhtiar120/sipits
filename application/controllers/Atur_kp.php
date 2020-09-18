@@ -248,4 +248,11 @@ class Atur_kp extends CI_Controller
 		$this->load->view('admin/cetak_tanda_terima');
 		
 	}
+
+	public function cetak_excel() {
+		$data['data'] = $this->kp_model->get_kp_all();
+		// $data['temp'] = $temp1 . " " . $temp2;
+
+		$this->load->view('admin/excel_kp', $data);
+	}
 }
