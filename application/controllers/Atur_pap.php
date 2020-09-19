@@ -235,4 +235,12 @@ class Atur_pap extends CI_Controller
 	            // $this->load->view('admin/cetak_kontrak');
       
 	}
+
+	public function cetak_excel()
+	{
+		$data['data'] = $this->pap_model->get_pap_all();
+		// $data['temp'] = $temp1 . " " . $temp2;
+
+		$this->load->view('admin/excel_pap', $data);
+	}
 }

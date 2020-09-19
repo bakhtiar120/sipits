@@ -52,6 +52,14 @@
 
                                 </h3>
                             </div>
+                            <div class="row">
+                                <div class="col-10"></div>
+                                <div class="col-2" style="margin-top: 25px;"><a class="btn btn-info btn-sm" href="<?php echo site_url('atur_pap/cetak_excel'); ?>">
+                                        <i class="fas fa-print">
+                                        </i>
+                                        Export Excel
+                                    </a></div>
+                            </div>
 
                             <div class="card-body">
                                 <table id="example1" class="table table-bordered table-striped">
@@ -102,7 +110,7 @@
 
                                                     <!-- <a class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modal-default" href="<?php echo site_url('atur_kp/hapus/' . $value['id_pap']); ?>"> -->
 
-                                                    <a class="btn btn-info btn-sm" href="<?php echo site_url('atur_pap/cetak_data/'. $value['id_pap']); ?>">
+                                                    <a class="btn btn-info btn-sm" href="<?php echo site_url('atur_pap/cetak_data/' . $value['id_pap']); ?>">
                                                         <i class="fas fa-print">
                                                         </i>
                                                         Cetak Kontrak
