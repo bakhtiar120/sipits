@@ -224,7 +224,14 @@ class Atur_bpup extends CI_Controller
     {
         $this->load->library('f_pdf');
         $data = $this->bpup_model->get_bpup_by_id($id);
-        $this->load->view('admin/cetak_kontrak_bpup',$data[0]);
+        $this->load->view('admin/cetak_kontrak_bpup', $data[0]);
+    }
 
+    public function cetak_excel()
+    {
+        $data['data'] = $this->bpup_model->get_all();
+        // $data['temp'] = $temp1 . " " . $temp2;
+
+        $this->load->view('admin/excel_bpup', $data);
     }
 }

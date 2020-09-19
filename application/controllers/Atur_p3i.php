@@ -284,4 +284,12 @@ class Atur_p3i extends CI_Controller
             redirect('atur_p3i');
         }
     }
+
+    public function cetak_excel()
+    {
+        $data['data'] = $this->p3i_model->get_all();
+        // $data['temp'] = $temp1 . " " . $temp2;
+
+        $this->load->view('admin/excel_p3i', $data);
+    }
 }
