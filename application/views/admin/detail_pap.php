@@ -135,7 +135,7 @@
 
                                     <strong><i class="far fa-file-alt mr-1"></i> Lama Penelitian</strong>
                                     <p class="text-muted">
-                                        <?php echo $lama_bulan . " " . $jenis_lama ?> 
+                                        <?php echo $lama_bulan . " " . $jenis_lama ?>
                                     </p>
                                     <hr>
                                     <strong><i class="fas fa-pencil-alt mr-1"></i>Total Honor</strong>
@@ -175,40 +175,46 @@
 
                                     <div class="row">
                                         <div class="col-sm-3">
-                                            <a class="btn btn-warning btn-sm" href="<?php echo site_url('atur_pap/edit/' . $id_pap); ?>">
-                                                <i class="fas fa-edit">
-                                                </i>
-                                                Edit
-                                            </a>
-                                            <a class="btn btn-danger btn-sm" href="" data-toggle="modal" data-target="#deleteModal">
-                                                <i class="fas fa-trash">
-                                                </i>
-                                                Hapus
-                                            </a>
+                                            <?php if (cekRole($this->session->userdata("id_user"), $this->uri->segment(1), "edit") == 1) { ?>
+                                                <a class="btn btn-warning btn-sm" href="<?php echo site_url('atur_pap/edit/' . $id_pap); ?>">
+                                                    <i class="fas fa-edit">
+                                                    </i>
+                                                    Edit
+                                                </a>
+                                            <?php } ?>
+                                            <?php if (cekRole($this->session->userdata("id_user"), $this->uri->segment(1), "hapus") == 1) { ?>
+                                                <a class="btn btn-danger btn-sm" href="" data-toggle="modal" data-target="#deleteModal">
+                                                    <i class="fas fa-trash">
+                                                    </i>
+                                                    Hapus
+                                                </a>
+                                            <?php } ?>
 
                                         </div>
                                         <div class="col-sm-9" style="text-align: right;">
-                                            <a class="btn btn-info btn-sm" href="<?php echo site_url('atur_pap/update_status/' . $id_pap . '/' . '1'); ?>">
-                                                <i class="fas fa-book">
-                                                </i>
-                                                Review
-                                            </a>
-                                            <a class="btn btn-primary btn-sm" href="<?php echo site_url('atur_pap/update_status/' . $id_pap . '/' . '2'); ?>">
-                                                <i class="fas fa-pencil-alt">
-                                                </i>
-                                                Revisi
-                                            </a>
-                                            <a class="btn btn-danger btn-sm" href="<?php echo site_url('atur_pap/update_status/' . $id_pap . '/' . '3'); ?>">
-                                                <i class="fas fa-times">
-                                                </i>
-                                                Ditolak
-                                            </a>
+                                            <?php if (cekRole($this->session->userdata("id_user"), $this->uri->segment(1), "edit") == 1) { ?>
+                                                <a class="btn btn-info btn-sm" href="<?php echo site_url('atur_pap/update_status/' . $id_pap . '/' . '1'); ?>">
+                                                    <i class="fas fa-book">
+                                                    </i>
+                                                    Review
+                                                </a>
+                                                <a class="btn btn-primary btn-sm" href="<?php echo site_url('atur_pap/update_status/' . $id_pap . '/' . '2'); ?>">
+                                                    <i class="fas fa-pencil-alt">
+                                                    </i>
+                                                    Revisi
+                                                </a>
+                                                <a class="btn btn-danger btn-sm" href="<?php echo site_url('atur_pap/update_status/' . $id_pap . '/' . '3'); ?>">
+                                                    <i class="fas fa-times">
+                                                    </i>
+                                                    Ditolak
+                                                </a>
 
-                                            <a class="btn btn-success btn-sm" href="<?php echo site_url('atur_kp/update_status/' . $id_pap . '/' . '4'); ?>">
-                                                <i class="fas fa-check">
-                                                </i>
-                                                Diterima
-                                            </a>
+                                                <a class="btn btn-success btn-sm" href="<?php echo site_url('atur_kp/update_status/' . $id_pap . '/' . '4'); ?>">
+                                                    <i class="fas fa-check">
+                                                    </i>
+                                                    Diterima
+                                                </a>
+                                            <?php } ?>
                                         </div>
                                     </div>
 

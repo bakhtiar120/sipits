@@ -51,49 +51,51 @@
                             </div>
 
                             <div class="card-body">
-                                <div class="row">
-                                    <div class="col-sm-12">
-                                        <form method="post" action="<?php echo base_url() ?>/rak/simpan_rak">
-                                            <input type="hidden" name="id_rak" id="id_rak" class="form-control">
-                                            <div class="row">
-                                                <div class="col-sm-3">
-                                                    <div class="form-group">
-                                                        <label for="input"><b>Nama Rak</b></label>
-                                                        <input type="text" name="nama_rak" id="nama_rak" class="form-control">
+                                <?php if (cekRole($this->session->userdata("id_user"), $this->uri->segment(1), "tambah") == 1 || cekRole($this->session->userdata("id_user"), $this->uri->segment(1), "edit") == 1) { ?>
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <form method="post" action="<?php echo base_url() ?>/rak/simpan_rak">
+                                                <input type="hidden" name="id_rak" id="id_rak" class="form-control">
+                                                <div class="row">
+                                                    <div class="col-sm-3">
+                                                        <div class="form-group">
+                                                            <label for="input"><b>Nama Rak</b></label>
+                                                            <input type="text" name="nama_rak" id="nama_rak" class="form-control">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-3">
+                                                        <div class="form-group">
+                                                            <label for="input"><b>Posisi</b></label>
+                                                            <input type="text" name="posisi" id="posisi" class="form-control">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-2">
+                                                        <div class="form-group">
+                                                            <label for="input"><b>Jumlah Kolom</b></label>
+                                                            <input type="text" name="jumlah_kolom" maxlength="3" onKeyUp="this.value=this.value.replace(/[^0-9]/g,'')" id="jumlah_kolom" class="form-control">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-2">
+                                                        <div class="form-group">
+                                                            <label for="input"><b>Jumlah Baris</b></label>
+                                                            <input type="text" name="jumlah_baris" maxlength="3" onKeyUp="this.value=this.value.replace(/[^0-9]/g,'')" id="jumlah_baris" class="form-control">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-2">
+                                                        <div class="form-group">
+                                                            <label for="input"><b>Tgl Beli</b></label>
+                                                            <input type="date" name="tgl_beli" id="tgl_beli" class="form-control">
+                                                        </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-sm-3">
-                                                    <div class="form-group">
-                                                        <label for="input"><b>Posisi</b></label>
-                                                        <input type="text" name="posisi" id="posisi" class="form-control">
-                                                    </div>
+                                                <div class="col-sm-4">
+                                                    <input class="btn btn-sm btn-info" type="submit" value="Simpan">
                                                 </div>
-                                                <div class="col-sm-2">
-                                                    <div class="form-group">
-                                                        <label for="input"><b>Jumlah Kolom</b></label>
-                                                        <input type="text" name="jumlah_kolom" maxlength="3" onKeyUp="this.value=this.value.replace(/[^0-9]/g,'')" id="jumlah_kolom" class="form-control">
-                                                    </div>
-                                                </div>
-                                                <div class="col-sm-2">
-                                                    <div class="form-group">
-                                                        <label for="input"><b>Jumlah Baris</b></label>
-                                                        <input type="text" name="jumlah_baris" maxlength="3" onKeyUp="this.value=this.value.replace(/[^0-9]/g,'')" id="jumlah_baris" class="form-control">
-                                                    </div>
-                                                </div>
-                                                <div class="col-sm-2">
-                                                    <div class="form-group">
-                                                        <label for="input"><b>Tgl Beli</b></label>
-                                                        <input type="date" name="tgl_beli" id="tgl_beli" class="form-control">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-4">
-                                                <input class="btn btn-sm btn-info" type="submit" value="Simpan">
-                                            </div>
-                                        </form>
+                                            </form>
+                                        </div>
                                     </div>
-                                </div>
-                                <br>
+                                    <br>
+                                <?php } ?>
                                 <table id="table" class="table table-bordered table-striped">
                                     <thead>
                                         <tr>
@@ -121,7 +123,9 @@
                                                 <?php
                                                 $kirim = $key->id_rak . "|" . $key->nama_rak . "|" . $key->posisi . "|" . $key->jumlah_kolom . "|" . $key->jumlah_baris . "|" . $key->tgl_beli;
                                                 ?>
-                                                <td><a class="btn btn-xs btn-success" onclick="rakEdit('<?= $kirim ?>')" style="cursor:pointer;color:#ffffff"> Edit</a> &nbsp; </td>
+                                                <td>
+                                                    <?php if (cekRole($this->session->userdata("id_user"), $this->uri->segment(1), "edit") == 1) { ?>
+                                                        <a class="btn btn-xs btn-success" onclick="rakEdit('<?= $kirim ?>')" style="cursor:pointer;color:#ffffff"> Edit</a> &nbsp; <?php } ?></td>
                                             </tr>
                                         <?php $no++;
                                         } ?>

@@ -179,41 +179,47 @@
 
                   <div class="row">
                     <div class="col-sm-3">
-                      <a class="btn btn-warning btn-sm" href="<?php echo site_url('atur_kp/edit/' . $id_kp); ?>">
-                        <i class="fas fa-edit">
-                        </i>
-                        Edit
-                      </a>
-                      <a class="btn btn-danger btn-sm" href="" data-toggle="modal" data-target="#deleteModal">
-                        <i class="fas fa-trash">
-                        </i>
-                        Hapus
-                      </a>
+                      <?php if (cekRole($this->session->userdata("id_user"), $this->uri->segment(1), "edit") == 1) { ?>
+                        <a class="btn btn-warning btn-sm" href="<?php echo site_url('atur_kp/edit/' . $id_kp); ?>">
+                          <i class="fas fa-edit">
+                          </i>
+                          Edit
+                        </a>
+                      <?php } ?>
+                      <?php if (cekRole($this->session->userdata("id_user"), $this->uri->segment(1), "hapus") == 1) { ?>
+                        <a class="btn btn-danger btn-sm" href="" data-toggle="modal" data-target="#deleteModal">
+                          <i class="fas fa-trash">
+                          </i>
+                          Hapus
+                        </a>
+                      <?php } ?>
 
                     </div>
-                    <div class="col-sm-9" style="text-align: right;">
-                      <a class="btn btn-info btn-sm" href="<?php echo site_url('atur_kp/update_status/' . $id_kp . '/' . '1'); ?>">
-                        <i class="fas fa-book">
-                        </i>
-                        Review
-                      </a>
-                      <a class="btn btn-primary btn-sm" href="<?php echo site_url('atur_kp/update_status/' . $id_kp . '/' . '2'); ?>">
-                        <i class="fas fa-pencil-alt">
-                        </i>
-                        Revisi
-                      </a>
-                      <a class="btn btn-danger btn-sm" href="<?php echo site_url('atur_kp/update_status/' . $id_kp . '/' . '3'); ?>">
-                        <i class="fas fa-times">
-                        </i>
-                        Ditolak
-                      </a>
+                    <?php if (cekRole($this->session->userdata("id_user"), $this->uri->segment(1), "edit") == 1) { ?>
+                      <div class="col-sm-9" style="text-align: right;">
+                        <a class="btn btn-info btn-sm" href="<?php echo site_url('atur_kp/update_status/' . $id_kp . '/' . '1'); ?>">
+                          <i class="fas fa-book">
+                          </i>
+                          Review
+                        </a>
+                        <a class="btn btn-primary btn-sm" href="<?php echo site_url('atur_kp/update_status/' . $id_kp . '/' . '2'); ?>">
+                          <i class="fas fa-pencil-alt">
+                          </i>
+                          Revisi
+                        </a>
+                        <a class="btn btn-danger btn-sm" href="<?php echo site_url('atur_kp/update_status/' . $id_kp . '/' . '3'); ?>">
+                          <i class="fas fa-times">
+                          </i>
+                          Ditolak
+                        </a>
 
-                      <a class="btn btn-success btn-sm" href="<?php echo site_url('atur_kp/update_status/' . $id_kp . '/' . '4'); ?>">
-                        <i class="fas fa-check">
-                        </i>
-                        Diterima
-                      </a>
-                    </div>
+                        <a class="btn btn-success btn-sm" href="<?php echo site_url('atur_kp/update_status/' . $id_kp . '/' . '4'); ?>">
+                          <i class="fas fa-check">
+                          </i>
+                          Diterima
+                        </a>
+                      <?php } ?>
+                      </div>
                   </div>
 
 

@@ -147,75 +147,7 @@
       <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
         <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-        <li class="nav-item has-treeview">
-          <a href="<?php echo base_url('admin'); ?>" class="nav-link">
-            <i class="nav-icon fas fa-tachometer-alt"></i>
-            <p>
-              Dashboard
-
-            </p>
-          </a>
-        </li>
-
-        <li class="nav-item has-treeview">
-          <a href="<?php echo base_url('atur_kp'); ?>" class="nav-link">
-            <i class="nav-icon fas fa-archive"></i>
-            <p>
-              Program KP
-
-            </p>
-          </a>
-        </li>
-
-        <li class="nav-item has-treeview">
-          <a href="<?php echo base_url('atur_pap'); ?>" class="nav-link">
-            <i class="nav-icon far fa-clipboard"></i>
-            <p>
-              Program PAP
-
-            </p>
-          </a>
-        </li>
-        <li class="nav-item has-treeview">
-          <a href="<?php echo base_url('atur_kmpi'); ?>" class="nav-link">
-            <i class="nav-icon fas fa-book"></i>
-            <p>
-              Program KMPI
-            </p>
-          </a>
-        </li>
-        <li class="nav-item has-treeview">
-          <a href="<?php echo base_url('atur_p3i'); ?>" class="nav-link">
-            <i class="nav-icon fas fa-file-alt"></i>
-            <p>
-              Program P3I
-            </p>
-          </a>
-        </li>
-        <li class="nav-item has-treeview">
-          <a href="<?php echo base_url('atur_bpup'); ?>" class="nav-link">
-            <i class="nav-icon fas fa-file-alt"></i>
-            <p>
-              Program BPUP
-            </p>
-          </a>
-        </li>
-        <li class="nav-item has-treeview">
-          <a href="<?php echo base_url('arsip'); ?>" class="nav-link">
-            <i class="nav-icon fas fa-file-alt"></i>
-            <p>
-              Data Arsip
-            </p>
-          </a>
-        </li>
-        <li class="nav-item has-treeview">
-          <a href="<?php echo base_url('rak'); ?>" class="nav-link">
-            <i class="nav-icon fas fa-file-alt"></i>
-            <p>
-              Master Rak
-            </p>
-          </a>
-        </li>
+        <?php echo $sidemenu ?>
         <li class="nav-item has-treeview">
           <a href="<?php echo base_url('login/logout'); ?>" class="nav-link">
             <i class="nav-icon fas fa-sign-out-alt"></i>
