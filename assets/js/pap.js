@@ -202,10 +202,12 @@ $(document).ready(function() {
         };
     });
 
+    var allowedFiles2 = [".jpg", ".jpeg", ".png"];
+    var regex2 = new RegExp("([a-zA-Z0-9\s_\\.\-:])+(" + allowedFiles2.join('|') + ")$");
     $("#ktp").change(function() {
         var ktp = $("#ktp").val();
-        if (!regex.test(ktp.toLowerCase())) {
-            $("#invalid_ktp").html("File KTP harus : <b>" + allowedFiles.join(', '));
+        if (!regex2.test(ktp.toLowerCase())) {
+            $("#invalid_ktp").html("File KTP harus : <b>" + allowedFiles2.join(', '));
             this.value = "";
             return false;
         } else {

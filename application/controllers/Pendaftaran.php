@@ -39,8 +39,8 @@ class Pendaftaran extends CI_Controller
 			$folder = "uploads/pap/";
 
 			//print_r($_FILES['pernyataan']['name']);
-
-			$file = rand(1000, 100000) . "-" . $_FILES['pernyataan']['name'];
+			$name_file = str_replace(' ', '_', $_FILES['pernyataan']['name']);
+			$file = rand(1000, 100000) . "-" . $name_file;
 			$file_loc = $_FILES['pernyataan']['tmp_name'];
 			$file_size = $_FILES['pernyataan']['size'];
 			$file_type = $_FILES['pernyataan']['type'];
@@ -48,8 +48,8 @@ class Pendaftaran extends CI_Controller
 			$data['pernyataan'] = $file;
 
 			move_uploaded_file($file_loc, $folder . $file);
-
-			$file = rand(1000, 100000) . "-" . $_FILES['ktp']['name'];
+			$name_file_ktp = str_replace(' ', '_', $_FILES['ktp']['name']);
+			$file = rand(1000, 100000) . "-" . $name_file_ktp;
 			$file_loc = $_FILES['ktp']['tmp_name'];
 			$file_size = $_FILES['ktp']['size'];
 			$file_type = $_FILES['ktp']['type'];
@@ -103,9 +103,9 @@ class Pendaftaran extends CI_Controller
 			$data['tanggal_submit'] = date("yy-m-d");
 
 			$folder = "uploads/kp/";
-
-
-			$file = rand(1000, 100000) . "-" . $_FILES['proposal']['name'];
+			$name_file_proposal = str_replace(' ', '_', $_FILES['proposal']['name']);
+			$file = rand(1000, 100000) . "-" . $name_file_proposal;
+			// $file = rand(1000, 100000) . "-" . $_FILES['proposal']['name'];
 			$file_loc = $_FILES['proposal']['tmp_name'];
 			$file_size = $_FILES['proposal']['size'];
 			$file_type = $_FILES['proposal']['type'];
@@ -113,8 +113,9 @@ class Pendaftaran extends CI_Controller
 			$data['proposal'] = $file;
 
 			move_uploaded_file($file_loc, $folder . $file);
-
-			$file = rand(1000, 100000) . "-" . $_FILES['mou']['name'];
+			$name_file_mou = str_replace(' ', '_', $_FILES['mou']['name']);
+			$file = rand(1000, 100000) . "-" . $name_file_mou;
+			// $file = rand(1000, 100000) . "-" . $_FILES['mou']['name'];
 			$file_loc = $_FILES['mou']['tmp_name'];
 			$file_size = $_FILES['mou']['size'];
 			$file_type = $_FILES['mou']['type'];
@@ -123,8 +124,9 @@ class Pendaftaran extends CI_Controller
 
 			$data['mou'] = $file;
 
-
-			$file = rand(1000, 100000) . "-" . $_FILES['moa']['name'];
+			$name_file_moa = str_replace(' ', '_', $_FILES['moa']['name']);
+			$file = rand(1000, 100000) . "-" . $name_file_moa;
+			// $file = rand(1000, 100000) . "-" . $_FILES['moa']['name'];
 			$file_loc = $_FILES['moa']['tmp_name'];
 			$file_size = $_FILES['moa']['size'];
 			$file_type = $_FILES['moa']['type'];
@@ -191,8 +193,9 @@ class Pendaftaran extends CI_Controller
 
 			$folder = "uploads/kmpi/";
 
-
-			$file = rand(1000, 100000) . "-" . $_FILES['draft_publikasi']['name'];
+			$name_file_publikasi = str_replace(' ', '_', $_FILES['draft_publikasi']['name']);
+			$file = rand(1000, 100000) . "-" . $name_file_publikasi;
+			// $file = rand(1000, 100000) . "-" . $_FILES['draft_publikasi']['name'];
 			$file_loc = $_FILES['draft_publikasi']['tmp_name'];
 			$file_size = $_FILES['draft_publikasi']['size'];
 			$file_type = $_FILES['draft_publikasi']['type'];
@@ -200,8 +203,9 @@ class Pendaftaran extends CI_Controller
 			$data['draft_publikasi'] = $file;
 
 			move_uploaded_file($file_loc, $folder . $file);
-
-			$file = rand(1000, 100000) . "-" . $_FILES['luaran_publikasi']['name'];
+			$name_file_luaran = str_replace(' ', '_', $_FILES['luaran_publikasi']['name']);
+			$file = rand(1000, 100000) . "-" . $name_file_luaran;
+			// $file = rand(1000, 100000) . "-" . $_FILES['luaran_publikasi']['name'];
 			$file_loc = $_FILES['luaran_publikasi']['tmp_name'];
 			$file_size = $_FILES['luaran_publikasi']['size'];
 			$file_type = $_FILES['luaran_publikasi']['type'];
@@ -210,8 +214,9 @@ class Pendaftaran extends CI_Controller
 
 			$data['luaran_publikasi'] = $file;
 
-
-			$file = rand(1000, 100000) . "-" . $_FILES['mou_publikasi']['name'];
+			$name_file_mou_publikasi = str_replace(' ', '_', $_FILES['mou_publikasi']['name']);
+			$file = rand(1000, 100000) . "-" . $name_file_mou_publikasi;
+			// $file = rand(1000, 100000) . "-" . $_FILES['mou_publikasi']['name'];
 			$file_loc = $_FILES['mou_publikasi']['tmp_name'];
 			$file_size = $_FILES['mou_publikasi']['size'];
 			$file_type = $_FILES['mou_publikasi']['type'];
@@ -281,8 +286,9 @@ class Pendaftaran extends CI_Controller
 
 			$folder = "uploads/p3i/";
 
-
-			$file = rand(1000, 100000) . "-" . $_FILES['pernyataan']['name'];
+			$name_file_pernyataan_p3i = str_replace(' ', '_', $_FILES['pernyataan']['name']);
+			$file = rand(1000, 100000) . "-" . $name_file_pernyataan_p3i;
+			// $file = rand(1000, 100000) . "-" . $_FILES['pernyataan']['name'];
 			$file_loc = $_FILES['pernyataan']['tmp_name'];
 			$file_size = $_FILES['pernyataan']['size'];
 			$file_type = $_FILES['pernyataan']['type'];
@@ -290,8 +296,9 @@ class Pendaftaran extends CI_Controller
 			$data['pernyataan'] = $file;
 
 			move_uploaded_file($file_loc, $folder . $file);
-
-			$file = rand(1000, 100000) . "-" . $_FILES['draf']['name'];
+			$name_file_draf = str_replace(' ', '_', $_FILES['draf']['name']);
+			$file = rand(1000, 100000) . "-" . $name_file_draf;
+			// $file = rand(1000, 100000) . "-" . $_FILES['draf']['name'];
 			$file_loc = $_FILES['draf']['tmp_name'];
 			$file_size = $_FILES['draf']['size'];
 			$file_type = $_FILES['draf']['type'];
@@ -300,8 +307,9 @@ class Pendaftaran extends CI_Controller
 
 			$data['draf'] = $file;
 
-
-			$file = rand(1000, 100000) . "-" . $_FILES['npwp']['name'];
+			$name_file_npwp = str_replace(' ', '_', $_FILES['npwp']['name']);
+			$file = rand(1000, 100000) . "-" . $name_file_npwp;
+			// $file = rand(1000, 100000) . "-" . $_FILES['npwp']['name'];
 			$file_loc = $_FILES['npwp']['tmp_name'];
 			$file_size = $_FILES['npwp']['size'];
 			$file_type = $_FILES['npwp']['type'];
@@ -309,8 +317,9 @@ class Pendaftaran extends CI_Controller
 			move_uploaded_file($file_loc, $folder . $file);
 
 			$data['npwp'] = $file;
-
-			$file = rand(1000, 100000) . "-" . $_FILES['tabungan']['name'];
+			$name_file_tabungan = str_replace(' ', '_', $_FILES['tabungan']['name']);
+			$file = rand(1000, 100000) . "-" . $name_file_tabungan;
+			// $file = rand(1000, 100000) . "-" . $_FILES['tabungan']['name'];
 			$file_loc = $_FILES['tabungan']['tmp_name'];
 			$file_size = $_FILES['tabungan']['size'];
 			$file_type = $_FILES['tabungan']['type'];
@@ -361,8 +370,9 @@ class Pendaftaran extends CI_Controller
 			$data['tanggal_submit'] = date("yy-m-d");
 
 			$folder = "uploads/luaran/";
-
-			$file = rand(1000, 100000) . "-" . $_FILES['upload']['name'];
+			$name_file_upload_luaran = str_replace(' ', '_', $_FILES['upload']['name']);
+			$file = rand(1000, 100000) . "-" . $name_file_upload_luaran;
+			// $file = rand(1000, 100000) . "-" . $_FILES['upload']['name'];
 			$file_loc = $_FILES['upload']['tmp_name'];
 			$file_size = $_FILES['upload']['size'];
 			$file_type = $_FILES['upload']['type'];
@@ -418,8 +428,9 @@ class Pendaftaran extends CI_Controller
 			$data['tanggal_submit'] = date("yy-m-d");
 
 			$folder = "uploads/bpup/";
-
-			$file = rand(1000, 100000) . "-" . $_FILES['ktp']['name'];
+			$name_file_ktp = str_replace(' ', '_', $_FILES['ktp']['name']);
+			$file = rand(1000, 100000) . "-" . $name_file_ktp;
+			// $file = rand(1000, 100000) . "-" . $_FILES['ktp']['name'];
 			$file_loc = $_FILES['ktp']['tmp_name'];
 			$file_size = $_FILES['ktp']['size'];
 			$file_type = $_FILES['ktp']['type'];
@@ -427,8 +438,9 @@ class Pendaftaran extends CI_Controller
 			move_uploaded_file($file_loc, $folder . $file);
 
 			$data['ktp'] = $file;
-
-			$file = rand(1000, 100000) . "-" . $_FILES['ktm']['name'];
+			$name_file_ktm = str_replace(' ', '_', $_FILES['ktm']['name']);
+			$file = rand(1000, 100000) . "-" . $name_file_ktm;
+			// $file = rand(1000, 100000) . "-" . $_FILES['ktm']['name'];
 			$file_loc = $_FILES['ktm']['tmp_name'];
 			$file_size = $_FILES['ktm']['size'];
 			$file_type = $_FILES['ktm']['type'];

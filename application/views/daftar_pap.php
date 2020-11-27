@@ -180,7 +180,7 @@
 
   <?php include("footer.php") ?>
   <script src="<?php echo base_url('assets/js/jquery-1.12.1.js'); ?>"></script>
-  <script src="<?php echo base_url('assets/js/pap.js'); ?>"></script>
+  <script src="<?php echo base_url('assets/js/pap.js'); ?>?<?php echo date('l jS \of F Y h:i:s A'); ?>"></script>
 
 </body>
 
