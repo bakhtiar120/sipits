@@ -18,22 +18,20 @@ class Atur_p3i extends CI_Controller
 
         $data['data'] = $this->p3i_model->get_all();
         $data['temp'] = $temp1 . " " . $temp2;
-
-        $this->load->view('admin/atur_p3i', $data);
+        $this->template->display_admin('atur_p3i', 'Edit P3I', $data);
     }
 
     public function detail($id = 0)
     {
         $data = $this->p3i_model->get_by_id($id);
-        $this->load->view('admin/detail_p3i', $data[0]);
+        $this->template->display_admin('detail_p3i', 'Detail P3I', $data[0]);
     }
 
     public function edit($id_p3i = 0)
     {
 
         $data = $this->p3i_model->get_by_id($id_p3i);
-
-        $this->load->view('admin/edit_p3i', $data[0]);
+        $this->template->display_admin('edit_p3i', 'Edit P3I', $data[0]);
     }
 
     public function update_data($id_p3i = 0)

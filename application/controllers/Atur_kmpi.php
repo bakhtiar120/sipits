@@ -17,22 +17,20 @@ class Atur_kmpi extends CI_Controller
 
         $data['data'] = $this->kmpi_model->get_all();
         $data['temp'] = $temp1 . " " . $temp2;
-
-        $this->load->view('admin/atur_kmpi', $data);
+        $this->template->display_admin('atur_kmpi', 'Atur KMPI', $data);
     }
 
     public function detail($id = 0)
     {
         $data = $this->kmpi_model->get_by_id($id);
-        $this->load->view('admin/detail_kmpi', $data[0]);
+        $this->template->display_admin('detail_kmpi', 'Detail KMPI', $data[0]);
     }
 
     public function edit($id_kmpi = 0)
     {
 
         $data = $this->kmpi_model->get_by_id($id_kmpi);
-
-        $this->load->view('admin/edit_kmpi', $data[0]);
+        $this->template->display_admin('edit_kmpi', 'Edit KMPI', $data[0]);
     }
 
     public function update_data($id_kmpi = 0)

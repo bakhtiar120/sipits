@@ -18,7 +18,7 @@ class Arsip extends CI_Controller
         $data["skema"] = $this->Arsip_model->skema();
         $data["departemen"] = $this->Arsip_model->departemen();
         $data["fakultas"] = $this->Arsip_model->fakultas();
-        $this->load->view('admin/arsip', $data);
+        $this->template->display_admin('arsip', 'Arsip', $data);
     }
 
     function get_data()
@@ -79,7 +79,14 @@ class Arsip extends CI_Controller
             if (!empty($field->id_detail)) {
                 $lihat = '<a class="btn btn-block btn-success btn-xs" onclick="lihatRak(\'' . $field->id_arsip . '\')" data-toggle="modal" style="cursor:pointer;color:#ffffff">Lihat</a>';
             }
-            $cetak = '<a class="btn btn-info btn-sm" onclick="cetakData(\'' . $field->id_arsip . '\')" data-toggle="modal" style="cursor:pointer;color:#ffffff"><i class="fas fa-print"></i>Tanda Terima</a>';$no++;
+            $cetak = '<a class="btn btn-info btn-sm" href="' . site_url() . 'arsip/cetak_tanda_terima/' . $field->id_arsip . '" target="_blank"><i class="fas fa-print"></i>Tanda Terima</a>';
+            $edit = "";
+            $rak = "";
+            if (cekRole($this->session->userdata("id_user"), $this->uri->segment(1), "edit") == 1) {
+                $edit = '<a class="btn btn-block btn-warning btn-xs" onclick="editDana(\'' . $field->id_arsip . '\')" data-toggle="modal" style="cursor:pointer;color:#ffffff">Edit</a>';
+                $rak = '<a class="btn btn-block btn-info btn-xs" onclick="editRak(\'' . $field->id_arsip . '\')" data-toggle="modal" style="cursor:pointer;color:#ffffff">Rak</a>';
+            }
+            $no++;
             $row = array();
             $row[] = $field->id_arsip;
             $row[] = $field->tahun;
@@ -90,14 +97,14 @@ class Arsip extends CI_Controller
             $row[] = $field->departemen;
             $row[] = $field->fakultas;
             $row[] = nominal($field->dana_disetujui);
-            $row[] = nominal($field->sptb) . '<br><a class="btn btn-block btn-warning btn-xs" onclick="editDana(\'' . $field->id_arsip . '\')" data-toggle="modal" style="cursor:pointer;color:#ffffff">Edit</a>';
+            $row[] = nominal($field->sptb) . '<br>' . $edit;
             $row[] = nominal($field->dana_sisa);
             $row[] = $field->nomor_kontrak . $field->kode_kontrak;
             $row[] = $field->tgl_kontrak;
             $row[] = $field->nomor_sk . $field->kode_sk;
             $row[] = $field->tgl_sk;
             $row[] = $field->kode_unik;
-            $row[] = '<a class="btn btn-block btn-info btn-xs" onclick="editRak(\'' . $field->id_arsip . '\')" data-toggle="modal" style="cursor:pointer;color:#ffffff">Rak</a>&nbsp' . $lihat;
+            $row[] = $rak . '&nbsp' . $lihat;
             $row[] = $cetak;
 
             $data[] = $row;
@@ -243,9 +250,8 @@ class Arsip extends CI_Controller
                 $status = "checked";
             }
             $status_upload = "";
-            if(cekStatusUnggahan($id_arsip, $key->id_kategori) == 1)
-            {
-                $status_upload="checked";
+            if (cekStatusUnggahan($id_arsip, $key->id_kategori) == 1) {
+                $status_upload = "checked";
             }
             $form .= '<tr>
                                         <td>' . $key->kategori . '</td>

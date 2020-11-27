@@ -17,25 +17,21 @@ class Atur_kp extends CI_Controller
 
 		$data['data'] = $this->kp_model->get_kp_all();
 		$data['temp'] = $temp1 . " " . $temp2;
-
-		$this->load->view('admin/atur_kp', $data);
+		$this->template->display_admin('atur_kp', 'Atur KP', $data);
 	}
 
 	public function detail($id = 0)
 	{
 		//print_r($id);
 		$data = $this->kp_model->get_kp_by_id($id);
-
-		//print_r($data[0]);
-		$this->load->view('admin/detail_kp', $data[0]);
+		$this->template->display_admin('detail_kp', 'Detail KP', $data[0]);
 	}
 
 	public function edit($id_kp = 0)
 	{
 
 		$data = $this->kp_model->get_kp_by_id($id_kp);
-
-		$this->load->view('admin/edit_kp', $data[0]);
+		$this->template->display_admin('edit_kp', 'Edit KP', $data[0]);
 	}
 
 	public function update_data($id_kp = 0)
@@ -186,24 +182,24 @@ class Atur_kp extends CI_Controller
 		$this->load->library('email');
 
 		$config['protocol']    = 'smtp';
-        $config['smtp_host']    = 'ssl://smtp.gmail.com';
-        $config['smtp_port']    = '465';
-        $config['smtp_timeout'] = '7';
-        $config['smtp_user']    = 'drpm.its@gmail.com';
-        $config['smtp_pass']    = 'drpmITS2020';
-        $config['charset']    = 'utf-8';
-        $config['newline']    = "\r\n";
-        $config['mailtype'] = 'text'; // or html
-        $config['validation'] = TRUE; // bool whether to validate email or not      
+		$config['smtp_host']    = 'ssl://smtp.gmail.com';
+		$config['smtp_port']    = '465';
+		$config['smtp_timeout'] = '7';
+		$config['smtp_user']    = 'drpm.its@gmail.com';
+		$config['smtp_pass']    = 'drpmITS2020';
+		$config['charset']    = 'utf-8';
+		$config['newline']    = "\r\n";
+		$config['mailtype'] = 'text'; // or html
+		$config['validation'] = TRUE; // bool whether to validate email or not      
 
-        $this->email->initialize($config);
+		$this->email->initialize($config);
 
-        $this->email->from('drpm.its@gmail.com', 'SIPITS ITS');
-        $this->email->to($email);
-        $this->email->subject('Email Test');
-        $this->email->message($pesan);
+		$this->email->from('drpm.its@gmail.com', 'SIPITS ITS');
+		$this->email->to($email);
+		$this->email->subject('Email Test');
+		$this->email->message($pesan);
 
-        $this->email->send();
+		$this->email->send();
 	}
 
 	public function hapus()
@@ -240,16 +236,17 @@ class Atur_kp extends CI_Controller
 
 	}
 
-	public function cetak_tanda_terima() {
+	public function cetak_tanda_terima()
+	{
 		// $data = $this->pap_model->get_pap_by_id($id);
 		//print_r($data[0]);
 		$this->load->library('f_pdf');
 		// $this->load->library('pdf_dll');
 		$this->load->view('admin/cetak_tanda_terima');
-		
 	}
 
-	public function cetak_excel() {
+	public function cetak_excel()
+	{
 		$data['data'] = $this->kp_model->get_kp_all();
 		// $data['temp'] = $temp1 . " " . $temp2;
 

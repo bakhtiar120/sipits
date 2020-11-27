@@ -1,31 +1,45 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Rak extends CI_Controller
+class Users extends CI_Controller
 {
 
     function __construct()
     {
         parent::__construct();
-        $this->load->model('Rak_model', 'rak');
+        $this->load->model('User_model', 'users');
     }
 
     function index()
     {
-        $data["rak"] = $this->rak->rak();
-        $this->template->display_admin('rak', 'Rak', $data);
+        $data["users"] = $this->users->user();
+        $data["role"] = $this->users->role();
+        $this->template->display_admin('users', 'User', $data);
     }
 
-    public function simpan_rak()
+    function tambah()
     {
-        $hasil = $this->rak->simpanRak();
+        $data["menu"] = $this->users->menu();
+        $this->template->display_admin('users_add', 'User Add', $data);
+    }
+
+    function edit($id)
+    {
+        $data["menu"] = $this->users->menu();
+        $data["users"] = $this->users->users_all($id);
+        $this->template->display_admin('users_edit', 'User Edit', $data);
+    }
+
+    public function simpan()
+    {
+        $hasil = $this->users->simpanUser();
         if ($hasil == 1) {
             $this->session->set_flashdata(
                 'hasil',
                 '<div class="alert alert-success col-12">
               <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
               <h5><i class="icon fa fa-check"></i> Berhasil!</h5>
-               Rak berhasil disimpan.
+               User berhasil disimpan.
             </div>'
             );
         } else {
@@ -34,27 +48,23 @@ class Rak extends CI_Controller
                 '<div class="alert alert-warning alert-dismissible col-12">
                       <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                       <h5><i class="icon fas fa-exclamation-triangle"></i> Gagal!</h5>
-                      Rak gagal simpan.
+                      User gagal simpan.
                     </div>'
             );
         }
-        redirect('rak');
+        redirect('users');
     }
 
-    public function update_rak()
+    public function simpanEdit()
     {
-        $data = $this->input->post();
-        $id_rak = $this->input->post('id_rak3');
-        $hasil = $this->rak->update_rak($id_rak, $data);
-
-
+        $hasil = $this->users->simpanEdit();
         if ($hasil == 0) {
             $this->session->set_flashdata(
                 'hasil',
                 '<div class="alert alert-warning alert-dismissible col-12">
                   <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                   <h5><i class="icon fas fa-exclamation-triangle"></i> Gagal!</h5>
-                  Data Master Rak gagal update.
+                  Data Master User gagal update.
                 </div>'
             );
         } else {
@@ -63,11 +73,11 @@ class Rak extends CI_Controller
                 '<div class="alert alert-success col-12">
 		      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
 		      <h5><i class="icon fa fa-check"></i> Berhasil!</h5>
-		       Data Master Rak berhasil update.
+		       Data Master User berhasil update.
 		    </div>'
             );
         }
 
-        redirect('Rak/index/');
+        redirect('users');
     }
 }

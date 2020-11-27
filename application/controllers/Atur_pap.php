@@ -17,25 +17,21 @@ class Atur_pap extends CI_Controller
 
 		$data['data'] = $this->pap_model->get_pap_all();
 		$data['temp'] = $temp1 . " " . $temp2;
-
-		$this->load->view('admin/atur_pap', $data);
+		$this->template->display_admin('atur_pap', 'Edit PAP', $data);
 	}
 
 	public function detail($id = 0)
 	{
 		//print_r($id);
 		$data = $this->pap_model->get_pap_by_id($id);
-
-		//print_r($data[0]);
-		$this->load->view('admin/detail_pap', $data[0]);
+		$this->template->display_admin('detail_pap', 'Detail PAP', $data[0]);
 	}
 
 	public function edit($id_pap = 0)
 	{
 
 		$data = $this->pap_model->get_pap_by_id($id_pap);
-
-		$this->load->view('admin/edit_pap', $data[0]);
+		$this->template->display_admin('edit_pap', 'Edit PAP', $data[0]);
 	}
 
 	public function update_data($id_pap = 0)
@@ -174,24 +170,24 @@ class Atur_pap extends CI_Controller
 		$this->load->library('email');
 
 		$config['protocol']    = 'smtp';
-        $config['smtp_host']    = 'ssl://smtp.gmail.com';
-        $config['smtp_port']    = '465';
-        $config['smtp_timeout'] = '7';
-        $config['smtp_user']    = 'drpm.its@gmail.com';
-        $config['smtp_pass']    = 'drpmITS2020';
-        $config['charset']    = 'utf-8';
-        $config['newline']    = "\r\n";
-        $config['mailtype'] = 'text'; // or html
-        $config['validation'] = TRUE; // bool whether to validate email or not      
+		$config['smtp_host']    = 'ssl://smtp.gmail.com';
+		$config['smtp_port']    = '465';
+		$config['smtp_timeout'] = '7';
+		$config['smtp_user']    = 'drpm.its@gmail.com';
+		$config['smtp_pass']    = 'drpmITS2020';
+		$config['charset']    = 'utf-8';
+		$config['newline']    = "\r\n";
+		$config['mailtype'] = 'text'; // or html
+		$config['validation'] = TRUE; // bool whether to validate email or not      
 
-        $this->email->initialize($config);
+		$this->email->initialize($config);
 
-        $this->email->from('drpm.its@gmail.com', 'SIPITS ITS');
-        $this->email->to($email);
-        $this->email->subject('Email Test');
-        $this->email->message($pesan);
+		$this->email->from('drpm.its@gmail.com', 'SIPITS ITS');
+		$this->email->to($email);
+		$this->email->subject('Email Test');
+		$this->email->message($pesan);
 
-        $this->email->send();
+		$this->email->send();
 	}
 
 	public function hapus()
@@ -231,9 +227,9 @@ class Atur_pap extends CI_Controller
 		$this->load->library('f_pdf');
 		// $this->load->library('pdf_dll');
 		$this->load->view('admin/cetak_kontrak_pap', $data[0]);
-		
-	            // $this->load->view('admin/cetak_kontrak');
-      
+
+		// $this->load->view('admin/cetak_kontrak');
+
 	}
 
 	public function cetak_excel()

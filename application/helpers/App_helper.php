@@ -152,3 +152,14 @@ if (!function_exists('cekStatusUnggahan')) {
         return $status;
     }
 }
+
+if (!function_exists('cekRole')) {
+
+    function cekRole($id_user, $kode_menu, $role)
+    {
+        $CI = get_instance();
+        $CI->load->model('User_model', 'users');
+        $status = $CI->users->cekRole($id_user, $kode_menu, $role);
+        return $status;
+    }
+}

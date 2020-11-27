@@ -17,14 +17,13 @@ class Atur_bpup extends CI_Controller
 
         $data['data'] = $this->bpup_model->get_bpup_all();
         $data['temp'] = $temp1 . " " . $temp2;
-
-        $this->load->view('admin/atur_bpup', $data);
+        $this->template->display_admin('atur_bpup', 'Atur BPUP', $data);
     }
 
     public function detail($id = 0)
     {
         $data = $this->bpup_model->get_bpup_by_id($id);
-        $this->load->view('admin/detail_bpup', $data[0]);
+        $this->template->display_admin('detail_bpup', 'Detail BPUP', $data[0]);
     }
     public function update_status($id_bpup = 0, $status = 0)
     {
@@ -145,8 +144,7 @@ class Atur_bpup extends CI_Controller
     {
 
         $data = $this->bpup_model->get_bpup_by_id($id_bpup);
-
-        $this->load->view('admin/edit_bpup', $data[0]);
+        $this->template->display_admin('edit_bpup', 'Edit BPUP', $data[0]);
     }
 
     public function update_data($id_bpup = 0)
