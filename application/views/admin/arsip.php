@@ -380,7 +380,7 @@
                         "serverSide": true,
                         "order": [],
                         "ajax": {
-                            "url": "http://localhost:81/sipits/arsip/get_data2",
+                            "url": "<?php echo site_url('arsip/get_data2') ?>",
                             "type": "POST",
                             "dataType": "json",
                             "data": function(d) {

@@ -79,8 +79,7 @@ class Arsip extends CI_Controller
             if (!empty($field->id_detail)) {
                 $lihat = '<a class="btn btn-block btn-success btn-xs" onclick="lihatRak(\'' . $field->id_arsip . '\')" data-toggle="modal" style="cursor:pointer;color:#ffffff">Lihat</a>';
             }
-            $cetak = '<a class="btn btn-info btn-sm" href="' . site_url() . 'arsip/cetak_tanda_terima/' . $field->id_arsip . '" target="_blank"><i class="fas fa-print"></i>Tanda Terima</a>';
-            $no++;
+            $cetak = '<a class="btn btn-info btn-sm" onclick="cetakData(\'' . $field->id_arsip . '\')" data-toggle="modal" style="cursor:pointer;color:#ffffff"><i class="fas fa-print"></i>Tanda Terima</a>';$no++;
             $row = array();
             $row[] = $field->id_arsip;
             $row[] = $field->tahun;
