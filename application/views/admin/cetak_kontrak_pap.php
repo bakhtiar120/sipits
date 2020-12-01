@@ -107,7 +107,10 @@ function getBulan($bln)
 }
 
 $pdf = new FPDF('P', 'mm', 'Letter');
-
+$pdf->AddFont('Bookman','','bookman_reguler.php'); //Regular
+$pdf->AddFont('Bookman','B','bookman_bold.php'); //Bold
+$pdf->AddFont('Bookman','I','bookman_italic.php'); //Italic
+$pdf->AddFont('Bookman','BI','bookman_bolditalic.php');
 $pdf->AddPage();
 $pdf->Image('assets/bahan/logo_its.png', 10, 10, 25);
 $pdf->Cell(2);
@@ -134,16 +137,16 @@ $pdf->SetDrawColor(0, 0, 255);
 $pdf->Line(10, 40, 200, 40);
 $pdf->Ln(10);
 $pdf->Cell(2);
-$pdf->SetFont('Times', 'B', '12');
+$pdf->SetFont('Bookman', 'B', '14');
 $pdf->Cell(0, 5, 'SURAT PERJANJIAN', 0, 1, 'C');
 $pdf->Cell(2);
-$pdf->SetFont('Times', 'B', '12');
+$pdf->SetFont('Bookman', 'B', '14');
 $pdf->Cell(0, 5, 'DOSEN PENELITI', 0, 1, 'C');
 $pdf->Cell(2);
-$pdf->SetFont('Times', 'B', '12');
+$pdf->SetFont('Bookman', 'B', '14');
 $pdf->Cell(0, 5, 'DENGAN', 0, 1, 'C');
 $pdf->Cell(2);
-$pdf->SetFont('Times', 'B', '12');
+$pdf->SetFont('Bookman', 'B', '14');
 $pdf->Cell(0, 5, 'PENERIMA PENYELENGGARAAN ASISTEN PENELITIAN', 0, 1, 'C');
 $pdf->SetFont('Times', '', '12');
 $pdf->Cell(2);

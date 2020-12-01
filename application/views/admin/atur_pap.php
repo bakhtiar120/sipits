@@ -66,7 +66,7 @@
                                     <thead>
                                         <tr>
                                             <th>Nama Pengusul</th>
-                                            <th>Asal</th>
+                                            <th>Asisten</th>
                                             <th>Tanggal Usul</th>
                                             <th>Luaran</th>
                                             <th>Status</th>
@@ -81,7 +81,7 @@
                                             <tr>
 
                                                 <td><?php echo htmlentities($value['nama_ketua'], ENT_QUOTES, 'UTF-8'); ?></td>
-                                                <td><?php echo $value['universitas_ketua'];; ?></td>
+                                                <td><?php echo $value['nama_ap'];; ?></td>
                                                 <td><?php echo $value['tanggal_submit']; ?></td>
                                                 <td>
                                                     <?php

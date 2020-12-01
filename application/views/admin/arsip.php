@@ -117,6 +117,15 @@
                                     </div>
                                 </div>
                                 <br>
+                                <div class="row">
+                                    <div class="col-10"></div>
+                                    <div class="col-2" style="margin-top: 25px;"><a class="btn btn-info btn-sm" href="<?php echo site_url('arsip/cetak_excel'); ?>">
+                                            <i class="fas fa-print">
+                                            </i>
+                                            Export Excel
+                                        </a></div>
+                                </div>
+                                <br><br>
                                 <table id="table" class="table table-bordered table-striped">
                                     <thead>
                                         <tr>

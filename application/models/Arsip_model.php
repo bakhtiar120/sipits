@@ -295,4 +295,12 @@ class Arsip_model extends CI_Model
             return 0;
         }
     }
+
+    function get_arsip_all()
+    {
+
+        $this->db->order_by("judul", "asc");
+        $query = $this->db->get('data_arsip');
+        return $query->result_array();
+    }
 }
