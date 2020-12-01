@@ -343,13 +343,14 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <form method="post" action="<?php echo base_url() ?>/arsip/cetak_tanda_terima">
+                    <form method="post" action="<?php echo base_url() ?>/arsip/cetak_tanda_terima" id="simpanCetak">
                         <input type="hidden" name="id_arsip3" id="id_arsip3">
                         <div class="modal-body" id="body">
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <input type="submit" class="btn btn-primary" value="Simpan">
+                            <a class="btn btn-primary" id="cekCentang" style="color:#ffffff;cursor:pointer">Simpan</a>
+                            <!-- <input type="submit" class="btn btn-primary" value="Simpan"> -->
                         </div>
                     </form>
                 </div>
@@ -364,6 +365,23 @@
             $(document).ready(function() {
                 //Initialize Select2 Elements
                 $('.select2').select2();
+
+                $("#cekCentang").click(function() {
+                    var centang1 = $('input[name="status[]"]:checked').length;
+                    var centang2 = $('input[name="status_unggahan[]"]:checked').length;
+                    if (centang1 != 0 && centang2 != 0) {
+                        var nama_pengirim = $("#nama_pengirim").val();
+                        var no_hp_pengirim = $("#no_hp_pengirim").val();
+                        var nama_penerima = $("#nama_penerima").val();
+                        if (nama_pengirim != "" && no_hp_pengirim != "" && nama_penerima != "") {
+                            $("#simpanCetak").submit();
+                        } else {
+                            alert("Nama pengirim, No Hp Pengirim dan Nama Penerima tidak boleh kosong");
+                        }
+                    } else {
+                        alert("Status atau Status Unggahan Harus ada yang dicentang");
+                    }
+                });
 
                 $("#cari").click(function() {
                     var cari = "Cari";
