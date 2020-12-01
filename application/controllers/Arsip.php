@@ -31,6 +31,12 @@ class Arsip extends CI_Controller
             if (!empty($field->id_detail)) {
                 $lihat = '<a class="btn btn-block btn-success btn-xs" onclick="lihatRak(\'' . $field->id_arsip . '\')" data-toggle="modal" style="cursor:pointer;color:#ffffff">Lihat</a>';
             }
+            $edit = "";
+            $rak = "";
+            if (cekRole($this->session->userdata("id_user"), $this->uri->segment(1), "edit") == 1) {
+                $edit = '<a class="btn btn-block btn-warning btn-xs" onclick="editDana(\'' . $field->id_arsip . '\')" data-toggle="modal" style="cursor:pointer;color:#ffffff">Edit</a>';
+                $rak = '<a class="btn btn-block btn-info btn-xs" onclick="editRak(\'' . $field->id_arsip . '\')" data-toggle="modal" style="cursor:pointer;color:#ffffff">Rak</a>';
+            }
 
             $cetak = '<a class="btn btn-info btn-sm" onclick="cetakData(\'' . $field->id_arsip . '\')" data-toggle="modal" style="cursor:pointer;color:#ffffff"><i class="fas fa-print"></i>Tanda Terima</a>';
             $no++;
@@ -44,14 +50,14 @@ class Arsip extends CI_Controller
             $row[] = $field->departemen;
             $row[] = $field->fakultas;
             $row[] = nominal($field->dana_disetujui);
-            $row[] = nominal($field->sptb) . '<br><a class="btn btn-block btn-warning btn-xs" onclick="editDana(\'' . $field->id_arsip . '\')" data-toggle="modal" style="cursor:pointer;color:#ffffff">Edit</a>';
+            $row[] = nominal($field->sptb) . '<br>' . $edit;
             $row[] = nominal($field->dana_sisa);
             $row[] = $field->nomor_kontrak . $field->kode_kontrak;
             $row[] = $field->tgl_kontrak;
             $row[] = $field->nomor_sk . $field->kode_sk;
             $row[] = $field->tgl_sk;
             $row[] = $field->kode_unik;
-            $row[] = '<a class="btn btn-block btn-info btn-xs" onclick="editRak(\'' . $field->id_arsip . '\')" data-toggle="modal" style="cursor:pointer;color:#ffffff">Rak</a>&nbsp' . $lihat;
+            $row[] = $rak . '&nbsp' . $lihat;
             $row[] = $cetak;
 
             $data[] = $row;
@@ -266,15 +272,15 @@ class Arsip extends CI_Controller
         $form .= '</tbody></table></div>
                             <div class="form-group">
                                 <label for="nama_pengirim" class="col-form-label">Nama Pengirim :</label>
-                                <input type="text" id="nama_pengirim" class="form-control" name="nama_pengirim" value="' . $nama_pengirim . '">
+                                <input type="text" id="nama_pengirim" class="form-control" required name="nama_pengirim" value="' . $nama_pengirim . '">
                             </div>';
         $form .= '<div class="form-group">
                                 <label for="nama_pengirim" class="col-form-label">Nomor HP Pengirim :</label>
-                                <input type="text" id="no_hp_pengirim" class="form-control" onKeyUp="this.value=this.value.replace(/[^0-9]/g,\'' . '\')" name="no_hp_pengirim" value="' . $hp . '">
+                                <input type="text" id="no_hp_pengirim" class="form-control" onKeyUp="this.value=this.value.replace(/[^0-9]/g,\'' . '\')" required name="no_hp_pengirim" value="' . $hp . '">
                             </div>
                             <div class="form-group">
                                 <label for="nama_pengirim" class="col-form-label">Nama Penerima :</label>
-                                <input type="text" id="nama_penerima" class="form-control" name="nama_penerima" value="' . $nama_penerima . '">
+                                <input type="text" id="nama_penerima" required class="form-control" name="nama_penerima" value="' . $nama_penerima . '">
                             </div>';
         echo $form;
     }
