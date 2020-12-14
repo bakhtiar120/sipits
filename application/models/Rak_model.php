@@ -14,6 +14,18 @@ class Rak_model extends CI_Model
         return $query->result();
     }
 
+    public function get_rak_by_id($id)
+    {
+        $this->db->select('data_arsip.judul as judul, data_arsip.nama_ketua as nama_ketua,data_arsip.tahun as tahun,data_arsip.skema as skema ,data_arsip.sumber as sumber, data_arsip.dana_disetujui as dana_disetujui');
+        $this->db->from('data_arsip');
+        $this->db->join('detail_rak', 'data_arsip.id_detail=detail_rak.id_detail');
+        $this->db->join('rak','rak.id_rak=detail_rak.id_rak');
+        $this->db->where('rak.id_rak',$id);
+        $query = $this->db->get();
+        return $query->result();
+    }
+    
+
     public function simpanRak()
     {
         $id_rak = $this->input->post("id_rak");

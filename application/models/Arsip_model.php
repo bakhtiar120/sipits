@@ -71,6 +71,7 @@ class Arsip_model extends CI_Model
         $skema = str_replace('.', '', $this->input->post("skema"));
         $dep = str_replace('.', '', $this->input->post("departemen"));
         $fak = str_replace('.', '', $this->input->post("fakultas"));
+        $nama = str_replace('.', '', $this->input->post("nama_ketua_arsip"));
         if (!empty($tahun)) {
             $this->db->where("tahun", $tahun);
         }
@@ -82,6 +83,9 @@ class Arsip_model extends CI_Model
         }
         if (!empty($fak)) {
             $this->db->where("fakultas", $fak);
+        }
+        if (!empty($nama)) {
+            $this->db->like("nama_ketua", $nama);
         }
         $this->db->from($this->table);
 
@@ -119,6 +123,7 @@ class Arsip_model extends CI_Model
             $this->db->limit($_POST['length'], $_POST['start']);
 
         $query = $this->db->get();
+        // var_dump($query->result());
         return $query->result();
     }
 
@@ -298,9 +303,36 @@ class Arsip_model extends CI_Model
 
     function get_arsip_all()
     {
-
-        $this->db->order_by("judul", "asc");
-        $query = $this->db->get('data_arsip');
+        $nama = $this->input->post('nama_ketua_export');
+        $tahun
+        = str_replace('.', '', $this->input->post("tahun_export"));
+        $skema =str_replace('.','', $this->input->post('skema_export')) ;
+        $departemen = str_replace('.', '', $this->input->post('departemen_export'));
+        $fakultas = str_replace('.', '', $this->input->post('fakultas_export'));
+        // $this->db->select('data_arsip.id_arsip as id_arsip, data_arsip.judul as judul,data_arsip.tahun as tahun,data_arsip.skema as skema,data_arsip.sumber as sumber,data_arsip.nama_ketua as nama_ketua,detail_arsip.status,detail_arsip.status_upload as status_upload,detail_arsip.id_kategori');
+        $this->db->select('id_arsip ,judul,tahun,skema,sumber,nama_ketua');
+        
+        $this->db->from('data_arsip');
+        // $this->db->join('detail_arsip', 'data_arsip.id_arsip=detail_arsip.id_arsip','left');
+        if (!empty($nama)) {
+            $this->db->like("nama_ketua", $nama);
+        }
+        if (!empty($tahun)) {
+            $this->db->where("tahun", $tahun);
+        }
+        if (!empty($skema)) {
+            $this->db->where("skema", $skema);
+        }
+        if (!empty($departemen)) {
+            $this->db->where("departemen", $departemen);
+        }
+        if (!empty($fakultas)) {
+            $this->db->where("fakultas", $fakultas);
+        }
+        $this->db->order_by('id_arsip','ASC');
+        // $query=$this->db->query("SELECT data_arsip.id_arsip as id, data_arsip.judul as judul,data_arsip.tahun as tahun,data_arsip.skema as skema,data_arsip.sumber as sumber,data_arsip.nama_ketua as nama_ketua,detail_arsip.status,detail_arsip.status_upload as status_upload,detail_arsip.id_kategori from data_arsip LEFT JOIN detail_arsip ON data_arsip.id_arsip=detail_arsip.id_arsip ORDER BY data_arsip.id_arsip ASC");
+        $query = $this->db->get();
+        // var_dump($query->result_array());
         return $query->result_array();
     }
 }

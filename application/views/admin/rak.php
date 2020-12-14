@@ -125,7 +125,13 @@
                                                 ?>
                                                 <td>
                                                     <?php if (cekRole($this->session->userdata("id_user"), $this->uri->segment(1), "edit") == 1) { ?>
-                                                        <a class="btn btn-xs btn-success" onclick="rakEdit('<?= $kirim ?>')" style="cursor:pointer;color:#ffffff"> Edit</a> &nbsp; <?php } ?></td>
+                                                        <a class="btn btn-xs btn-success" onclick="rakEdit('<?= $kirim ?>')" style="cursor:pointer;color:#ffffff"> Edit</a> &nbsp; <?php } ?>
+                                                    <a class="btn btn-primary btn-sm" href="<?php echo site_url('rak/detail/' . $key->id_rak); ?>">
+                                                        <i class="fas fa-folder">
+                                                        </i>
+                                                        Detail
+                                                    </a>
+                                                </td>
                                             </tr>
                                         <?php $no++;
                                         } ?>

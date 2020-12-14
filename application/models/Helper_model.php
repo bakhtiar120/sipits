@@ -147,4 +147,17 @@ class Helper_model extends CI_Model
             return 0;
         }
     }
+
+    function cekKategori($id)
+    {
+        $query = $this->db->query("select kategori from kategori where id_kategori = '$id'");
+        return $query->row()->kategori;
+    }
+
+    function cekStatusSoftCopy($id)
+    {
+        $query = $this->db->query("select * from detail_arsip a join kategori b on a.id_kategori=b.id_kategori where id_arsip = '$id'");
+        
+        return $query->result();
+    }
 }

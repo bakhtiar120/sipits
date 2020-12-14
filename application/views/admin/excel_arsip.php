@@ -17,51 +17,54 @@ header("Expires: 0");
         <tr>
             <th>No</th>
             <th>Tahun</th>
-            <th>Skema</th>
-            <th>Sumber Dana</th>
             <th>Judul Kegiatan</th>
             <th>Nama Ketua</th>
-            <th>Departemen</th>
-            <th>Fakultas</th>
-            <th>Dana Disetujui</th>
-            <th>Dana Terpakai</th>
-            <th>Dana Sisa</th>
-            <th>Nomor Kontrak</th>
-            <th>Tanggal Kontrak</th>
-            <th>Nomor SK</th>
-            <th>Tanggal SK</th>
-            <th>Kode Unik</th>
+            <th>HardCopy</th>
+            <th>SoftCopy</th>
 
         </tr>
 
     </thead>
 
     <tbody>
-
+        <!-- var_dump($data); -->
         <?php $a = 0;
-        foreach ($data as $key => $value) : $a++; ?>
+        // $id = $data[0]['id_arsip'];
+        $hardcopy = '';
+        $softcopy = '';
+        $nama = '';
+        $judul = '';
+        $tahun = '';
+        foreach ($data as $key => $value) : $a++;
+
+            // if ($value['id_arsip'] == $id) {
+            //     // $nama = $value['nama_ketua'];
+            //     // $judul = $value['judul'];
+            //     // $tahun = $value['tahun'];
+            //     if ($value['status'] == 1)
+            //         $hardcopy = $hardcopy . cekNamaKategori($value['id_kategori']) .', ';
+            //     if ($value['status_upload'] == 1)
+            //     $softcopy = $softcopy . cekNamaKategori($value['id_kategori']) . ', ';
+            // }
+        ?>
 
             <tr>
                 <td><?php echo $a; ?></td>
                 <td><?php echo $value['tahun'];  ?></td>
-                <td><?php echo $value['skema'];  ?></td>
-                <td><?php echo $value['sumber'];  ?></td>
                 <td><?php echo $value['judul']; ?></td>
-                <td><?php echo $value['nama_ketua'];  ?></td>
-                <td><?php echo $value['departemen'];  ?></td>
-                <td><?php echo $value['fakultas'];  ?></td>
-                <td><?php echo $value['dana_disetujui']; ?></td>
-                <td><?php echo $value['sptb'];  ?></td>
-                <td><?php echo $value['dana_sisa'];  ?></td>
-                <td><?php echo $value['nomor_kontrak']; ?></td>
-                <td><?php echo $value['tgl_kontrak']; ?></td>
-                <td><?php echo $value['nomor_sk']; ?></td>
-                <td><?php echo $value['tgl_sk']; ?></td>
-                <td><?php echo $value['kode_unik']; ?></td>
-
+                <td><?php echo $value['nama_ketua']; ?></td>
+                <td><?php echo cekstatusSoftCopy($value['id_arsip'], 'hardcopy'); ?></td>
+                <td><?php echo cekstatusSoftCopy($value['id_arsip'], 'softcopy'); ?></td>
             </tr>
 
-        <?php endforeach; ?>
+        <?php $hardcopy = '';
+            $softcopy = '';
+            $nama = '';
+            $judul = '';
+            $tahun = '';
+
+            $id = $value['id_arsip'];
+        endforeach; ?>
 
     </tbody>
 

@@ -16,6 +16,12 @@ class Rak extends CI_Controller
         $this->template->display_admin('rak', 'Rak', $data);
     }
 
+    public function detail($id = 0)
+    {
+        $data["rak"] = $this->rak->get_rak_by_id($id);
+        $this->template->display_admin('detail_rak', 'Detail Rak', $data);
+    }
+
     public function simpan_rak()
     {
         $hasil = $this->rak->simpanRak();

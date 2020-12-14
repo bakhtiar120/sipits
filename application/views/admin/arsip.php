@@ -110,6 +110,13 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                            <div class="form-group">
+                                                <div class="col-sm-8">
+                                                    <label for="nama_ketua_arsip" class="col-form-label">Nama Ketua :</label>
+                                                    <input type="text" id="nama_ketua_arsip" class="form-control" required name="nama_ketua_arsip">
+
+                                                </div>
+                                            </div>
                                             <div class="col-sm-4">
                                                 <a class="btn btn-sm btn-info" id="cari" style="cursor:pointer;color:#ffffff">Cari</a>
                                             </div>
@@ -117,15 +124,21 @@
                                     </div>
                                 </div>
                                 <br>
-                                <div class="row">
-                                    <div class="col-10"></div>
-                                    <div class="col-2" style="margin-top: 25px;"><a class="btn btn-info btn-sm" href="<?php echo site_url('arsip/cetak_excel'); ?>">
-                                            <i class="fas fa-print">
-                                            </i>
-                                            Export Excel
-                                        </a></div>
-                                </div>
-                                <br><br>
+                                <form method="post" action="<?php echo base_url() ?>arsip/cetak_excel" id="cetak_excel">
+                                    <div class="row">
+                                        <input type="hidden" id="nama_ketua_export" class="form-control" name="nama_ketua_export">
+                                        <input type="hidden" id="tahun_export" class="form-control" name="tahun_export">
+                                        <input type="hidden" id="skema_export" class="form-control" name="skema_export">
+                                        <input type="hidden" id="departemen_export" class="form-control" name="departemen_export">
+                                        <input type="hidden" id="fakultas_export" class="form-control" name="fakultas_export">
+                                        <div class="col-10"></div>
+                                        <div class="col-2" style="margin-top: 25px;"><a class="btn btn-info btn-sm" style="cursor:pointer;color:#ffffff" id="export_excel">
+                                                <i class="fas fa-print">
+                                                </i>
+                                                Export Excel
+                                            </a></div>
+                                    </div>
+                                </form>
                                 <table id="table" class="table table-bordered table-striped">
                                     <thead>
                                         <tr>
@@ -398,6 +411,12 @@
                     var skema = $("#skema").val();
                     var dep = $("#departemen").val();
                     var fak = $("#fakultas").val();
+                    var nama = $("#nama_ketua_arsip").val();
+                    $("#nama_ketua_export").val(nama);
+                    $("#tahun_export").val(thn);
+                    $("#skema_export").val(skema);
+                    $("#departemen_export").val(dep);
+                    $("#fakultas_export").val(fak);
                     $('#table').DataTable({
                         "responsive": true,
                         "scrollX": true,
@@ -406,6 +425,7 @@
                         "processing": true,
                         "serverSide": true,
                         "order": [],
+                        "bFilter": false,
                         "ajax": {
                             "url": "<?php echo site_url('arsip/get_data2') ?>",
                             "type": "POST",
@@ -420,6 +440,10 @@
                     });
                 });
 
+                $("#export_excel").click(function() {
+                    $("#cetak_excel").submit();
+                });
+
                 //datatables
                 table = $('#table').DataTable({
                     "scrollX": true,
@@ -427,6 +451,7 @@
                     "processing": true,
                     "serverSide": true,
                     "order": [],
+                    "bFilter": false,
 
                     "ajax": {
                         "url": "<?php echo site_url('arsip/get_data') ?>",

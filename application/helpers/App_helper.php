@@ -142,6 +142,17 @@ if (!function_exists('cekStatusKategori')) {
     }
 }
 
+if (!function_exists('cekNamaKategori')) {
+
+    function cekNamaKategori($id_kategori)
+    {
+        $CI = get_instance();
+        $CI->load->model('Helper_model', 'helper');
+        $status = $CI->helper->cekKategori( $id_kategori);
+        return $status;
+    }
+}
+
 if (!function_exists('cekStatusUnggahan')) {
 
     function cekStatusUnggahan($id_arsip, $id_kategori)
@@ -163,3 +174,31 @@ if (!function_exists('cekRole')) {
         return $status;
     }
 }
+
+if (!function_exists('cekstatusSoftCopy')) {
+
+    function cekstatusSoftCopy($id_arsip,$status_cek)
+    {
+        $CI = get_instance();
+        $CI->load->model('Helper_model', 'helper');
+        $status = $CI->helper->cekstatusSoftCopy($id_arsip);
+        $softcopy = '';
+        foreach($status as $row)
+        {
+            if($status_cek=="softcopy") {
+                if ($row->status_upload == 1) {
+                    $softcopy = $softcopy . $CI->helper->cekKategori($row->id_kategori) . ', ';
+                }
+            }
+            else if($status_cek=="hardcopy") {
+                if($row->status==1) {
+                    $softcopy = $softcopy . $CI->helper->cekKategori($row->id_kategori) . ', ';
+                }
+            }
+            
+        }
+        return $softcopy;
+    }
+}
+
+

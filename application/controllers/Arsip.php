@@ -287,8 +287,9 @@ class Arsip extends CI_Controller
 
     public function cetak_excel()
     {
+        
         $data['data'] = $this->Arsip_model->get_arsip_all();
-        // $data['temp'] = $temp1 . " " . $temp2;
+        // var_dump($data['data'][0]['id_arsip']);
 
         $this->load->view('admin/excel_arsip', $data);
     }
